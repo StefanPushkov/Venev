@@ -1,0 +1,808 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 Воспроизведение звука. Настройка периферии + первый звук</title>
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 Воспроизведение звука. Настройка периферии + первый звук»" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 DAC Примеры использования" href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/">
+<link rel="next" title="STM32 Воспроизведение звука. Расширение возможностей программы" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/STM32 Воспроизведение звука. Настройка периферии + первый звук.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=3166">
+
+<link rel="stylesheet" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" rel="prev">STM32 DAC Примеры использования</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" rel="next">STM32 Воспроизведение звука. Расширение возможностей программы</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/STM32 Воспроизведение звука. Настройка периферии + первый звук.htm" rel="bookmark" title="Постоянная ссылка на STM32 Воспроизведение звука. Настройка периферии + первый звук">
+STM32 Воспроизведение звука. Настройка периферии + первый звук</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Итак, наша задача&nbsp; -&nbsp; воспроизведение WAV-файлов с помощью микроконтроллера STM32. В предыдущих статьях разобрались со структурой&nbsp; WAV-файлов, с библиотекой FatFs, которая позволяет работать с файловой системой, поигрались с ЦАПом. Приведу ссылки на эти статьи:</p>
+<ol>
+<li><font color="#000000">Работа с Fat&nbsp;&nbsp; <strong><a href="http://mycontroller.ru/stm32-rabota-s-bibliotekoy-fatfs/">статья1</a>,&nbsp; <a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/">статья2</a> ;</strong></font> </li>
+<li><font color="#000000"><strong><a href="http://mycontroller.ru/stm32-vosproizvedenie-wav-faylov/">Структура WAV-файлов;</a></strong></font> </li>
+<li><strong><font color="#000000"><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/">Работа с ЦАПом.</a></font></strong> </li>
+</ol>
+<p>Теперь необходимо объединить все это в одно целое, чтобы получить звук на выходе ЦАПа. В начале не будем ставить заоблачные цели, а ограничимся следующими возможностями:</p>
+<p><span id="more-3166"></span>
+</p><ul>
+<li><font color="#000000">фиксированная частота дискретизации – 44,1кГц;</font> </li>
+<li><font color="#000000">монофонический сигнал;</font> </li>
+<li><font color="#000000">разрядность 8 бит</font> </li>
+</ul>
+<p>Более того, для начала не будем анализировать контроллером заголовок файла, а начнем считывать данные из файла начиная с того места, где они расположены (в статье “<a href="http://mycontroller.ru/stm32-vosproizvedenie-wav-faylov/">STM32 Воспроизведение звука. Структура WAV-файлов</a>” объясняется как это делать). Добившись успеха в этом, будем постепенно наращивать возможности программы.</p>
+<p>Структурная схема воспроизведения звука будет следующая:</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image212.png"><img style="background-image: none; border-right-width: 0px; margin: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/image_thumb213.png" width="640" height="219"></a></p>
+<p>С помощью библиотеки FatFs загружаем звуковые данные (сэмплы) в буфер ЦАПа, а ДМА по сигналу от таймера транспортирует эти данные в регистр промежуточных данных ЦАПа. Ну а он, в свою очередь, из <em>цифры</em> делает звук. Скорость подачи данных (она же частота дискретизации) задается таймером TIM6. Вся эта система будет работать в автоматическом режиме, без участия процессора. От программы ожидается только в нужное время <strike>подавать патроны</strike> загружать буфер DAC_Buff по мере его освобождения. Сигналом для загрузки будут служить флаги ДМА. Есть два флага: один устанавливается при освобождении первой половины буфера, второй – при освобождении второй половины. </p>
+<p>Алгоритм такой. </p>
+<ol>
+<li>Вначале загружаем весь буфер и запускаем ДМА </li>
+<li>Ждем освобождения первой половины буфера </li>
+<li>Догружаем данные в первую половину буфера </li>
+<li>Ждем освобождения второй половины буфера </li>
+<li>Догружаем данные во вторую половину буфера </li>
+<li>Повторяем пункты с 2 по 5 до тех пор, пока не кончится весь файл </li>
+</ol>
+<p>Не знаю как правильно выбрать размер буфера. Если его размер будет слишком маленький, возможна такая ситуация, когда процессор, отвлекшись на другую работу (например, обработку прерывания), не успеет загрузить освободившуюся часть буфера. Но что значит “слишком маленький” ? Для начала задам размер буфера равным 512 байт, а в процессе отладки буду корректировать. </p>
+<p>Инициализация ЦАПа, ДМА и таймера будет выглядеть следующим образом:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #993333;">unsigned</span> <span style="color: #993333;">char</span> DAC_Buff<span style="color: #009900;">[</span><span style="color: #0000dd;">512</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span>                   <span style="color: #666666; font-style: italic;">//буфер данных ЦАПа (глобальная переменная)</span>
+<span style="color: #666666; font-style: italic;">//Настраиваем первый канал ЦАПа для приема данных от ДМА</span>
+RCC<span style="color: #339933;">-&gt;</span>APB2ENR <span style="color: #339933;">|=</span> RCC_APB2ENR_IOPAEN<span style="color: #339933;">;</span>            <span style="color: #666666; font-style: italic;">//тактирование линий GPIOA</span>
+RCC<span style="color: #339933;">-&gt;</span>APB1ENR <span style="color: #339933;">|=</span> RCC_APB1ENR_DACEN<span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//тактирование ЦАПа</span>
+DAC<span style="color: #339933;">-&gt;</span>CR      <span style="color: #339933;">|=</span> DAC_CR_DMAEN1<span style="color: #339933;">;</span>                 <span style="color: #666666; font-style: italic;">//разрешить прием данных канала №1 от ДМА</span>
+DAC<span style="color: #339933;">-&gt;</span>CR      <span style="color: #339933;">|=</span> DAC_CR_BOFF1<span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//отключить выходной буфер</span>
+DAC<span style="color: #339933;">-&gt;</span>CR      <span style="color: #339933;">|=</span> DAC_CR_EN1<span style="color: #339933;">;</span>                    <span style="color: #666666; font-style: italic;">//включить канал 1</span>
+<span style="color: #666666; font-style: italic;">//Настроить третий канал ДМА для перемещения данных из буфера</span>
+<span style="color: #666666; font-style: italic;">//в промежуточный регистр данных первого канала ЦАПа:</span>
+RCC<span style="color: #339933;">-&gt;</span>AHBENR         <span style="color: #339933;">|=</span> RCC_AHBENR_DMA1EN<span style="color: #339933;">;</span>      <span style="color: #666666; font-style: italic;">//тактирование DMA</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CPAR  <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #993333;">uint32_t</span><span style="color: #009900;">)</span><span style="color: #339933;">&amp;</span>DAC<span style="color: #339933;">-&gt;</span>DHR8R1<span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//указатель на регистр периферии</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CMAR  <span style="color: #339933;">=</span> <span style="color: #009900;">(</span><span style="color: #993333;">uint32_t</span><span style="color: #009900;">)</span><span style="color: #339933;">&amp;</span>DAC_Buff<span style="color: #009900;">[</span><span style="color: #0000dd;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//указатель на начало буфера в памяти</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">|=</span>  DMA_CCR3_DIR<span style="color: #339933;">;</span>          <span style="color: #666666; font-style: italic;">//направление передачи - из памяти в периферию </span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CNDTR <span style="color: #339933;">=</span>  <span style="color: #0000dd;">512</span><span style="color: #339933;">;</span>                   <span style="color: #666666; font-style: italic;">//размер буфера</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">&amp;=</span> ~DMA_CCR3_PINC<span style="color: #339933;">;</span>         <span style="color: #666666; font-style: italic;">//адрес периферии не инкрементируем</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">|=</span>  DMA_CCR3_MINC<span style="color: #339933;">;</span>         <span style="color: #666666; font-style: italic;">//адрес памяти инкрементируем</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">&amp;=</span> ~DMA_CCR3_PSIZE<span style="color: #339933;">;</span>        <span style="color: #666666; font-style: italic;">//размерность данных периферии - 8 бит.</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">&amp;=</span> ~DMA_CCR3_MSIZE<span style="color: #339933;">;</span>        <span style="color: #666666; font-style: italic;">//размерность данных памяти    - 8 бит</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">|=</span>  DMA_CCR3_CIRC<span style="color: #339933;">;</span>         <span style="color: #666666; font-style: italic;">//включить циклический режим передачи данных</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">|=</span>  DMA_CCR3_PL<span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//приоритет</span>
+DMA1_Channel3<span style="color: #339933;">-&gt;</span>CCR  <span style="color: #339933;">|=</span>  DMA_CCR3_EN<span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//разрешаем работу третьего канала DMA</span>
+<span style="color: #666666; font-style: italic;">//Запуск передачи очередного значения через ДМА будет происходить от TIM6</span>
+RCC<span style="color: #339933;">-&gt;</span>APB1ENR        <span style="color: #339933;">|=</span>  RCC_APB1ENR_TIM6EN<span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//подаем тактирование TIM6</span>
+TIM6<span style="color: #339933;">-&gt;</span>PSC            <span style="color: #339933;">=</span>  <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>                     <span style="color: #666666; font-style: italic;">//Задаем частоту дискретизации 44100</span>
+TIM6<span style="color: #339933;">-&gt;</span>ARR            <span style="color: #339933;">=</span>  <span style="color: #0000dd;">544</span><span style="color: #339933;">;</span>                   <span style="color: #666666; font-style: italic;">//(при тактовой 24000000)</span>
+TIM6<span style="color: #339933;">-&gt;</span>DIER          <span style="color: #339933;">|=</span>  TIM_DIER_UDE<span style="color: #339933;">;</span>          <span style="color: #666666; font-style: italic;">//разрешить запрос DMA</span></pre></td></tr></tbody></table></div>
+
+<p>Понадобится функция, которая откроет файл, и будет подавать из него данные в буфер ЦАПа:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;">FATFS fs<span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//понадобится для работы с диском (делаем ее глобальной переменной!!!)</span>
+<span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+<span style="color: #666666; font-style: italic;">//function воспроизвести wave-файл                                                           //</span>
+<span style="color: #666666; font-style: italic;">//argument имя файла                                                                         //</span>
+<span style="color: #666666; font-style: italic;">//result   0 - все нормально, иначе - ошибка                                                 //</span>
+<span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+<span style="color: #993333;">char</span> wave_playback<span style="color: #009900;">(</span><span style="color: #993333;">const</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>FileName<span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+  FRESULT res<span style="color: #339933;">;</span>                                <span style="color: #666666; font-style: italic;">//для возвращаемого функциями результата</span>
+  FIL file<span style="color: #339933;">;</span>                                   <span style="color: #666666; font-style: italic;">//файловый объект</span>
+  UINT cnt<span style="color: #339933;">;</span>                                   <span style="color: #666666; font-style: italic;">//количество реально прочитанных байт</span>
+&nbsp;
+  res <span style="color: #339933;">=</span> f_open<span style="color: #009900;">(</span> <span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,</span> FileName<span style="color: #339933;">,</span> FA_READ <span style="color: #009900;">)</span><span style="color: #339933;">;</span>   <span style="color: #666666; font-style: italic;">//открыть файл FileName для чтения</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span> <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">1</span><span style="color: #339933;">;</span>
+  res <span style="color: #339933;">=</span> f_lseek<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,</span><span style="color: #208080;">0x2c</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//переместить указатель на начало полезных данных</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span> <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">2</span><span style="color: #339933;">;</span>
+  f_read <span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,&amp;</span>DAC_Buff<span style="color: #009900;">[</span><span style="color: #0000dd;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">,</span><span style="color: #0000dd;">512</span><span style="color: #339933;">,&amp;</span>cnt<span style="color: #009900;">)</span><span style="color: #339933;">;</span>       <span style="color: #666666; font-style: italic;">//загрузить буфер ЦАПа данными</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span> <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">3</span><span style="color: #339933;">;</span>
+  TIM6<span style="color: #339933;">-&gt;</span>CR1 <span style="color: #339933;">|=</span> TIM_CR1_CEN<span style="color: #339933;">;</span>                   <span style="color: #666666; font-style: italic;">//запустить преобразование</span>
+&nbsp;
+  <span style="color: #808080; font-style: italic;">/*                        воспроизведение                              */</span>
+  <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #0000dd;">1</span><span style="color: #009900;">)</span>
+  <span style="color: #009900;">{</span>
+     <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #339933;">!</span><span style="color: #009900;">(</span>DMA1<span style="color: #339933;">-&gt;</span>ISR <span style="color: #339933;">&amp;</span> DMA_ISR_HTIF3<span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><span style="color: #009900;">}</span>   <span style="color: #666666; font-style: italic;">//ждем освобождение первой части буфера</span>
+     f_read <span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,&amp;</span>DAC_Buff<span style="color: #009900;">[</span><span style="color: #0000dd;">0</span><span style="color: #009900;">]</span><span style="color: #339933;">,</span><span style="color: #0000dd;">256</span><span style="color: #339933;">,&amp;</span>cnt<span style="color: #009900;">)</span><span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//загрузить ее данными</span>
+     DMA1<span style="color: #339933;">-&gt;</span>IFCR <span style="color: #339933;">|=</span> DMA_ISR_HTIF3<span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//сбросить флаг</span>
+     <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>cnt<span style="color: #339933;">&lt;</span><span style="color: #0000dd;">256</span><span style="color: #009900;">)</span><span style="color: #000000; font-weight: bold;">break</span><span style="color: #339933;">;</span>                        <span style="color: #666666; font-style: italic;">//если конец файла</span>
+&nbsp;
+     <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #339933;">!</span><span style="color: #009900;">(</span>DMA1<span style="color: #339933;">-&gt;</span>ISR <span style="color: #339933;">&amp;</span> DMA_ISR_TCIF3<span style="color: #009900;">)</span><span style="color: #009900;">)</span> <span style="color: #009900;">{</span><span style="color: #009900;">}</span>   <span style="color: #666666; font-style: italic;">//ждем освобождение второй части буфера</span>
+     f_read <span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,&amp;</span>DAC_Buff<span style="color: #009900;">[</span><span style="color: #0000dd;">256</span><span style="color: #009900;">]</span><span style="color: #339933;">,</span><span style="color: #0000dd;">256</span><span style="color: #339933;">,&amp;</span>cnt<span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//загрузить ее данными</span>
+     DMA1<span style="color: #339933;">-&gt;</span>IFCR <span style="color: #339933;">|=</span> DMA_ISR_TCIF3<span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//сбросить флаг</span>
+     <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>cnt<span style="color: #339933;">&lt;</span><span style="color: #0000dd;">256</span><span style="color: #009900;">)</span><span style="color: #000000; font-weight: bold;">break</span><span style="color: #339933;">;</span>                        <span style="color: #666666; font-style: italic;">//если конец файла</span>
+  <span style="color: #009900;">}</span>
+&nbsp;
+  TIM6<span style="color: #339933;">-&gt;</span>CR1 <span style="color: #339933;">&amp;=</span> ~TIM_CR1_CEN<span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//остановить преобразование</span>
+  f_close<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #009900;">)</span><span style="color: #339933;">;</span>                             <span style="color: #666666; font-style: italic;">//закрыть файл</span>
+  <span style="color: #b1b100;">return</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>                                   <span style="color: #666666; font-style: italic;">//успешное завершение ф-ии</span>
+<span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<p>Для запуска воспроизведения понадобится выполнить следующее:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//предварительно выполняем инициализацию, указанную в первом листинге                          /</span>
+f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>fs<span style="color: #009900;">)</span><span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//монтировать диск</span>
+wave_playback<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//запустить преобразование</span></pre></td></tr></tbody></table></div>
+
+<p>Дальше готовим файл со следующими параметрами: моно (1 канал), разрядность 8 бит, частота дискретизации 44100Гц. </p>
+<p>Записываем его на карту памяти с именем “sound”.</p>
+<p>Подключаем усилитель к выходу первого канала ЦАПа, загружаем откомпилированную программу в контроллер, и ВУАЛЯ!!! Реально слышен звук в динамике. И очень даже не плохого качества (когда-то я делал что-то подобное на Mega8. Качество было хуже) .</p>
+<p>Для конвертирования файлов из mp3 в WAV можно воспользоваться следующей программой:<a><br>
+<href ?="HTTP: download-manager.php?id=&#39;4" mycontroller.ru=""><strong>Cкачать конвертор файлов</strong></href></a> (загружено  7 раз)</p>
+<p>Подведем небольшой итог: поставленная задача (получение первого звука) выполнена. На следующем этапе расширим возможности программы. </p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»" rel="category tag">WavePlayer</a>, <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (4) на “STM32 Воспроизведение звука. Настройка периферии + первый звук”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-1438">
+     <div id="comment-1438">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Max:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#comment-1438">09.10.2012 в 11:44</a></div>
+
+      <p>Здравствуйте! У вас отличный и весьма познавательный сайт.<br>
+Не могли бы подсказать, какой усилитель вы используете для воспроизведения звука?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/?replytocom=1438#respond" onclick="return addComment.moveForm(&quot;comment-1438&quot;, &quot;1438&quot;, &quot;respond&quot;, &quot;3166&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1439">
+     <div id="comment-1439">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#comment-1439">09.10.2012 в 17:32</a></div>
+
+      <p>У меня был готовый на TDA2003</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/?replytocom=1439#respond" onclick="return addComment.moveForm(&quot;comment-1439&quot;, &quot;1439&quot;, &quot;respond&quot;, &quot;3166&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-1446">
+     <div id="comment-1446">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Dmytro:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#comment-1446">10.10.2012 в 12:22</a></div>
+
+      <p>Для практически полной автоматизации процесса воспроизведения файла можно процедуры заполнения буфера запихнуть в обработчик прерывания от DMA. Он умеет вызывать прерывания по опустошению буфера (половины буфера).</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/?replytocom=1446#respond" onclick="return addComment.moveForm(&quot;comment-1446&quot;, &quot;1446&quot;, &quot;respond&quot;, &quot;3166&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1447">
+     <div id="comment-1447">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#comment-1447">10.10.2012 в 13:37</a></div>
+
+      <p>Согласен, надо использовать ДМА.<br>
+Пока руки не доходят — делаю генератор кода</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/?replytocom=1447#respond" onclick="return addComment.moveForm(&quot;comment-1447&quot;, &quot;1447&quot;, &quot;respond&quot;, &quot;3166&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="3166" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/STM32 Воспроизведение звука. Настройка периферии + первый звук.htm" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 25 запросов. 0,309 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 Воспроизведение звука. Настройка периферии + первый звук_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

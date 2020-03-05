@@ -1,0 +1,688 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0056)http://easystm32.ru/for-beginners/18-adc-in-stm32-part-1 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr" slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!--<base href="http://easystm32.ru/for-beginners/18-adc-in-stm32-part-1">--><base href=".">
+  
+  <meta name="keywords" content="Микроконтроллеры, электроника, STM32">
+  <meta name="author" content="Medved">
+  <meta name="description" content="Микроконтроллеры STM32">
+  <meta name="generator" content="Joomla! - Open Source Content Management">
+  <title>EasySTM32 - АЦП в STM32. Часть 1</title>
+  <link href="http://easystm32.ru/templates/shoplab/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link href="http://easystm32.ru/component/search/?Itemid=108&catid=10&id=18&format=opensearch" rel="search" title="Искать EasySTM32" type="application/opensearchdescription+xml">
+  <style type="text/css">
+
+#wrapper { margin: 0 auto; width: 960px;padding:0;}
+	.s-c-s #colmid { left:245px;}
+	.s-c-s #colright { margin-left:-245px;}
+	.s-c-s #col1pad { margin-left:245px;}
+	.s-c-s #col2 { left:0px;width:245px;}
+	.s-c-s #col3 { width:0px;}
+	.s-c-x #colright { left:245px;}
+	.s-c-x #col1wrap { right:245px;}
+	.s-c-x #col1 { margin-left:245px;}
+	.s-c-x #col2 { right:245px;width:245px;}
+	.x-c-s #colright { margin-left:-0px;}
+	.x-c-s #col1 { margin-left:0px;}
+	.x-c-s #col3 { left:0px;width:0px;}
+  </style>
+  <script type="text/javascript" async="" src="./EasySTM32 - АЦП в STM32. Часть 1_files/watch.js"></script><script type="text/javascript" async="" src="./EasySTM32 - АЦП в STM32. Часть 1_files/aci.js"></script><script src="./EasySTM32 - АЦП в STM32. Часть 1_files/mootools-core.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - АЦП в STM32. Часть 1_files/core.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - АЦП в STM32. Часть 1_files/caption.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - АЦП в STM32. Часть 1_files/mootools-more.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+function keepAlive() {	var myAjax = new Request({method: "get", url: "index.php"}).send();} window.addEvent("domready", function(){ keepAlive.periodical(840000); });
+  </script>
+
+<link rel="stylesheet" href="./EasySTM32 - АЦП в STM32. Часть 1_files/system.css" type="text/css">
+<link rel="stylesheet" href="./EasySTM32 - АЦП в STM32. Часть 1_files/styles.css" type="text/css" media="screen,projection">
+<script language="javascript" type="text/javascript">  
+  window.addEvent('domready', function(){  
+      var top_panel = document.id('top-panel');
+    var sub_panel = document.id('sub-panel');
+    var topFx = new Fx.Slide(top_panel);
+    if (Cookie.read('top-panel') == '1') {
+      topFx.show();
+    } else {
+      topFx.hide();      
+    }
+    sub_panel.addEvents({
+      'click' : function(){
+        if (topFx.open) {
+          Cookie.write('top-panel', '0');
+        } else {
+          Cookie.write('top-panel', '1');
+        }
+        topFx.toggle();
+      }
+    });
+  });  
+</script>
+<style type="text/css" id="begun-block-css-353320860">.begun_adv * {clear:none !important;color:#000 !important;float:none !important;margin:0 !important;padding:0 !important;letter-spacing:normal !important;word-spacing:normal !important;z-index:auto !important;font-size:12px !important;font:normal normal 12px Arial,sans-serif !important;text-transform:none !important;list-style:none !important;position:static !important;text-indent:0 !important;visibility:visible !important;white-space:normal !important;}.begun_adv_common {position:relative !important;width:100% !important;}.begun_adv_common tr,.begun_adv_common td,.begun_adv_common a,.begun_adv_common b,.begun_adv_common div,.begun_adv_common span {background:none !important;border:none !important;}#begun_block_353320860 {height:auto !important;width:auto !important;line-height:normal !important;margin:0 !important;padding:0 !important;font:12px/18px Arial,sans-serif !important;color:#000 !important;text-align:left !important;}#begun_block_353320860 wbr {display:inline-block !important;}#begun_block_353320860 .begun_adv_span {display:inline-block !important;position:relative !important;width:auto !important;height:auto !important;margin:0 !important;padding:0 !important;}#begun_block_353320860 .begun_adv {-moz-box-sizing:border-box !important;-webkit-box-sizing:border-box !important;box-sizing:border-box !important;}#begun_block_353320860 *:after,#begun_block_353320860 *:before {content:normal !important;}#begun_block_353320860 b {font-weight:bold !important;display:inline !important;}#begun_block_353320860 .begun_adv,#begun_block_353320860 table,#begun_block_353320860 td,#begun_block_353320860 div {padding:0 !important;text-align:left !important;table-layout:auto !important;}#begun_block_353320860 .begun_adv table {border:none !important;border-collapse:collapse !important;}#begun_block_353320860 td {vertical-align:middle !important;}#begun_block_353320860 .begun_adv_cell {text-align:left !important;}#begun_block_353320860 .begun_adv_bullit {color:#aaa !important;}#begun_block_353320860 .begun_adv_title,#begun_block_353320860 .begun_adv_text {display:block !important;}#begun_block_353320860 .begun_adv_title .begun_favicon {width:16px !important;height:16px !important;margin-right:6px !important;vertical-align:middle !important;}#begun_block_353320860 a.begun_adv_sys_logo {position:absolute !important;right:0 !important;bottom:0 !important;z-index:1 !important;height:16px !important;padding:0 5px 2px 1px !important;background:#f7fff5 !important;}#begun_block_353320860 span.begun_adv_age {position:absolute !important;right:0 !important;top:0 !important;padding:2px 5px 0 0 !important;font-style:italic !important;color:#622678 !important;color:#000000 !important;font-weight:bold !important;}#begun_block_353320860 .begun_hover a.begun_adv_sys_logo {background: !important;}#begun_block_353320860 .begun_adv_sys_logo,#begun_block_353320860 .begun_adv_sys_logo a {font-size:14px !important;line-height:16px !important;text-align:right !important;color:#000000 !important;text-decoration:none !important;font-weight:bold !important;font-style:normal !important;}#begun_block_353320860 .begun_adv_sys_logo strong {display:none !important;line-height:16px !important;font-size:14px !important;font-weight:bold !important;letter-spacing:-1px !important;color:#000000 !important;}#begun_block_353320860 .begun_adv_sys_logo strong {*display:inline !important;}#begun_block_353320860 .begun_adv_sys_logo img {*display:none !important;}#begun_block_353320860 .begun_collapsable .begun_adv_cell .begun_adv_cell {padding:5px 2px 4px 5px !important;}#begun_block_353320860 .begun_adv_fix .begun_adv_title {margin-bottom:2px !important;}#begun_block_353320860 .begun_adv_fix .begun_adv_common {overflow:hidden !important;width:auto !important;}#begun_block_353320860.begun_auto_rich .begun_adv_fix .begun_adv_common {overflow:visible !important;}#begun_block_353320860 .begun_adv_text {padding:2px 0 !important;line-height:1 !important;}#begun_block_353320860 .begun_adv_block {border:none !important;cursor:pointer !important;cursor:hand !important;}#begun_block_353320860 .begun_adv_title a.begun_cross {float:right !important;margin-left:8px !important;font-size:18px !important;text-decoration:none !important;font-weight:normal !important;line-height:14px !important;color:#118F00 !important;opacity:0.25 !important;filter:alpha(opacity=25) !important;}#begun_block_353320860 .begun_adv_title a.begun_cross:hover {color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone {width:12px !important;margin:1px 3px 0 0 !important;position:absolute !important;top:0 !important;left:0 !important;}#begun_block_353320860 .begun_adv_phone_wrapper {padding-left:15px !important;white-space:nowrap !important;position:relative !important;display:inline-block !important;_display:inline !important;zoom:1 !important;}#begun_block_353320860 .begun_adv_phone_wrapper.begun_adv_phone_no_icon {padding-left:0 !important;}#begun_block_353320860 div.begun_adv_contact > .begun_adv_phone {margin:0 5px 0 0 !important;}#begun_block_353320860 .begun_adv_phone b {border:#000 solid 0 !important;height:1px !important;font-size:1px !important;line-height:1px !important;display:block !important;overflow:hidden !important;}#begun_block_353320860 .begun_adv_phone .p0,#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p5,#begun_block_353320860 .begun_adv_phone .p8 {background-color:#000 !important;}#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p7,#begun_block_353320860 .begun_adv_phone .p8 {margin:0 1px !important;}#begun_block_353320860 .begun_adv_phone .p2,#begun_block_353320860 .begun_adv_phone .p7 {border-width:0 4px !important;}#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p6 {margin:0 2px !important;}#begun_block_353320860 .begun_adv_phone .p0 {margin:0 3px !important;}#begun_block_353320860 .begun_adv_phone .p4 {border-width:0 3px !important;}#begun_block_353320860 .begun_adv_phone .p5 {margin:0 4px !important;}#begun_block_353320860 .begun_adv_phone .p6 {border-width:0 2px !important;}#begun_block_353320860 .begun_adv_phone .p8 {height:2px !important;}#begun_block_353320860 .begun_adv_phone b {border-color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone .p0,#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p5,#begun_block_353320860 .begun_adv_phone .p8 {background-color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone {font-size:11px !important;line-height:11px !important;margin-top:1px !important;}#begun_block_353320860 .begun_adv_title * {line-height:1.2 !important;color:#0073a8 !important;font-size:18px !important;font-size: !important;font-weight:normal !important;font-weight: !important;}#begun_block_353320860 .begun_collapsable .begun_adv_title *{font-size:12px !important;}#begun_block_353320860 .begun_adv_title a:hover,#begun_block_353320860 .begun_adv_title a:hover * {color:#f00 !important;color:#FF0000 !important;}#begun_block_353320860 .begun_adv_text * {line-height:1.2 !important;color:#000 !important;color:#000000 !important;font-size:12px !important;font-size: !important;text-decoration:none !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_cell .begun_adv_block .begun_adv_text {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_cell .begun_adv_block .begun_adv_text * {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_hor .begun_adv_cell .begun_adv_block .begun_adv_text {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_hor .begun_adv_cell .begun_adv_block .begun_adv_text * {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_geo,#begun_block_353320860 .begun_adv_geo * {color:#000 !important;color:#000000 !important;text-decoration:none !important;font-size: !important;font-weight:bold !important;cursor:text !important;}#begun_block_353320860 div.begun_adv_contact {*position:relative !important;*top:3px !important;*margin-top:-3px !important;}#begun_block_353320860 .begun_adv_contact,#begun_block_353320860 .begun_adv_contact * {color:#118F00 !important;font-size:12px !important;font-size: !important;line-height:1.2 !important;}#begun_block_353320860 .begun_adv_contact span {padding-right:2px !important;}#begun_block_353320860 .begun_adv_contact a {color:#118F00 !important;text-decoration:none !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb {float:left !important;display:block !important;_display:inline !important;z-index:1 !important;overflow:hidden !important;zoom:1 !important;margin:0 auto 5px 7px !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb img {z-index:20 !important;}#begun_block_353320860 .begun_adv_rich {overflow:visible !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_image {float:left !important;margin-right:10px !important;_margin-right:7px !important;top:0 !important;width:72px !important;height:72px !important;position:relative !important;}#begun_block_353320860 .begun_adv_thumb .begun_adv_block {margin-left:60px !important;_zoom:1 !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_block {margin-left:82px !important;_margin-left:79px !important;word-wrap:break-word !important;}#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block * {text-align:left !important;}#begun_block_353320860 .begun_adv_cell .begun_adv_phone_wrapper .begun_adv_phone *,#begun_block_353320860.begun_auto_rich .begun_adv_cell .begun_adv_phone_wrapper .begun_adv_phone *,#begun_block_353320860 #begun_warn_353320860.banners_count_3 .begun_adv_cell .begun_adv_phone * {font-size:1px !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_phone {margin-top:3px !important;}#begun_block_353320860 .begun_mobile_classic .begun_adv_common .begun_adv_table .begun_adv_title * {font-size:18px !important;}#begun_block_353320860 .begun_mobile_classic .begun_adv_common .begun_adv_table .begun_adv_text * {font-size:14px !important;}#begun_block_353320860 .begun_mobile_rich .begun_adv_common .begun_adv_table .begun_adv_title * {font-size:24px !important;font-weight:bold !important;}#begun_block_353320860 .begun_mobile_rich .begun_adv_common .begun_adv_table .begun_adv_text * {font-size:18px !important;}#begun_block_353320860 .gift {display:none !important;}#begun_block_353320860 .begun_warn_message {position:relative !important;display:block !important;margin-top:4px !important;padding-left:16px !important;line-height:10px !important;font-size:9px !important;text-indent:-16px !important;color:#aaa !important;}#begun_block_353320860 .begun_warn_message .begun_warn_icon {display:inline-block !important;position:relative !important;padding-right:16px !important;vertical-align:top !important;_display:inline !important;zoom:1 !important;}#begun_block_353320860 .begun_warn_message .begun_warn_icon i {position:absolute !important;top:-2px !important;width:12px !important;height:13px !important;background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAACXBIWXMAAAsSAAALEgHS3X78AAAA10lEQVQoz43SvUpDQRAF4G/XC2muxD98AYsEe7HIC1jYiM+RSsFWGxvzLkJsfAVha4m1VhKCcmvRZoQ1iObAMGcPZ9iZ3UmlFBV2cYL9OD/iFq/fhqYyn+ESrZ+Y4CqyHOJ1CC067EV0od2ERyqlHOABKYrfsRH8Df3gnzjMGFfmv5AwzhhZHaNcXbkK+g2esV2JLUrFa7xk3P3S62bE8mzTVErZwRO2/nmlBQYN5jjFFOvo4SJMvchdeOapWo1hfN4R1kL7wD3OMVtejRmOo7VhpS3qIb4AJKgth4BJRpoAAAAASUVORK5CYII=") transparent 0 0 no-repeat !important;}#begun_block_353320860 .begun_brand {position:absolute !important;right:0 !important;top:0 !important;overflow:hidden !important;}#begun_block_353320860 .begun_brand_icon {background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAiCAYAAADmvn/1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlCOUIyNzRGQkFCMTFFMzlGRkM4NjA5RUYzQTZEMDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlCOUIyNzVGQkFCMTFFMzlGRkM4NjA5RUYzQTZEMDciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOUI5QjI3MkZCQUIxMUUzOUZGQzg2MDlFRjNBNkQwNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOUI5QjI3M0ZCQUIxMUUzOUZGQzg2MDlFRjNBNkQwNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoIXLyIAAAUoSURBVHja7Fl9LONnHH+K9rSHXosjdUq9FGdrjDPcbLPZhHPzrkEiFi+RiD+EXBAiMotElk1IhIX5x9HNRfYH4Zy3ududxVKCi5eKY16yeulpq1cU7b5Pc02wc1fHLrvr75tIfs/v0+ft83yez/P7PkgajeZH9A7FtV7a17vqbcrr1jc6Ceju7rYcHx83QwYWJxISGhoam5ube40gxMDjpYRsbGzQYmJirru6ukbhv6SkpA+lUqkJxvb29khFRUXu3t7eYQ4ODrFeXl43CgoKruL3GFer1aisrMzVx8cnFOM8Hi8cFPfezs6Ots/k5GTfoKCgzw/3h3E/P78QXbmhoeFKQEBAiKOjI65/Mycn531d/fMIHt3/dISMjY1dGRwc5DCZzG0IikAg8AJSAjCWmJjoV15e/olEIrno5OS0CUGrqKgI5PP5WjwzM/ODkpKSz5aWli6x2Wwp4NTKysrr0dHRgRgfGRmxHR4eZh/uDzzLCt454ufq6mrHjIyMG1NTU5ft7e1lcrmcUlVVFRAZGRl4ViIuGFHRLbcfUBon/1+YycsqwuovwQDvGhsba/DK29nZJcBEWBjr6upyByLWZ2dnfzUyMtIqAsoxnZ2d7gA/am9v5wKRz+bm5u6Ym5sfYNzFxSWmr6/PBfD7rxp0c3MzF9rVCIXCNmdn521cn8vlRvf393MPDg4e4DGdhgSq8UXkb/kFCrD8EoXYxCFLig1qXqw+HSEMBmNb1zGZTNZYW1sr1tbWzHFZqVRSYPtQsaR1v9/a2jJVqVTaNmFFqRwOR4LJ0EoRSAPCns7Pz1vpMwGFQnEB+n+GydDVh62zCQRbr66uklkslkpfMj61vom+8fwJMSmXj7zv+Pv26Qg5HvDNcqRsZmam8vDwkOjKh58pFMr+7u7uadsnHS6TSKQz+wSDbIW+4/2sVYgulAcK9L3oFnos+1N/QkxMTNSwmgyQJwmrBLyCvLy8DIvGUGKcRqOpYMDqxsZGoW7LYLXA6mEFCcE3NicmJuzCw8M/hpWVT09PM8GPnHXt0+l08Mcd8szMDM3NzU2Jt6RIJLKkUqmq8zw1QmzjtWQo9mXorvgX9EhyD/0h6UNb+9IXz/ukhsLCwqbBB67CCREP3iEDr7DCWyI9PX0E41FRUZMtLS1eMPF4bJorKyv0xcVFJrx/jPHa2tqHKSkpQeA1HnjxQeIyW1tbOfzuEsbBnEVDQ0McX1/fWCBkDZsvkEmPjY2dOE9CWFRH1CkWoG8ns04kQS9C2traHhYXFz/t7e1lg1eYwqDX4+LihvLy8p5gvKmpadjd3V3a0dHBAfXQYLJbqamp41BnFuNAJgtIfQInUTtWmKmpqdrT0zMCntUYz87O/svCwqKjvr7eA3zJDJOelpY2VlpaOvPc0MVw7MuOHJM83gYsCgW3pS8h98R30KRciDRIPw8m/Ve5TERExEdAiqeNjQ1WxhbeSmKxmB4cHCwCkn9763KZs0Zra+tQfn7+76CidWyOWGGFhYUPQFH30f84SES2S+Qyr1QIwQKhkNc4dt9ayZNIXxEKIbYMQQhByJsIf39/gpDn1xaopqYGX1kaLiGQSCLIpFFdXR1aWFhAWVlZCLLzd//YfVHw+Xx8HYGYTObhyyh8TWl4CmGz2fiq4ggZMpkMpaeno9HRUcNTSEJCAr7ORBKJBAkEAtTT04MGBgbw/a9hfKkeDwcHB1RfX681UIVCYXjJ3fFPd29vb/w/IMPNdolchvhSJQh5o/GPAAMATQ0zrB0WLrMAAAAASUVORK5CYII=") no-repeat scroll right -18px rgba(0,0,0,0) !important;display:inline-block !important;height:16px !important;position:relative !important;transition:width 0.3s ease 0s !important;vertical-align:top !important;width:16px !important;}#begun_block_353320860 .begun_brand_name {display:inline-block !important;left:100% !important;line-height:16px !important;margin-right:5px !important;opacity:0 !important;overflow:hidden !important;position:relative !important;transition:all 0.3s ease 0s !important;vertical-align:middle !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_name + .begun_brand_icon {width:16px !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_name {display:inline-block !important;left:0 !important;margin-right:5px !important;opacity:1 !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_icon {width:68px !important;background-position:right 0 !important;}#begun_fullscreen_mobile_block_wrapper .fullscreen_layer {position:fixed !important;width:100% !important;height:100% !important;left:0 !important;top:0 !important;z-index:9999999 !important;background:url("//autocontext.begun.ru/img/background_fullscreen.png") !important;}#begun_close_fullscreen {position:fixed !important;top:20px !important;right:20px !important;z-index:99999999 !important;}#begun_close_fullscreen img {width:40px !important;height:40px !important;}#begun_block_3 {position:fixed !important;z-index:9999999 !important;}#begun_block_353320860 .begun_adv a { /* .begun_adv increases the selectors specifity. #id a {display: block} - common pattern #6453, #6620 */display: inline;vertical-align: baseline;text-decoration: underline;opacity: 1 !important;}#begun_block_353320860 .begun_adv {background-color: #f7fff5; /* no !important for hover */border: 1px solid #2cba00; /* no !important for hover */font-family:inherit; /* no !important for hover */}#begun_block_353320860 .begun_adv *, .begun_adv *:hover {width: auto; /* no !important for rich-images */height: auto; /* no !important for rich-images */background: none; /* no !important for hover */border: none; /* no !important for hover */}#begun_block_353320860 .begun_adv.begun_hover {background-color: ; /* no !important for hover */border: 1px solid ; /* no !important for hover */ /* no !important for hover */}#begun_block_353320860 td {overflow: visible;}#begun_block_353320860 .begun_adv_rich .begun_active_image {z-index:1000;}#begun_block_353320860 .begun_adv_rich .begun_active_image img {z-index:1000 !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_image img {border:1px solid #2cba00;position:absolute !important;background:#fff !important;top:0;left:0;max-width:none !important;z-index:20;cursor:pointer;}#begun_block_353320860 .begun_adv_rich .begun_adv_picture {position:absolute !important;z-index:20;}#begun_block_353320860 .begun_collapsed {height:45px !important;overflow:hidden !important;}#begun_block_353320860 .begun_collapsed .begun_adv_title {margin-bottom:30px !important;}#begun_block_353320860 .begun_adv_common_horizontal {    position: relative !important;    margin: 10px !important;    line-height: 1 !important;    font-size: 12px !important;    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container {    position: relative !important;    margin-right: 25px !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container:after {    content: "" !important;    display: block !important;    height: 0 !important;    clear: both !important;    visibility: hidden !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container_inner {    overflow: hidden !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_cell {    float: left !important;    width: 24.625% !important;    padding-bottom: 17px !important;    margin: 0 0 0 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun_adv_cell {    float: none !important;    width: auto !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun_adv_cell {    width: 49.75% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun_adv_cell {    width: 33% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun_adv_cell {    width: 19.64% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun_adv_cell {    width: 16.3% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun_adv_cell {    width: 13.914285714285714285714285714286% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_container.begun_hover {	background-color: transparent !important;	border: medium none !important;}#begun_block_353320860 .begun_adv_container.begun_hover .begun_adv_block:hover {	background-color:  !important;	border: 1px solid  !important;}#begun_block_353320860 .begun-adv_border-bottom {    position: absolute !important;    bottom: 0 !important;    display: block !important;    height: 0 !important;    width: 24.625% !important;    border-top: 1px solid #ececec !important;	border-top: 1px solid #2cba00 !important;}#begun_block_353320860 .begun_adv_container.begun_hover .begun_adv_cell:hover .begun-adv_border-bottom {	border-color:  !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun-adv_border-bottom {    width: 100% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun-adv_border-bottom {    width: 49.75% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun-adv_border-bottom {    width: 33% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun-adv_border-bottom {    width: 19.64% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun-adv_border-bottom {    width: 16.3% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun-adv_border-bottom {    width: 13.914285714285714285714285714286% !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_cell:first-child {    margin-left: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block {    padding-bottom: 20000px !important;    border: 1px solid #ececec !important;    border: 1px solid #2cba00 !important;    margin-bottom: -20000px !important;    margin-left: 0 !important;	background-color: #f7fff5 !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block {	zoom: 1;	display: block;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block:after {    content: "" !important;    display: block !important;    height: auto !important;    visibility: hidden !important;	clear: both !important; }#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block img {    border: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_row {    padding: 4px 7px 0 !important;    overflow: hidden !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_row + .begun_adv_row {    padding-top: 0 !important;    margin-top: 2px !important;    overflow: hidden !important;    padding-bottom: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title {    margin-bottom: 2px !important;    font-weight: bold !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title * {    font-weight: bold !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title {    line-height: 16px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title a {    text-decoration: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_text {    margin: 2px 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_text a {    text-decoration: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links {    margin: 1px 0 !important;    font-size: 11px !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links {    margin: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links a {    line-height: 1.2 !important;    color: #3377b0 !important;    margin: 2px 7px 2px 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links a:first-child {    margin-left: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning {    font-size: 10px !important;    vertical-align: middle !important;    color: #ababab !important;}#begun_block_353320860 .begun_warn_message {	margin-top: 3px !important;	padding: 0 !important;	text-indent: 0 !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning {    line-height: 12px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_icon {    display: inline-block !important;    margin-right: 3px !important;    vertical-align: middle !important;    text-decoration: none !important;    font-style: normal !important;}.begun_adv_contact_inner {    display: inline-block !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning .begun_adv_icon {    height: 13px !important;    width: 12px !important;    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning_text {    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact {    position: absolute !important;    top: auto !important;	bottom: 0 !important;    float: right !important;    display: block !important;    width: 24.625% !important;    padding-bottom: 4px !important;    margin-top: 0 !important;    margin-left: -1px !important;    line-height: 13px !important;    text-decoration: none !important;    text-align: right !important;}#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block .begun_adv_contact,#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block .begun_adv_contact * {	text-align: right !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact .begun_adv_contact_inner {	padding-right: 7px !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun_adv_contact {    width: 100% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun_adv_contact {    width: 49.75% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun_adv_contact {    width: 33% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun_adv_contact {    width: 19.64% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun_adv_contact {    width: 16.3% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun_adv_contact {    width: 13.914285714285714285714285714286% !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact {	float: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact .begun_adv_contact {	position: static !important;	float: none !important;	display: inline !important;	padding: 0 !important;	font-size: inherit !important;	line-height: inherit !important;	width: auto !important;}#begun_block_353320860 .begun_adv_contact,#begun_block_353320860 .begun_adv_contact * {	line-height: 13px !important;}#begun_block_353320860 .begun_adv_contact span {	padding-right: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_vertical-line {    float: right !important;    height: 0 !important;    width: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_vertical-line i {    position: absolute !important;    bottom: 0 !important;    z-index: 1 !important;    height: 45px !important;    width: 0 !important;    margin-left: -1px !important;    border-left: 1px solid !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_info-block {    position: absolute !important;    top: 0 !important;    right: 0 !important;    float: right !important;    height: 100% !important;    width: 25px !important;    text-align: right !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_info-block img {    border: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_age {    display: block !important;    margin-top: 8px !important;    font-size: 11px !important;    font-weight: bold !important;    color: #999 !important;}#begun_block_353320860 span.begun_adv_age {	color: #999999 !important;	display: block !important;	font-size: 11px !important;	font-style: normal !important;	font-weight: bold !important;	margin-top: 8px !important;	padding: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo_new {    position: absolute !important;    right: 0 !important;    bottom: 2px !important;    display: block !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo_new img {	vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo img {    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image {    float: left !important;    height: 70px !important;    width: 70px !important;    margin-bottom: 2px !important;    margin-right: 5px !important;    position: static !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_rich_mini .begun_adv_image {    height: 60px !important;    width: 60px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image .snap_noshots {    position: absolute !important;    height: 70px !important;    width: 70px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_rich_mini .begun_adv_image .snap_noshots {    height: 60px !important;    width: 60px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image img {    position: relative !important;    z-index: 2 !important;    margin: 0 !important;    vertical-align: middle !important;    transition: all 0.3s !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb {	float: left !important;	height: 70px !important;	width: 70px !important;	border-bottom: none !important;	border-right: none !important;	margin: 6px 7px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title .begun_adv_icon {    margin-right: 3px !important;    vertical-align: middle !important;    max-height: 16px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title span {    text-decoration: underline;    vertical-align: middle;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image {    height: 100px !important;    width: 100px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image a{    height: 100px !important;    width: 100px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image a .begun_adv_picture{    height: 100px !important;    width: 100px !important;    left: 0 !important;    top: 0 !important;    border: 1px solid #d1d1d1 !important;}#begun_block_353320860 .begun_adv_price_domain .begun_adv_title *{	color:#646464 !important;	text-decoration: none !important;}#begun_block_353320860 .begun_adv_price_domain .begun_adv_text *{	color:#646464 !important;}#begun_block_353320860 .begun_adv_common_horizontal.begun_adv_price_domain .begun_rich_mini .begun_adv_image img {    border: 1px solid #d1d1d1 !important;}#begun_block_353320860 .begun_adv_common_horizontal.begun_adv_price_domain .begun_adv_cell {    padding-bottom: 0 !important;}</style><iframe style="height:0;width:0;border:0" width="0" height="0"></iframe></head>
+<body>
+<div id="popup_name" class="popup_block">
+</div>
+
+<div class="topground"></div>
+<div id="main"> 
+  <div id="wrapper">
+      <div id="header"><div class="headtop"><div style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: static; overflow-x: hidden; overflow-y: hidden; height: 0px; "><div id="top-panel" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; margin-top: -20px; "> 
+<div class="currency"></div>
+       </div></div>
+        <div id="sub-panel">
+
+</div></div>
+              <div class="logo">  
+                <a href="http://easystm32.ru/" id="logo" title="EasySTM32.ru"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/logo.jpg" alt=""></a>
+        </div>
+          <div class="supertop"><div class="left"></div><div class="arm">
+<ul class="menu">
+<li class="item-106"><a href="http://easystm32.ru/donate">Donate!</a></li></ul>
+</div><div class="clr"></div></div>      
+    </div>
+  <div id="navigace"><div class="levy">
+<img alt="" src="./EasySTM32 - АЦП в STM32. Часть 1_files/levy.png">
+</div>   <div class="pravy">
+<img alt="" src="./EasySTM32 - АЦП в STM32. Часть 1_files/pravy.png">
+</div>  
+        <form action="http://easystm32.ru/for-beginners" method="post">
+<div class="search">
+<input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox" type="text" size="20" value="Поиск..." onblur="if (this.value==&#39;&#39;) this.value=&#39;Поиск...&#39;;" onfocus="if (this.value==&#39;Поиск...&#39;) this.value=&#39;&#39;;"><input type="image" class="button" src="./EasySTM32 - АЦП в STM32. Часть 1_files/buttonsearch.png" onclick="this.form.searchword.focus();" alt="submit"><input type="hidden" name="task" value="search">
+<input type="hidden" name="option" value="com_search">
+<input type="hidden" name="Itemid" value="108">
+</div>
+</form>
+      
+<ul class="menu">
+<li class="item-122"><a href="http://easystm32.ru/soft">Программы</a></li><li class="item-120"><a href="http://easystm32.ru/library">Библиотека</a></li><li class="item-119"><a href="http://easystm32.ru/about">О сайте</a></li><li class="item-121"><a href="http://easystm32.ru/contacts">Обратная связь</a></li><li class="item-123"><a href="http://easystm32.ru/links">Ссылки</a></li><li class="item-148"><a href="http://easystm32.ru/?format=feed&type=rss">RSS</a></li></ul>
+</div>
+    <div id="message">
+        
+<div id="system-message-container">
+</div>
+    </div>
+            <div id="main-content" class="s-c-s">
+            <div id="colmask">
+                <div id="colmid">
+                    <div id="colright">
+                        <div id="col1wrap">
+              <div id="col1pad">
+                              <div id="col1">
+                   
+<div class="component"><div class="breadcrumbs-pad">
+<script type="text/javascript">
+var begun_auto_pad = 353320856;
+var begun_block_id = 353320860;
+</script>
+<script src="./EasySTM32 - АЦП в STM32. Часть 1_files/autocontext2.js" type="text/javascript"></script><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/autocontext2_main.29d8eb265e.js"></script><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/begun_scripts.41017b8627.js"></script><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/begun_utils.bf173c6d6f.js"></script><div id="begun_block_353320860" class="begun_auto_rich"><div class="begun_adv_common_horizontal banners_count_4"><div class="begun_adv_container "><div class="begun_adv_new_layout begun_adv_container_inner begun_adv_thumb"><div class="begun_adv_cell begun_adv_rich" title="kma.biz" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&amp;eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&amp;show_time=1433147202755&amp;mouseover_time=1433147207848&amp;mouseover_count=1" _banner_id="399832832"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&show_time=1433147202755&mouseover_time=1433147207848&mouseover_count=1" class="snap_noshots" target="_blank"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/399832832s" _big_photo_src="//thumbs01.begun.ru/rich/3/2/399832832b" _small_photo_src="//thumbs01.begun.ru/rich/3/2/399832832s" class="begun_adv_picture" alt="" style="height: 70px; width: 70px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&show_time=1433147202755&mouseover_time=1433147207848&mouseover_count=1" title="kma.biz"><span>До 70% с продажи - стабильно</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&show_time=1433147202755&mouseover_time=1433147207848&mouseover_count=1" title="kma.biz">Зарабатывай не напрягаясь в CPA KissMyAds</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&show_time=1433147202755&mouseover_time=1433147207848&mouseover_count=1" title="kma.biz">kma.biz</a></span> <span class="begun_adv_bullit"> • </span> <span class="begun_adv_city"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzdHe396F*5vMAKVkEe3HAxfyExbcF4AQ314PnqwcHfmCC*WOSrnByGN0YBTajZkxKTrdABud4ke52iU6iCvRgnnDXBN9q1XeVt*8zNv83N4Afjpy89N*ZqPm4uQpCo-s2msKoiYMUDeLpL3f*ezrcdYRfiYxGzJ7Er-J7IB0GgKoF15-awvk2tsPMxSXq0CppDV6QMYh4CpMTeafLGgdsefkA5MZOTeSVRXxRZ5E38J94jcxUcCvhF-OVzWiP8CsRaGqHinchf4PkGP2Ydm2DHy7Uw*1kUshnww0YLfJjPzHnTLqFVfga8bvZj1sjy9UhWZRtHBBPyo0C3-DOqfH2Q7jSRZHJ-16DO9sdoeWSxIuEGPktV8mvJK4H1cpjXgGX8qxjY-ew8E0CKTvnfqRhlu9SVrAscyBhWB2RLtJCLoX9N2vgoY2Dae2duFfcdxYqG2UJTALbDGLhgHwa4umov43pYJNMqR8xyYUa5GM5RogtBF46WlMsxeYtSGph*lg1Fm0Utqeb5Lh*szjepCDzwT4iXnlHu7UiqAHV-1y2A9aNP4TW5eDvAf9LN*9r0WJjsXSHa2xHufGJkXTOtWsF-FgPCSOan4yS2a4OGfv7I8T&eurl%5B%5D=d-2ZzQoLCguRS7VZnQgjipAiaclGIwURzu08zX4Bt9YBQbRzzyRZsJdMCv0&show_time=1433147202755&mouseover_time=1433147207848&mouseover_count=1" title="kma.biz">Тула</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzZCen54jfbliBAUjBGww7z6H01G5yvFUW7AVgSRxI2v2svE5KSuIbSfZf2NAMMx-vw7sdhqIu6l5HHxFR-MH6z2j*529BtpOXGHnvxZJWoYMexb1U56wfs5H31iz0ErBvZ5dBlIijAPO6ueHVypGRVNpGy7VbfidVfA0R3rvD32NYkjOnQJlUT6fiKNv2zceQYW6qZMh*pXhtOynIrS-1ebCfjhw9gFOXgHkWtkouFt-on1d5MixpSV447wJbnWLVzQbR*j1PD956HlawCwCkrQUj5QJEG3NkeQO27bcmING-ZfURQopyIQWGUB*uobwYZ11nfnAeHjQtvL5vOOyZAsO0O2wEqfN9BTJdCq6GsKA9MS4xcDINf1*UqYhlX2ZzzNUyQ9u81NQFnMtFDeM0wNBVc6P1RCQNA1NLKkn8lePPNz8L7n3C5HrCvPlyjCsgLEztQfsCK6xN0G6fHYMAL31uwn*xAEm72o0WfVZOR3SAQ561oou23rvq4QOwKbnyBwizuFRRq8LIgA9RcqnI15CKxOA3b7iDteYwjsNmgaC7edZlCwWQY4hHetKOrZDF-5y*oExtTpcde3clR5N1XOfT3qXSomJPD6Rt*l2d9oxsQTyM4ZVGWeyi5EE*whSHYkeJoOm7sAVVON0*y7A8u3FWjqZjqt1CA&amp;eurl%5B%5D=d-2ZzQgJCAn96Y*EQNX*V03-tBSb-tjMEzDhEA4hzA9rwsTP&amp;show_time=1433147202755&amp;mouseover_time=1433147203004&amp;mouseover_count=1" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzZCen54jfbliBAUjBGww7z6H01G5yvFUW7AVgSRxI2v2svE5KSuIbSfZf2NAMMx-vw7sdhqIu6l5HHxFR-MH6z2j*529BtpOXGHnvxZJWoYMexb1U56wfs5H31iz0ErBvZ5dBlIijAPO6ueHVypGRVNpGy7VbfidVfA0R3rvD32NYkjOnQJlUT6fiKNv2zceQYW6qZMh*pXhtOynIrS-1ebCfjhw9gFOXgHkWtkouFt-on1d5MixpSV447wJbnWLVzQbR*j1PD956HlawCwCkrQUj5QJEG3NkeQO27bcmING-ZfURQopyIQWGUB*uobwYZ11nfnAeHjQtvL5vOOyZAsO0O2wEqfN9BTJdCq6GsKA9MS4xcDINf1*UqYhlX2ZzzNUyQ9u81NQFnMtFDeM0wNBVc6P1RCQNA1NLKkn8lePPNz8L7n3C5HrCvPlyjCsgLEztQfsCK6xN0G6fHYMAL31uwn*xAEm72o0WfVZOR3SAQ561oou23rvq4QOwKbnyBwizuFRRq8LIgA9RcqnI15CKxOA3b7iDteYwjsNmgaC7edZlCwWQY4hHetKOrZDF-5y*oExtTpcde3clR5N1XOfT3qXSomJPD6Rt*l2d9oxsQTyM4ZVGWeyi5EE*whSHYkeJoOm7sAVVON0*y7A8u3FWjqZjqt1CA&eurl%5B%5D=d-2ZzQgJCAn96Y*EQNX*V03-tBSb-tjMEzDhEA4hzA9rwsTP&show_time=1433147202755&mouseover_time=1433147203004&mouseover_count=1" class="snap_noshots" target="_blank"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/96fefaf73e66633351078036ecb0c24e.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/cc05e5c7be17718d072741611934556c/pluselectro.ru/upload/iblock/96f/96fefaf73e66633351078036ecb0c24e.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/cc05e5c7be17718d072741611934556c/pluselectro.ru/upload/iblock/96f/96fefaf73e66633351078036ecb0c24e.jpeg" class="begun_adv_picture" alt="" style="left: 9px; height: 70px; width: 52px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZCen54jfbliBAUjBGww7z6H01G5yvFUW7AVgSRxI2v2svE5KSuIbSfZf2NAMMx-vw7sdhqIu6l5HHxFR-MH6z2j*529BtpOXGHnvxZJWoYMexb1U56wfs5H31iz0ErBvZ5dBlIijAPO6ueHVypGRVNpGy7VbfidVfA0R3rvD32NYkjOnQJlUT6fiKNv2zceQYW6qZMh*pXhtOynIrS-1ebCfjhw9gFOXgHkWtkouFt-on1d5MixpSV447wJbnWLVzQbR*j1PD956HlawCwCkrQUj5QJEG3NkeQO27bcmING-ZfURQopyIQWGUB*uobwYZ11nfnAeHjQtvL5vOOyZAsO0O2wEqfN9BTJdCq6GsKA9MS4xcDINf1*UqYhlX2ZzzNUyQ9u81NQFnMtFDeM0wNBVc6P1RCQNA1NLKkn8lePPNz8L7n3C5HrCvPlyjCsgLEztQfsCK6xN0G6fHYMAL31uwn*xAEm72o0WfVZOR3SAQ561oou23rvq4QOwKbnyBwizuFRRq8LIgA9RcqnI15CKxOA3b7iDteYwjsNmgaC7edZlCwWQY4hHetKOrZDF-5y*oExtTpcde3clR5N1XOfT3qXSomJPD6Rt*l2d9oxsQTyM4ZVGWeyi5EE*whSHYkeJoOm7sAVVON0*y7A8u3FWjqZjqt1CA&eurl%5B%5D=d-2ZzQgJCAn96Y*EQNX*V03-tBSb-tjMEzDhEA4hzA9rwsTP&show_time=1433147202755&mouseover_time=1433147203004&mouseover_count=1" title="pluselectro.ru"><span>Выключатель пакетный IP56</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZCen54jfbliBAUjBGww7z6H01G5yvFUW7AVgSRxI2v2svE5KSuIbSfZf2NAMMx-vw7sdhqIu6l5HHxFR-MH6z2j*529BtpOXGHnvxZJWoYMexb1U56wfs5H31iz0ErBvZ5dBlIijAPO6ueHVypGRVNpGy7VbfidVfA0R3rvD32NYkjOnQJlUT6fiKNv2zceQYW6qZMh*pXhtOynIrS-1ebCfjhw9gFOXgHkWtkouFt-on1d5MixpSV447wJbnWLVzQbR*j1PD956HlawCwCkrQUj5QJEG3NkeQO27bcmING-ZfURQopyIQWGUB*uobwYZ11nfnAeHjQtvL5vOOyZAsO0O2wEqfN9BTJdCq6GsKA9MS4xcDINf1*UqYhlX2ZzzNUyQ9u81NQFnMtFDeM0wNBVc6P1RCQNA1NLKkn8lePPNz8L7n3C5HrCvPlyjCsgLEztQfsCK6xN0G6fHYMAL31uwn*xAEm72o0WfVZOR3SAQ561oou23rvq4QOwKbnyBwizuFRRq8LIgA9RcqnI15CKxOA3b7iDteYwjsNmgaC7edZlCwWQY4hHetKOrZDF-5y*oExtTpcde3clR5N1XOfT3qXSomJPD6Rt*l2d9oxsQTyM4ZVGWeyi5EE*whSHYkeJoOm7sAVVON0*y7A8u3FWjqZjqt1CA&eurl%5B%5D=d-2ZzQgJCAn96Y*EQNX*V03-tBSb-tjMEzDhEA4hzA9rwsTP&show_time=1433147202755&mouseover_time=1433147203004&mouseover_count=1" title="pluselectro.ru">На складе. <b>Цена</b> 1 657 р. Отличные <b>цены</b>, большой выбор!</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZCen54jfbliBAUjBGww7z6H01G5yvFUW7AVgSRxI2v2svE5KSuIbSfZf2NAMMx-vw7sdhqIu6l5HHxFR-MH6z2j*529BtpOXGHnvxZJWoYMexb1U56wfs5H31iz0ErBvZ5dBlIijAPO6ueHVypGRVNpGy7VbfidVfA0R3rvD32NYkjOnQJlUT6fiKNv2zceQYW6qZMh*pXhtOynIrS-1ebCfjhw9gFOXgHkWtkouFt-on1d5MixpSV447wJbnWLVzQbR*j1PD956HlawCwCkrQUj5QJEG3NkeQO27bcmING-ZfURQopyIQWGUB*uobwYZ11nfnAeHjQtvL5vOOyZAsO0O2wEqfN9BTJdCq6GsKA9MS4xcDINf1*UqYhlX2ZzzNUyQ9u81NQFnMtFDeM0wNBVc6P1RCQNA1NLKkn8lePPNz8L7n3C5HrCvPlyjCsgLEztQfsCK6xN0G6fHYMAL31uwn*xAEm72o0WfVZOR3SAQ561oou23rvq4QOwKbnyBwizuFRRq8LIgA9RcqnI15CKxOA3b7iDteYwjsNmgaC7edZlCwWQY4hHetKOrZDF-5y*oExtTpcde3clR5N1XOfT3qXSomJPD6Rt*l2d9oxsQTyM4ZVGWeyi5EE*whSHYkeJoOm7sAVVON0*y7A8u3FWjqZjqt1CA&eurl%5B%5D=d-2ZzQgJCAn96Y*EQNX*V03-tBSb-tjMEzDhEA4hzA9rwsTP&show_time=1433147202755&mouseover_time=1433147203004&mouseover_count=1" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzYmHhofk0BJ5Hx44H3cr9CWcyEqi0epPQKsOmj9qOHDtqeoiMjCTdjxFGsXBhIej84trDX-S4KDmWTL71wzPUMXLEfyK9b4Ga-tX60hUpcfJk0paTXCnxKsptmw-Bkh9aHjuB8-7o2nP0gcw0W51WQFmc*o3LPoShzEFpsWW1ykzWWoNy5n6XASQ6zw8LHEKvW*5YbUJJxumRJ7*DLFTrXt-377eGMo1vJcB2BoV3ZFpo0h32Sl8bKMxFwyHvtaIkoSFwMDE7AKqKEHpSyn2cJ8xtKXKv44kLDgdnKtaB*5sUY86MU*jNEq3jNkMEQ96N-z8wr4M96ZHe*P5jvblTlaZqnoyCuiesd5Rm6KItgemsKFKO73LyZ-valMgJY0LEGXMA8KoWy-cG678mTkHZ5l5Ev78TlOl5K6xauORFPwcVa624QlXkQ8YEc93G-J12saPyllMTEyMioXItGG3x7AMPU2B7uMQ2DjfsVxRySyOL1kR7x5I1dkUIRuklhPPkcYgjVAtjpMvPpuLnFzZFtUUDYTmVjvAP62Ju-ROoqrAluYvSsAk-AIjdHOpu04qX80BYzkbTv3KeHvxH1n81ce3Yz*DRBHANEXn*uzkQcVvDt7yHUqF5DSl-YGrKVMobd9P9PpGGGIIyuk*zwROwEIgWqTn*l4QYA&amp;eurl%5B%5D=d-2ZzQoLCgvI-MNEgBU*l40-dNRbPhgM0-Ah0FYg8Vn7M3WLN9yhSG*08gU&amp;show_time=1433147202755&amp;mouseover_time=1433147203027&amp;mouseover_count=1" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzYmHhofk0BJ5Hx44H3cr9CWcyEqi0epPQKsOmj9qOHDtqeoiMjCTdjxFGsXBhIej84trDX-S4KDmWTL71wzPUMXLEfyK9b4Ga-tX60hUpcfJk0paTXCnxKsptmw-Bkh9aHjuB8-7o2nP0gcw0W51WQFmc*o3LPoShzEFpsWW1ykzWWoNy5n6XASQ6zw8LHEKvW*5YbUJJxumRJ7*DLFTrXt-377eGMo1vJcB2BoV3ZFpo0h32Sl8bKMxFwyHvtaIkoSFwMDE7AKqKEHpSyn2cJ8xtKXKv44kLDgdnKtaB*5sUY86MU*jNEq3jNkMEQ96N-z8wr4M96ZHe*P5jvblTlaZqnoyCuiesd5Rm6KItgemsKFKO73LyZ-valMgJY0LEGXMA8KoWy-cG678mTkHZ5l5Ev78TlOl5K6xauORFPwcVa624QlXkQ8YEc93G-J12saPyllMTEyMioXItGG3x7AMPU2B7uMQ2DjfsVxRySyOL1kR7x5I1dkUIRuklhPPkcYgjVAtjpMvPpuLnFzZFtUUDYTmVjvAP62Ju-ROoqrAluYvSsAk-AIjdHOpu04qX80BYzkbTv3KeHvxH1n81ce3Yz*DRBHANEXn*uzkQcVvDt7yHUqF5DSl-YGrKVMobd9P9PpGGGIIyuk*zwROwEIgWqTn*l4QYA&eurl%5B%5D=d-2ZzQoLCgvI-MNEgBU*l40-dNRbPhgM0-Ah0FYg8Vn7M3WLN9yhSG*08gU&show_time=1433147202755&mouseover_time=1433147203027&mouseover_count=1" class="snap_noshots" target="_blank"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/8cf38b7ae5648afa72e4de3230a92098.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/ff8a8f5753a85da826493473f10f7fe0/pluselectro.ru/upload/iblock/8cf/8cf38b7ae5648afa72e4de3230a92098.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/ff8a8f5753a85da826493473f10f7fe0/pluselectro.ru/upload/iblock/8cf/8cf38b7ae5648afa72e4de3230a92098.jpeg" class="begun_adv_picture" alt="" style="left: 6px; height: 70px; width: 58px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzYmHhofk0BJ5Hx44H3cr9CWcyEqi0epPQKsOmj9qOHDtqeoiMjCTdjxFGsXBhIej84trDX-S4KDmWTL71wzPUMXLEfyK9b4Ga-tX60hUpcfJk0paTXCnxKsptmw-Bkh9aHjuB8-7o2nP0gcw0W51WQFmc*o3LPoShzEFpsWW1ykzWWoNy5n6XASQ6zw8LHEKvW*5YbUJJxumRJ7*DLFTrXt-377eGMo1vJcB2BoV3ZFpo0h32Sl8bKMxFwyHvtaIkoSFwMDE7AKqKEHpSyn2cJ8xtKXKv44kLDgdnKtaB*5sUY86MU*jNEq3jNkMEQ96N-z8wr4M96ZHe*P5jvblTlaZqnoyCuiesd5Rm6KItgemsKFKO73LyZ-valMgJY0LEGXMA8KoWy-cG678mTkHZ5l5Ev78TlOl5K6xauORFPwcVa624QlXkQ8YEc93G-J12saPyllMTEyMioXItGG3x7AMPU2B7uMQ2DjfsVxRySyOL1kR7x5I1dkUIRuklhPPkcYgjVAtjpMvPpuLnFzZFtUUDYTmVjvAP62Ju-ROoqrAluYvSsAk-AIjdHOpu04qX80BYzkbTv3KeHvxH1n81ce3Yz*DRBHANEXn*uzkQcVvDt7yHUqF5DSl-YGrKVMobd9P9PpGGGIIyuk*zwROwEIgWqTn*l4QYA&eurl%5B%5D=d-2ZzQoLCgvI-MNEgBU*l40-dNRbPhgM0-Ah0FYg8Vn7M3WLN9yhSG*08gU&show_time=1433147202755&mouseover_time=1433147203027&mouseover_count=1" title="pluselectro.ru"><span>Выключатель пакетный ПВ3-40</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzYmHhofk0BJ5Hx44H3cr9CWcyEqi0epPQKsOmj9qOHDtqeoiMjCTdjxFGsXBhIej84trDX-S4KDmWTL71wzPUMXLEfyK9b4Ga-tX60hUpcfJk0paTXCnxKsptmw-Bkh9aHjuB8-7o2nP0gcw0W51WQFmc*o3LPoShzEFpsWW1ykzWWoNy5n6XASQ6zw8LHEKvW*5YbUJJxumRJ7*DLFTrXt-377eGMo1vJcB2BoV3ZFpo0h32Sl8bKMxFwyHvtaIkoSFwMDE7AKqKEHpSyn2cJ8xtKXKv44kLDgdnKtaB*5sUY86MU*jNEq3jNkMEQ96N-z8wr4M96ZHe*P5jvblTlaZqnoyCuiesd5Rm6KItgemsKFKO73LyZ-valMgJY0LEGXMA8KoWy-cG678mTkHZ5l5Ev78TlOl5K6xauORFPwcVa624QlXkQ8YEc93G-J12saPyllMTEyMioXItGG3x7AMPU2B7uMQ2DjfsVxRySyOL1kR7x5I1dkUIRuklhPPkcYgjVAtjpMvPpuLnFzZFtUUDYTmVjvAP62Ju-ROoqrAluYvSsAk-AIjdHOpu04qX80BYzkbTv3KeHvxH1n81ce3Yz*DRBHANEXn*uzkQcVvDt7yHUqF5DSl-YGrKVMobd9P9PpGGGIIyuk*zwROwEIgWqTn*l4QYA&eurl%5B%5D=d-2ZzQoLCgvI-MNEgBU*l40-dNRbPhgM0-Ah0FYg8Vn7M3WLN9yhSG*08gU&show_time=1433147202755&mouseover_time=1433147203027&mouseover_count=1" title="pluselectro.ru">На складе. <b>Цена</b> 556 р. Доступные <b>цены</b>, высокое качество!</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzYmHhofk0BJ5Hx44H3cr9CWcyEqi0epPQKsOmj9qOHDtqeoiMjCTdjxFGsXBhIej84trDX-S4KDmWTL71wzPUMXLEfyK9b4Ga-tX60hUpcfJk0paTXCnxKsptmw-Bkh9aHjuB8-7o2nP0gcw0W51WQFmc*o3LPoShzEFpsWW1ykzWWoNy5n6XASQ6zw8LHEKvW*5YbUJJxumRJ7*DLFTrXt-377eGMo1vJcB2BoV3ZFpo0h32Sl8bKMxFwyHvtaIkoSFwMDE7AKqKEHpSyn2cJ8xtKXKv44kLDgdnKtaB*5sUY86MU*jNEq3jNkMEQ96N-z8wr4M96ZHe*P5jvblTlaZqnoyCuiesd5Rm6KItgemsKFKO73LyZ-valMgJY0LEGXMA8KoWy-cG678mTkHZ5l5Ev78TlOl5K6xauORFPwcVa624QlXkQ8YEc93G-J12saPyllMTEyMioXItGG3x7AMPU2B7uMQ2DjfsVxRySyOL1kR7x5I1dkUIRuklhPPkcYgjVAtjpMvPpuLnFzZFtUUDYTmVjvAP62Ju-ROoqrAluYvSsAk-AIjdHOpu04qX80BYzkbTv3KeHvxH1n81ce3Yz*DRBHANEXn*uzkQcVvDt7yHUqF5DSl-YGrKVMobd9P9PpGGGIIyuk*zwROwEIgWqTn*l4QYA&eurl%5B%5D=d-2ZzQoLCgvI-MNEgBU*l40-dNRbPhgM0-Ah0FYg8Vn7M3WLN9yhSG*08gU&show_time=1433147202755&mouseover_time=1433147203027&mouseover_count=1" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzT4xMDEGg9-uiImviOC8Y7ILX901Rn3Y1zyZDaj9r*d6Pn21pacE4atV8*-MvEDzM3hPJj5NWGE8WTkAArZCrnjmvtj4Q58LGSSi*lMMH8NJPlOwFtv1O4sCmh32lQ*E*NsYQxdnyUaLyIHsy-zrZFk*w69RWnCYWJU81Yi4wIXO7Gyb-2bvVU9ULOwsQWH7n5BUHQPvkgoBfWPCoBwKvgoKDb23jIZl6O7ZSzAFTRlDiqRCKlmnK1T97oNPJVshY*2N9Kt7UuKOWG51pj9lboKTYswtnlmS5x2OCMxVFYUvQvKEuvvDPfhMaBypxDG9WtO5ok6rH6csdBBqQMXAgLUs-GdZC7v2pNLm-iLUPxAmzUtcNsCd6BfYdw7tM7Yn5h9dc2rAbr7GS2OgobrEWJBj8A0SYsQmh8w8GwedU9JLapW5AG-5*cKJ6KUU-kgaUA5ADpxojPjQ*P6IBMpp9TOS1GXiMFI9rNdK0WWxL2sn1HgBOjzsncX8VXs30abWuYLancBSTO*dJBzccAsAAv*YQKVnVf0wclTv5GbhK2AkcY5dsh7epbciuscOtj0Ktzi0k434UtXLz81Fqzm5*ucR2cKouhhAqCG1FJW1C70bnAQzvZjsK4I7CQ8*b7OTlKLpJjJBbkKM&amp;eurl%5B%5D=d-2ZzQgJCAnpaRWzd*LJYHrIgyOsye-7JAfWJxQn2Kc0LVpc&amp;show_time=1433147202755" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzT4xMDEGg9-uiImviOC8Y7ILX901Rn3Y1zyZDaj9r*d6Pn21pacE4atV8*-MvEDzM3hPJj5NWGE8WTkAArZCrnjmvtj4Q58LGSSi*lMMH8NJPlOwFtv1O4sCmh32lQ*E*NsYQxdnyUaLyIHsy-zrZFk*w69RWnCYWJU81Yi4wIXO7Gyb-2bvVU9ULOwsQWH7n5BUHQPvkgoBfWPCoBwKvgoKDb23jIZl6O7ZSzAFTRlDiqRCKlmnK1T97oNPJVshY*2N9Kt7UuKOWG51pj9lboKTYswtnlmS5x2OCMxVFYUvQvKEuvvDPfhMaBypxDG9WtO5ok6rH6csdBBqQMXAgLUs-GdZC7v2pNLm-iLUPxAmzUtcNsCd6BfYdw7tM7Yn5h9dc2rAbr7GS2OgobrEWJBj8A0SYsQmh8w8GwedU9JLapW5AG-5*cKJ6KUU-kgaUA5ADpxojPjQ*P6IBMpp9TOS1GXiMFI9rNdK0WWxL2sn1HgBOjzsncX8VXs30abWuYLancBSTO*dJBzccAsAAv*YQKVnVf0wclTv5GbhK2AkcY5dsh7epbciuscOtj0Ktzi0k434UtXLz81Fqzm5*ucR2cKouhhAqCG1FJW1C70bnAQzvZjsK4I7CQ8*b7OTlKLpJjJBbkKM&eurl%5B%5D=d-2ZzQgJCAnpaRWzd*LJYHrIgyOsye-7JAfWJxQn2Kc0LVpc&show_time=1433147202755" class="snap_noshots" target="_blank"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/b44b4e2e8e7d713d05db770cc82475af.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/857ee4a2957edfddbd6a1d83f9a991b2/pluselectro.ru/upload/iblock/b44/b44b4e2e8e7d713d05db770cc82475af.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/857ee4a2957edfddbd6a1d83f9a991b2/pluselectro.ru/upload/iblock/b44/b44b4e2e8e7d713d05db770cc82475af.jpeg" class="begun_adv_picture" alt="" style="top: 0.5px; width: 70px; height: 69px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzT4xMDEGg9-uiImviOC8Y7ILX901Rn3Y1zyZDaj9r*d6Pn21pacE4atV8*-MvEDzM3hPJj5NWGE8WTkAArZCrnjmvtj4Q58LGSSi*lMMH8NJPlOwFtv1O4sCmh32lQ*E*NsYQxdnyUaLyIHsy-zrZFk*w69RWnCYWJU81Yi4wIXO7Gyb-2bvVU9ULOwsQWH7n5BUHQPvkgoBfWPCoBwKvgoKDb23jIZl6O7ZSzAFTRlDiqRCKlmnK1T97oNPJVshY*2N9Kt7UuKOWG51pj9lboKTYswtnlmS5x2OCMxVFYUvQvKEuvvDPfhMaBypxDG9WtO5ok6rH6csdBBqQMXAgLUs-GdZC7v2pNLm-iLUPxAmzUtcNsCd6BfYdw7tM7Yn5h9dc2rAbr7GS2OgobrEWJBj8A0SYsQmh8w8GwedU9JLapW5AG-5*cKJ6KUU-kgaUA5ADpxojPjQ*P6IBMpp9TOS1GXiMFI9rNdK0WWxL2sn1HgBOjzsncX8VXs30abWuYLancBSTO*dJBzccAsAAv*YQKVnVf0wclTv5GbhK2AkcY5dsh7epbciuscOtj0Ktzi0k434UtXLz81Fqzm5*ucR2cKouhhAqCG1FJW1C70bnAQzvZjsK4I7CQ8*b7OTlKLpJjJBbkKM&eurl%5B%5D=d-2ZzQgJCAnpaRWzd*LJYHrIgyOsye-7JAfWJxQn2Kc0LVpc&show_time=1433147202755" title="pluselectro.ru"><span>Выключатель пакетный</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzT4xMDEGg9-uiImviOC8Y7ILX901Rn3Y1zyZDaj9r*d6Pn21pacE4atV8*-MvEDzM3hPJj5NWGE8WTkAArZCrnjmvtj4Q58LGSSi*lMMH8NJPlOwFtv1O4sCmh32lQ*E*NsYQxdnyUaLyIHsy-zrZFk*w69RWnCYWJU81Yi4wIXO7Gyb-2bvVU9ULOwsQWH7n5BUHQPvkgoBfWPCoBwKvgoKDb23jIZl6O7ZSzAFTRlDiqRCKlmnK1T97oNPJVshY*2N9Kt7UuKOWG51pj9lboKTYswtnlmS5x2OCMxVFYUvQvKEuvvDPfhMaBypxDG9WtO5ok6rH6csdBBqQMXAgLUs-GdZC7v2pNLm-iLUPxAmzUtcNsCd6BfYdw7tM7Yn5h9dc2rAbr7GS2OgobrEWJBj8A0SYsQmh8w8GwedU9JLapW5AG-5*cKJ6KUU-kgaUA5ADpxojPjQ*P6IBMpp9TOS1GXiMFI9rNdK0WWxL2sn1HgBOjzsncX8VXs30abWuYLancBSTO*dJBzccAsAAv*YQKVnVf0wclTv5GbhK2AkcY5dsh7epbciuscOtj0Ktzi0k434UtXLz81Fqzm5*ucR2cKouhhAqCG1FJW1C70bnAQzvZjsK4I7CQ8*b7OTlKLpJjJBbkKM&eurl%5B%5D=d-2ZzQgJCAnpaRWzd*LJYHrIgyOsye-7JAfWJxQn2Kc0LVpc&show_time=1433147202755" title="pluselectro.ru">На складе. Цена 266 р. Большой ассортимент, доставка.</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzT4xMDEGg9-uiImviOC8Y7ILX901Rn3Y1zyZDaj9r*d6Pn21pacE4atV8*-MvEDzM3hPJj5NWGE8WTkAArZCrnjmvtj4Q58LGSSi*lMMH8NJPlOwFtv1O4sCmh32lQ*E*NsYQxdnyUaLyIHsy-zrZFk*w69RWnCYWJU81Yi4wIXO7Gyb-2bvVU9ULOwsQWH7n5BUHQPvkgoBfWPCoBwKvgoKDb23jIZl6O7ZSzAFTRlDiqRCKlmnK1T97oNPJVshY*2N9Kt7UuKOWG51pj9lboKTYswtnlmS5x2OCMxVFYUvQvKEuvvDPfhMaBypxDG9WtO5ok6rH6csdBBqQMXAgLUs-GdZC7v2pNLm-iLUPxAmzUtcNsCd6BfYdw7tM7Yn5h9dc2rAbr7GS2OgobrEWJBj8A0SYsQmh8w8GwedU9JLapW5AG-5*cKJ6KUU-kgaUA5ADpxojPjQ*P6IBMpp9TOS1GXiMFI9rNdK0WWxL2sn1HgBOjzsncX8VXs30abWuYLancBSTO*dJBzccAsAAv*YQKVnVf0wclTv5GbhK2AkcY5dsh7epbciuscOtj0Ktzi0k434UtXLz81Fqzm5*ucR2cKouhhAqCG1FJW1C70bnAQzvZjsK4I7CQ8*b7OTlKLpJjJBbkKM&eurl%5B%5D=d-2ZzQgJCAnpaRWzd*LJYHrIgyOsye-7JAfWJxQn2Kc0LVpc&show_time=1433147202755" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div></div></div><div class="begun_adv_info-block"><span class="begun_adv_age">18+</span></div><a class="begun_adv_sys_logo_new" href="http://www.begun.ru/advertiser/services/mtb.php?utm_source=begun_network&utm_medium=logo&utm_campaign=banners" target="_blank" style="display:"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAIAAADZrBkAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0QzQ3NzM1NTg1QUVFMzExQjBDMDlFMkFCQjFEQzYxMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMEZGOTU0RERCNzUxMUUzODFGRTgyRjg0RjBFQkRCRiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyMEZGOTU0Q0RCNzUxMUUzODFGRTgyRjg0RjBFQkRCRiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE1MEU5QjY3MDdCNEUzMTFBRUE0Qjk4RTBDOEUyRTlDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDNDc3MzU1ODVBRUUzMTFCMEMwOUUyQUJCMURDNjExIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+sSOgOQAAAMBJREFUeNpi1NnJQAZgYmAYJtoYgZAMbdkqjQKswiRok+SQ69Jbnq5Uy8XCiyzOglW1Jq+hvZivpbCrAb8lEyPz979fX/98hk8bUFG91swg6WRkwXVP5/7+9wufI2PlC9D0HHy9ZcLtSjRl6LYFSiUByf8M/89/OHr87e6jb3Zc/ngK0xco2lgYWRW5NQ693tp1s/Dht9t4gopZLBbB+cfwj5OFu+5q8offbwnEJFpSBsYs0IUkpxJi9AyVHAAQYABfejoD7C69BAAAAABJRU5ErkJggg==" border="0" alt="price"></a></div></div><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/context.jsp" id="begun_js_1"></script><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/begun_tpl_block_horizontal.60c20350c2.js" id="begun_js_2"></script><script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/auto_rich.82b13c15be.js" id="begun_js_3"></script>
+                                        
+                                    </div><div class="item-page">
+		<h2>
+								<a href="./EasySTM32 - АЦП в STM32. Часть 1_files/EasySTM32 - АЦП в STM32. Часть 1.htm">
+						АЦП в STM32. Часть 1</a>
+						</h2>
+			
+		<p style="text-align: justify;">Микроконтроллер штука цифровая и обменивается с внешним миром цифоровыми сигналами: нулями и единицами. Однако иногда перед микроконтроллером встает задача произвести измерение какой либо плавно изменяющейся величины. Это может быть всё то, что принимает несколько промежуточных состояний (а не только два) например это может быть темепература, напряжение, сила тока, освещенность и так далее, примеров много. Однако, нога контроллера настроенная на вход различает только два состояния - присутствие на ноге напряжения (лог. 1) и его отсутствие (лог. 0). Для измерения &nbsp;температуры это малопригодно, ведь мало кому интересен градусник имеющий только два состояния -50 и +200 градусов :) Для решения проблем измерения аналоговых величин придумали <strong>АЦП</strong> –&nbsp;Аналого-цифровой преобразователь. Принцип работы с АЦП в двух словах: На вход АЦП поступает аналоговый сигнал и через некоторое время из АЦП можно прочитать результат преобразования,&nbsp;тоесть цифровое представление аналогово сигнала. Существуют микроконтроллеры STM32 со встроенным АЦП, то есть ничего подключать к контроллеру не надо, точнее почти ничего. Посмотрим на картинку:&nbsp;</p>
+<p style="text-align: justify;">&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/adc_test.png" alt="STM32 ADC" width="650" height="538"></p>
+ 
+<p style="text-align: justify;">Тут нарисована обвязка которая должна быть обязательно, если мы хотим использовать АЦП. К ней относятся два конденсатора C4 и С3 плюс дроссель L1. Все это добро предназначено для того чтоб обеспечить АЦП контроллера качественным питанием без каких либо помех. Располагать конденсаторы желательно как можно ближе к выводу AVCC. На всякий случай уточню, что питается модуль АЦП отдельно от всего остального контроллера. На плате <a href="http://easystm32.ru/stm32vl-discovery/9-acquaintance-with-stm32vl-discovery"><strong>STM32VL Discovery</strong></a> уже вся эта обвязка имеется, что очень удобно для нас. <span style="text-align: justify;">Остальные детальки будут использованы нами в следующей статье, где мы будем применять АЦП на практике.&nbsp;</span>&nbsp;Забегая вперед скажу, что в STM32 с АЦП всё не так просто как например в AVR. Имеется очень много параметров, о значении некоторых мне пока &nbsp;мало что понятно. Но попробуем разобраться что к чему. Начать следует с того что контроллер может измерять напряжения только с определённых ножек в названии которых присутствует слово ADC1_INx, где х некоторый уникальный номер канала. АЦП контроллера может опрашивать каждый из каналов поочередно. И вот тут начинается то, что взорвало мне мозг в клочья поначалу. В STM32 есть два варианта чтения данных с ножек&nbsp;ADC1_INx. Первый называется "Регулярные каналы" (regular <span style="text-align: justify;">channels&nbsp;</span>в даташите). Использование этого метода опроса состоит в том, что АЦП опрашивает по очереди некоторый заранее настроенный список каналов, после каждого опроса результат записывается <span style="text-decoration: underline;">в один и тот же</span> регистр. Это означает, что нужно своевременно забирать результат преобразования из этого регистра, в противном случае результат будет перетираться. Совсем иначе дело обстоит с "Инжектированными каналами" (Injected channels). В случае использования этого метода опроса можно записывать результат измерения каждого канала АЦП в свой отдельный регистр ничего не перезатирая. Но к сожалению таких регистров всего 4 а ножек АЦП у контроллера 16 штук. Но лично мне еще никогда не доводилось использоваь более двух каналов АЦП, так что использование инжектированных каналов мне пришлось больше по душе :) Еще стоит отметить, что АЦП STM32 обладает приятной штуковиной под названием <strong>Analog watchdog</strong>. Его предназначение в том, чтоб подать сигнал в случае если напряжние на определённом канале выйдет за допустимый диапазон, это позволяет сэкономить процессорное время за счёт того, что нам не придётся программно заставлять АЦП производить измерение и потом сравнивать полученное значение с пороговыми. Удобная вещь, но пока не использовал. Следующая плюшка - <strong>встроенный термометр</strong>. В даташите пишут, что использовать его для измерения абсолютных температур лучше не стоит, а вот для того чтоб отследить изменение температуры оно вполне годно. Начнем наше знакомство с АЦП &nbsp;как обычно с краткого описания регистров, тех назначение которых я более или менее понял. В первую очередь стоит сказать о регистрах в которые записывается результат измерения АЦП, таковых у нас пять. Первый регистр это <strong>ADC_</strong><strong>DR</strong>:</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_DR.png" alt="ADC DR" width="650" height="145"></p>
+<p style="text-align: justify;">В него последовательно пишутся данные, полученные в результате опроса каналов состоящих в регулярной группе. Каждое последующее измерение одного канала перетирает предыдущее. Для того чтоб своевременно забирать данные и записывать их в определённые переменные можно и нужно использовать прерывания или еще лучше DMA, но я пока с этим не заморачивался и DMA с прерываниями не трогал. О них обязательно пойдет речь в следующих статьях на этом сайте. Таким образом, если мы не используем ни прерываний ни DMA то использовать регулярные группы можно только если канал в этой группе всего один (так у нас не будет перетираться регистр DR данными с разных каналов). Что касается самого регистра, то видно, что он 16-ти битный. А АЦП у нас 12-ти битный. Для удобства данные могут выравниваться как по левому краю регистра так и по правому. Это решается битом&nbsp;<strong>ALIGN&nbsp;</strong>регистра&nbsp;<strong>ADC_CR2</strong>. Мы еще вернемся к нему позже. В следующие четыре регистра <strong>ADC_JDRx&nbsp;</strong>записываются результаты преобразования для каждого из 4-х инжектированных каналов.</p>
+<p style="text-align: justify;"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_JDRx.png" alt="ADC JDRx" width="650" height="145"></p>
+<p style="text-align: justify;">Ни каких других особенностей этот регистр не имеет. Другой не маловажный регистр который нужно рассмотреть это&nbsp;<strong>ADC_SR,</strong>&nbsp;он отражает состояние АЦП на данный момент:&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SR.png" alt="ADC SR" width="650" height="137"></p>
+<div style="text-align: justify;"><strong>STRT</strong> - этот бит устанавливается когда стартует преобразование для регулярного канала</div>
+<div style="text-align: justify;"><strong>JSTRT</strong> - тоже самое но для инжектированного канала</div>
+<div style="text-align: justify;"><strong>JEOC</strong> - закончилось преобразование для инжектированного канала</div>
+<div style="text-align: justify;"><strong>EOC</strong> - закончилось преобразование инжектированного или регулярного канала</div>
+<div style="text-align: justify;"><strong>AWD</strong> -&nbsp;Analog watchdog сработал</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">Все биты сбрасываются программным путём, а&nbsp;<strong>EOC</strong>&nbsp;может быть сброшен еще и автоматически когда из регистра&nbsp;<strong style="text-align: justify;">ADC_</strong><strong style="text-align: justify;">DR&nbsp;</strong>заберут данные. Для настройки основных АЦП используют два регистра&nbsp;<strong>ADC_CR1 </strong>и<strong>&nbsp;ADC_CR2</strong>. Структура первого из них выглядит следующим образом:&nbsp;</div>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_CR1.png" alt="ADC_CR1" width="650"></p>
+<div><strong>AWDEN</strong> -&nbsp;<span style="text-align: justify;">Analog watchdog мониторит состояние всех каналов регулярной группы</span></div>
+<div><span style="text-align: justify;"><strong>JAWDEN&nbsp;</strong>-&nbsp;<span style="text-align: justify;">Analog watchdog мониторит состояние всех каналов инжектированной группы</span></span></div>
+<div><span style="text-align: justify;"><span style="text-align: justify;"><strong>AWDSGL -</strong>&nbsp;<span style="text-align: justify;">Analog watchdog мониторит состояние одного канала указанного в битах&nbsp;<strong style="text-align: justify;">AWDCH</strong></span></span></span></div>
+<div><span style="text-align: justify;"><span style="text-align: justify;"><strong>AWDCH[4:0]</strong> - Номер канала АЦП который будет мониторить Analog watchdog</span></span></div>
+<p style="text-align: justify;">Как правильно выставлять все эти биты, проясняет следующая таблица:&nbsp;</p>
+<p><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/analog_watchdog.png" alt="analog watchdog" width="603" height="209"></p>
+<div style="text-align: justify;"><strong>JAUTO</strong> - разрешает автоматическое преобразование для каналов в инжектированной группе после каналов &nbsp;регулярной группы.</div>
+<div style="text-align: justify;"><strong>SCAN</strong> - не совсем понятно что такое, судя по всему нужно ставить этот бит если опрашиваем несколько каналов ацп за раз.&nbsp;</div>
+<div style="text-align: justify;"><strong>JEOCIE</strong> - &nbsp;Включает или выключает прерывания для инжектированных каналов<br><strong>AWDIE</strong> -&nbsp;<span style="text-align: justify;">Включает или выключает</span>&nbsp;прерывания от&nbsp;<span style="text-align: justify;">Analog watchdog</span><br><strong>EOCIE -&nbsp;</strong><span style="text-align: justify;">Включает или выключает</span>&nbsp;прерывания по окончанию преобразования в регулярной или инжектированной группе</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">Следующий регистр настроек это&nbsp;<strong style="text-align: justify;">ADC_CR2</strong></div>
+<div><strong style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_CR2.png" alt="ADC CR2" width="650" height="169"></strong></div>
+<div><strong style="text-align: justify;"><strong style="text-align: justify;"></strong></strong>
+<p><strong>TSVREFE</strong> - включает температурный сенсор. До установки этого бита читать что-то с канала к которому он подключен - бесполезно.</p>
+<strong style="text-align: justify;"><strong style="text-align: justify;"></strong></strong>
+<p><strong>SWSTART</strong> - запускает преобразование для каналов входящих в состав регулярной группы. Для того, чтоб преобразование было запущено этим битом нужно предварительно установить биты EXTSEL[2:0] в единицы.</p>
+<strong style="text-align: justify;"><strong style="text-align: justify;"></strong></strong>
+<p><strong>JSWSTART</strong> - запускает преобразование для каналов входящих в состав инжектированной группы. Для того, чтоб преобразование было запущено этим битом нужно предварительно установить биты JEXTSEL[2:0] в единицы.</p>
+<p><strong>EXTTRIG</strong> - Разрешает использовать внешнее событие для старта преобразования каналов в регулярной группе</p>
+<p><strong>EXTSEL[2:0]</strong> - Этими битами выбирается источник который будет запускать преобразование каналов в регулярной группе. Доступны следующие битовые комбинации:&nbsp;<span style="text-align: center;">&nbsp;</span></p>
+<table style="border-collapse: collapse; border: none; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border: 1pt solid windowtext; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">EXTSEL</span>2</p>
+</td>
+<td style="width: 60.3pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">EXTSEL</span>1</p>
+</td>
+<td style="width: 60.3pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">EXTSEL</span>0</p>
+</td>
+<td style="width: 129.35pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;">Источник</p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 1 CC1 event</span></p>
+</td>
+</tr>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 1 CC2 event</span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 1 CC3 event</span></p>
+</td>
+</tr>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 2 CC2 event</span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 3 TRGO event</span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">Timer 4 CC4 event</span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">EXTI line 11</span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 9pt; font-family: Helvetica, sans-serif;">SWSTART</span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>
+<p><strong>JEXTTRIG</strong>&nbsp;- Разрешает использовать внешнее событие для старта преобразования каналов в инжектированой&nbsp;группе</p>
+<p><strong>JEXTSEL[2:0]</strong>&nbsp;- Этими битами выбирается источник который будет запускать преобразование каналов в инжектированой группе. Доступны следующие битовые комбинации:&nbsp;</p>
+<table style="border-collapse: collapse; border: none; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border: 1pt solid windowtext; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">JEXTSEL</span>2</p>
+</td>
+<td style="width: 60.3pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">JEXTSEL</span>1</p>
+</td>
+<td style="width: 60.3pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 10pt;">JEXTSEL</span>0</p>
+</td>
+<td style="width: 129.35pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;">Источник</p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 1 TRGO event</span></span></p>
+</td>
+</tr>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 1 CC4 event</span></span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 2 TRGO event</span></span></p>
+</td>
+</tr>
+<tr style="height: 13.25pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.25pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 2 CC1 event</span></span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 3 CC4 event</span></span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">Timer 4 TRGO event</span></span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">0</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">EXTI line15</span></span></p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 60.25pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 60.3pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="80">
+<p style="margin-bottom: 0.0001pt;">1</p>
+</td>
+<td style="width: 129.35pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" valign="top" width="172">
+<p style="margin-bottom: 0.0001pt;"><span style="font-family: Helvetica, sans-serif;"><span style="font-size: 12px;">JSWSTART</span></span></p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div>&nbsp;</div>
+<div>&nbsp;</div>
+<div>
+<div style="text-align: justify;"><strong>ALIGN</strong> - Устанавливает выравнивание результата в регистре данных (0 - по правому, 1 - по левому)</div>
+<div style="text-align: justify;"><strong>RSTCAL</strong> - Сбрасывает значение калибровки</div>
+<div style="text-align: justify;"><strong>CAL</strong> - Запускает калибровку АЦП. После завершения калибровки бит сбраывается в ноль</div>
+<div style="text-align: justify;"><strong>CONT</strong> - Разрешает непрерывное преобразование</div>
+<div style="text-align: justify;"><strong>ADON</strong> - Включает/выключает модуль АЦП</div>
+<div style="text-align: justify;"><strong>DMA</strong> - Разрешает использовать DMA</div>
+</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">Самое страшное позади :) , теперь рассмотрим регистры&nbsp;<strong>ADC_SMPR1</strong> и&nbsp;<strong>ADC_SMPR2</strong>. В них задается время выборки индивидуально для каждого канала.&nbsp;</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SMPR1.png" alt="ADC SMPR1" width="650" height="147"></div>
+<div style="text-align: center;">&nbsp;<img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SMPR2.png" alt="ADC SMPR2" width="650" height="170"></div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">Четыре регистра&nbsp;<strong>ADC_JOFRx&nbsp;</strong>хранят значения которые будут вычитаться из соответствующих регистров&nbsp;<strong>ADC_JDRx.&nbsp;</strong>Для чего нужна такая фича, я пока не очень догадываюсь. Но как говорится если звёзды зажигают значит это кому-нибудь нужно.</div>
+<div><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_JOFRx.png" alt="ADC JOFRx" width="650" height="138"></div>
+<div style="text-align: justify;">Регистры&nbsp;<strong>ADC_HTR</strong> и&nbsp;<strong>ADC_LTR</strong>&nbsp;задают верхнюю и нижню границу с которыми&nbsp;<span style="text-align: justify;">Analog watchdog сравнивает значение выбранного канала АЦП. Рисовать табличку тут смысла особого нет, так как в регистр просто записываются данные в первые 12 бит. Следующие три регистра <strong>ADC_SQRx&nbsp;</strong>определяют, какие каналы входят в регулярную группу. Всего можно добавить не более 16-ти каналов. Битами&nbsp;L[3:0] нужно задать число каналов в группе (0000 - 1 канал ... 1111 - 16 каналов).&nbsp;</span>На всякий случай нарисую все три регистра тут, чтоб в даташит лишний раз не лазить:&nbsp;</div>
+<div style="text-align: justify;"><span style="text-align: justify;"><br></span></div>
+<div style="text-align: center;"><span style="text-align: justify;"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SQR1.png" alt="ADC SQR1" width="650" height="158"></span></div>
+<div style="text-align: center;"><span style="text-align: justify;"><img src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SQR2.png" alt="ADC SQR2" width="650" height="172"></span></div>
+<div><span style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_SQR3.png" alt="ADC SQR3" width="650" height="157"></span></div>
+<div><span style="text-align: justify;"><br></span></div>
+<div><span style="text-align: justify;">И последний регистр на сегодня это&nbsp;<strong>ADC_JSQR</strong>. Он уже успел принести мне немало хлопот пока я не прочитал то что про него написано мелким &nbsp;шрифтом в примечании. Для начала нужно сказать, что он хранит в себе номера каналов которые входят с состав инжектированной группы. Сам регистр выгядит так:&nbsp;</span></div>
+<div><span style="text-align: justify;"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - АЦП в STM32. Часть 1_files/ADC_JSQR.png" alt="ADC JSQR" width="650" height="157"></span></div>
+<div><span style="text-align: justify;">Битами JSQx задаются номера каналов, а в JL[1:0] записывается количество каналов в инжектированной группе. Вот тут-то и начинаются сложности. Если в инжектированную группу добавлены все четыре канала то путаницы ни какой нет: В регистр&nbsp;<strong style="text-align: justify;">ADC_JDR1&nbsp;</strong>будут записывать данные с канала указанного битами <strong>JSQ1</strong>, в&nbsp;<strong style="text-align: justify;">ADC_JDR2 </strong> с канала&nbsp;<strong><span style="text-align: justify;">JSQ2</span></strong><span style="text-align: justify;"> итд. Но все меняется если мы хотим включить в состав инжектированной группы не все 4 канала, а например только один. Было бы логично предположить, что если канал один то выбирать его нужно битами <strong>JSQ1</strong>, если каналов 2 то битами&nbsp;<span style="text-align: justify;"><strong>JSQ1</strong> и&nbsp;<span style="text-align: justify;"><strong>JSQ2</strong> и так далее. Но это не так. В даташите написанно примерно тоже самое что я изобразил в виде таблицы:</span></span></span></span></div>
+<div style="text-align: center;"><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;">&nbsp;</span></span></span></span></div>
+<div>
+<table style="border-collapse: collapse; border: none; margin-left: auto; margin-right: auto;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 13.5pt;">
+<td style="width: 47.35pt; border: 1pt solid windowtext; padding: 0cm 5.4pt; height: 13.5pt;" width="63">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">Кол-во каналов</p>
+</td>
+<td style="width: 51.5pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.5pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">ADC_JDR1</p>
+</td>
+<td style="width: 51.5pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.5pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">ADC_JDR2</p>
+</td>
+<td style="width: 51.5pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.5pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">ADC_JDR3</p>
+</td>
+<td style="width: 51.5pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.5pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">ADC_JDR4</p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 47.35pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="63">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">4</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ1</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ2</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ3</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ4</p>
+</td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 47.35pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="63">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">3</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ2</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ3</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ4</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69"></td>
+</tr>
+<tr style="height: 14.05pt;">
+<td style="width: 47.35pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="63">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">2</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ3</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ4</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69"></td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.05pt;" width="69"></td>
+</tr>
+<tr style="height: 14.6pt;">
+<td style="width: 47.35pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.6pt;" width="63">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">1</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.6pt;" width="69">
+<p style="margin-bottom: 0.0001pt; text-align: center;" align="center">JSQ4</p>
+</td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.6pt;" width="69"></td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.6pt;" width="69"></td>
+<td style="width: 51.5pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.6pt;" width="69"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;"><br></span></span></span></span></div>
+<div><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;">Из таблицы видно, что если мы включаем в группу только один канал то его мы выбираем битами JSQ<strong>4</strong> а читаем из регистра ADC_JDR<strong>1</strong>. Вот такие дела. Ну на сегодня хватит таблиц и какой либо информации вообще. В <a href="http://easystm32.ru/for-beginners/20-adc-in-stm32-part-2">следующей статье</a> будет практика применения. Спасибо что дочитали до конца :)</span></span></span></span></div>	</div>
+</div>
+                                                                 </div>
+              </div>
+                        </div>
+                                    <div id="col2">
+                          	<div class="moduletable_menu"> 
+		      
+		<h3 class="module-title">Разделы сайта</h3>
+				<div class="res">
+	    <div class="module-content">
+	        
+<ul class="menu">
+<li class="item-101"><a href="http://easystm32.ru/">Главная страница</a></li><li class="item-108 current active"><a href="http://easystm32.ru/for-beginners">Для начинающих</a></li><li class="item-107"><a href="http://easystm32.ru/stm32vl-discovery">STM32VL Discovery</a></li><li class="item-147"><a href="http://easystm32.ru/stm32f4-discovery">STM32F4 Discovery</a></li><li class="item-109"><a href="http://easystm32.ru/tools">Инструменты</a></li><li class="item-110"><a href="http://easystm32.ru/interfaces">Интерфейсы</a></li><li class="item-111"><a href="http://easystm32.ru/technologies">Технологии</a></li><li class="item-112"><a href="http://easystm32.ru/useful-things">Полезности</a></li><li class="item-113"><a href="http://easystm32.ru/indication">Индикация</a></li><li class="item-114"><a href="http://easystm32.ru/power-supplies">Питание</a></li><li class="item-115"><a href="http://easystm32.ru/projects">Проекты</a></li><li class="item-116"><a href="http://easystm32.ru/sensors">Датчики</a></li><li class="item-117"><a href="http://easystm32.ru/debug">Отладка</a></li></ul>
+        </div>
+        </div><div class="modul"></div></div>
+		<div class="moduletable"> 
+		      
+		<h3 class="module-title">Форма входа</h3>
+				<div class="res">
+	    <div class="module-content">
+	        <form action="http://easystm32.ru/for-beginners" method="post" id="login-form">
+		<fieldset class="userdata">
+	<p id="form-login-username">
+		<label for="modlgn-username">Логин</label>
+		<input id="modlgn-username" type="text" name="username" class="inputbox" size="18">
+	</p>
+	<p id="form-login-password">
+		<label for="modlgn-passwd">Пароль</label>
+		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18">
+	</p>
+		<p id="form-login-remember">
+		<label for="modlgn-remember">Запомнить меня</label>
+		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes">
+	</p>
+		<input type="submit" name="Submit" class="button" value="Войти">
+	<input type="hidden" name="option" value="com_users">
+	<input type="hidden" name="task" value="user.login">
+	<input type="hidden" name="return" value="aW5kZXgucGhwP29wdGlvbj1jb21fY29udGVudCZ2aWV3PWFydGljbGUmY2F0aWQ9MTAmaWQ9MTgmSXRlbWlkPTEwOA==">
+	<input type="hidden" name="a444e8fe1b460cebd7b9f43f7fea4c52" value="1">	</fieldset>
+	<ul>
+		<li>
+			<a href="http://easystm32.ru/component/users/?view=reset">
+			Забыли пароль?</a>
+		</li>
+		<li>
+			<a href="http://easystm32.ru/component/users/?view=remind">
+			Забыли логин?</a>
+		</li>
+			</ul>
+	</form>
+        </div>
+        </div><div class="modul"></div></div>
+	
+                        </div>
+                                            </div>
+                </div>
+            </div>
+            <div id="footer">
+    
+    <div class="copy">
+    Copyright &nbsp;© 2012 <a href="http://easystm32.ru/component/xmap/xml?option=com_xmap&view=xml&id=1">EasySTM32.</a> All Rights Reserved. Запрещено копирование материалов без активной ссылки на этот сайт.<br>
+	Реклама: <script type="text/javascript">
+<!--
+var _acic={dataProvider:10};(function(){var e=document.createElement("script");e.type="text/javascript";e.async=true;e.src="//www2.acint.net/aci.js";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)})()
+//-->
+</script> <a href="http://radio-tech24.org/index.php?route=product/category&path=24_66" target="_blank">Материнские платы для TV</a> доставка по России     </div>
+					<!-- Yandex.Metrika counter -->
+				<script type="text/javascript">
+				(function (d, w, c) {
+					(w[c] = w[c] || []).push(function() {
+						try {
+							w.yaCounter14614684 = new Ya.Metrika({id:14614684});
+						} catch(e) {}
+					});
+					
+					var n = d.getElementsByTagName("script")[0],
+						s = d.createElement("script"),
+						f = function () { n.parentNode.insertBefore(s, n); };
+					s.type = "text/javascript";
+					s.async = true;
+					s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+					if (w.opera == "[object Opera]") {
+						d.addEventListener("DOMContentLoaded", f);
+					} else { f(); }
+				})(document, window, "yandex_metrika_callbacks");
+				</script>
+				<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/14614684" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+				<!-- /Yandex.Metrika counter -->
+
+
+	<div id="dummy"></div>
+    <div id="debug">
+  
+  </div>
+</div>
+        </div>  
+    </div>
+            </div> 
+
+   <script type="text/javascript" src="./EasySTM32 - АЦП в STM32. Часть 1_files/jquery.min.js"></script> 
+   <script type="text/javascript"> 
+$(document).ready(function(){
+						   		   
+	//When you click on a link with class of poplight and the href starts with a # 
+	$('a.poplight[href^=#]').click(function() {
+		var popID = $(this).attr('rel'); //Get Popup Name
+		var popURL = $(this).attr('href'); //Get Popup href to define size
+				
+		//Pull Query & Variables from href URL
+		var param= popURL.substr(1);
+		var data = "<iframe width=\"500\" height=\"438\" src=\"http://easystm32.ru/getreg.php" + param + "\"></iframe>";
+		document.getElementById('popup_name').innerHTML=data;
+		//Добавить кнопку "Закрыть" в наше окно, прописываете прямой путь к картинке кнопки
+		$('#' + popID).fadeIn().css({ 'width': Number( 500 ) }).prepend('<a href="#" class="close"><img src="/templates/shoplab/images/close_pop.png" class="btn_close" title="Закрыть окно" alt="Закрыть" /></a>');
+		
+		//Определяет запас на выравнивание по центру (по вертикали по горизонтали)мы добавим 80px к высоте / ширине, значение полей вокруг содержимого (padding) и ширину границы устанавливаем в CSS
+		var popMargTop = ($('#' + popID).height() + 80) / 2;
+		var popMargLeft = ($('#' + popID).width() + 80) / 2;
+		
+		//Применяем отступы в всплывающем окне
+		$('#' + popID).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		//Фон слоя затемнения
+		$('body').append('<div id="fade"></div>'); //Добавляем слой затемнения.
+		$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Постепенное исчезание слоя - .css({'filter' : 'alpha(opacity=80)'}) используется для фиксации в IE, фильтр для устранения бага тупого IE 
+		
+		return false;
+	});
+	
+	
+	//Закрыть всплывающее окно и слой затемнения
+	$('a.close, #fade').live('click', function() { //При нажатии рядом, окно и слой затемнения закрываются 
+	  	$('#fade , .popup_block').fadeOut(function() {
+			$('#fade, a.close').remove();  
+	}); //fade them both out
+		
+		return false;
+	});
+ 
+	
+});
+</script>
+   
+  
+</body></html>

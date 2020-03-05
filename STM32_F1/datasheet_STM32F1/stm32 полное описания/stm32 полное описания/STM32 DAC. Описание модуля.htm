@@ -1,0 +1,596 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0050)http://mycontroller.ru/stm32-dac-opisanie-modulya/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 DAC. Описание модуля</title>
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 DAC. Описание модуля_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 DAC. Описание модуля»" href="http://mycontroller.ru/stm32-dac-opisanie-modulya/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 DAC. Описание модуля_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 DAC. Описание модуля_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 DAC. Описание модуля_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 DAC. Описание модуля_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 ADC Примеры использования. Шаг 1" href="http://mycontroller.ru/stm32-adc-primeryi-ispolzovaniya-shag-1/">
+<link rel="next" title="STM32 DAC Описание регистров" href="http://mycontroller.ru/stm32-dac-opisanie-registrov/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 DAC. Описание модуля_files/STM32 DAC. Описание модуля.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=2039">
+
+<link rel="stylesheet" href="./STM32 DAC. Описание модуля_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 DAC. Описание модуля_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 DAC. Описание модуля_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 DAC. Описание модуля_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-adc-primeryi-ispolzovaniya-shag-1/" rel="prev">STM32 ADC Примеры использования. Шаг 1</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-dac-opisanie-registrov/" rel="next">STM32 DAC Описание регистров</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 DAC. Описание модуля_files/STM32 DAC. Описание модуля.htm" rel="bookmark" title="Постоянная ссылка на STM32 DAC. Описание модуля">
+STM32 DAC. Описание модуля</a>
+</h2>
+<div class="art-PostContent">
+
+          <h3 align="center">Введение</h3>
+<p align="center">Модуль ЦАП представляет собой 12-ти разрядный преобразователь цифровых данных в напряжение. ЦАП может быть сконфигурирован в 8-ми или 12-ти битный режим, может быть использован в сочетании с контроллером DMA. В 12-ти битном режиме данные могут выравниваться по правому или по левому краю. ЦАП содержит два канала, каждый из которых содержит независимый преобразователь. В двухканальном режиме преобразование может выполняться независимо или одновременно, когда оба канала группируются для синхронного запуска. Вывод опорного сигнала VREF+ доступен для изменения разрешения. </p>
+<p><span id="more-2039"></span>
+</p><p align="center"></p>
+<h3 align="center">Основные характеристики ЦАПа</h3>
+<ul>
+<li>
+<div align="left">два цифроаналоговых преобразователя, каждый имеет свой выход;</div>
+</li>
+<li>
+<div align="left">8-ми и 12-ти битный режим;</div>
+</li>
+<li>
+<div align="left">выравнивание данных по левому или правому краю в 12-ти разрядный режим;</div>
+</li>
+<li>
+<div align="left">возможность синхронного обновления;</div>
+</li>
+<li>
+<div align="left">генерирование шума;</div>
+</li>
+<li>
+<div align="left">генерирования треугольных импульсов;</div>
+</li>
+<li>
+<div align="left">независимое или одновременное преобразование в каналах;</div>
+</li>
+<li>
+<div align="left">использование DMA для обоих каналов;</div>
+</li>
+<li>
+<div align="left">внешний запуск преобразований;</div>
+</li>
+<li>
+<div align="left">вход опорного напряжения.</div>
+</li>
+</ul>
+<p align="left"><font color="#0a1c1f">Структурная схема ЦАПа:</font></p>
+<p align="left"><a href="http://mycontroller.ru/wp-content/uploads/image51.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb51.png" width="507" height="458"></a></p>
+<h3 align="center"><a href="http://mycontroller.ru/wp-content/uploads/image69.png"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top: 0px; border-right: 0px; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb69.png" width="508" height="144"></a></h3>
+<h3 align="center">Описание ЦАПа</h3>
+<p align="center"><u>Включение канала</u></p>
+<p align="center">Каждый канал может быть включен установкой разряда ENx соответствующего канала в регистре DAC_CR. Канал включается с задержкой времени&nbsp; Twakeup.</p>
+<p align="center"><u>Включение выходного буфера</u></p>
+<p align="center">ЦАП имеет два выходных буфера, которые могут использоваться для снижения выходного сопротивления и подключения напрямую к нагрузке без применения внешнего операционного усилителя. Управление выходными буферами осуществляется с помощью разрядов BOFFx в регистре DAC_CR.</p>
+<h3 align="center">Формат данных</h3>
+<p align="center">В зависимости от выбранного режима, данные могут быть записаны в специальный регистр как описано ниже:</p>
+<ul>
+<li>
+<div align="left"><font color="#000000">одинарный канал, имеется три возможности:</font></div>
+<ol>
+<li>8-ми битное разрешение с правым выравниванием: данные загружаются в DAC_DHR8Rx[7:0] (сохраняется в DHRx[11:4]); </li>
+<li>12-ти битное разрешение с левым выравниванием: данные загружаются в DAC_DHR12Lx[15:4](сохраняется в DHRx[11:0]); </li>
+<li>12-ти битное разрешение с правым выравниванием: данные загружаются в DAC_DHR12Rx[11:0](сохраняется в DHRx[11:0]); </li>
+</ol>
+</li>
+</ul>
+<p>Данные, записанные в регистр DAC_DHRyyyx, будут сдвинуты и сохранены в DHRx (Data Holding Registerx – это внутренние регистры, не вошедшие в карту памяти регистров). Регистр DHRх будет загружаться в регистр DORx автоматически, или от внешнего события.</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image52.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb52.png" width="407" height="112"></a> </p>
+<ul>
+<li>
+<div align="left">сдвоенный канал, имеется три возможности:</div>
+<ol>
+<li>8-ми битное разрешение с правым выравниванием: данные для первого канала загружаются в разряды [7:0] регистра DAC_DHR8RD (сохраняется в DHR1[11:4]), данные для второго канала загружаются в разряды [15:8] регистра DAC_DHR8RD (сохраняется в DHR2[11:4]); </li>
+<li>12-ти битное разрешение с левым выравниванием: данные для первого канала загружаются в разряды [15:4] регистра DAC_DHR12LD (сохраняется в DHR1[11:0]), данные для второго канала загружаются в разряды [31:20] регистра DAC_DHR12LD (сохраняется в DHR2[11:0]); </li>
+<li>12-ти битное разрешение с правым выравниванием: данные для первого канала загружаются в разряды [11:0] регистра DAC_DHR12RD (сохраняется в DHR1[11:0]),&nbsp; данные для второго канала загружаются в разряды [27:16] регистра DAC_DHR12LD (сохраняется в DHR2[11:0]); </li>
+</ol>
+</li>
+</ul>
+<p>Данные, записанные в регистр DAC_DHRyyyD, будут сдвинуты и сохранены в DHR1 и DHR2 (Data Holding Registerx – это внутренние регистры, не вошедшие в карту памяти регистров). Регистры DHR1 и DHR2 будут загружаться в регистры DOR1 и DOR2 автоматически, или от внешнего события</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image53.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb53.png" width="400" height="112"></a></p>
+<h3 align="center">Преобразование данных ЦАПом</h3>
+<p>Данные не могут быть записаны в регистры DAC_DORx напрямую, любая передача данных в ЦАП должна производится путем их загрузки в регистры DAC_DHRx (записывать надо в регистры DAC_DHR8Rx, DAC_DHR12Lx,DAC_DHR12Rx, DAC_DHR8RD, DAC_DHR12LD или DAC_DHR12LD).</p>
+<p>Данные, загруженные в регистр DAC_DHRx автоматически переписываются в регистр DAC_DORx через один цикл APB1, если разряд TENx регистра DAC_CR сброшен, или через три цикла, если разряд TENx регистра DAC_CR установлен.</p>
+<p>Когда регистр DAC_DORx загружается содержимым DAC_DHRx, преобразованное напряжение появляется на аналогов выходе спустя время Tsettling, которое зависит от напряжения питания и нагрузки, подключенной к выходу.</p>
+<p>Диаграмма для случая, когда разряд TENx сброшен:</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image54.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb54.png" width="480" height="147"></a>&nbsp;</p>
+<h3 align="center">Выходное напряжение ЦАПа</h3>
+<p>Входные цифровые данные преобразуются ЦАПом в выходное напряжение, лежащее в диапазоне от 0 до Vref+ . Зависимость выходного сигнала от входного линейная.</p>
+<p>Выходное напряжение вычисляется следующим образом:&nbsp; DACoutput =&nbsp; Vref+&nbsp; *&nbsp; (DOR / 4095)</p>
+<h3 align="center">Выбор источника запуска</h3>
+<p>Если управляющий разряд TENx установлен, включается внешний запуск преобразования (таймеры или внешний вывод контроллера). С помощью разрядов TSELx[2:0] выбирается источник запуска, как изображено ниже:</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image55.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb55.png" width="418" height="199"></a></p>
+<p>Каждый раз при обнаружении фронта запускающего сигнала, данные, хранящиеся в регистре&nbsp; DAC_DHRx будут переданы в регистр&nbsp; DAC_DORx, и он обновится через три цикла APB1.</p>
+<p>Если выбран программный запуск, преобразование начнется сразу после установки разряда SWTRIG, который сбросится аппаратно,&nbsp; после передачи данных из регистра DAC_DHRx в регистр DAC_DORx.</p>
+<p><em>Замечание:</em></p>
+<ol>
+<li><font color="#000000"><em>Разряды TSELx[2:0] нельзя изменять, если установлен ENx</em></font> </li>
+<li><em>Если выбран программный запуск, передача данных из регистра DAC_DHRx в регистр DAC_DORx занимает один цикл APB1.</em>&nbsp; </li>
+</ol>
+<p>&nbsp;</p>
+<h3 align="center">Использование DMA</h3>
+<p>&nbsp; Каждый канал может работать с DMA. Для обслуживания запросов от ЦАПа в модуле DMA предусмотрено два канала. Запрос DMA будет генерироваться от ЦАПа, когда приходит сигнал внешнего запуска (но не программный). Затем значение регистра DAC_DHRx будет перенесено в регистр DAC_DORx.</p>
+<p>В сдвоенном режиме, если установлены оба разряда DMAENx, генерируются запросы ДМА от обоих каналов. Если необходим только один запрос, то нужно установить соответствующий разряд DMAENx. </p>
+<p>Запросы ЦАПом ДМА не имеют очереди, поэтому если пришел второй внешний запуск до подтверждения последнего запроса, последний не будет обслужен (без сообщений об ошибке).</p>
+<h3 align="center">Генератор шума</h3>
+<p>&nbsp; Для генерирования шума доступен регистр LFSR (Linear Feedback Shift Register). Генератор шума выбирается установкой разрядов WAVEx[1:0]&nbsp; = 01. Предустановленное значение регистра LFSR равно 0xAAA. Этот регистр обновляется спустя три такта APB1 после каждого внешнего запуска, после выполнения специального алгоритма расчета, который приведен ниже:</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image56.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb56.png" width="425" height="174"></a></p>
+<p>Значение регистра LFSR, которое может быть скрыто полностью или частично с помощью разрядов MAMPx [3:0] регистра DAC_CR, добавляется без переполнения к содержимому регистра&nbsp; DAC_DHRx, который затем будет сохранен в регистре&nbsp; DAC_DORx.</p>
+<p>Если LFSR = 0, к нему добавляется 1 (антиблокировочный механизм).</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image57.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb57.png" width="446" height="154"></a></p>
+<p align="left"><em>Примечание: Генератор шума должен быть включен установкой разряда TENx регистра DAC_CR</em></p>
+<h3 align="center">Генератор треугольного сигнала</h3>
+<p align="center">Генерирование треугольного сигнала посредством ЦАПа выбирается записью в разряды&nbsp; WAVEx[1:0] значения “10”. Амплитуда сигнала задается разрядами MAMPx[3:0] регистра DAC_CR. После каждого внешнего запуска через три цикла APB1 происходит инкремент специального счетчика. Значение этого счетчика затем добавляется к содержимому регистра DAC_DHRx и сохраняется в DAC_DORx. Этот счетчик будет инкрементироваться пока не достигнет максимального значения, которое определяется разрядами MAMPx[3:0]. После достижения этого значения счетчик переключиться на вычитание, по достижению нуля – обратно на сложение.</p>
+<p align="center">Сброс генерирования треугольного сигнала произойдет после сброса разрядов WAVEx[1:0].</p>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image58.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb58.png" width="410" height="106"></a></p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image59.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto; padding-top: 0px" title="image" border="0" alt="image" src="./STM32 DAC. Описание модуля_files/image_thumb59.png" width="414" height="162"></a></p>
+<h3 align="center">Режим двухканального преобразования</h3>
+<p>Чтобы эффективно использовать пропускную способность шины в приложениях, требующих работу двух каналов ЦАПа, имеется три регистра (DHR8RD, DHR12RD и DHR12LD), которые обеспечивают одновременный доступ к обоим каналам.</p>
+<p>Возможно 11 способов преобразования с помощью двух каналов и этих трех регистров.</p>
+<p>Ниже приводятся эти режимы.</p>
+<p><u>Независимый запуск, без режима генерирования сигнала.</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li>включить оба канала установкой разрядов TEN1 и TEN2<font color="#000000">;</font> </li>
+<li><font color="#000000">задать источник запуска каждого из каналов установкой разрядов TSEL1[2:0] и TSEL2[2:0];</font> </li>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p>Когда придет сигнал запуска канала 1 данные из DHR1 будут перенесены в DAC_DOR1 (спустя три такта APB1).</p>
+<p>Когда придет сигнал запуска канала 2 данные из DHR2 будут перенесены в DAC_DOR2 (спустя три такта APB1).</p>
+<p><u>Независимый запуск с LFSR генерацией</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li>включить оба канала установкой разрядов TEN1 и TEN2<font color="#000000">;</font> </li>
+<li><font color="#000000">задать источник запуска каждого из каналов установкой разрядов TSEL1[2:0] и TSEL2[2:0];</font> </li>
+<li><font color="#000000">конфигурировать оба канала установкой разрядов WAVEx[1:0] в 01 и задать значение маски регистра LFSR с помощью разрядов MAMPx[3:0]; </font></li>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p>Когда придет сигнал запуска канала 1, значение счетчика LFSR1 с той же маской добавляется в регистр DHR1 и сумма переносится в DAC_DOR1 (спустя три такта APB1). После этого счетчик LFSR1 обновляется.</p>
+<p>Когда придет сигнал запуска канала 2, значение счетчика LFSR2 с той же маской добавляется в регистр DHR2 и сумма переносится в DAC_DOR2 (спустя три такта APB1). После этого счетчик LFSR2 обновляется.</p>
+<p><u>Независимый запуск с раздельной LFSR генерацией</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li>включить оба канала установкой разрядов TEN1 и TEN2<font color="#000000">;</font> </li>
+<li><font color="#000000">задать источник запуска каждого из каналов установкой разрядов TSEL1[2:0] и TSEL2[2:0];</font> </li>
+<li><font color="#000000">конфигурировать оба канала установкой разрядов WAVEx[1:0] в 01 и задать различные значение маски регистра LFSR с помощью разрядов MAMP1[3:0] и MAMP2[3:0]; </font></li>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p>Когда придет сигнал запуска канала 1, значение счетчика LFSR1 с&nbsp; маской, заданной в&nbsp; MAMP1[3:0] добавляется в регистр DHR1 и сумма переносится в DAC_DOR1 (спустя три такта APB1). После этого счетчик LFSR1 обновляется.</p>
+<p>Когда придет сигнал запуска канала 2, значение счетчика LFSR2 с маской, заданной в MAMP2[3:0] добавляется в регистр DHR2 и сумма переносится в DAC_DOR2 (спустя три такта APB1). После этого счетчик LFSR2 обновляется.</p>
+<p><u>Независимый запуск с генерированием треугольных импульсов</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li>включить оба канала установкой разрядов TEN1 и TEN2<font color="#000000">;</font> </li>
+<li><font color="#000000">задать источник запуска каждого из каналов установкой разрядов TSEL1[2:0] и TSEL2[2:0];</font> </li>
+<li><font color="#000000">конфигурировать оба канала установкой разрядов WAVEx[1:0] в 1х и задать значение максимальной амплитуды сигнала разрядами MAMPx[3:0]; </font></li>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p><u>Независимый запуск с&nbsp; генерированием различных треугольных импульсов</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li>включить оба канала установкой разрядов TEN1 и TEN2<font color="#000000">;</font> </li>
+<li><font color="#000000">задать источник запуска каждого из каналов установкой разрядов TSEL1[2:0] и TSEL2[2:0];</font> </li>
+<li><font color="#000000">конфигурировать оба канала установкой разрядов WAVEx[1:0] в 1х и задать различное значение максимальной амплитуды сигнала разрядами MAMP1[3:0] и MAMP2[3:0] ; </font></li>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p><u>Одновременный программный запуск</u></p>
+<p>Для настройки этого режима преобразования, необходимы следующие действия:</p>
+<ul>
+<li><font color="#000000">загрузить данные в нужный регистр DHR </font>(DAC_DHR12RD,DAC_DHR12LD или DAC_DHR8RD<font color="#000000">);</font> </li>
+</ul>
+<p>При такой конфигурации спустя один такт APB1 данные из регистров DHR1 и DHR2 будут перезаписаны в DAC_DOR1 и DAC_DOR2, соответственно.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»" rel="category tag">DAC</a>, <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-dac-opisanie-modulya/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="2039" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-dac-opisanie-modulya/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-dac-opisanie-modulya/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-dac-opisanie-modulya/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-dac-opisanie-modulya/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,293 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 DAC. Описание модуля_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

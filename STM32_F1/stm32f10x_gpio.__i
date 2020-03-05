@@ -1,0 +1,1 @@
+-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\main -I.\F1_main_libs -I.\STM32_SPL\inc -I.\STM32_SPL\src -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -o "stm32f10x_gpio.o" --omf_browse "stm32f10x_gpio.crf" --depend "stm32f10x_gpio.d" "STM32_SPL\src\stm32f10x_gpio.c"

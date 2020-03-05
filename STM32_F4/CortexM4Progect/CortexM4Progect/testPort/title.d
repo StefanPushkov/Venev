@@ -1,0 +1,9 @@
+title.o: title.c
+title.o: ..\Patch\stm32f4xx.h
+title.o: ..\Patch\core_cm4.h
+title.o: C:\Keil\ARM\RV31\Inc\stdint.h
+title.o: ..\Patch\core_cmInstr.h
+title.o: ..\Patch\core_cmFunc.h
+title.o: ..\Patch\core_cm4_simd.h
+title.o: ..\Patch\system_stm32f4xx.h
+title.o: ..\Patch\stm32f4xx_conf.h

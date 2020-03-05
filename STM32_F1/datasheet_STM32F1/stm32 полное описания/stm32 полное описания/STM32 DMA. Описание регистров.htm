@@ -1,0 +1,725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)http://mycontroller.ru/stm32-dma-opisanie-registrov/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 DMA. Описание регистров</title>
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 DMA. Описание регистров_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 DMA. Описание регистров»" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 DMA. Описание регистров_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 DMA. Описание регистров_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 DMA. Описание регистров_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 DMA. Описание регистров_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 DMA. Введение" href="http://mycontroller.ru/stm32-dma-vvedenie-2/">
+<link rel="next" title="STM32 DMA. Инициализация" href="http://mycontroller.ru/stm32-dma-initsializatsiya/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 DMA. Описание регистров_files/STM32 DMA. Описание регистров.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=46">
+
+<link rel="stylesheet" href="./STM32 DMA. Описание регистров_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 DMA. Описание регистров_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 DMA. Описание регистров_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 DMA. Описание регистров_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-dma-vvedenie-2/" rel="prev">STM32 DMA. Введение</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-dma-initsializatsiya/" rel="next">STM32 DMA. Инициализация</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 DMA. Описание регистров_files/STM32 DMA. Описание регистров.htm" rel="bookmark" title="Постоянная ссылка на STM32 DMA. Описание регистров">
+STM32 DMA. Описание регистров</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Для настройки контроллера DMA предусмотрено две категории регистров</p>
+<ol>
+<li>Регистры настройки и управления DMA в целом ;</li>
+<li>Регистры настройки и управления каждого канала;</li>
+</ol>
+<p><span id="more-46"></span></p>
+<p style="text-align: left;">Для настройки и управления&nbsp;DMA в целом предназначены регистры :</p>
+<ul>
+<li><strong>ISR</strong> -&nbsp; регистр флагов прерывания от каналов;</li>
+<li><strong>IFCR</strong> -&nbsp; регистр очистки флагов прерываний.</li>
+</ul>
+<p>Для каждого канала определены следующие регистры:</p>
+<ul>
+<li style="text-align: left;"><strong>CMAR </strong> — содержит указатель на место в памяти куда будут записаны (или прочитаны) данные;</li>
+<li><strong>CPAR </strong>&nbsp;- содержит указатель на переферийное устройство, которое подключено к каналу;</li>
+<li><strong>CNDTR</strong> — содержит количество байт, которые необходимо передавать;</li>
+<li><strong>CCR</strong> — управляет режимом работы канала.</li>
+</ul>
+<p><a href="./STM32 DMA. Описание регистров_files/dma1.jpg"><img class="size-full wp-image-48 aligncenter" title="dma1" src="./STM32 DMA. Описание регистров_files/dma1.jpg" alt="" width="371" height="358"></a><br>
+Научившись управлять всей этой братией(регистрами) сможем управлять контроллером DMA.</p>
+<p>Этим и займемся. Начнем с настройки адреса источника и приемника данных канала &nbsp;DMA.</p>
+<p>Рассматривать будем на примере USART1_TX, который подключен к каналу №4.</p>
+<p>Наша задача по команде от ЦПУ передать через USART1 на компьютер 64 байта посредством DMA.</p>
+<p style="text-align: left;">Итак, приступим к<a href="http://mycontroller.ru/?p=52"> ИНИЦИАЛИЗАЦИИ</a>.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»" rel="category tag">DMA</a>, <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (4) на “STM32 DMA. Описание регистров”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-359">
+     <div id="comment-359">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">stm32:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#comment-359">02.05.2012 в 20:46</a></div>
+
+      <p>Доброго времени суток! Недавно решал задачу: с двух каналов АЦП с помощью ПДП одновременно считываю данные в буфер который настраиваю в настройках ПДП, например 512 точек. Отлично точки пишуться и выводятся через уарт без проблем. Хорошо мне надо больше точек например 2048. С первого канала ПДП выводятся все точки без исключения со второго выводить меньше точно не скажу ну 1800 где то. Извиняюсь что не совсем относиться к статье.. Хочу тему эту поднять. Код выложу если интересно.<br>
+С уважением.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/?replytocom=359#respond" onclick="return addComment.moveForm(&quot;comment-359&quot;, &quot;359&quot;, &quot;respond&quot;, &quot;46&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-362">
+     <div id="comment-362">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#comment-362">03.05.2012 в 07:09</a></div>
+
+      <p>Покажите код<br>
+Можно обсудить здесь <a href="http://mycontroller.ru/forum/" rel="nofollow">http://mycontroller.ru/forum/</a></p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/?replytocom=362#respond" onclick="return addComment.moveForm(&quot;comment-362&quot;, &quot;362&quot;, &quot;respond&quot;, &quot;46&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-457">
+     <div id="comment-457">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">stm32:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#comment-457">31.05.2012 в 17:37</a></div>
+
+      <p>Добрый день! Вот привожу код.<br>
+переменные в которые пишу<br>
+#define BUF_SIZE 4096 размер буфера вот когда ставлю 512 работают оба канала нормально. Вот с этим собственно и загвоздка…<br>
+uint32_t *par1 = &amp;ADC1_buf[0];          // начало массива буфера ADC1<br>
+uint32_t *par3 = &amp;ADC3_buf[0];          // начало массива буфера ADC3<br>
+Измерения я делаю однократно пока меня для моей задачи это устраивает.</p>
+<p>void ADC_DMA_Init (void)<br>
+{<br>
+      ADC_InitTypeDef ADC_InitStructure;<br>
+      DMA_InitTypeDef DMA_InitStructure;</p>
+<p>      RCC_APB2PeriphClockCmd( RCC_APB2Periph_ADC1 |<br>
+                              RCC_APB2Periph_ADC3 |<br>
+                              RCC_APB2Periph_AFIO, ENABLE );</p>
+<p>      RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA1, ENABLE);</p>
+<p>      DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&amp;(((ADC_TypeDef*)ADC1_BASE)-&gt;DR) ;<br>
+      DMA_InitStructure.DMA_MemoryBaseAddr =(uint32_t)par1;<br>
+      DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;<br>
+      DMA_InitStructure.DMA_BufferSize = 1 ;<br>
+      DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;<br>
+      DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;<br>
+      DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;<br>
+      DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;<br>
+      DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;<br>
+      DMA_InitStructure.DMA_Priority = DMA_Priority_High;<br>
+      DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;</p>
+<p>      DMA_Init(DMA1_Channel1, &amp;DMA_InitStructure);</p>
+<p>      DMA_Cmd(DMA1_Channel1, ENABLE); </p>
+<p>      RCC_AHBPeriphClockCmd(RCC_AHBPeriph_DMA2, ENABLE);</p>
+<p>      DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&amp;(((ADC_TypeDef*)ADC3_BASE)-&gt;DR) ;<br>
+      DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)par3;<br>
+      DMA_InitStructure.DMA_DIR = DMA_DIR_PeripheralSRC;<br>
+      DMA_InitStructure.DMA_BufferSize = 1 ;<br>
+      DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;<br>
+      DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;<br>
+      DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;<br>
+      DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;<br>
+      DMA_InitStructure.DMA_Mode = DMA_Mode_Circular;<br>
+      DMA_InitStructure.DMA_Priority = DMA_Priority_High;<br>
+      DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;</p>
+<p>      DMA_Init(DMA2_Channel5, &amp;DMA_InitStructure);</p>
+<p>      DMA_Cmd(DMA2_Channel5, ENABLE); </p>
+<p>      ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;<br>
+      ADC_InitStructure.ADC_ScanConvMode = ENABLE;//<br>
+      ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;<br>
+      ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;<br>
+      ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;<br>
+      ADC_InitStructure.ADC_NbrOfChannel = 1; </p>
+<p>      ADC_Init(ADC1, &amp;ADC_InitStructure);</p>
+<p>      ADC_RegularChannelConfig(ADC1, ADC_Channel_1, 1, ADC_SampleTime_7Cycles5);//</p>
+<p>      ADC_InitStructure.ADC_Mode = ADC_Mode_Independent;<br>
+      ADC_InitStructure.ADC_ScanConvMode = ENABLE;<br>
+      ADC_InitStructure.ADC_ContinuousConvMode = ENABLE;<br>
+      ADC_InitStructure.ADC_ExternalTrigConv = ADC_ExternalTrigConv_None;<br>
+      ADC_InitStructure.ADC_DataAlign = ADC_DataAlign_Right;<br>
+      ADC_InitStructure.ADC_NbrOfChannel = 1; </p>
+<p>      ADC_Init(ADC3, &amp;ADC_InitStructure);</p>
+<p>      ADC_RegularChannelConfig(ADC3, ADC_Channel_2, 1, ADC_SampleTime_7Cycles5);// 28 вывод на плате </p>
+<p>      ADC_DMACmd(ADC1, ENABLE);<br>
+      ADC_DMACmd(ADC3, ENABLE);</p>
+<p>      ADC_Cmd(ADC1, ENABLE);<br>
+      ADC_Cmd(ADC3, ENABLE);</p>
+<p>      ADC_ResetCalibration(ADC1);                 // ожидание сброса калибровки ADC1<br>
+      while(ADC_GetResetCalibrationStatus(ADC1)); // запуск калибровки ADC1</p>
+<p>      ADC_ResetCalibration(ADC2);                 // ожидание сброса калибровки ADC3<br>
+      while(ADC_GetResetCalibrationStatus(ADC3)); // запуск калибровки ADC3</p>
+<p>      ADC_StartCalibration(ADC1);                 // ожидание завершения калибровки ADC1<br>
+      while(ADC_GetCalibrationStatus(ADC1));</p>
+<p>      ADC_StartCalibration(ADC2);                 // ожидание завершения калибровки ADC3<br>
+      while(ADC_GetCalibrationStatus(ADC3));</p>
+<p>      ADC_SoftwareStartConvCmd(ADC1, ENABLE);     // читайте даташит блин!!! Надоело комменты к каждой строчке писать;)<br>
+      ADC_SoftwareStartConvCmd(ADC3, ENABLE);<br>
+}</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/?replytocom=457#respond" onclick="return addComment.moveForm(&quot;comment-457&quot;, &quot;457&quot;, &quot;respond&quot;, &quot;46&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-689">
+     <div id="comment-689">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">stm32:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#comment-689">29.06.2012 в 12:39</a></div>
+
+      <p>И никто ничего не сказал… У друга такая же проблема…</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/?replytocom=689#respond" onclick="return addComment.moveForm(&quot;comment-689&quot;, &quot;689&quot;, &quot;respond&quot;, &quot;46&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="46" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-dma-opisanie-registrov/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,287 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 DMA. Описание регистров_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

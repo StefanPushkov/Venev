@@ -1,0 +1,630 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0066)http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 DS18B20. Введение</title>
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/script.js.Без названия"></script>
+<link rel="stylesheet" href="./STM32 DS18B20. Введение_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/old_site/feed/default.htm">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/old_site/feed/atom/default.htm"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 DS18B20. Введение»" href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/feed/default.htm">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 DS18B20. Введение_files/wordpress-file-monitor.php@ver=scan" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 DS18B20. Введение_files/bwp-syntax.css@ver=3.3.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 DS18B20. Введение_files/download-css.css@ver=1.50" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 DS18B20. Введение_files/pagenavi-css.css@ver=2.70" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/jquery.js@ver=1.7.1"></script>
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/bwp-syntax.js@ver=3.3.1"></script>
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/external-tracking.min.js@ver=6.0.2"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/old_site/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 SPI. Использование прерываний" href="http://mycontroller.ru/old_site/stm32-spi-preryivaniya/default.htm">
+<link rel="next" title="STM32 DS18B20. Базовые функции" href="http://mycontroller.ru/old_site/stm32-ds18b20-bazovyie-funktsii/default.htm">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm">
+<link rel="shortlink" href="http://mycontroller.ru/old_site/@p=1733">
+
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS BEGIN -->
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/wpsf-js.php"></script> 
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS END -->
+
+
+<link rel="stylesheet" href="./STM32 DS18B20. Введение_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 DS18B20. Введение_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 DS18B20. Введение_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<!--ipt type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</scri-->
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/old_site/default.htm">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/old_site/default.htm"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/old_site/o-sayte/default.htm"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/old_site/programmyi/default.htm"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/old_site/stm32-spi-preryivaniya/default.htm" rel="prev">STM32 SPI. Использование прерываний</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/old_site/stm32-ds18b20-bazovyie-funktsii/default.htm" rel="next">STM32 DS18B20. Базовые функции</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm" rel="bookmark" title="Постоянная ссылка на STM32 DS18B20. Введение">
+STM32 DS18B20. Введение</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>DS18B20 – это цифровой датчик температуры. Он по сути представляет собой микроконтроллер, который по команде из вне измеряет температуру и возвращает эти данные в цифровом виде.</p>
+<p>Вот некоторые его характеристики:</p>
+<ul>
+<li>Диапазон измерений от –55°C до +125°C<span style="color: #000000;">;</span></li>
+<li>Программируемое разрешение от 9 до 12 бит;</li>
+<li>Связь по одному проводу (1-Wire bus);</li>
+<li>Возможность подключения многих датчиков к одной линии;</li>
+</ul>
+<p>Внешний вид датчика и классическая схема его подключения изображены ниже:<br>
+<span id="more-1733"></span></p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image17.png"><img style="display: inline; margin-left: 0px; margin-right: 0px; border-width: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb17.png" alt="image" width="65" height="185" align="left" border="0"></a></p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image21.png"><img style="display: inline; margin-left: 0px; margin-right: 0px; border-width: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb21.png" alt="image" width="602" height="183" align="left" border="0"></a></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>Для подключения необходимо всего три провода: + питания, земля и информационный. В некоторых случаях допускается подключение по двум проводам – земля и информационный (схема с паразитным питанием).</p>
+<h3 align="center">Структура датчика</h3>
+<p align="center">Не буду сильно углубляться в структуру датчика (в интернете можно найти много информации об этом), обращу внимание на особенности, о которых нужно знать для работы с ним.</p>
+<p align="center">Каждый датчик имеет свой уникальный 64-х разрядный код. Это позволяет обращаться к конкретному датчику, если их к линии подключено несколько. Этот код можно считать с датчика.</p>
+<p align="center">Датчик имеет внутреннюю память, структура которой изображена ниже:</p>
+<p align="center"><a href="http://mycontroller.ru/old_site/wp-content/uploads/image20.png"><img style="display: inline; margin-left: 0px; margin-right: 0px; border-width: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb20.png" alt="image" width="431" height="186" align="left" border="0"></a></p>
+<p>С помощью специальной команды все 9 байт памяти можно прочитать</p>
+<p>Измеренное значение температуры хранится в байтах 0 и 1.</p>
+<p>Байт №4 – это конфигурационный регистр, который задает&nbsp; разрядность измерения температуры. Его значение записывается во внутренний еепром, поэтому при выключении питания сохраняется.</p>
+<p>&nbsp;</p>
+<p>По умолчанию установлена максимальная разрядность – 12 бит, что позволяет измерять температуру с точностью 0,0625 градуса. Недостатком максимальной разрядности является большее время преобразования – почти 1000 миллисекунд.</p>
+<p>Чтобы датчик измерил температуру – его нужно пнуть (послать специальную команду).</p>
+<p>По окончании измерения можно прочитать результат (но не раньше, а то последствия могут быть не предсказуемыми), послав специальную команду чтения внутренней памяти.</p>
+<h3 align="center">Особенности связи с датчиком</h3>
+<p>В однопроводной линии связи один мастер и один или несколько ведомых.</p>
+<p>В исходном состоянии шина подтянута к плюсу питания подтягивающим резистором.</p>
+<p>Для связи с ведомыми мастер посылает специальные импульсы. Существует три разновидности импульсов:</p>
+<ol>
+<li><span style="color: #000000;">Импульс сброса</span></li>
+<li><span style="color: #000000;">Импульс записи</span></li>
+<li><span style="color: #000000;">Импульс чтения</span></li>
+</ol>
+<p>Процесс связи начинается с посылки импульса сброса, который имеет следующий вид:</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image22.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb22.png" alt="image" width="528" height="107" border="0"></a> Мастер (т.е. наш контроллер) тянет шину к “земле” на время не менее 480 микросекунд. После отпускания шины, на ней снова будет единица. Если есть подключенный датчики, то через 15-60 микросекунд они должны притянуть шину к земле на время 60…240 микросекунд. Контроллер может это проанализировать – если импульс присутствия появился, значит хотя бы одно устройство обнаружено.</p>
+<p>После обнаружения устройства контроллер может послать команду, состоящую из 8 бит. Каждый бит передается по следующему принципу:</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image25.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb25.png" alt="image" width="520" height="129" border="0"></a> Для посылки нулевого бита контроллер должен потянуть шину к земле на время от 60 до 120 микросекунд.</p>
+<p>Для посылки единичного бита – потянуть к земле на 1 микросекунду, а затем отпустить примерно на 60 микросекунд. Т.е. посылка одного бита длиться примерно 60 микросекунд.</p>
+<p>Чтение бита данных происходит по следующему принципу:</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image24.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 DS18B20. Введение_files/image_thumb24.png" alt="image" width="534" height="118" border="0"></a> Контроллер тянет шину к земле на 1 микросекунду, отпускает, а через 15 микросекунд читает шину.</p>
+<p>Если датчик выдает ноль, то он потянет шину к земле, иначе – будет плюс питания. Затем нужно выждать 45 микросекунд.</p>
+<p>Таким образом, прием/передача одного байта будет длиться 8х60 = 480 микросекунд.</p>
+<p>&nbsp;</p>
+<p>Как видно, требования к длительности импульсов весьма жесткие, и эти требования необходимо выдержать. Если в контроллере разрешены прерывания их необходимо запретить хотя бы на время чтения/записи каждого бита, иначе связь с датчиком будет очень не устойчивой.</p>
+<h3 align="center">Сопряжение с контроллером STM32</h3>
+<p align="center">Как я понял, для связи далласа с любым контроллером есть два распространенных&nbsp; способа:</p>
+<ol>
+<li>Посредством одного вывода порта контроллера</li>
+<li>Посредство двух выводов порта контроллера с использование USARTa</li>
+</ol>
+<p align="left">Второй способ имеет свои преимущества – длительности импульсов задаются аппаратно с помощью модуля приемо-передатчика.</p>
+<p align="left">Но мне он не нравится. Во-первых, задействовано 2 пина для одной линии. Во-вторых, задействуется USART (хотя в STM32 их три, но все же…). В третьих, привязка к тем пинам, к которым подключен USART.</p>
+<p align="left">Учитывая вышесказанное, я являюсь сторонником первого метода. Его и буду освещать дальше, в следующих статьях.</p>
+<h3 align="center">Недостатки ds18b20</h3>
+<p>При работе с этими датчиками я столкнулся с одним серьезным недостатком. Как-то довелось сделать несколько десятков устройств опрашивающих далласы. Проблема заключалась в том, что датчики и линии к ним находились в зоне действия сильных электромагнитных помех (хотя линии весьма короткие – примерно 2 метра).</p>
+<p>Так вот, некоторые датчики иногда сходили с ума: начинали сами разогреваться до весьма приличной температуры (почти 100 градусов, палец обжечь можно!).</p>
+<p>Чтобы привести его в чувства, приходилось снимать питание.</p>
+<p>Чтобы решить эту проблему установил в цепи питания датчика (по плюсу питания) резистор сопротивлением примерно 100 ом. После такой доработки проблема была решена.</p>
+<p>Также установил на каждый датчик керамический конденсатор 0.1 мк паралельно питанию прямо на ноги датчика.</p>
+<p>Также эти датчики очень любят, когда их тревожат во время преобразования температуры, поэтому лучше не беспокоить его до окончания преобразования.</p>
+<p>Вот с таким «зверем» нам придется бороться, чтобы измерять температуру. В следующих статьях на эту тему напишем функции, необходимые для связи с ним.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/termodatchik-ds18b20/default.htm" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»" rel="category tag">Термодатчик ds18b20</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Один комментарий на “STM32 DS18B20. Введение”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-817">
+     <div id="comment-817">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Олег:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#comment-817">06.08.2012 в 12:03</a></div>
+
+      <p>Также эти датчики очень любят, когда их тревожат во время преобразования температуры, поэтому лучше не беспокоить его до окончания преобразования.</p>
+<p>Наверно так правильнее:  Также эти датчики «НЕ» очень любят, когда их тревожат во время преобразования температуры, поэтому лучше не беспокоить его до окончания преобразования.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/@replytocom=817#respond" onclick="return addComment.moveForm(&quot;comment-817&quot;, &quot;817&quot;, &quot;respond&quot;, &quot;1733&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/old_site/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="1733" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input type="hidden" name="refJS" value="http%3A//mycontroller.ru/old_site/stm32-spi-preryivaniya/default.htm">
+	<p style="font-size:9px;clear:both;">Spam Protection by <a href="http://mycontroller.ru/www.polepositionmarketing.com/library/wp-spamfree/default.htm" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/default.htm" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bootloader/default.htm" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/default.htm" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usart/default.htm" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dma/default.htm" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bkp-registryi/default.htm" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/rtc/default.htm" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/timer/default.htm" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/spi/default.htm" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/adc/default.htm" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dac/default.htm" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usb/default.htm" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/default.htm" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/termodatchik-ds18b20/default.htm" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/enkoder/default.htm" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/default.htm" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/default.htm" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/default.htm" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/chasyi-na-stm32f100rb/default.htm" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/umnyiy-dom/default.htm" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/waveplayer/default.htm" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/sintezator-eliza/default.htm" title="Просмотреть все записи в рубрике «Синтезатор &quot;Элиза&quot;»">Синтезатор "Элиза"</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/default.htm" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/stm32-generator-koda/default.htm" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/old_site/stm32-interfeys-i2c-opisanie/default.htm" title="STM32 Интерфейс I2C. Описание">STM32 Интерфейс I2C. Описание</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm" title="STM32 Синтезатор речи “Элиза”. Продолжение">STM32 Синтезатор речи “Элиза”. Продолжение</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm" title="STM32 Синтезатор речи “Элиза”">STM32 Синтезатор речи “Элиза”</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-novaya-versiya/default.htm" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-konstruktor-komponentov/default.htm" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<acript type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</acript></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="linkcat-2" class="widget widget_links"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Ссылки</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+
+	<ul class="xoxo blogroll">
+<li><a href="http://mycontroller.ru/old_site/forum">Форум сайта</a></li>
+
+	</ul>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+
+
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#">Contact Us</a> | <a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#">Terms of Use</a> | <a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#">Trademarks</a> | <a href="http://mycontroller.ru/old_site/stm32-ds18b20-vvedenie/default.htm#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+
+</div>
+
+<!-- 26 запросов. 0,280 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 DS18B20. Введение_files/shCore.js.Без названия"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

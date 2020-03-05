@@ -1,0 +1,4 @@
+--cpu Cortex-M4.fp "startup_stm32f4xx.o" "system_stm32f4xx.o" "title.o" --strict --scatter "first.sct" 
+--summary_stderr --info summarysizes --map --xref --callgraph --symbols 
+--info sizes --info totals --info unused --info veneers 
+ --list ".\first.map" -o "first.axf"

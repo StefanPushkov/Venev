@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<!-- saved from url=(0050)http://microtechnics.ru/stm32-uchebnyj-kurs-usart/ -->
+<html dir="ltr" lang="ru-RU"><!--<![endif]--><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="cypr-verification" content="028f9168cad39ba92620c2e9f042c19e">
+<!-- mgMt7vKM1ZqAxsK5mYmEwULVc9g -->
+<title>STM32 с нуля. USART. Пример программы. | MicroTechnics</title>
+<link rel="shortcut icon" type="image/ico" href="http://microtechnics.ru/wp-content/themes/favicon.ico">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="stylesheet" type="text/css" media="all" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/style.css">
+<link rel="pingback" href="http://microtechnics.ru/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://microtechnics.ru/wp-content/themes/twentyeleven/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента" href="http://microtechnics.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента комментариев" href="http://microtechnics.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="MicroTechnics » Лента комментариев к «STM32 с нуля. USART. Пример программы.»" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/feed/">
+<link rel="stylesheet" id="wp-quicklatex-format-css" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/quicklatex-format.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-syntax-css-css" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/wp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/pagenavi-css.css" type="text/css" media="all">
+<script async="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/analytics.js"></script><script type="text/javascript" async="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/watch.js"></script><script type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/comment-reply.js"></script>
+<script type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/wp-quicklatex-frontend.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://microtechnics.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://microtechnics.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 с нуля. Таймеры. Генерация ШИМ." href="http://microtechnics.ru/stm32-uchebnyj-kurs-tajmery-chast-2/">
+<link rel="next" title="STM32 с нуля. ADC(АЦП)." href="http://microtechnics.ru/stm32-uchebnyj-kurs-adc-acp/">
+<meta name="generator" content="WordPress 3.4.2">
+<link rel="shortlink" href="http://microtechnics.ru/?p=277">
+
+<!-- All in One SEO Pack 1.6.15.2 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="description" content="Использование USART в микроконтроллерах STM32, пример программы для работы с USART.">
+<meta name="keywords" content="stm32 usart, usart пример, usart,stm32 с нуля">
+<link rel="canonical" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32 с нуля. USART. Пример программы.   MicroTechnics.htm">
+<!-- /all in one seo pack -->
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<style type="text/css">
+			#site-title,
+		#site-description {
+			position: absolute !important;
+			clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+			clip: rect(1px, 1px, 1px, 1px);
+		}
+		</style>
+	<style type="text/css" id="custom-background-css">
+body.custom-background { background-color: #ffffff; background-image: url('http://microtechnics.ru/wp-content/uploads/2012/12/Font3.jpg'); background-repeat: repeat; background-position: top center; background-attachment: scroll; }
+</style>
+	<link type="text/css" rel="stylesheet" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/shThemeDefault.css">
+<link href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/pluso.css" type="text/css" rel="stylesheet"><script charset="UTF-8" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/pluso.js"></script><script charset="UTF-8" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/counter.php"></script><script charset="UTF-8" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/ping.php"></script><script async="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/kb.js" type="text/javascript"></script><script async="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/dct.js" type="text/javascript"></script></head>
+
+<body class="single single-post postid-277 single-format-standard custom-background single-author singular two-column right-sidebar">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<div id="site-title"><span><a href="http://microtechnics.ru/" title="MicroTechnics" rel="home">MicroTechnics</a></span></div>
+				<div id="site-description">Микроконтроллеры, электроника и программирование</div>
+			</hgroup>
+
+						<a href="http://microtechnics.ru/">
+									<img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/cropped-Header2.jpg" width="1000" height="288" alt="">
+							</a>
+			
+							<div class="only-search with-image">
+					<form method="get" id="searchform" action="http://microtechnics.ru/">
+		<label for="s" class="assistive-text">Поиск</label>
+		<input type="text" class="field" name="s" id="s" placeholder="Поиск">
+		<input type="submit" class="submit" name="submit" id="searchsubmit" value="Поиск">
+	</form>
+				</div>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Главное меню</h3>
+								<div class="skip-link"><a class="assistive-text" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#content" title="Перейти к основному содержимому">Перейти к основному содержимому</a></div>
+				<div class="skip-link"><a class="assistive-text" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#secondary" title="Перейти к дополнительному содержимому">Перейти к дополнительному содержимому</a></div>
+								<div class="menu-osnovnoe-menyu-container"><ul id="menu-osnovnoe-menyu" class="menu"><li id="menu-item-2074" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-2074"><a href="http://microtechnics.ru/">Главная</a></li>
+<li id="menu-item-2077" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2077"><a title="Разработка электроники на заказ   " href="http://microtechnics.ru/razrabotka-elektroniki/">Разработка электроники на заказ</a></li>
+<li id="menu-item-74" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-74"><a href="http://microtechnics.ru/kontakty/">Контакты</a></li>
+<li id="menu-item-73" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-73"><a href="http://microtechnics.ru/o-sajte/">О сайте</a></li>
+</ul></div>			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+							
+					<div id="breadcrumbs">
+						   							  <a href="http://microtechnics.ru/">Главная</a> »
+							  <a href="http://microtechnics.ru/category/mikrokontrollery/" title="Просмотреть все записи в рубрике «Микроконтроллеры»">Микроконтроллеры</a> » <a href="http://microtechnics.ru/category/mikrokontrollery/stm32-s-nulya/" title="Просмотреть все записи в рубрике «STM32 с нуля»">STM32 с нуля</a> » STM32 с нуля. USART. Пример программы.						 
+							 					</div>
+		
+					<nav id="nav-single">
+						<h3 class="assistive-text">Навигация по записям</h3>
+						<span class="nav-previous"><a href="http://microtechnics.ru/stm32-uchebnyj-kurs-tajmery-chast-2/" rel="prev"><span class="meta-nav">←</span> Предыдущая</a></span>
+						<span class="nav-next"><a href="http://microtechnics.ru/stm32-uchebnyj-kurs-adc-acp/" rel="next">Следующая <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-277" class="post-277 post type-post status-publish format-standard hentry category-stm32-s-nulya">
+	<header class="entry-header">
+		<h1 class="entry-title">STM32 с нуля. USART. Пример программы.</h1>
+
+				<div class="entry-meta">
+			<span class="sep">Опубликовано </span><a href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32 с нуля. USART. Пример программы.   MicroTechnics.htm" title="07:05" rel="bookmark"><time class="entry-date" datetime="2013-01-21T07:05:19+00:00" pubdate="">21.01.2013</time></a><span class="by-author"> <span class="sep"> автором </span> <span class="author vcard"><a class="url fn n" href="http://microtechnics.ru/author/aveal/" title="Посмотреть все записи автора Aveal" rel="author">Aveal</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p style="text-align: justify;">Продолжаем нашу рубрику STM32 с нуля, диодиком помигали, таймером поиграли, пора наладить связь с внешним миром ) Для этого сегодня будем разбираться как работает в микроконтроллерах STM32 USART. И, собственно, напишем для USART пример программы.</p>
+<p style="text-align: justify;">Что такое USART и зачем он нужен думаю объяснять не надо ) Так что перейдем сразу к реализации протокола в STM32. Предлагаю сначала посмотреть какие там регистры за что отвечают, а потом уже набросать какой-нибудь проектик для наглядности.</p>
+<p style="text-align: justify;">Небольшое лирическое отступление ) Как вы уже догадываетесь модуль USART STM32, как и все остальное в этих микроконтроллерах, имеет множество настроек и режимов. Тут тебе и обычный прием/передача и поддержка LIN (об этом протоколе как-нибудь поговорим отдельно). И если в AVR частенько приходилось мутить софтовые UART’ы, поскольку аппаратных просто не хватало, то в STM32F103CB их как минимум три штуки! А это уже немало. Итак, начинаем копаться в даташите.</p>
+<p style="text-align: justify;"><span id="more-277"></span></p>
+<p><strong>Регистр <em>USART_SR.</em></strong><br>
+Статусный регистр. Тут содержатся флаги, отражающие текущее состояние дел, то есть текущее состояние модуля USART. Поглядим на некоторые флаги поближе:</p>
+<p style="text-align: justify;"><em>LBD — </em>Lin Break Detection flag.<br>
+Выставляется при обнаружении брейка при использовании LIN (о том, что это такое обязательно расскажу в статье про LIN)</p>
+<p style="text-align: justify;"><em>TXE — </em>Transmit data register empty<br>
+Регистр данных пуст, пора его заполнить!</p>
+<p style="text-align: justify;"><em>TC — </em>Transmission complete<br>
+Передача завершена</p>
+<p style="text-align: justify;"><em>RXNE — </em>Read data register not empty<br>
+Приемный регистр не пуст, надо срочно читать!<br>
+Есть там еще 4 флага для классификации ошибок – ошибка кадра, наличие шума, ошибка переполнения.</p>
+<p><strong>Регистр<em> USART_DR</em>.</strong><br>
+Регистр данных.<br>
+Именно тут мы будем забирать ценнейшую информацию, которая к нам пришла извне, а также будем сюда сливать свою информацию.</p>
+<p style="text-align: justify;"><strong>Регистр <em>USART_BRR</em>.</strong><br>
+Сюда записывается скорость обмена, которую мы хотим получить.</p>
+<p style="text-align: justify;"><strong>Регистр <em>USART_CR1.</em></strong><br>
+Регистр контроля – контролирует весь процесс. Биты по порядку:</p>
+<p><em>UE — </em>Разрешение работы USART</p>
+<p><em>M</em> — Длина посылки: 0 – 8 бит данных, 1 – 9 бит данных</p>
+<p><em>Wake</em> — Будильник для USART’a – то есть метод его пробуждения</p>
+<p><em>PCE — </em>Контроль паритета – ВКЛ или ВЫКЛ</p>
+<p><em>PS — </em>Тип паритета: 0 – четный, 1 – нечетный</p>
+<p><em>PEIE — </em>Разрешение прерывания при обнаружении ошибки паритета</p>
+<p><em>TXEIE — </em>Прерывание от TXE</p>
+<p style="text-align: justify;"><em>RXNEIE — </em>Прерывание от RXNE<br>
+Ну и там еще парочка битов, разрешающих/запрещающих прием/передачу, а также бит для отправки брейка. В общем, это все есть в даташите, все наглядно, красиво и понятно ) Тут просто на всякий случай это пишу.</p>
+<p style="text-align: justify;"><strong>Регистр <em>USART_CR2</em>.</strong><br>
+Тут у нас спрятались такие биты как, включение/выключение режима работы по LIN, установка количества стоп-бит, настройки clock’а, установка параметров LIN брейка и некоторые другие.</p>
+<p><strong>Регистр <em>USART_CR3.</em></strong><br>
+А здесь биты для использования DMA и SmartCard.</p>
+<p><strong>Регистр <em>USART_GTPR.</em></strong><br>
+А в нем находятся биты, отвечающие за предделитель.</p>
+<p style="text-align: justify;">В общем, вот они, 7 регистров, которые контролируют весь модуль USART в STM32. У меня описаны довольно поверхностно, только основное, если что, спрашивайте )</p>
+<p style="text-align: justify;">Собственно, пришло время немного попрограммировать. Пусть в нашем USART примере программка опрашивает кнопку, и если ее кто-нибудь ткнет, то контроллер вышлет в USART сообщение «Pressed», а если кнопка так и будет скучать не нажатой, то во внешний мир полетит «Not Pressed».</p>
+<p style="text-align: justify;">Итак, как же мы будем это реализовывать? А очень просто (вот на всякий случай <a title="Создание проекта" href="http://microtechnics.ru/stm32-uchebnyj-kurs-keil-sozdanie-proekta/">статья про создание нового проекта</a>). Создадим функцию, которая будет опрашивать кнопку и записывать в буфер соответствующее сообщение. Кроме того, она будет в специальную переменную записывать количество байт, которые надо передать. В прерывании мы будем совать очередной байт в USART и увеличивать счетчик переданных байт. Когда значение счетчика станет равно количеству байт, которые необходимо передать (это означает, что все сообщение передано), снова будем вызывать функцию-опросчик кнопки. И так бесконечно. Перейдем к реализации алгоритма (не забываем добавить в проект файлы <em>stm32f10x_usart.h</em> и <em>stm32f10x_usart.c</em> из Standard Peripheral Library). Ниже приведен полный код примера с пояснениями:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">/****************************usart.c*********************************/</span>
+<span style="color: #339933;">#include "stm32f10x.h"</span>
+<span style="color: #339933;">#include "stm32f10x_rcc.h"</span>
+<span style="color: #339933;">#include "stm32f10x_gpio.h"</span>
+<span style="color: #339933;">#include "stm32f10x_tim.h"</span>
+<span style="color: #339933;">#include "stm32f10x_usart.h"</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #339933;">#define BAUDRATE 9600</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+GPIO_InitTypeDef port<span style="color: #339933;">;</span>
+USART_InitTypeDef usart<span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//Переменная для хранения передаваемых данных</span>
+<span style="color: #993333;">uint8_t</span> usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">10</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span>
+<span style="color: #993333;">uint16_t</span> button<span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//Счетчик переданных байт</span>
+<span style="color: #993333;">uint16_t</span> usartCounter <span style="color: #339933;">=</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>
+<span style="color: #666666; font-style: italic;">//А тут будет количество байт, которые нужно передать</span>
+<span style="color: #993333;">uint16_t</span> numOfBytes<span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #993333;">void</span> initAll<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    <span style="color: #666666; font-style: italic;">//Включаем тактирование</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_USART1<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_GPIOA<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_GPIOB<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Пины PA9 и PA10 в режиме альтернативных функций –</span>
+    <span style="color: #666666; font-style: italic;">//Rx и Tx USART’а</span>
+    GPIO_StructInit<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_AF_PP<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_9<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOA<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_IN_FLOATING<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_10<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOA<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Настройка USART, все поля оставляем дефолтными, кроме скорости обмена</span>
+    USART_StructInit<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>usart<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    usart.<span style="color: #202020;">USART_BaudRate</span> <span style="color: #339933;">=</span> BAUDRATE<span style="color: #339933;">;</span>
+    USART_Init<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>usart<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    <span style="color: #666666; font-style: italic;">//Здесь будет висеть наша кнопка</span>
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_IPD<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_2<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #666666; font-style: italic;">//Вот она, функция-опросчик кнопки</span>
+<span style="color: #993333;">void</span> setData<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    button <span style="color: #339933;">=</span> GPIO_ReadInputDataBit<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> GPIO_Pin_2<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>button <span style="color: #339933;">==</span> <span style="color: #0000dd;">0</span><span style="color: #009900;">)</span>
+    <span style="color: #009900;">{</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">0</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'N'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'o'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">2</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'t'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">3</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'P'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">4</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'r'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">5</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'e'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">6</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'s'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">7</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'s'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">8</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'e'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">9</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'d'</span><span style="color: #339933;">;</span>
+        numOfBytes <span style="color: #339933;">=</span> <span style="color: #0000dd;">10</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span>
+    <span style="color: #b1b100;">else</span>
+    <span style="color: #009900;">{</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">0</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'P'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">1</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'r'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">2</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'e'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">3</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'s'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">4</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'s'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">5</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'e'</span><span style="color: #339933;">;</span>
+        usartData<span style="color: #009900;">[</span><span style="color: #0000dd;">6</span><span style="color: #009900;">]</span> <span style="color: #339933;">=</span> <span style="color: #ff0000;">'d'</span><span style="color: #339933;">;</span>
+        numOfBytes <span style="color: #339933;">=</span> <span style="color: #0000dd;">7</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span>
+    usartCounter <span style="color: #339933;">=</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #993333;">int</span> main<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    __enable_irq <span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    initAll<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #666666; font-style: italic;">//Включаем прерывания по приему байта и по окончанию передачи</span>
+    USART_ITConfig<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_RXNE<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    USART_ITConfig<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_TC<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #666666; font-style: italic;">//Запускаем сам USART</span>
+    USART_Cmd<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #666666; font-style: italic;">//Первая установка сообщения, вне цикла</span>
+    setData<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    NVIC_EnableIRQ<span style="color: #009900;">(</span>USART1_IRQn<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #0000dd;">1</span><span style="color: #009900;">)</span>
+    <span style="color: #009900;">{</span>
+        <span style="color: #666666; font-style: italic;">//Собственно вот он весь, описанный ранее алгоритм</span>
+        <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>usartCounter <span style="color: #339933;">==</span> numOfBytes<span style="color: #009900;">)</span>
+        <span style="color: #009900;">{</span>
+            setData<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+        <span style="color: #009900;">}</span>
+        <span style="color: #b1b100;">else</span> __NOP<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #666666; font-style: italic;">//А в прерывании выдаем байт и увеличиваем счетчик</span>
+<span style="color: #993333;">void</span> USART1_IRQHandler<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>USART_GetITStatus<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_TC<span style="color: #009900;">)</span> <span style="color: #339933;">!=</span> RESET<span style="color: #009900;">)</span>
+    <span style="color: #009900;">{</span>
+        USART_SendData<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> usartData<span style="color: #009900;">[</span>usartCounter<span style="color: #009900;">]</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+        usartCounter<span style="color: #339933;">++;</span>
+    <span style="color: #009900;">}</span>
+    USART_ClearITPendingBit<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_TC<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/****************************End of file****************************/</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Как видите все довольно просто и понятно =) Давайте посмотрим что получилось — компилируем и запускаем отладчик. Там идем в <em>View-&gt;Serial Windows</em> и выбираем наш USART – то есть USART номер один. В правом нижнем углу появится окошко, в котором будем видеть все сообщения, которые выдает USART. Запускаем программу и эмулируем нажатие кнопки, выставляя нужный бит в окне GPIOB. И вот что получилось:</p>
+<p><a href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32-USART.bmp"><img class="alignnone size-full wp-image-278" title="STM32 USART" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32-USART.bmp" alt="Использование USART"></a></p>
+<p style="text-align: justify;">Согласен, не слишком наглядно и красиво, но то, что программа работает как мы и задумали, не вызывает ни малейших сомнений ) С передачей все прошло гладко, давайте попробуем что-нибудь принять. Итак, реализуем еще один пример.</p>
+<p style="text-align: justify;">Пусть будет такая задача – в зависимости от принятого байта зажигать один из двух диодов. То есть приняли «1» — зажгли первый, приняли «2» — зажгли второй. Тут мы снова прибегнем к языку сценариев (об этом писалось в одной из предыдущих статей — <a title="Отладка" href="http://microtechnics.ru/stm32-uchebnyj-kurs-otladka-programmy-v-keil/">вот в этой</a>) для эмуляции приему сообщения по USART. Создаем файл usart.ini и заполняем его следующим кодом:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+func <span style="color: #993333;">void</span> usart1<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    S1IN <span style="color: #339933;">=</span> <span style="color: #ff0000;">'1'</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+func <span style="color: #993333;">void</span> usart2<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    S1IN <span style="color: #339933;">=</span> <span style="color: #ff0000;">'2'</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span></pre></td></tr></tbody></table></div>
+
+<p style="text-align: justify;">Кода немного, но достаточно для нашей цели =)<br>
+S1IN – вход для эмуляции входа последовательного порта. Таким образом, вызвав в командной строке функцию usart1() получим на вход USART’a – «1», а вызвав usart2() – получим «2».<br>
+Теперь код основной программы:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #808080; font-style: italic;">/****************************usart1.c*********************************/</span>
+<span style="color: #339933;">#include "stm32f10x.h" </span>
+<span style="color: #339933;">#include "stm32f10x_rcc.h"</span>
+<span style="color: #339933;">#include "stm32f10x_gpio.h"</span>
+<span style="color: #339933;">#include "stm32f10x_usart.h"</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #339933;">#define BAUDRATE	9600</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+GPIO_InitTypeDef port<span style="color: #339933;">;</span>
+USART_InitTypeDef usart<span style="color: #339933;">;</span>
+<span style="color: #993333;">uint8_t</span> usartData<span style="color: #339933;">;</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #993333;">void</span> initAll<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_USART1<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_GPIOA<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    RCC_APB2PeriphClockCmd<span style="color: #009900;">(</span>RCC_APB2Periph_GPIOB<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    GPIO_StructInit<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_AF_PP<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_9<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOA<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_IN_FLOATING<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_10<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOA<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    USART_StructInit<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>usart<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    usart.<span style="color: #202020;">USART_BaudRate</span> <span style="color: #339933;">=</span> BAUDRATE<span style="color: #339933;">;</span>
+    USART_Init<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>usart<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_Out_PP<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_1<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+&nbsp;
+    port.<span style="color: #202020;">GPIO_Mode</span> <span style="color: #339933;">=</span> GPIO_Mode_Out_PP<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Pin</span> <span style="color: #339933;">=</span> GPIO_Pin_2<span style="color: #339933;">;</span>
+    port.<span style="color: #202020;">GPIO_Speed</span> <span style="color: #339933;">=</span> GPIO_Speed_2MHz<span style="color: #339933;">;</span>
+    GPIO_Init<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>port<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #666666; font-style: italic;">//Пока все как обычно, ничего нового</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #993333;">int</span> main<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    __enable_irq <span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    initAll<span style="color: #009900;">(</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    USART_ITConfig<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_RXNE<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    USART_Cmd<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> ENABLE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    NVIC_EnableIRQ<span style="color: #009900;">(</span>USART1_IRQn<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+    <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #0000dd;">1</span><span style="color: #009900;">)</span>
+    <span style="color: #009900;">{</span>
+    	<span style="color: #666666; font-style: italic;">//Если приняли «1» зажигаем диод 1 и гасим диод 2,</span>
+	<span style="color: #666666; font-style: italic;">//приняли «2» - все наоборот</span>
+	<span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>usartData <span style="color: #339933;">==</span> <span style="color: #ff0000;">'1'</span><span style="color: #009900;">)</span>
+	<span style="color: #009900;">{</span>
+            GPIO_SetBits<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> GPIO_Pin_1<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+	    GPIO_ResetBits<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> GPIO_Pin_2<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">}</span>
+	<span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>usartData <span style="color: #339933;">==</span> <span style="color: #ff0000;">'2'</span><span style="color: #009900;">)</span>
+	<span style="color: #009900;">{</span>
+	    GPIO_SetBits<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> GPIO_Pin_2<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+	    GPIO_ResetBits<span style="color: #009900;">(</span>GPIOB<span style="color: #339933;">,</span> GPIO_Pin_1<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+	<span style="color: #009900;">}</span>
+    <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/*******************************************************************/</span>
+<span style="color: #993333;">void</span> USART1_IRQHandler<span style="color: #009900;">(</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+    <span style="color: #666666; font-style: italic;">//Проверяем, действительно ли прерывание вызвано приемом нового байта</span>
+    <span style="color: #b1b100;">if</span> <span style="color: #009900;">(</span>USART_GetITStatus<span style="color: #009900;">(</span>USART1<span style="color: #339933;">,</span> USART_IT_RXNE<span style="color: #009900;">)</span> <span style="color: #339933;">!=</span> RESET<span style="color: #009900;">)</span>
+    <span style="color: #009900;">{</span>	
+	usartData <span style="color: #339933;">=</span> USART_ReceiveData<span style="color: #009900;">(</span>USART1<span style="color: #009900;">)</span><span style="color: #339933;">;</span>	
+    <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #808080; font-style: italic;">/****************************End of file****************************/</span></pre></td></tr></tbody></table></div>
+
+<p>Опять все очень несложно, даже комментировать толком не пришлось )</p>
+<p style="text-align: justify;">Запускаем отладчик Keil, настраиваем логический анализатор на порты PB1 и PB2, подключаем наш файл .ini (написав в командной строке include usart.ini) и поочередно вызываем функции <em>usart1()</em> и <em>usart2()</em>. Вот что из этого безобразия вышло:</p>
+<p><a href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32-Keil-USART.bmp"><img class="alignnone size-full wp-image-279" title="STM32 Keil USART" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32-Keil-USART.bmp" alt="Прием байта по USART"></a><br>
+<em>(Тыкайте на картинку для увеличения, а то так ничего толком не видно)</em></p>
+<p style="text-align: justify;">То есть не вышло абсолютно ничего. Можно долго ломать голову, где же косяк в программе, а ответ прост. Почему-то логический анализатор иногда отказывается работать правильно. В общем, раз на раз не приходится. В таких случаях, прежде чем мучать себя отлавливанием несуществующей ошибки, открываем окно GPIOB &nbsp;и видим, что на самом деле все работает корректно:</p>
+<p><a href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/USART-Primer.bmp"><img class="alignnone size-full wp-image-280" title="USART Пример" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/USART-Primer.bmp" alt="GPIOB"></a></p>
+<p>Диоды мигают так как надо )</p>
+<p style="text-align: justify;">Итак, мы разобрались с работой USART, с приемом и передачей, следите за развитием событий в следующих статьях )</p>
+			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		Запись опубликована автором <a href="http://microtechnics.ru/author/aveal/">Aveal</a> в рубрике <a href="http://microtechnics.ru/category/mikrokontrollery/stm32-s-nulya/" title="Просмотреть все записи в рубрике «STM32 с нуля»" rel="category tag">STM32 с нуля</a>. Добавьте в закладки <a href="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/STM32 с нуля. USART. Пример программы.   MicroTechnics.htm" title="Постоянная ссылка: STM32 с нуля. USART. Пример программы." rel="bookmark">постоянную ссылку</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-277 -->
+					
+					<div class="sample-posts">
+					<h3>Похожие статьи:</h3>
+					<ul>					<li><a href="http://microtechnics.ru/stm32-i-displej-zagruzka-izobrazheniya/" rel="bookmark" title="STM32 и дисплей. Загрузка изображения.">STM32 и дисплей. Загрузка изображения.</a></li>
+										<li><a href="http://microtechnics.ru/stm32-discovery-podklyuchenie-otladochnoj-platy/" rel="bookmark" title="STM32 Discovery. Подключение отладочной платы.">STM32 Discovery. Подключение отладочной платы.</a></li>
+										<li><a href="http://microtechnics.ru/stm32-uchebnyj-kurs-otladka-programmy-v-keil/" rel="bookmark" title="STM32 с нуля. Отладка в Keil.">STM32 с нуля. Отладка в Keil.</a></li>
+										<li><a href="http://microtechnics.ru/graficheskij-displej-i-touchscreen/" rel="bookmark" title="Графический дисплей и touchscreen.">Графический дисплей и touchscreen.</a></li>
+										<li><a href="http://microtechnics.ru/stm32-i-lcd-rabota-s-graficheskim-displeem/" rel="bookmark" title="STM32 и LCD. Работа с графическим дисплеем.">STM32 и LCD. Работа с графическим дисплеем.</a></li>
+					</ul></div>
+					
+					<h4 style="text-align: left;"><span style="color: #CD0000; font-size: 14pt;">Понравилась статья? Поделись с друзьями!</span></h4>
+					<div class="pluso pluso-theme-bewel"><div class="pluso-more-container"><a class="pluso-more" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#"></a><ul class="pluso-counter-container"><li></li><li class="pluso-counter">0</li><li></li></ul></div><a class="pluso-vkontakte" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="ВКонтакте"></a><a class="pluso-facebook" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="Facebook"></a><a class="pluso-twitter" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="Twitter"></a><a class="pluso-google" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="Google+"></a><a class="pluso-moimir" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="Мой Мир@Mail.Ru"></a><a class="pluso-odnoklassniki" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="Одноклассники"></a><a class="pluso-livejournal" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="LiveJournal"></a><a class="pluso-liveinternet" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="LiveInternet"></a><a class="pluso-bookmark" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#" title="В закладки"></a></div>
+<script type="text/javascript">if(!window.pluso){pluso={version:'0.9.2',url:'http://share.pluso.ru/'};h=document.getElementsByTagName('head')[0];l=document.createElement('link');l.href=pluso.url+'pluso.css';l.type='text/css';l.rel='stylesheet';s=document.createElement('script');s.charset='UTF-8';s.src=pluso.url+'pluso.js';h.appendChild(l);h.appendChild(s)}</script>
+						<div id="comments">
+	
+	
+			<div id="comments-title">
+			<span>STM32 с нуля. USART. Пример программы.</span>: 13 комментариев		</div>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-45">
+		<article id="comment-45" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/7aa0a2d331c4442d3ad1c8cae91927e5" class="avatar avatar-68 photo" height="68" width="68"><span class="fn"><noindex><a target="_blank" rel="nofollow" href="http://microtechnics.ru/goto/http://alisa-alexeewa.com/" class="url">Алиса Алексеева</a></noindex></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-45"><time pubdate="" datetime="2013-01-22T00:05:07+00:00">22.01.2013 в 00:05</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Ну, я мало че поняла <img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/icon_smile.gif" alt=":)" class="wp-smiley"> , но думаю полезно <img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=45#respond" onclick="return addComment.moveForm(&quot;comment-45&quot;, &quot;45&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-46">
+		<article id="comment-46" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-46"><time pubdate="" datetime="2013-01-22T00:30:48+00:00">22.01.2013 в 00:30</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>=)</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=46#respond" onclick="return addComment.moveForm(&quot;comment-46&quot;, &quot;46&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+</ul>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-64">
+		<article id="comment-64" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/b37e8cd3aacffa10034250124b2231d9" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">andries5</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-64"><time pubdate="" datetime="2013-01-24T00:20:27+00:00">24.01.2013 в 00:20</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>port.GPIO_Mode = GPIO_Mode_AF_PP;<br>
+port.GPIO_Pin = GPIO_Pin_10;</p>
+<p>А разве не вход должен быть?</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=64#respond" onclick="return addComment.moveForm(&quot;comment-64&quot;, &quot;64&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-69">
+		<article id="comment-69" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-69"><time pubdate="" datetime="2013-01-24T09:33:44+00:00">24.01.2013 в 09:33</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Можно и как вход настроить, даже, наверное, так лучше — нагляднее)</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=69#respond" onclick="return addComment.moveForm(&quot;comment-69&quot;, &quot;69&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+</ul>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-4851">
+		<article id="comment-4851" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/0addc3beacb880b47f6a2ca4237d3065" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Гордон Фриман</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-4851"><time pubdate="" datetime="2013-08-21T16:28:23+00:00">21.08.2013 в 16:28</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>У меня такая херотень с USART: Имеется код, который работает, но инициируется не понятно. Я использую библиотечные функции для инициирования  USART, но при установке скорости 9600 в терминале наблюдаю 4 непонятных байта, когда я высылал 1. И прикол в том что у меня появился нормальный прием, когда я выставил ему в коде скорость 28800, т.е 3 раза большую, хотя в терминалке стоит 9600, остальное стандартно и дефолтно. Смотрел по асциллу и на самом деле скорость USART у меня была в 3 раза занижена. В чем может быть дело, если при вызове библиотечных функций скорость должна быть 9600 при любой частоте контроллера?</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=4851#respond" onclick="return addComment.moveForm(&quot;comment-4851&quot;, &quot;4851&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment odd alt depth-2" id="li-comment-4946">
+		<article id="comment-4946" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/812c5d4142f7c1933fd3589cfda8d2a8" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Виталик</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-4946"><time pubdate="" datetime="2013-08-23T18:26:50+00:00">23.08.2013 в 18:26</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Вибачте, що українською (переведете)))))<br>
+це може бути пов’язано з тим, що у файлі  system_stm32бла.c частота HSE_VALUE зовнішнього джерела встановлена 25 МГц, а на платі кварц стоїть 8 МГц. Це приблизно дає різницю втричі.</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=4946#respond" onclick="return addComment.moveForm(&quot;comment-4946&quot;, &quot;4946&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment even depth-3" id="li-comment-5012">
+		<article id="comment-5012" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/0addc3beacb880b47f6a2ca4237d3065(1)" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Гордон Фриман</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-5012"><time pubdate="" datetime="2013-08-24T21:46:29+00:00">24.08.2013 в 21:46</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Да, на плате стоит внешний кварц на 8. Я тоже подозреваю на стартапный файл. Программирую я под Keil 4, и, кстати, контроллеру похер на то что в настройках проекта у меня стоит 8 Мгц если подключен опять же стартапный файл — он будет ориентировать тактирование по этому файлу</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=5012#respond" onclick="return addComment.moveForm(&quot;comment-5012&quot;, &quot;5012&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+	<li class="comment odd alt depth-3" id="li-comment-5055">
+		<article id="comment-5055" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/0addc3beacb880b47f6a2ca4237d3065(1)" class="avatar avatar-39 photo" height="39" width="39"><span class="fn">Гордон Фриман</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-5055"><time pubdate="" datetime="2013-08-26T09:27:39+00:00">26.08.2013 в 09:27</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Кстати, спасибо за помощь. Проблема была решена. Дело было действительно в этом параметре</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=5055#respond" onclick="return addComment.moveForm(&quot;comment-5055&quot;, &quot;5055&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-8218">
+		<article id="comment-8218" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/9a6ba5bc8190da642c5e1b5de1c58e1e" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Дима</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-8218"><time pubdate="" datetime="2014-05-09T07:28:23+00:00">09.05.2014 в 07:28</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Здравствуйте<br>
+на сайте ST в мануалах на контроллеры отсутствует информация о регистрах периферийных устройств с их описанием. Видимо это вынесено в отдельные документы. Напишите, пожалуйста, в каких документах можно найти описание периферии контроллеров, а так же библиотек</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=8218#respond" onclick="return addComment.moveForm(&quot;comment-8218&quot;, &quot;8218&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-8219">
+		<article id="comment-8219" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-8219"><time pubdate="" datetime="2014-05-09T12:48:19+00:00">09.05.2014 в 12:48</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Описание регистров — в документе reference manual на конкретное семейство микроконтроллеров. <noindex><a target="_blank" rel="nofollow" href="http://microtechnics.ru/goto/http://www.st.com/web/en/resource/technical/document/reference_manual/CD00171190.pdf">http://www.st.com/web/en/resource/technical/document/reference_manual/CD00171190.pdf</a></noindex> — вот, например, для STM32F10x.</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=8219#respond" onclick="return addComment.moveForm(&quot;comment-8219&quot;, &quot;8219&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+</ul>
+</li>
+	<li class="comment even thread-even depth-1" id="li-comment-8474">
+		<article id="comment-8474" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/faa62b421fb9f3a73439ba6a73321396" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Паша</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-8474"><time pubdate="" datetime="2014-09-29T09:15:07+00:00">29.09.2014 в 09:15</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Буду признателен если объясните:<br>
+1) написал этот пример для STM32f050 где все таймеры и нужный мне USART сидят на одной единственной шине APB.<br>
+когда делал Шим тактировал соответственно: RCC_APB1Periph_TIM2     все работало.<br>
+также по идее надо и для USART RCC_APB1Periph_USART1 , но тут компилятор начинает ругаться и говорит что нужно тактировать APB2, эксперемента ради затактировал APB2 заработало. но как так получается если по даташиту там одна единственная шина????<br>
+2) в терминале после запуска выходит<br>
+NotPressed и дальше хаотичный набор символов,<br>
+т.е. я так понимаю при первом вызове setData() все нормально, а в цикле уже совсем не то…..???</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=8474#respond" onclick="return addComment.moveForm(&quot;comment-8474&quot;, &quot;8474&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-aveal bypostauthor odd alt depth-2" id="li-comment-8475">
+		<article id="comment-8475" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="Aveal" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/Aveal_avatar-39x39.jpg" class="avatar avatar-39 photo" height="39" width="39"><span class="fn"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a></span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-8475"><time pubdate="" datetime="2014-09-29T15:48:47+00:00">29.09.2014 в 15:48</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Видимо в библиотеке определены дефайны под APB2, судя по документации там действительно только шины AHB и APB есть.</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=8475#respond" onclick="return addComment.moveForm(&quot;comment-8475&quot;, &quot;8475&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+</ul>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-8481">
+		<article id="comment-8481" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/faa62b421fb9f3a73439ba6a73321396" class="avatar avatar-68 photo" height="68" width="68"><span class="fn">Паша</span> <span class="says">говорит</span> <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#comment-8481"><time pubdate="" datetime="2014-10-06T12:42:40+00:00">06.10.2014 в 12:42</time></a>:
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Вопрос может глупый, но есть желание  полностью разобраться, в первом примере передаем usartData,<br>
+8битная переменная типа «unsigned int»<br>
+а как например передать результат с 12битного АЦП,<br>
+строку char[4]=»Start»; или просто int c=500; ?</p>
+</div>
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?replytocom=8481#respond" onclick="return addComment.moveForm(&quot;comment-8481&quot;, &quot;8481&quot;, &quot;respond&quot;, &quot;277&quot;)">Ответить <span>↓</span></a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li>
+		</ol>
+
+		
+	
+						<div style="display:none;">
+<br>
+<br>
+<br>
+<form action="http://microtechnics.ru/wp-comments-post.php" method="post" id="commentform1" style="display:none;">
+<p><input name="author" id="author" value="" size="22" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" aria-required="true" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" value="" size="22" type="text">
+<label for="url"><small>Website</small></label></p>
+<p><textarea name="comment" id="comment" cols="58" rows="10"></textarea></p>
+<p><input name="submit" id="submit" value="Submit Comment" type="submit">
+<input name="comment_post_ID" value="277" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="66c18daeff" type="hidden"></p>
+</form>
+</div>
+			<div id="respond">
+				<h3 id="reply-title">Добавить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/#respond" style="display:none;">Отменить ответ</a></small></h3>
+									<form action="http://microtechnics.ru/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Ваш e-mail не будет опубликован. Обязательные поля помечены <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Имя</label> <span class="required">*</span><input id="author" name="author" type="text" value="" size="30" aria-required="true"></p>
+<p class="comment-form-email"><label for="email">E-mail</label> <span class="required">*</span><input id="email" name="email" type="text" value="" size="30" aria-required="true"></p>
+<p class="comment-form-url"><label for="url">Сайт</label><input id="url" name="url" type="text" value="" size="30"></p>
+												<p class="comment-form-comment"><label for="comment">Комментарий</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">Можно использовать следующие <abbr title="HyperText Markup Language">HTML</abbr>-теги и атрибуты:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" type="submit" id="submit" value="Отправить комментарий">
+							<input type="hidden" name="comment_post_ID" value="277" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+						</p>
+						<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="3fbe71c5b9"></p>					</form>
+							</div><!-- #respond -->
+						
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+
+		<div id="secondary" class="widget-area" role="complementary">
+			<aside id="text-5" class="widget widget_text">			<div class="textwidget"><p align="center"><font style="color:#1E90FF;font-family:Arial;letter-spacing:-1px;font-size:11pt;"><strong>MicroTechnics  в соц. сетях, присоединяйтесь!</strong></font></p>
+<noindex><a href="http://vk.com/microtechnics" rel="nofollow"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/vkontakte.png" style="margin-left:15px"></a></noindex>
+<noindex><a href="https://twitter.com/MicroTechnics" rel="nofollow"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/twitter.png"></a></noindex>
+<noindex><a href="http://feeds.feedburner.com/Microtechnics" rel="nofollow"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/feed.png"></a></noindex></div>
+		</aside><aside id="categories-2" class="widget widget_categories"><div class="widget-title">Рубрики</div>		<ul>
+	<li class="cat-item cat-item-37"><a href="http://microtechnics.ru/category/3d-pechat/" title="Просмотреть все записи в рубрике «3D-печать»">3D-печать</a>
+</li>
+	<li class="cat-item cat-item-36"><a href="http://microtechnics.ru/category/mikrokontrollery/" title="Просмотреть все записи в рубрике «Микроконтроллеры»">Микроконтроллеры</a>
+<ul class="children">
+	<li class="cat-item cat-item-22"><a href="http://microtechnics.ru/category/mikrokontrollery/avr/" title="Просмотреть все записи в рубрике «AVR»">AVR</a>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://microtechnics.ru/category/mikrokontrollery/msp430/" title="Просмотреть все записи в рубрике «MSP430»">MSP430</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://microtechnics.ru/category/mikrokontrollery/stm32-s-nulya/" title="Просмотреть все записи в рубрике «STM32 с нуля»">STM32 с нуля</a>
+</li>
+	<li class="cat-item cat-item-40"><a href="http://microtechnics.ru/category/mikrokontrollery/stm32cube/" title="Просмотреть все записи в рубрике «STM32Cube»">STM32Cube</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://microtechnics.ru/category/mikrokontrollery/stm23f3/" title="Просмотреть все записи в рубрике «STM32F3»">STM32F3</a>
+</li>
+	<li class="cat-item cat-item-18"><a href="http://microtechnics.ru/category/mikrokontrollery/programmirovanie-stm32f4/" title="Просмотреть все записи в рубрике «Программирование STM32F4»">Программирование STM32F4</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-39"><a href="http://microtechnics.ru/category/nejronnye-seti/" title="Просмотреть все записи в рубрике «Нейронные сети»">Нейронные сети</a>
+</li>
+	<li class="cat-item cat-item-17"><a href="http://microtechnics.ru/category/osnovy-elektroniki/" title="Просмотреть все записи в рубрике «Основы электроники»">Основы электроники</a>
+<ul class="children">
+	<li class="cat-item cat-item-30"><a href="http://microtechnics.ru/category/osnovy-elektroniki/bipolyarnyj-tranzistor/" title="Просмотреть все записи в рубрике «Биполярный транзистор»">Биполярный транзистор</a>
+</li>
+	<li class="cat-item cat-item-34"><a href="http://microtechnics.ru/category/osnovy-elektroniki/zapominayushhie-ustrojstva/" title="Просмотреть все записи в рубрике «Запоминающие устройства»">Запоминающие устройства</a>
+</li>
+	<li class="cat-item cat-item-33"><a href="http://microtechnics.ru/category/osnovy-elektroniki/operacionnyj-usilitel/" title="Просмотреть все записи в рубрике «Операционный усилитель»">Операционный усилитель</a>
+</li>
+	<li class="cat-item cat-item-31"><a href="http://microtechnics.ru/category/osnovy-elektroniki/polevoj-tranzistor/" title="Просмотреть все записи в рубрике «Полевой транзистор»">Полевой транзистор</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://microtechnics.ru/category/osnovy-elektroniki/prochee/" title="Просмотреть все записи в рубрике «Прочее»">Прочее</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://microtechnics.ru/category/otladochnye-platy/" title="Просмотреть все записи в рубрике «Отладочные платы»">Отладочные платы</a>
+<ul class="children">
+	<li class="cat-item cat-item-16"><a href="http://microtechnics.ru/category/otladochnye-platy/mini-stm32/" title="Просмотреть все записи в рубрике «Mini STM32»">Mini STM32</a>
+</li>
+	<li class="cat-item cat-item-27"><a href="http://microtechnics.ru/category/otladochnye-platy/msp430-launchpad/" title="Просмотреть все записи в рубрике «MSP430 LaunchPad»">MSP430 LaunchPad</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32-discovery/" title="Просмотреть все записи в рубрике «STM32 Discovery»">STM32 Discovery</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32f3-discovery/" title="Просмотреть все записи в рубрике «STM32F3 Discovery»">STM32F3 Discovery</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://microtechnics.ru/category/otladochnye-platy/stm32f4-discovery/" title="Просмотреть все записи в рубрике «STM32F4 Discovery»">STM32F4 Discovery</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-38"><a href="http://microtechnics.ru/category/programmirovanie/" title="Просмотреть все записи в рубрике «Программирование»">Программирование</a>
+<ul class="children">
+	<li class="cat-item cat-item-35"><a href="http://microtechnics.ru/category/programmirovanie/opengl/" title="Просмотреть все записи в рубрике «OpenGL»">OpenGL</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://microtechnics.ru/category/programmirovanie/prilozheniya-qt/" title="Просмотреть все записи в рубрике «Приложения QT»">Приложения QT</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/" title="Просмотреть все записи в рубрике «Разработка электроники»">Разработка электроники</a>
+<ul class="children">
+	<li class="cat-item cat-item-21"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/altium-designer/" title="Просмотреть все записи в рубрике «Altium Designer»">Altium Designer</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://microtechnics.ru/category/razrabotka-elektroniki/poleznye-algoritmy/" title="Просмотреть все записи в рубрике «Полезные алгоритмы»">Полезные алгоритмы</a>
+</li>
+</ul>
+</li>
+		</ul>
+</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<div class="widget-title">Свежие записи</div>		<ul>
+				<li><a href="http://microtechnics.ru/samoorganizuyushhiesya-karty-koxonena-chast-2/" title="Самоорганизующиеся карты Кохонена. Часть 2.">Самоорганизующиеся карты Кохонена. Часть 2.</a></li>
+				<li><a href="http://microtechnics.ru/samoorganizuyushhiesya-karty-koxonena-chast-1/" title="Самоорганизующиеся карты Кохонена. Часть 1.">Самоорганизующиеся карты Кохонена. Часть 1.</a></li>
+				<li><a href="http://microtechnics.ru/sozdanie-gerber-fajlov-v-altium-designer/" title="Создание Gerber файлов в Altium Designer.">Создание Gerber файлов в Altium Designer.</a></li>
+				<li><a href="http://microtechnics.ru/stm32cube-priem-i-peredacha-dannyx-po-usart/" title="STM32Cube. Прием и передача данных по USART.">STM32Cube. Прием и передача данных по USART.</a></li>
+				<li><a href="http://microtechnics.ru/stm32-i-usb-audio-device-class/" title="STM32 и USB. Audio device class.">STM32 и USB. Audio device class.</a></li>
+				</ul>
+		</aside><aside id="calendar-2" class="widget widget_calendar"><div class="widget-title">&nbsp;</div><div id="calendar_wrap"><table id="wp-calendar">
+	<caption>Июнь 2015</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Понедельник">Пн</th>
+		<th scope="col" title="Вторник">Вт</th>
+		<th scope="col" title="Среда">Ср</th>
+		<th scope="col" title="Четверг">Чт</th>
+		<th scope="col" title="Пятница">Пт</th>
+		<th scope="col" title="Суббота">Сб</th>
+		<th scope="col" title="Воскресенье">Вс</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://microtechnics.ru/2015/04/" title="Посмотреть записи за Апрель 2015">« Апр</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr><td id="today">1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td>
+	</tr>
+	<tr>
+		<td>8</td><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td>
+	</tr>
+	<tr>
+		<td>15</td><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td>
+	</tr>
+	<tr>
+		<td>22</td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td>
+	</tr>
+	<tr>
+		<td>29</td><td>30</td>
+		<td class="pad" colspan="5">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="archives-2" class="widget widget_archive"><div class="widget-title">Архивы</div>		<ul>
+			<li><a href="http://microtechnics.ru/2015/04/" title="Апрель 2015">Апрель 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/03/" title="Март 2015">Март 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/02/" title="Февраль 2015">Февраль 2015</a></li>
+	<li><a href="http://microtechnics.ru/2015/01/" title="Январь 2015">Январь 2015</a></li>
+	<li><a href="http://microtechnics.ru/2014/12/" title="Декабрь 2014">Декабрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/11/" title="Ноябрь 2014">Ноябрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/10/" title="Октябрь 2014">Октябрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/09/" title="Сентябрь 2014">Сентябрь 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/08/" title="Август 2014">Август 2014</a></li>
+	<li><a href="http://microtechnics.ru/2014/02/" title="Февраль 2014">Февраль 2014</a></li>
+	<li><a href="http://microtechnics.ru/2013/12/" title="Декабрь 2013">Декабрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/11/" title="Ноябрь 2013">Ноябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/10/" title="Октябрь 2013">Октябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/09/" title="Сентябрь 2013">Сентябрь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/08/" title="Август 2013">Август 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/07/" title="Июль 2013">Июль 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/06/" title="Июнь 2013">Июнь 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/05/" title="Май 2013">Май 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/04/" title="Апрель 2013">Апрель 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/03/" title="Март 2013">Март 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/02/" title="Февраль 2013">Февраль 2013</a></li>
+	<li><a href="http://microtechnics.ru/2013/01/" title="Январь 2013">Январь 2013</a></li>
+		</ul>
+</aside><aside id="recent-comments-2" class="widget widget_recent_comments"><div class="widget-title">Свежие комментарии</div><ul id="recentcomments"><li class="recentcomments"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a> к записи <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-keil-sozdanie-proekta/#comment-8958">STM32 с нуля. Keil. Создание проекта.</a></li><li class="recentcomments">Sergey к записи <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-keil-sozdanie-proekta/#comment-8957">STM32 с нуля. Keil. Создание проекта.</a></li><li class="recentcomments"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a> к записи <a href="http://microtechnics.ru/stm32-uchebnyj-kurs-keil-sozdanie-proekta/#comment-8956">STM32 с нуля. Keil. Создание проекта.</a></li><li class="recentcomments"><a href="http://microtechnics.ru/" rel="external nofollow" class="url">Aveal</a> к записи <a href="http://microtechnics.ru/stm32cube-tajmer-i-preryvaniya/#comment-8955">STM32Cube. Таймер и прерывания.</a></li><li class="recentcomments">Богдан к записи <a href="http://microtechnics.ru/altium-designer-10-dobavlenie-novogo-komponenta/#comment-8954">Altium Designer 10. Добавление нового компонента.</a></li></ul></aside><aside id="meta-2" class="widget widget_meta"><div class="widget-title">Мета</div>			<ul>
+			<li><a href="http://microtechnics.ru/wp-login.php?action=register">Регистрация</a></li>			<li><a href="http://microtechnics.ru/wp-login.php">Войти</a></li>
+			<li><a href="http://microtechnics.ru/feed/" title="Подпишитесь на RSS-ленту этого сайта"><abbr title="Really Simple Syndication">RSS</abbr> записей</a></li>
+			<li><a href="http://microtechnics.ru/comments/feed/" title="Последние комментарии ко всем записям в RSS"><abbr title="Really Simple Syndication">RSS</abbr> комментариев</a></li>
+						</ul>
+</aside><aside id="text-2" class="widget widget_text">			<div class="textwidget"><!-- begin of Top100 code -->
+<noindex>
+<script id="top100Counter" type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/top100.jcn"></script><a href="http://top100.rambler.ru/home?id=2836010" target="_blank"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/top100.scn" title="Rambler&#39;s Top100" alt="Rambler&#39;s Top100" border="0"></a>
+<noscript>
+&lt;a href="http://top100.rambler.ru/navi/2836010/" rel="nofollow"&gt;
+&lt;img src="http://counter.rambler.ru/top100.cnt?2836010" alt="Rambler's Top100" border="0" /&gt;
+&lt;/a&gt;
+
+</noscript>
+</noindex>
+<!-- end of Top100 code --></div>
+		</aside><aside id="text-3" class="widget widget_text">			<div class="textwidget"><!-- Rating@Mail.ru counter -->
+<noindex>
+<script type="text/javascript">//<![CDATA[
+(function(w,n,d,r,s){d.write('<p><a href="http://top.mail.ru/jump?from=2295139"  rel="nofollow">'+
+'<img src="http://d5.c0.b3.a2.top.mail.ru/counter?id=2295139;t=210;js=13'+
+((r=d.referrer)?';r='+escape(r):'')+((s=w.screen)?';s='+s.width+'*'+s.height:'')+';_='+Math.random()+
+'" style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /><\/a><\/p>');})(window,navigator,document);//]]>
+</script><p><a href="http://top.mail.ru/jump?from=2295139" rel="nofollow"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/counter" style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru"></a></p><noscript>&lt;p&gt;&lt;a href="http://top.mail.ru/jump?from=2295139" rel="nofollow"&gt;
+&lt;img src="http://d5.c0.b3.a2.top.mail.ru/counter?id=2295139;t=210;js=na"
+style="border:0;" height="31" width="88" alt="Рейтинг@Mail.ru" /&gt;&lt;/a&gt;&lt;/p&gt;</noscript>
+</noindex>
+<!-- //Rating@Mail.ru counter --></div>
+		</aside><aside id="text-6" class="widget widget_text">			<div class="textwidget"><a href="http://www.alexa.com/siteinfo/www.microtechnics.ru"><a href="http://www.alexa.com/data/details/main?url=http://www.microtechnics.ru" class="AlexaSiteStatsWidget"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/s.gif" border="0" alt="Alexa Certified Traffic Ranking for www.microtechnics.ru"></a><script type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/a"></script></a></div>
+		</aside><aside id="text-7" class="widget widget_text">			<div class="textwidget"><!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter26964546 = new Ya.Metrika({id:26964546,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/26964546" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter --></div>
+		</aside><aside id="text-8" class="widget widget_text">			<div class="textwidget"><script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-56536578-1', 'auto');
+  ga('send', 'pageview');
+
+</script></div>
+		</aside>		</div><!-- #secondary .widget-area -->
+ 
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+							</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+<div style="text-align: center;clear: both"><a onclick="document.cookie=&quot;fdx_switcher=mobile;path=/;expires=&quot;;" href="http://microtechnics.ru/stm32-uchebnyj-kurs-usart/?fdx_switcher=mobile" title="Switch to Mobile Version" rel="nofollow"><img src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/switch.png" width="50" height="20" alt=""></a></div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 с нуля. USART. Пример программы.   MicroTechnics_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+
+
+
+
+</body></html>

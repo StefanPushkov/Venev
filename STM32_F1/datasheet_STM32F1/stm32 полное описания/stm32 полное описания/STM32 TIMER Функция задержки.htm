@@ -1,0 +1,1305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0055)http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 TIMER Функция задержки</title>
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 TIMER Функция задержки_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 TIMER Функция задержки»" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 TIMER Функция задержки_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 TIMER Функция задержки_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 TIMER Функция задержки_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 TIMER Функция задержки_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 SPI. Описание регистров" href="http://mycontroller.ru/stm32-spi-opisanie-registrov/">
+<link rel="next" title="STM32 SPI Инициализация и работа" href="http://mycontroller.ru/stm32-spi-initsializatsiya-i-ispolzovanie/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 TIMER Функция задержки_files/STM32 TIMER Функция задержки.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=1600">
+
+<link rel="stylesheet" href="./STM32 TIMER Функция задержки_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER Функция задержки_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER Функция задержки_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 TIMER Функция задержки_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-spi-opisanie-registrov/" rel="prev">STM32 SPI. Описание регистров</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-spi-initsializatsiya-i-ispolzovanie/" rel="next">STM32 SPI Инициализация и работа</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 TIMER Функция задержки_files/STM32 TIMER Функция задержки.htm" rel="bookmark" title="Постоянная ссылка на STM32 TIMER Функция задержки">
+STM32 TIMER Функция задержки</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Старая-добрая функция delay для формирования временных задержек. С компиляторами для микроконтроллеров AVR обычно идут библиотеки с этой функцией. А вот в кейле для STM32 я такого не находил (может плохо искал?).</p>
+<p>Но такую функцию можно соорудить самому используя таймеры.</p>
+<p><span id="more-1600"></span></p>
+<p>Ведь, в конце концов, таймеры в первую очередь для этого предназначены – для отсчета времени.</p>
+<p>Для этой цели задействуем таймер №2.</p>
+<p>Настроим его, подав тактирование и обеспечив подачу на вход счетного регистра регистра таймера миллисекундных импульсов:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"> RCC<span style="color: #339933;">-&gt;</span>APB1ENR <span style="color: #339933;">|=</span> RCC_APB1ENR_TIM2EN<span style="color: #339933;">;</span>   <span style="color: #666666; font-style: italic;">//подать тактирование на TIM2</span>
+ TIM2<span style="color: #339933;">-&gt;</span>PSC     <span style="color: #339933;">=</span> <span style="color: #0000dd;">8000</span><span style="color: #339933;">-</span><span style="color: #0000dd;">1</span><span style="color: #339933;">;</span>               <span style="color: #666666; font-style: italic;">//настроить делитель для формирования миллисекунд</span>
+ TIM2<span style="color: #339933;">-&gt;</span>CR1     <span style="color: #339933;">=</span> TIM_CR1_OPM<span style="color: #339933;">;</span>          <span style="color: #666666; font-style: italic;">//режим одного импульса</span></pre></td></tr></tbody></table></div>
+
+<p>Во второй строке показана настройка входного делителя таймера.<br>
+8000 — это частота тактирования таймера в kHz.<br>
+Она будет зависить от настройки общей системы тактирования.</p>
+<p>Дальше текст фукции, выполняющей задержку на заданное количество миллисекунд:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//*******************************************************************************************</span>
+<span style="color: #666666; font-style: italic;">//function  задержка времени                                                               //</span>
+<span style="color: #666666; font-style: italic;">//argument  длительность задержки от 1 до 65535 миллисекунд                                // </span>
+<span style="color: #666666; font-style: italic;">//*******************************************************************************************</span>
+<span style="color: #993333;">void</span> delay_ms<span style="color: #009900;">(</span><span style="color: #993333;">uint16_t</span> value<span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+  TIM2<span style="color: #339933;">-&gt;</span>ARR <span style="color: #339933;">=</span> value<span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//загрузить значение задержки</span>
+  TIM2<span style="color: #339933;">-&gt;</span>CNT <span style="color: #339933;">=</span> <span style="color: #0000dd;">0</span><span style="color: #339933;">;</span>
+  TIM2<span style="color: #339933;">-&gt;</span>CR1 <span style="color: #339933;">=</span> TIM_CR1_CEN<span style="color: #339933;">;</span>	      <span style="color: #666666; font-style: italic;">//запустить таймер</span>
+  <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #009900;">(</span>TIM2<span style="color: #339933;">-&gt;</span>SR <span style="color: #339933;">&amp;</span> TIM_SR_UIF<span style="color: #009900;">)</span><span style="color: #339933;">==</span><span style="color: #0000dd;">0</span><span style="color: #009900;">)</span><span style="color: #009900;">{</span><span style="color: #009900;">}</span> <span style="color: #666666; font-style: italic;">//дождаться конца задержки</span>
+  TIM2<span style="color: #339933;">-&gt;</span>SR <span style="color: #339933;">&amp;=</span> ~TIM_SR_UIF<span style="color: #339933;">;</span>	      <span style="color: #666666; font-style: italic;">//сбросить флаг</span>
+<span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<p>Фрагмент программы, использующей эту функцию:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"> <span style="color: #808080; font-style: italic;">/*мигание светодиодом с частотой 1Hz                                                        */</span>
+ <span style="color: #b1b100;">while</span><span style="color: #009900;">(</span><span style="color: #0000dd;">1</span><span style="color: #009900;">)</span>
+ <span style="color: #009900;">{</span>
+   delay_ms<span style="color: #009900;">(</span><span style="color: #0000dd;">500</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>         <span style="color: #666666; font-style: italic;">//задержка длительностью 500мс</span>
+   GPIOB<span style="color: #339933;">-&gt;</span>ODR <span style="color: #339933;">^=</span> <span style="color: #208080;">0x0002</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//проинвертировать выход</span>
+ <span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<p>Функция не сложная, но весьма полезная.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»" rel="category tag">TIMER</a>, <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (18) на “STM32 TIMER Функция задержки”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-129">
+     <div id="comment-129">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Сергей32:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-129">02.03.2012 в 13:53</a></div>
+
+      <p>TIM2-&gt;CR1 = TIM_CR1_CEN;	      //запустить таймер<br>
+В этой строчке вернее было бы записывать регистр через исключающее или. Так в противном случае, пропадает эффект от записи:<br>
+TIM2-&gt;CR1     = TIM_CR1_OPM;          //режим одного импульса<br>
+так как после запуска таймера бит TIM_CR1_OPM будет занулен. Хотя функция задержки (при ее многократном вызове) все равно будет работать, так как вы принудительно обнуляете регистр CNT.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=129#respond" onclick="return addComment.moveForm(&quot;comment-129&quot;, &quot;129&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-130">
+     <div id="comment-130">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-130">02.03.2012 в 14:58</a></div>
+
+      <p>Верно подмечено.<br>
+А я не мог сообразить, почему таймер не остаавливается по окончанию счета.<br>
+Прохлопал, что сбрасываю TIM_CR1_OPM, поэтому пришлось обнулять счетный регистр.<br>
+Правильно будет так: TIM2-&gt;CR1 |= TIM_CR1_CEN;<br>
+Или даже так:TIM2-&gt;CR1 = TIM_CR1_CEN | TIM_CR1_OPM;<br>
+Во втором случае уйдет меньше времени на перезагрузку, т.к. в первом случае необходимо прочитать регистр, изменить его а затем вернать обратно. А во втором случае просто записываем данные в регистр.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=130#respond" onclick="return addComment.moveForm(&quot;comment-130&quot;, &quot;130&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-204">
+     <div id="comment-204">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-204">03.04.2012 в 19:18</a></div>
+
+      <p>Как-то так получается, что фактически задержка получается на 1 мс больше запрашиваемой. Т.е. delay_ms(1) дает задержку в 2 мс, delay_ms(3) — в 4 мс. Не пойму, почему так?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=204#respond" onclick="return addComment.moveForm(&quot;comment-204&quot;, &quot;204&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-206">
+     <div id="comment-206">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-206">03.04.2012 в 21:58</a></div>
+
+      <p>Похоже я ее не совсем коректно написал.<br>
+Получается всегда на одну миллисекунду больше заданного.<br>
+Если необходима задержка в 1 мс, то аргументом ф-ии передаем 1.<br>
+В регистр ARR будет загружена единица.<br>
+При запуске таймера счетный регистр начинает считать с нуля:<br>
+1) При первом импульсе счетный регистр станет равен единице — это одна миллисекунда;<br>
+2) При втором импульсе произойдет переполнение с установкой флага — это вторая миллисеекунда.<br>
+Короче говоря, необходимо в фукции задержки уменьшать на 1 значение, загружаемое в регистр ARR:<br>
+TIM2-&gt;ARR = value-1;                  //загрузить значение задержки<br>
+Если этого не сделать, задержка всегда будет на 1 мс больше заданного.<br>
+А как вы вычислили эту одну миллисекунду?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=206#respond" onclick="return addComment.moveForm(&quot;comment-206&quot;, &quot;206&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment even depth-3" id="li-comment-209">
+     <div id="comment-209">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-209">04.04.2012 в 09:47</a></div>
+
+      <p>Вычислял по таймеру кеила</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=209#respond" onclick="return addComment.moveForm(&quot;comment-209&quot;, &quot;209&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-208">
+     <div id="comment-208">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-208">04.04.2012 в 09:46</a></div>
+
+      <p>А, понятно теперь. Спасибо.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=208#respond" onclick="return addComment.moveForm(&quot;comment-208&quot;, &quot;208&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-211">
+     <div id="comment-211">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-211">04.04.2012 в 12:06</a></div>
+
+      <p>Опять незадача :) при аргументе равном 1 значение ARR становится равным 0, при этом переполнение счетчика вообще не происходит, т.е.  строка while((TIM2-&gt;SR &amp; TIM_SR_UIF)==0){} уходит в бесконечную задержку. А если аргумент &gt; 1мс, то да, все точно</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=211#respond" onclick="return addComment.moveForm(&quot;comment-211&quot;, &quot;211&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-255">
+     <div id="comment-255">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">andre:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-255">23.04.2012 в 19:16</a></div>
+
+      <p>ну просто восхитительно!! молодец такие статьи!! я захожу на Ваш сайт раз 5 в день. по истине учебник. Огромное спасибо!!(работаю с stm32l152-приходиться корректировать немного)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=255#respond" onclick="return addComment.moveForm(&quot;comment-255&quot;, &quot;255&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-827">
+     <div id="comment-827">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Александр:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-827">08.08.2012 в 08:21</a></div>
+
+      <p>Думаю было бы неплохо, после прочтения данной статьи упомянуть об одном нюансе. В случае если используется делитель частоты для тактирования шин APB больше 1, таймеры тактируются на удвоенной частоте шины к которой подключены. Соответственной в функции delay надо это учесть, умножив переданное значение на 2 и проверив размер полученного значения перед передачей в ARR. Сам столкнулся с такой ситуацией.</p>
+<p>За статьи спасибо, очень полезно для тех, кто хочет разобраться с STM’ами, но не обладает достаточными знаниями английского</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=827#respond" onclick="return addComment.moveForm(&quot;comment-827&quot;, &quot;827&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-843">
+     <div id="comment-843">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">serioussam:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-843">12.08.2012 в 13:10</a></div>
+
+      <p>Дмитрий, а так? )))</p>
+<p>if (time!=1){<br>
+TIM2-&gt;ARR  = time-1;<br>
+TIM2-&gt;CNT = 0;<br>
+}</p>
+<p>else<br>
+{<br>
+TIM2-&gt;ARR = time;<br>
+TIM2-&gt;CNT = 1;<br>
+}</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=843#respond" onclick="return addComment.moveForm(&quot;comment-843&quot;, &quot;843&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment even depth-2" id="li-comment-1381">
+     <div id="comment-1381">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1381">03.10.2012 в 13:22</a></div>
+
+      <p>Люди добрые, подскажите…<br>
+Пытаюсь написать функцию задержки для STM_8_.<br>
+Что-то типа этого:</p>
+<p>в инициализации:<br>
+CLK_CKDIVR=0;<br>
+и сама функция по аналогу с приведенной выше:<br>
+void delay(unsigned int value)<br>
+{<br>
+TIM1_CR1|=(1&lt;&lt;7)|(1&lt;&gt;8;<br>
+TIM1_ARRL=value;<br>
+TIM1_CNTRH=0;<br>
+TIM1_CNTRL=0;<br>
+TIM1_CR1|=(1&lt;&lt;0); //старт<br>
+while ((TIM1_SR1&amp;(1&lt;&lt;0))==0); //ждем UIF<br>
+TIM1_SR1&amp;=~(1&lt;&lt;0); //очищаем<br>
+}</p>
+<p>Так речь о том, что не сходятится по времени. Вызов функции с аргументом 10000 дает задержку секунды 3-4. Никак не пойму, в чем дело. Подскажите, плиз…</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1381#respond" onclick="return addComment.moveForm(&quot;comment-1381&quot;, &quot;1381&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment odd alt depth-3" id="li-comment-1382">
+     <div id="comment-1382">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1382">03.10.2012 в 13:24</a></div>
+
+      <p>Только половина текста похерилась))))</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1382#respond" onclick="return addComment.moveForm(&quot;comment-1382&quot;, &quot;1382&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-1166">
+     <div id="comment-1166">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">YaYa:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1166">19.09.2012 в 10:13</a></div>
+
+      <p>Всем привет от начинающего ARMешника.<br>
+У меня такой вопрос… Можно ли настроить таймер таким образом чтобы он независимо от CPU выдавал в порт(допустим PA8)такты с определённой задержкой.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1166#respond" onclick="return addComment.moveForm(&quot;comment-1166&quot;, &quot;1166&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1172">
+     <div id="comment-1172">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1172">19.09.2012 в 13:56</a></div>
+
+      <p>Можно настроить так, чтобы выдавал ШИМ. Если это поможет…</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1172#respond" onclick="return addComment.moveForm(&quot;comment-1172&quot;, &quot;1172&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-1198">
+     <div id="comment-1198">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Бугага:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1198">22.09.2012 в 17:17</a></div>
+
+      <p>Есть системный таймер. SysTick. Инициализация и запуск функцией SysTick_Config из CMSIS библиотеки. Обработчик прерывания SysTick_Handler. Точнее не бывает.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1198#respond" onclick="return addComment.moveForm(&quot;comment-1198&quot;, &quot;1198&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment odd alt depth-2" id="li-comment-1199">
+     <div id="comment-1199">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Бугага:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1199">22.09.2012 в 17:37</a></div>
+
+      <p>В догонку сцылка <a href="http://chipspace.ru/stm32-systick/#more-975" rel="nofollow">http://chipspace.ru/stm32-systick/#more-975</a></p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1199#respond" onclick="return addComment.moveForm(&quot;comment-1199&quot;, &quot;1199&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-1342">
+     <div id="comment-1342">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Apparatchik:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1342">01.10.2012 в 11:35</a></div>
+
+      <p>В цикле мигаю светодиодами и выставляю 10000 мс — работает нормально. А перед циклом вивожу на дисплей символы опять ставлю 10с и другие символы — задержки нету вообще приходится десять раз по одной секунде ставить. Подскажите где собака зарыта?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1342#respond" onclick="return addComment.moveForm(&quot;comment-1342&quot;, &quot;1342&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-1600">
+     <div id="comment-1600">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Иван:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#comment-1600">22.10.2012 в 07:44</a></div>
+
+      <p>перечитал публикации по таймерам, мучает вопрос, в поле Prescaler задаем значение, на которое делим после тактовую частоту цп или как? если использую TIM 2 настраиваю в соответствии с вышеинтсересующим, провожу увеличение переменной по таймеру, после использую ее в функции задержки. в итоге вместо 1мкс получаю 4-5 мкс, вместо 500 мкс получаю 350мкс и т д, те ошибки огромные. в чем может быть проблема? в настройках таймера?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/?replytocom=1600#respond" onclick="return addComment.moveForm(&quot;comment-1600&quot;, &quot;1600&quot;, &quot;respond&quot;, &quot;1600&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="1600" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-timer-funktsiya-zaderzhki/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,321 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 TIMER Функция задержки_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc -O0 -nostartfiles -Map=HD44780_test.map -mcpu=cortex-m3 -mthumb -LC:\CooCox\CoIDE\workspace\HD44780_test --gc-sections -TC:\CooCox\CoIDE\workspace\HD44780_test\link.ld -g">
+      <target file="HD44780_test.elf" lastModified="138007a5394">
+         <source file="..\obj\startup_stm32f10x_md_vl.o" lastModified="137e73190b9"/>
+         <source file="..\obj\core_cm3.o" lastModified="137e731926f"/>
+         <source file="..\obj\system_stm32f10x.o" lastModified="137e7319415"/>
+         <source file="..\obj\hd44780_driver.o" lastModified="137ec2d0ae1"/>
+         <source file="..\obj\stm32f10x_gpio.o" lastModified="137e731982b"/>
+         <source file="..\obj\main.o" lastModified="138007a52b9"/>
+         <source file="..\obj\stm32f10x_rcc.o" lastModified="137e7319db9"/>
+      </target>
+   </processor>
+</history>

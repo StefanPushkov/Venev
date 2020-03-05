@@ -1,0 +1,19 @@
+RAM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+rs_buffer                                                         0x0160      40
+test                                                              0x0188      10
+
+EEPROM Allocation
+Variable                                                          Address   Size
+--------------------------------------------------------------------------------
+
+Register Allocation
+Variable                                                          Register  Size
+--------------------------------------------------------------------------------
+rs_timer_cloc                                                     R5           1
+det_taym_cloc                                                     R4           1
+rs_wr_index                                                       R7           1
+rs_rd_index                                                       R6           1
+rs_counter                                                        R9           1
+rs_buffer_overflow                                                R2.0      1bit

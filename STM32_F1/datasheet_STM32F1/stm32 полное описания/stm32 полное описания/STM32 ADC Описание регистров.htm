@@ -1,0 +1,618 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0052)http://mycontroller.ru/stm32-adc-opisanie-registrov/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 ADC Описание регистров</title>
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 ADC Описание регистров_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 ADC Описание регистров»" href="http://mycontroller.ru/stm32-adc-opisanie-registrov/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 ADC Описание регистров_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 ADC Описание регистров_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 ADC Описание регистров_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 ADC Описание регистров_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 DS18B20. Измерение температуры" href="http://mycontroller.ru/stm32-ds18b20-izmerenie-temperaturyi/">
+<link rel="next" title="STM32 ADC Введение" href="http://mycontroller.ru/stm32-adc-vvedenie/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 ADC Описание регистров_files/STM32 ADC Описание регистров.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=1901">
+
+<link rel="stylesheet" href="./STM32 ADC Описание регистров_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 ADC Описание регистров_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 ADC Описание регистров_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 ADC Описание регистров_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-ds18b20-izmerenie-temperaturyi/" rel="prev">STM32 DS18B20. Измерение температуры</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-adc-vvedenie/" rel="next">STM32 ADC Введение</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 ADC Описание регистров_files/STM32 ADC Описание регистров.htm" rel="bookmark" title="Постоянная ссылка на STM32 ADC Описание регистров">
+STM32 ADC Описание регистров</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Регистров для настройки АЦП и работы с ним весьма много, но это не удивительно – ведь режимов работы АЦП много. Вот они во всей своей красе: </p>
+<p><span id="more-1901"></span><a href="http://mycontroller.ru/wp-content/uploads/image28.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb28.png" width="599" height="657"></a><a href="http://mycontroller.ru/wp-content/uploads/image29.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto" title="image" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb29.png" width="600" height="245"></a> Сгруппируем перечисленные выше регистры по функциональному назначению. Получилось 9 групп:
+</p><ol>
+<li><strong>SR – </strong>содержит флаги, указывающие на состояние АЦП. </li>
+<li><strong>CR1, CR2</strong> – управляющие регистры, задают режим работы. </li>
+<li><strong>SMPR1, SMPR2 – </strong>задают время преобразования. </li>
+<li><strong>JOFR1…JOFR2</strong> – определяют смещение данных в инжектированной группе (ух, как сложно воспринимается при первом прочтении). </li>
+<li><strong>HTR, LTR</strong> – задают верхнее и нижнее значение срабатывания оконного компаратора. </li>
+<li><strong>SQR1…SQR3</strong> – задают последовательность каналов регулярной группы. </li>
+<li><strong>JSQR – </strong>задает последовательность каналов инжектированной группы. </li>
+<li><strong>JDR1…JDR4</strong> – регистры данных инжектированной группы. </li>
+<li><strong>DR – </strong>регистр данных регулярной группы. </li>
+</ol>
+<p>Рассмотрим подробнее каждую группу регистров АЦП. Если в контроллере два модуля АЦП, названия регистров будут одинаковые, за исключением приставки: ADC1 и ADC2.</p>
+<h3 align="center">Регистр <strong>SR</strong></h3>
+<p align="left"><a href="http://mycontroller.ru/wp-content/uploads/image30.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb30.png" width="597" height="102"></a></p>
+<p align="left">Этот регистр содержит флаги, которые устанавливаются аппаратно. Очищаются они программно, записью нуля (программист должен сделать это). Флаг EOC можно также очистить, прочитав регистр DR. Назначение флагов следующее:</p>
+<ul>
+<li>STRT — устанавливается при старте преобразования регулярного канала; </li>
+<li>JSTRT — устанавливается при старте преобразования инжектированного канала; </li>
+<li>JEOC — окончание преобразования инжектированного канала; </li>
+<li>EOC — окончание преобразования регулярного или инжектированного канала; </li>
+<li>AWD — устанавливается при срабатывании оконного компаратора. </li>
+</ul>
+<h3 align="center">Регистр <strong>CR1</strong></h3>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image31.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb31.png" width="592" height="121"></a></p>
+<ul>
+<li>AWDEN — управляет оконным компаратором регулярного канала (1-вкл, 0 — выкл); </li>
+<li>JAWDEN — управляет оконным компаратором инжектированного канала (1-вкл, 0 — выкл); </li>
+<li>JEOCIE — разрешает/запрещает прерывания для инжектированных каналов; </li>
+<li>AWDIE — разрешает/запрещает прерывания от оконного компаратора АЦП;&nbsp; </li>
+<li>EOCIE — разрешает/запрещает прерывания по окончанию преобразования в регулярной или инжектированной группе; </li>
+<li>AWDCH[4:0] — определяет номер канала, к которому подключен оконный компаратор; </li>
+</ul>
+<h3 align="center">Регистр <strong>CR2</strong></h3>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image38.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb38.png" width="592" height="126"></a></p>
+<ul>
+<li>TSVREFE – подключает датчик температуры, расположенный на кристалле; </li>
+<li>SWSTART — запускает преобразование в регулярном канале (если разряды EXTSEL[2:0] = 111. Устанавливается программно. Сбрасывается аппаратно, после начала преобразования; </li>
+<li>JSWSTART — запускает преобразование в инжектированном канале (если разряды JEXTSEL[2:0] = 111. Устанавливается программно. Сбрасывается аппаратно, после начала преобразования; </li>
+<li>EXTTRIG — разрешает/запрещает использовать внешнее события для запуска преобразования в регулярном канале; </li>
+<li>EXTSEL[2:0] — определяет источник, который будет запускать преобразование в регулярном канале. Для ADC1 и ADC2:
+<ol>
+<li>EXTSEL[2:0] = 000 — Timer 1 CC1; </li>
+<li>EXTSEL[2:0] = 001 — Timer 1 CC2; </li>
+<li>EXTSEL[2:0] = 010 — Timer 1 CC3; </li>
+<li>EXTSEL[2:0] = 011 — Timer 2 CC2; </li>
+<li>EXTSEL[2:0] = 100 — Timer 3 TRGO; </li>
+<li>EXTSEL[2:0] = 101 — Timer 4 CC4; </li>
+<li>EXTSEL[2:0] = 110 — EXTI line11/TIM8_TRGO; </li>
+<li>EXTSEL[2:0] = 111 — SWSTART; </li>
+</ol>
+</li>
+<li>JEXTTRIG — разрешает/запрещает использовать внешнее события для запуска преобразования в инжектированном канале; </li>
+<li>JEXTSEL[2:0] — определяет источник, который будет запускать преобразование в инжектированном канале. Для ADC1 и ADC2:
+<ol>
+<li>JEXTSEL[2:0] = 000 — Timer 1 TRGO; </li>
+<li>JEXTSEL[2:0] = 001 — Timer 1 CC4; </li>
+<li>JEXTSEL[2:0] = 010 — Timer 2 TRGO; </li>
+<li>JEXTSEL[2:0] = 011 — Timer 2 CC1; </li>
+<li>JEXTSEL[2:0] = 100 — Timer 3 CC4; </li>
+<li>JEXTSEL[2:0] = 101 — Timer 4 TRGO; </li>
+<li>JEXTSEL[2:0] = 110 — EXTI line15/TIM8_CC4; </li>
+<li>JEXTSEL[2:0] = 111 — JSWSTART; </li>
+</ol>
+</li>
+<li>ALIGN — выравнивание результата (0 — по правому краю, 1 — по левому); </li>
+<li>DMA — разрешает/запрещает использовать модуль DMA; </li>
+<li>RSTCAL — сброс калибровки; </li>
+<li>CAL — запускает калибровку АЦП (записали 1 — калибровка пошла, по окончании сбросится аппаратно); </li>
+<li>CONT — установка этого разряда запускает непрерывное преобразование; </li>
+<li>ADON — включает/отключает модуль АЦП; </li>
+</ul>
+<h3 align="center">Регистры <strong>SMPRх</strong></h3>
+<p>Регистры SMPR1 и SMPR2 (sample time register) задают время преобразования в каждом канале. Т.к. каналов много, одного регистра недостаточно, поэтому их два:</p>
+<p align="center">Структура регистра&nbsp; ADC_SMPR1</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image26.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb26.png" width="605" height="122"></a></p>
+<p align="center">Структура регистра&nbsp; ADC_SMPR2</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image27.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb27.png" width="604" height="136"></a></p>
+<p>Для каждого канала выделено по 3 разряда, что позволяет задать 8 значений времени преобразования:</p>
+<p><strong>000 -</strong> 1.5 цикла; <strong>001 -</strong> 7.5 цикла; <strong>010 -</strong> 13.5 цикла; <strong>011 -</strong> 28.5 цикла; <strong>100 -</strong> 41.5 цикла     <br><strong>101 -</strong> 55.5 цикла; <strong>110 -</strong> 71.5 цикла; <strong>111 -</strong> 239.5 цикла</p>
+<h3 align="center">Регистры <strong>JOFRx</strong></h3>
+<p>Регистры смещения для каждого канала инжектированной группы (JOFR1, JOFR2, JOFR3, JOFR4).</p>
+<p>В регистр смещения можно запрограммировать 12-битное значение, которое автоматически    <br>вычитается из результата преобразования АЦП. Если результирующее значение — отрицательное, то     <br>регистр результата инжектированной группы дополняется знаком.</p>
+<h3 align="center">Регистры <strong>LTR</strong> и <strong>HTR</strong></h3>
+<p align="center">Эти регистры содержат по 12 разрядов, в которые записывается верхнее и нижнее значение оконного компаратора.</p>
+<h3 align="center">Регистры <strong>SQRх</strong></h3>
+<p align="center">В этих регистрах задаются номера каналов, которые будут опрашиваться в регулярной группе, и задается общее количество каналов. Этих регистров три. Ниже они изображены в следующей последовательности: SQR1, SQR2, SQR3. Они имеют следующую структуру:</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image32.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb32.png" width="611" height="124"></a></p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image33.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb33.png" width="615" height="122"></a></p>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image34.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb34.png" width="620" height="127"></a></p>
+<p>Разряды SQx[4:0] задают номер канала, где х – это номер преобразования.</p>
+<p>В чем суть преобразования регулярной группы? Задается список каналов. По этому списку производится опрос каналов АЦП (можно задать от 1 до 18 каналов).</p>
+<p>Например, необходимо циклически измерять напряжение в такой последовательности: канал №3 – канал №1 – канал №5 – канал №1 – канал №8 — канал №8 -канал №1 (7 каналов).</p>
+<p>Для этого необходимо записать в регистр SQR3 следующие значения: <span style="color: #000000">SQ1[4:0] = 3; </span><span style="color: #000000">SQ2[4:0] = 1;</span></p>
+<p><span style="color: #000000">SQ3[4:0] = 5;</span>&nbsp;<span style="color: #000000"> SQ4[4:0] = 1;</span> <span style="color: #000000">SQ5[4:0] = 8;</span> <span style="color: #000000">SQ6[4:0] = 8</span></p>
+<p>А в р<span style="color: #000000">азряды SQ7 </span>регистра SQR2 запишем 1.&nbsp; И задаем количество каналов регулярной группы: L[3:0] = 6</p>
+<p>Как видим, каналы можно опрашивать в любой последовательности. Любой канал можно опрашивать несколько раз. Задаешь список, по которому опрашивать каналы, и все.</p>
+<p>Количество каналов в этом списке&nbsp; задается разрядами L[3:0] регистра SQR1 .</p>
+<h3 align="center">Регистр <strong>JSQR</strong></h3>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image35.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb35.png" width="622" height="125"></a> Этот регистр, подобно регистрам SQRx, задает последовательность каналов и их количество. Но не для регулярной группы, а для инжектированной.</p>
+<p align="center">Как видно из структуры регистра, максимальное количество преобразований в инжектированной группе равно четырем (это количество задается в разрядах JL[1:0]).</p>
+<h3 align="center">Регистр <strong>JDRx</strong></h3>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image36.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb36.png" width="628" height="114"></a></p>
+<p>JDRx – это регистр данных каналов инжектированной группы. Максимальное количество каналов в инжектированной группе равно четырем, соответственно имеется 4 регистра данных – JDR1, JDR2, JDR3 и JDR4. В эти регистры помещается результат преобразований в каждом выбранном канале.</p>
+<p>Регистры 16-ти разрядные, хотя АЦП 12-ти разрядный. Предусмотрено выравнивание результата измерения по левому или по правому краю.</p>
+<h3 align="center">Регистр <strong>DR</strong></h3>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image37.png"><img style="border-right-width: 0px; display: block; float: none; border-top-width: 0px; border-bottom-width: 0px; margin-left: auto; border-left-width: 0px; margin-right: auto" title="image" border="0" alt="image" src="./STM32 ADC Описание регистров_files/image_thumb37.png" width="633" height="128"></a></p>
+<p>Этот регистр содержит результат преобразования АЦП в регулярной группе. В отличии от инжектированной группы, в которой четыре регистра данных, он один на всю группу.</p>
+<p>Его структура подобна регистрам JDRx, за исключением старших 16-ти разрядов 16…31. Эти разряды используются при работе АЦП в сдвоенном режиме (совместно с ADC2).</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»" rel="category tag">ADC</a>, <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Один комментарий на “STM32 ADC Описание регистров”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-370">
+     <div id="comment-370">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">DragonSmile:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#comment-370">08.05.2012 в 23:06</a></div>
+
+      <p>Раздел «Регистры SMPRх»</p>
+<p>sample time register задают не время преобразования, а длительность выборки (причём Вы это знаете)</p>
+<p>Спасибо за перевод!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-adc-opisanie-registrov/?replytocom=370#respond" onclick="return addComment.moveForm(&quot;comment-370&quot;, &quot;370&quot;, &quot;respond&quot;, &quot;1901&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="1901" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-adc-opisanie-registrov/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,280 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 ADC Описание регистров_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

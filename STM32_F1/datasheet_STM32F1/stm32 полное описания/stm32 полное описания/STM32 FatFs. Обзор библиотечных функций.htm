@@ -1,0 +1,810 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0065)http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 FatFs. Обзор библиотечных функций</title>
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 FatFs. Обзор библиотечных функций_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 FatFs. Обзор библиотечных функций»" href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 FatFs. Обзор библиотечных функций_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 FatFs. Обзор библиотечных функций_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 FatFs. Обзор библиотечных функций_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 FatFs. Обзор библиотечных функций_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 Работа с библиотекой FatFs" href="http://mycontroller.ru/stm32-rabota-s-bibliotekoy-fatfs/">
+<link rel="next" title="STM32 Воспроизведение звука. Структура WAV-файлов" href="http://mycontroller.ru/stm32-vosproizvedenie-wav-faylov/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 FatFs. Обзор библиотечных функций_files/STM32 FatFs. Обзор библиотечных функций.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=2977">
+
+<link rel="stylesheet" href="./STM32 FatFs. Обзор библиотечных функций_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 FatFs. Обзор библиотечных функций_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 FatFs. Обзор библиотечных функций_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 FatFs. Обзор библиотечных функций_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-rabota-s-bibliotekoy-fatfs/" rel="prev">STM32 Работа с библиотекой FatFs</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-vosproizvedenie-wav-faylov/" rel="next">STM32 Воспроизведение звука. Структура WAV-файлов</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 FatFs. Обзор библиотечных функций_files/STM32 FatFs. Обзор библиотечных функций.htm" rel="bookmark" title="Постоянная ссылка на STM32 FatFs. Обзор библиотечных функций">
+STM32 FatFs. Обзор библиотечных функций</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Итак, карту памяти мы подключили, инициализация ее прошла успешно. В предыдущей статье были рассмотрены функции, которые нужны для работы с картой памяти. Теперь, прежде чем начать работу с FAT, рассмотрим некоторые функции, которые предоставляет библиотека FatFs:</p>
+<p><span id="more-2977"></span>
+</p><ul>
+<li>FRESULT <strong>f_mount</strong> (BYTE, FATFS*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — для регистрации диска;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </li>
+<li>FRESULT <strong>f_open</strong> (FIL*, const char*, BYTE)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — открывает/создает файл; </li>
+<li>FRESULT <strong>f_close</strong> (FIL*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — закрытие файла; </li>
+<li>FRESULT <strong>f_read</strong> (FIL*, void*, UINT, UINT*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — чтение&nbsp; данных из файла; </li>
+<li>FRESULT <strong>f_write</strong> (FIL*, const void*, UINT, UINT*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — запись данных в файл; </li>
+<li>FRESULT <strong>f_lseek</strong> (FIL*, DWORD)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — навигация по открытому файлу; </li>
+<li>FRESULT <strong>f_truncate</strong> (FIL*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — уменьшение размера файла; </li>
+<li>FRESULT <strong>f_sync</strong> (FIL*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — перезапись кешированных данных на диск; </li>
+<li>FRESULT <strong>f_stat</strong> (const char*, FILINFO*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — для получения данных о файле; </li>
+<li>FRESULT<strong> f_opendir</strong> (DIR*, const char*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — открывает директорию (папку); </li>
+<li>FRESULT <strong>f_readdir</strong> (DIR*, FILINFO*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — чтение информации о папке;&nbsp;&nbsp; </li>
+<li>FRESULT <strong>f_unlink</strong> (const char*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — удалить файл/папку; </li>
+<li>FRESULT<strong> f_mkdir</strong> (const char*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — создать папку; </li>
+<li>FRESULT <strong>f_chmod</strong> (const char*, BYTE, BYTE)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — изменить атрибуты файла/папки; </li>
+<li>FRESULT <strong>f_utime</strong> (const char*, const FILINFO*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — изменяет время создания файла/папки; </li>
+<li>FRESULT<strong> f_rename</strong> (const char*, const char*)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — переименовывает/перемещает файл/папку; </li>
+<li>FRESULT <strong>f_getfree</strong> (const char*, DWORD*, FATFS**) – для определения свободного кол-ва кластеров;&nbsp; </li>
+<li>FRESULT<strong> f_mkfs</strong> (BYTE, BYTE, WORD)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — форматирование диска </li>
+</ul>
+<p>Как видим, возможности очень даже приличные. Можно работать как с файлами, так и с папками, имеется возможность переименовывать, перемещать файлы, удалять их и прочее.</p>
+<p>Присмотревшись к приведенным функциям можем увидеть то, что их объединяет – возвращаемый результат имеет тип <strong>FRESULT</strong><em> . </em>Это перечисленный тип данных, который описан в файле ff.h и может принимать следующие значения:</p>
+<ul>
+<li>FR_OK&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — операция завершена успешно; </li>
+<li>FR_DISK_ERR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — ошибка при обращении к диску; </li>
+<li>FR_INT_ERR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — ошибка при работе самой библиотеки; </li>
+<li>FR_NOT_READY&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — невозможно работать с диском из-за его неготовности; </li>
+<li>FR_NO_FILE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — указанный файл не найден; </li>
+<li>FR_NO_PATH&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — указанный путь не найден; </li>
+<li>FR_INVALID_NAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — недопустимое имя; </li>
+<li>FR_DENIED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — доступ отклонен (диск переполнен или что-то другое); </li>
+<li>FR_EXIST&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — попытка создать объект с уже существующим именем; </li>
+<li>FR_INVALID_OBJECT&nbsp;&nbsp;&nbsp; — </li>
+<li>FR_WRITE_PROTECTED – запись невозможна, так как диск защищен от записи; </li>
+<li>FR_INVALID_DRIVE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — недопустимый номер диска; </li>
+<li>FR_NOT_ENABLED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — обратились к диску, который не зарегистрирован функцией f_mount; </li>
+<li>FR_NO_FILESYSTEM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — диск не форматирован в FAT; </li>
+<li>FR_MKFS_ABORTED&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — ошибка при форматировании; </li>
+<li>FR_TIMEOUT&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; — выполнение ф-ии прервано из-за таймаута </li>
+</ul>
+<p>Если кого-то не устраивает приведенное выше описание значений, обращайтесь к оригиналу – там все точно и без ошибок. Я привел его для общего обзора.</p>
+<p>Ниже рассмотрим некоторые основные функции.</p>
+<p>&nbsp;</p>
+<p>FRESULT <strong>f_mount</strong> ( BYTE <em>vol</em>, FATFS <em>*fs</em> ) – связывает диск (vol) со структурой, на которую указывает fs.</p>
+<p>Без обращения к этой функции “кина не будет”. Прежде чем начать работать с FAT, вызываем эту функцию. Также вызываем ее если нужно отменить связывание. Делаем это так:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;">FATFS fs<span style="color: #339933;">;</span>                    <span style="color: #666666; font-style: italic;">//структура, с которой будем связывать диск                       /</span>
+f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>fs<span style="color: #009900;">)</span><span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//выполняем связывание диска с структурой</span>
+   .......                   <span style="color: #666666; font-style: italic;">//работаем с FAT</span>
+f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> NULL<span style="color: #009900;">)</span><span style="color: #339933;">;</span>            <span style="color: #666666; font-style: italic;">//отменяем связывание</span></pre></td></tr></tbody></table></div>
+
+<p>&nbsp;</p>
+<p>FRESULT <strong>f_open </strong>( FIL <em>*fp</em>,&nbsp; const char <em>*path</em>, BYTE&nbsp; <em>mode</em> ) — открывает файл или создает, если он не существует. Немного об аргументах:</p>
+<p>FIL <em>*fp&nbsp; — </em>указатель на структуру, в которой будут храниться данные об открытом файле. Формат этой структуры можно посмотреть в ff.h . В ней, среди прочего, имеются данные о размере файла, номере первого кластера файла, как файл открыт – для чтения, записи и т.д. После обращения к этой функции создается файловый объект (структура, на которую указывает <em>*fp</em>), посредством которого осуществляется вся дальнейшая работа с файлом: при чтении/записи данных используется уже не имя файла, а указатель на эту структуру.</p>
+<p>const char <em>*path</em> – указатель на имя файла. Имя файла может выглядеть приблизительно так: "0:mydir/proba.txt”&nbsp;&nbsp;&nbsp; 0 – это имя диска.</p>
+<p>BYTE <em>mode</em>&nbsp; – указывает на способ открытия файла и тип доступа к нему. Может состоять из набора следующих&nbsp; флагов:</p>
+<ul>
+<li>FA_OPEN_EXISTING&nbsp; 0×00&nbsp; — открытие уже имеющегося файла; </li>
+<li>FA_READ&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0×01 -&nbsp; открытие файла для чтения;<br>
+    </li>
+<li>FA_WRITE&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0×02 -&nbsp; открытие файла для записи; </li>
+<li>FA_CREATE_NEW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0×04 -&nbsp; создание нового файла (если уже существует, ф-я вернет ошибку — FR_EXIST); </li>
+<li>FA_CREATE_ALWAYS 0×08 – создает новый файл. Если он уже есть – создает по новой; </li>
+<li>FA_OPEN_ALWAYS&nbsp;&nbsp;&nbsp; 0×10 — открывает имеющийся файл, если его нет – прежде создает </li>
+</ul>
+<p><font color="#0a1c1f"></font>После того, как файл был успешно открыт, с ним можно работать с помощью функций f_read, f_write, f_lseek, f_truncate, f_sync. По окончанию работы с файлом его можно закрыть функцией </p>
+<p>FRESULT<strong> f_close</strong> ( FIL <em>*fp</em> ), которой в качестве аргумента передаем указатель на структуру открытого файла. Процесс открытия/закрытия файла выглядит следующим образом: </p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;">FATFS   fs<span style="color: #339933;">;</span>            <span style="color: #666666; font-style: italic;">//структура, с которой будем связывать диск                            /</span>
+FIL     file<span style="color: #339933;">;</span>          <span style="color: #666666; font-style: italic;">//здесь будут храниться данные об открытом файле</span>
+FRESULT res<span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//для анализа возвращаемого функциями результата</span>
+&nbsp;
+f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>fs<span style="color: #009900;">)</span><span style="color: #339933;">;</span>       <span style="color: #666666; font-style: italic;">//выполняем связывание диска со структурой fs</span>
+&nbsp;
+<span style="color: #666666; font-style: italic;">//пытаемся открыть существующи файл для чтения и записи</span>
+res <span style="color: #339933;">=</span> f_open<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,</span> <span style="color: #ff0000;">"0:mydir/proba.txt"</span><span style="color: #339933;">,</span> FA_OPEN_EXISTING <span style="color: #339933;">|</span> FA_READ <span style="color: #339933;">|</span> FA_WRITE<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span><span style="color: #009900;">{</span><span style="color: #009900;">}</span><span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//обрабатываем ошибку открытия файла, если таковая возникла</span>
+  ...............      <span style="color: #666666; font-style: italic;">//что-то делаем с файлом</span>
+f_close<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #009900;">)</span><span style="color: #339933;">;</span>        <span style="color: #666666; font-style: italic;">//закрываем открытый файл  </span>
+&nbsp;
+f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> NULL<span style="color: #009900;">)</span><span style="color: #339933;">;</span>      <span style="color: #666666; font-style: italic;">//отменяем связывание диска со структурой fs</span></pre></td></tr></tbody></table></div>
+
+<p>В приведенном примере mydir – это папка, в которой расположен файл proba.txt</p>
+<p>Дальше рассмотрим функции, посредством которых можно работать с открытым файлом.</p>
+<p>FRESULT <strong>f_read</strong> ( FIL <em>*fp</em>,&nbsp; void <em>*buff</em>, UINT <em>btw</em>, UINT <em>*bw</em> ) – читает данные из открытого файла.</p>
+<ul>
+<li>FIL <em>*fp — </em>указатель на структуру, в которой храняться данные об открытом файле; </li>
+<li>void <em>*buff — </em>указатель на буфер, в который будут прочитаны данные. </li>
+<li>UINT <em>btr — </em>количество запрашиваемых байт; </li>
+<li>UINT <em>*br</em> – указатель на переменную, в которую будет записано количество реально прочитанных байт из файла. </li>
+</ul>
+<p>FRESULT <strong>f_write</strong> ( FIL <em>*fp</em>, const void&nbsp; <em>*buff</em>, UINT <em>btw</em>, UINT <em>*bw</em> ) – записывает данные в открытый файл.</p>
+<ul>
+<li>FIL <em>*fp — </em>указатель на структуру, в которой храняться данные об открытом файле; </li>
+<li>const void <em>*buff</em><em>- </em>указатель на буфер, с которого будут прочитаны данные для записи в файл. </li>
+<li>UINT <em>btw — </em>количество байт для записи; </li>
+<li>UINT <em>*bw</em> – указатель на переменную, в которую будет записано количество реально записанных в файл байт </li>
+</ul>
+<p>При работе с функциями чтения/записи возникает вопрос – а с какого места будет производиться эта операция. Для навигации по файлу предназначен специальный указатель, который после открытия файла указывает на первый байт. Поэтому операция чтения/записи будет производиться с первого байта. Для перемещения указателя в нужное место используется следующая функция:</p>
+<p>FRESULT <strong>f_lseek</strong> ( FIL <em>*fp</em>, DWORD <em>ofs</em> ), где</p>
+<ul>
+<li>FIL <em>*fp — </em>указатель на структуру, в которой храняться данные об открытом файле; </li>
+<li>DWORD <em>ofs</em> – значение смещения в файле относительно его начала </li>
+</ul>
+<p>FRESULT <strong>f_truncate</strong> ( FIL <em>*fp</em> ) – обрезает файл в положении указателя, о котором говорилось выше. Например, если указатель переместили на 10 байт относительно начала, а затем вызвали данную функцию, то размер файла станет равным десяти.</p>
+<p>FRESULT <strong>f_sync</strong> ( FIL <em>*fp</em> ) – похоже на f_close, но сохраняет файл открытым. Она просто записывает данные из буфера (кеша) на диск. Дело в то, что размер сектора 512 байт. Если записать данные функцией f_write, то они реально на карту перепишутся, когда будет достигнут конец сектора. Если до этого произойдет сброс контроллера, то данные будут потеряны. Чтобы этого не произошло, их можно периодически сохранять данной функцией.</p>
+<p>Для “затравки” напишем код, с помощью которого в корневом каталоге форматированной карты будет создано два текстовых файла, в которые запишем по одной строке:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+<span style="color: #666666; font-style: italic;">//function создает текстовый файл и записывает в него строку "Hello, Word"                   //</span>
+<span style="color: #666666; font-style: italic;">//argument имя файла                                                                         //</span>
+<span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+FRESULT create_file<span style="color: #009900;">(</span><span style="color: #993333;">const</span> <span style="color: #993333;">char</span> <span style="color: #339933;">*</span>FileName<span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+  FRESULT res<span style="color: #339933;">;</span>               <span style="color: #666666; font-style: italic;">//для возвращаемого функциями результата</span>
+  FIL file<span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//файловый объект</span>
+  UINT len<span style="color: #339933;">;</span>                  <span style="color: #666666; font-style: italic;">//для хранения количества реально записанных байт</span>
+  <span style="color: #993333;">char</span> str<span style="color: #009900;">[</span><span style="color: #009900;">]</span><span style="color: #339933;">=</span><span style="color: #ff0000;">"Hello, Word"</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//записываемая строка</span>
+&nbsp;
+  <span style="color: #666666; font-style: italic;">//создаем файл с именем FileName и открываем его для для записи</span>
+  res <span style="color: #339933;">=</span> f_open<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,</span> FileName<span style="color: #339933;">,</span> FA_WRITE <span style="color: #339933;">|</span> FA_CREATE_ALWAYS<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span> <span style="color: #b1b100;">return</span> res<span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//если произошла ошибка</span>
+  <span style="color: #666666; font-style: italic;">//записываем строку в файл</span>
+  res <span style="color: #339933;">=</span> f_write<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #339933;">,</span> str<span style="color: #339933;">,</span> <span style="color: #993333;">sizeof</span><span style="color: #009900;">(</span>str<span style="color: #009900;">)</span><span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>len<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+  <span style="color: #b1b100;">if</span><span style="color: #009900;">(</span>res<span style="color: #009900;">)</span> <span style="color: #b1b100;">return</span> res<span style="color: #339933;">;</span>    <span style="color: #666666; font-style: italic;">//если произошла ошибка</span>
+  <span style="color: #666666; font-style: italic;">//закрываем файл</span>
+  <span style="color: #b1b100;">return</span> f_close<span style="color: #009900;">(</span><span style="color: #339933;">&amp;</span>file<span style="color: #009900;">)</span><span style="color: #339933;">;</span>
+<span style="color: #009900;">}</span>
+&nbsp;
+<span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+<span style="color: #666666; font-style: italic;">//                                            main                                           //</span>
+<span style="color: #666666; font-style: italic;">//*********************************************************************************************</span>
+<span style="color: #993333;">int</span> main <span style="color: #009900;">(</span><span style="color: #993333;">void</span><span style="color: #009900;">)</span>
+<span style="color: #009900;">{</span>
+  FATFS   fs<span style="color: #339933;">;</span>                   <span style="color: #666666; font-style: italic;">//структура, с которой будем связывать диск </span>
+&nbsp;
+  ......                        <span style="color: #666666; font-style: italic;">//что-то делаем</span>
+&nbsp;
+  disk_initialize<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>           <span style="color: #666666; font-style: italic;">//инициализируем карту памяти</span>
+  f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> <span style="color: #339933;">&amp;</span>fs<span style="color: #009900;">)</span><span style="color: #339933;">;</span>              <span style="color: #666666; font-style: italic;">//выполняем связывание диска со структурой fs</span>
+  create_file <span style="color: #009900;">(</span><span style="color: #ff0000;">"0:proba.txt"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>  <span style="color: #666666; font-style: italic;">//создаем первый файл</span>
+  create_file <span style="color: #009900;">(</span><span style="color: #ff0000;">"0:proba2.txt"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span> <span style="color: #666666; font-style: italic;">//создаем второй файл</span>
+  f_mount<span style="color: #009900;">(</span><span style="color: #0000dd;">0</span><span style="color: #339933;">,</span> NULL<span style="color: #009900;">)</span><span style="color: #339933;">;</span>             <span style="color: #666666; font-style: italic;">//отменяем связывание диска со структурой fs</span>
+&nbsp;
+  ......                        <span style="color: #666666; font-style: italic;">//что-то делаем</span>
+<span style="color: #009900;">}</span></pre></td></tr></tbody></table></div>
+
+<p>Когда открываем файл, можно без особого труда узнать его размер. Он указан в файловой переменной (в приведенном выше примере file)</p>
+<p>Для этого достаточно обратиться к полю структуры: LenFile = file.fsize;</p>
+<p>Если нужна полная информация о файле, необходимо обратиться к функции f_stat, которая позволяет получить состояние файла. Она имеет следующий вид:</p>
+<p>FRESULT <strong>f_stat</strong> ( const char <em>*path</em>,&nbsp; FILINFO <em>*fno</em> ), где </p>
+<ul>
+<li>const char <em>*path</em> –&nbsp; имя файла; </li>
+<li>FILINFO <em>*fno</em> — указатель на структуру FILINFO, в которую будут записаны данные о файле </li>
+</ul>
+<p>Структура FILINFO выглядит следующим образом:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;"><span style="color: #993333;">typedef</span> <span style="color: #993333;">struct</span> _FILINFO <span style="color: #009900;">{</span>
+	DWORD fsize<span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//размер файла</span>
+	WORD fdate<span style="color: #339933;">;</span>	        <span style="color: #666666; font-style: italic;">//последнее изменение даты</span>
+	WORD ftime<span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//последнее изменение времени</span>
+	BYTE fattrib<span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//аттрибуты</span>
+	<span style="color: #993333;">char</span> fname<span style="color: #009900;">[</span><span style="color: #0000dd;">13</span><span style="color: #009900;">]</span><span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//короткое имя (8.3 format) </span>
+	<span style="color: #993333;">char</span> <span style="color: #339933;">*</span>lfname<span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//указатель на LFN buffer (буфер, где содержится длинное имя) / </span>
+	<span style="color: #993333;">int</span> lfsize<span style="color: #339933;">;</span>		<span style="color: #666666; font-style: italic;">//размер буфера LFN </span>
+<span style="color: #009900;">}</span> FILINFO<span style="color: #339933;">;</span></pre></td></tr></tbody></table></div>
+
+<p>Пришло время поработать с каталогами. Небольшой ликбез в отношении понятия <em>каталог</em>. </p>
+<p>Каталог (англ. directory) предназначен для организации файлов, для их упорядочивания. Чем отличается каталог от папки? А ничем. Это одно и то же. Просто обычно на экране каталог изображается в виде папки, поэтому чаще говорят не каталог, а папка. Есть такое понятие, как <strong>корневой</strong> <strong>каталог</strong> -&nbsp; он включает в себя все остальные каталоги. В Windows корневой каталог обозначается буквой (A, B, C и т.д), после которой следует двоеточие. В библиотеке FatFs корневой каталог обозначается цифрой с последующим двоеточием. </p>
+<p>Рассмотрим функции, которые обеспечивают работу с каталогами.</p>
+<p>FRESULT <strong>f_opendir</strong> ( DIR *dj, const char *path ) – открывает каталог. Назначение аргументов:</p>
+<ul>
+<li>DIR <em>*dj</em> – указатель на структуру, где будут храниться данные о каталоге; </li>
+<li>const char <em>*path</em> – имя открываемого каталога </li>
+</ul>
+<p><font color="#0a1c1f">Для чего открывать каталог? Чтобы можно было его использовать посредством других функций, например f_readdir.</font></p>
+<p>FRESULT <strong>f_readdir</strong> ( DIR <em>*dj</em>,&nbsp; FILINFO <em>*fno</em> ) – для чтения содержимого каталога</p>
+<ul>
+<li>DIR <em>*dj</em> – указатель на структуру, где хранятся данные об открытом&nbsp; каталоге; </li>
+<li>FILINFO <em>*fno</em> – указатель на структуру, в которой будет сохраняться информация о найденном элементе каталога. </li>
+</ul>
+<p><font color="#0a1c1f">Что делает эта функция? В каталоге могут содержаться файлы и/или другие каталоги. При каждом вызове этой функции в структуру <em>*fno</em> будут занесены данные об очередном элементе. В этой структуре есть поле fname. В него записывается имя очередного элемента. Если перебор закончен, это имя будет равно NULL. Как видим, эта функция является прекрасным инструментом для того, чтобы “пошарить” в папке. </font><font color="#0a1c1f">Если нужен пример использования этой функции, можно посмотреть здесь: <a title="http://microsin.net/programming/ARM/fatfs-read-dir.html" href="http://microsin.net/programming/ARM/fatfs-read-dir.html">http://microsin.net/programming/ARM/fatfs-read-dir.html</a></font></p>
+<p>FRESULT <strong>f_mkdir</strong> ( const char <em>*path</em> ) – создает каталог с указанным именем.</p>
+<p>Функция не сложная. Для примера создадим в корневом каталоге папку ‘mydir’ а в ней папку ‘mydir2’ :</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="line_numbers"><pre>1
+2
+</pre></td><td class="code"><pre class="c" style="font-family:monospace;">f_mkdir<span style="color: #009900;">(</span><span style="color: #ff0000;">"0:mydir"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>                      <span style="color: #666666; font-style: italic;">//создать папку ‘mydir’                               /</span>
+f_mkdir<span style="color: #009900;">(</span><span style="color: #ff0000;">"0:mydir/mydir2"</span><span style="color: #009900;">)</span><span style="color: #339933;">;</span>               <span style="color: #666666; font-style: italic;">//в папке ‘mydir’ создать папку ‘mydir2’</span></pre></td></tr></tbody></table></div>
+
+<p>FRESULT<strong> f_unlink</strong> ( const char <em>*path</em> ) – удаление файла или папки. Файл удаляет на раз (главное, чтобы он не был открыт и чтобы не был установлен атрибут “только чтение”). А вот перед удалением папки ее необходимо полностью освободить, т.е. удалить все находящиеся в ней объекты.&nbsp;
+</p><p>FRESULT <strong>f_rename</strong> ( const char <em>*path_old</em>,&nbsp; const char <em>*path_new</em> ) – переименовывает и/или перемещает файл/папку. Объект не должен быть открыт и не забываем за атрибуты.</p>
+<p>&nbsp;</p>
+<p>На этом пока остановлюсь. В процессе работы с FatFs буду добавлять статьи с рабочими примерами. </p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>, <a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»" rel="category tag">Работа с FatFs</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (2) на “STM32 FatFs. Обзор библиотечных функций”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-1182">
+     <div id="comment-1182">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn"><a href="http://how2.org.ua/" rel="external nofollow" class="url">dimas</a>:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#comment-1182">20.09.2012 в 21:51</a></div>
+
+      <p>а как собственно связать fatfs с spi интерфейсом карты?<br>
+и где стянуть fatfs ?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/?replytocom=1182#respond" onclick="return addComment.moveForm(&quot;comment-1182&quot;, &quot;1182&quot;, &quot;respond&quot;, &quot;2977&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1183">
+     <div id="comment-1183">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#comment-1183">20.09.2012 в 22:21</a></div>
+
+      <p>В первой статье на эту тему есть ссылка на сайт, где подробная информация об этом.<br>
+В этой же статье можно скачать нужные файлы (но там FatFs немного урезанная). Я подключил карту ко второму spi</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/?replytocom=1183#respond" onclick="return addComment.moveForm(&quot;comment-1183&quot;, &quot;1183&quot;, &quot;respond&quot;, &quot;2977&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="2977" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-fatfs-obzor-bibliotechnyih-funktsiy/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 25 запросов. 0,380 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 FatFs. Обзор библиотечных функций_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

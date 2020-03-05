@@ -1,0 +1,1622 @@
+<!doctype html>
+
+
+
+
+        
+        
+    
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="ru" > <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="ru" > <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="ru" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="ru" > <!--<![endif]-->
+
+<head prefix="og: https://ogp.me/ns# article: https://ogp.me/ns/article#">
+    
+        <meta charset="utf-8">
+
+        <meta name="description" content="Сайт о микроконтроллерах STM32, STM8, Миландр">
+        <meta name="keywords" content="STM32, STM8, Миландр">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="index,follow">
+
+        <title>Ошибка / my controller</title>
+
+        
+        
+        
+        
+        
+        
+            
+            <link rel="stylesheet" type="text/css" href="http://mycontroller.ru/application/tmp/templates/cache/synio/0fb3c5dce28a97146b06465fccbbc90c.css?v=0" />
+
+        
+    <link href="//fonts.googleapis.com/css?family=PT+Sans:400,700&amp;subset=latin,cyrillic" rel="stylesheet" type="text/css">
+    <link rel="search" type="application/opensearchdescription+xml" href="http://mycontroller.ru/search/opensearch/" title="my controller" />
+
+
+        <link href="http://mycontroller.ru/application/frontend/skin/synio/assets/images/favicons/favicon.ico?v1" rel="shortcut icon" />
+
+        <script>
+            var PATH_ROOT                   = 'http://mycontroller.ru/',PATH_SKIN                   = 'http://mycontroller.ru/application/frontend/skin/synio',PATH_FRAMEWORK_FRONTEND     = 'http://mycontroller.ru/framework/frontend/framework',PATH_FRAMEWORK_LIBS_VENDOR  = 'http://mycontroller.ru/framework/libs/vendor',LIVESTREET_SECURITY_KEY = '580322e92021a8acd5dbbb7c653a298f',LANGUAGE                = 'ru',WYSIWYG                 = false,ACTION = 'error';var aRouter = [];aRouter['error'] = 'http://mycontroller.ru/error/';aRouter['index'] = 'http://mycontroller.ru/index/';aRouter['auth'] = 'http://mycontroller.ru/auth/';aRouter['profile'] = 'http://mycontroller.ru/profile/';aRouter['blog'] = 'http://mycontroller.ru/blog/';aRouter['people'] = 'http://mycontroller.ru/people/';aRouter['settings'] = 'http://mycontroller.ru/settings/';aRouter['tag'] = 'http://mycontroller.ru/tag/';aRouter['talk'] = 'http://mycontroller.ru/talk/';aRouter['comments'] = 'http://mycontroller.ru/comments/';aRouter['rss'] = 'http://mycontroller.ru/rss/';aRouter['blogs'] = 'http://mycontroller.ru/blogs/';aRouter['search'] = 'http://mycontroller.ru/search/';aRouter['admin'] = 'http://mycontroller.ru/admin/';aRouter['ajax'] = 'http://mycontroller.ru/ajax/';aRouter['feed'] = 'http://mycontroller.ru/feed/';aRouter['stream'] = 'http://mycontroller.ru/stream/';aRouter['subscribe'] = 'http://mycontroller.ru/subscribe/';aRouter['content'] = 'http://mycontroller.ru/content/';aRouter['property'] = 'http://mycontroller.ru/property/';aRouter['wall'] = 'http://mycontroller.ru/wall/';aRouter['sitemap'] = 'http://mycontroller.ru/sitemap/';aRouter['docs'] = 'http://mycontroller.ru/docs/';        </script>
+
+        
+    
+    
+            
+
+                    
+    
+            <style>
+            .layout-userbar,
+            .layout-container {
+                min-width: 320px;
+                max-width: 1100px;
+            }
+        </style>
+    
+    <meta name="viewport" content="">
+
+
+    <meta property="og:title" content="Ошибка / my controller" />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="http://mycontroller.ru/application/frontend/skin/synio/og-default.png" />
+<meta property="og:url" content="http://mycontroller.ru/old_site/wp-content/plugins/wordpress-file-monitor/wordpress-file-monitor.php@ver=scan" />
+<meta property="og:site_name" content="my controller" />
+
+</head>
+
+
+
+    
+    
+
+<body class="layout layout--user-role-guest layout--user-role-not-admin layout--template-synio layout--fluid  " >
+    
+    
+
+    
+    
+<div class="ls-userbar js-userbar">
+    <div class="ls-userbar-inner ls-clearfix" style="min-width: 320px; max-width: 1100px;">
+        <h1 class="ls-userbar-logo">
+            <a href="http://mycontroller.ru/">my controller</a>
+        </h1>
+
+        
+        
+            
+
+
+
+
+    
+    
+
+
+                
+
+    
+
+
+
+
+    <ul class="ls-nav ls-nav--root  ls-userbar-nav ls-clearfix" >
+                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Топики</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/blogs/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Блоги</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/people/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Пользователи</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/stream/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Активность</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                            </ul>
+
+        
+
+                    
+            
+            
+
+
+
+
+    
+    
+
+
+        
+
+    
+
+
+
+
+    <ul class="ls-nav ls-nav--root  ls-userbar-auth-nav ls-clearfix" >
+                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  js-modal-toggle-login"  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/auth/login/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Войти</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  js-modal-toggle-registration"  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/auth/register/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Регистрация</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                            </ul>
+
+            </div>
+</div>
+
+
+    
+    <nav class="layout-nav ls-clearfix" style="min-width: 320px; max-width: 1100px;">
+        <div class="layout-nav-inner ls-clearfix">
+            <div class="layout-nav-right">
+                
+                <div class="ls-search-hideable js-search-hideable">
+    <div class="ls-search-hideable-toggle js-search-hideable-toggle">
+        <i class="ls-search-hideable-toggle-icon"></i>
+        <a href="#" class="ls-search-hideable-toggle-text">Найти</a>
+    </div>
+
+    
+
+
+
+
+
+
+<form action="http://mycontroller.ru/search/topics" method="get" class="ls-search-form ls-search-form--light  ls-search-hideable-search js-search-hideable-search" >
+    
+        <div class="ls-search-form-input-wrapper">
+            
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="text"     id="ls-field2063533949"
+    class="ls-field-input ls-search-form-input "
+    value=""    name="q"    placeholder="Поиск"            
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+                            <button class="ls-search-form-submit">
+                    
+
+<i class="syn-icon syn-icon-submit  " ></i>
+                </button>
+                    </div>
+    
+</form>
+</div>
+
+                            </div>
+
+            
+                    </div>
+    </nav>
+
+
+    
+    <div id="container" class="layout-container  layout-no-sidebar">
+        
+        <div class="layout-wrapper ls-clearfix ">
+            
+            <div class="layout-content"
+                 role="main"
+                 >
+
+                
+
+                
+                
+                    <h2 class="page-header">
+                        
+            Ошибка: <span>404</span>
+    
+                    </h2>
+
+
+                
+                    
+                    
+                    
+                                    
+
+                
+
+                
+    <p>К сожалению, такой страницы не существует. Вероятно, она была удалена с сервера, либо ее здесь никогда не было.</p>
+    <p>
+        <a href="javascript:history.go(-1);">Вернуться назад</a>,
+        <a href="http://mycontroller.ru/">перейти на главную</a>
+    </p>
+
+
+                
+            </div>
+
+            
+                    </div> 
+
+
+        
+        <footer class="layout-footer ls-clearfix">
+            
+                
+
+                
+
+                                                        <div class="layout-footer-links">
+                        <h4 class="layout-footer-links-title">Гость</h4>
+
+                        
+
+
+
+
+    
+    
+
+
+        
+
+    
+
+
+
+
+    <ul class="ls-nav ls-nav--stacked ls-nav--root  layout-footer-links-nav ls-clearfix" >
+                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  js-modal-toggle-login"  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/auth/login/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Войти</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  js-modal-toggle-registration"  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/auth/register/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Регистрация</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                            </ul>
+
+                    </div>
+                
+                
+                                    <div class="layout-footer-links">
+                        <h4 class="layout-footer-links-title">Разделы</h4>
+
+                        
+
+
+
+
+    
+    
+
+
+                
+
+    
+
+
+
+
+    <ul class="ls-nav ls-nav--stacked ls-nav--root  layout-footer-links-nav ls-clearfix" >
+                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Топики</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/blogs/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Блоги</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/people/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Пользователи</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                                    
+                                                                        
+
+
+
+
+
+
+
+
+
+
+
+
+    <li class="ls-nav-item  "  role="menuitem"
+        >
+
+        
+        <a href="http://mycontroller.ru/stream/" class="ls-nav-item-link" >
+            
+            
+            
+            <span class="ls-nav-item-text">Активность</span>
+
+            
+            
+            
+                    </a>
+
+        
+            </li>
+
+                                                            </ul>
+
+                    </div>
+                
+
+                
+
+                <div class="layout-footer-copyright">
+                    &copy; Powered by <a href="https://catalog.livestreetcms.com">LiveStreet CMS</a>
+
+                    <div class="layout-footer-design-by">
+                        <img src="http://mycontroller.ru/application/frontend/skin/synio/assets/images/xeoart.png" alt="xeoart" />
+                        Design by <a href="http://xeoart.com">xeoart</a>
+                        <div>2012</div>
+                    </div>
+                </div>
+
+                
+            
+        </footer>
+    </div> 
+
+
+    
+            
+    
+
+
+
+
+
+
+
+
+
+
+<div class="ls-modal ls-modal--auth  js-modal-default" 
+    id="modal-login"
+    data-type="modal"
+    data-lsmodal-center="false" >
+
+    
+    
+        <header class="ls-modal-header">
+            
+                            <h3 class="ls-modal-title">Авторизация</h3>
+            
+            
+            <div class="ls-modal-close" data-type="modal-close">
+                
+
+<i class="syn-icon syn-icon-close  " ></i>
+            </div>
+        </header>
+    
+
+    
+
+    
+    
+            
+
+    
+    
+
+
+
+
+
+            
+<div class="ls-tabs  ls-modal-tabs js-ls-modal-tabs" >
+    
+    
+
+<ul class="ls-tab-list   ls-clearfix"  data-tab-list>
+                
+                        
+
+<li class="ls-tab  js-auth-tab-login active" 
+    data-tab
+    data-lstab-options='{
+        "target": "tab489437250",
+        "urls": {
+            "load": ""
+        }
+    }'>
+
+            <span class="ls-tab-inner">Войти</span>
+    </li>
+                                
+
+<li class="ls-tab  js-auth-tab-reg " 
+    data-tab
+    data-lstab-options='{
+        "target": "tab2144538540",
+        "urls": {
+            "load": ""
+        }
+    }'>
+
+            <span class="ls-tab-inner">Регистрация</span>
+    </li>
+                                
+
+<li class="ls-tab   " 
+    data-tab
+    data-lstab-options='{
+        "target": "tab539129538",
+        "urls": {
+            "load": ""
+        }
+    }'>
+
+            <span class="ls-tab-inner">Восстановление пароля</span>
+    </li>
+            </ul>
+
+    
+                
+    <div class="ls-tabs-panes" data-tab-panes>
+                                    <div class="ls-tab-pane" style="display: block" data-tab-pane id="tab489437250">
+                                            <div class="ls-tab-pane-content">
+                            
+
+
+
+
+
+<form action="http://mycontroller.ru/auth/login/" method="post" class="js-form-validate js-auth-login-form">
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field970924092" class="ls-field-label">Логин или эл. почта</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="text"     id="ls-field970924092"
+    class="ls-field-input "
+    value=""    name="login"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-minlength="3"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1790436683" class="ls-field-label">Пароль</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="password"     id="ls-field1790436683"
+    class="ls-field-input "
+    value=""    name="password"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-minlength="2"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+        
+    
+    
+    
+    
+    
+
+    
+
+
+
+
+
+
+    <div class="ls-field ls-field--checkbox  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1811009522" class="ls-field-label">Запомнить меня</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    
+    <input type="checkbox"     id="ls-field1811009522"
+    class="ls-field-input "
+    value="1"    name="remember"                
+    
+ checked />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+    <input type="hidden"     id="ls-field2072552847"
+    class="ls-field-input "
+    value="http://mycontroller.ru/old_site/wp-content/plugins/wordpress-file-monitor/wordpress-file-monitor.php@ver=scan"    name="return-path"                
+    
+ />
+
+
+    
+    
+
+
+
+
+
+
+
+<button
+                    type="submit"
+            value=""
+                                                name="submit_login"        class="ls-button ls-button--primary  "
+        >
+    
+    
+    
+    Войти
+
+    </button>
+</form>
+
+
+
+                        </div>
+                    
+                    
+                    
+                    
+                </div>
+                                                <div class="ls-tab-pane"  data-tab-pane id="tab2144538540">
+                                            <div class="ls-tab-pane-content">
+                            
+
+
+
+
+
+<form action="http://mycontroller.ru/auth/register/" method="post" class="js-form-validate js-auth-registration-form">
+    
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1561274301" class="ls-field-label">Логин</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="text"     id="ls-field1561274301"
+    class="ls-field-input "
+    value=""    name="login"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-minlength="3"
+            
+                    data-parsley-remote-validator="livestreet"
+            data-parsley-trigger="focusout"
+
+            
+            
+            
+            data-parsley-remote-options='{"type":"post","data":{"security_ls_key":"580322e92021a8acd5dbbb7c653a298f"}}'
+        
+        
+        data-parsley-remote="http://mycontroller.ru/auth/ajax-validate-login"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+
+            
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1168535729" class="ls-field-label">E-mail</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="text"     id="ls-field1168535729"
+    class="ls-field-input "
+    value=""    name="mail"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-type="email"
+            
+                    data-parsley-remote-validator="livestreet"
+            data-parsley-trigger="focusout"
+
+            
+            
+            
+            data-parsley-remote-options='{"type":"post","data":{"security_ls_key":"580322e92021a8acd5dbbb7c653a298f"}}'
+        
+        
+        data-parsley-remote="http://mycontroller.ru/auth/ajax-validate-email"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field404225139" class="ls-field-label">Пароль</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="password"     id="ls-field404225139"
+    class="ls-field-input js-input-password-reg"
+    value=""    name="password"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-minlength="5"
+            
+        
+        
+        data-parsley-trigger="input"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1265912277" class="ls-field-label">Повторите пароль</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="password"     id="ls-field1265912277"
+    class="ls-field-input "
+    value=""    name="password_confirm"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-minlength="5"
+            
+        
+        
+        data-parsley-trigger="input"
+            
+        
+        
+        data-parsley-equalto=".js-input-password-reg"
+            
+        
+        
+        data-parsley-equalto-message="Пароли не совпадают"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+                
+    
+    
+    
+
+    
+
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field1881085147" class="ls-field-label">Введите цифры и буквы</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <span data-type="captcha" data-lscaptcha-name="user_signup" class="ls-field--captcha-image"></span>
+
+    
+    
+    <input type="text"     id="ls-field1881085147"
+    class="ls-field-input  ls-width-100"
+    value=""    name="captcha"                    
+        
+        
+        data-parsley-required="1"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+    
+    
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+    <input type="hidden"     id="ls-field2080335721"
+    class="ls-field-input "
+    value="http://mycontroller.ru/old_site/wp-content/plugins/wordpress-file-monitor/wordpress-file-monitor.php@ver=scan"    name="return-path"                
+    
+ />
+
+
+    
+    
+
+
+
+
+
+
+
+<button
+                    type="submit"
+            value=""
+                                                name="submit_register"        class="ls-button ls-button--primary  "
+        >
+    
+    
+    
+    Зарегистрироваться
+
+    </button>
+</form>
+
+
+
+                        </div>
+                    
+                    
+                    
+                    
+                </div>
+                                                <div class="ls-tab-pane"  data-tab-pane id="tab539129538">
+                                            <div class="ls-tab-pane-content">
+                            
+<form action="http://mycontroller.ru/auth/password-reset/" method="post" class="js-form-validate js-auth-reset-form">
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+
+            
+
+
+
+
+
+
+    <div class="ls-field  ls-clearfix  "
+        
+        >
+
+        
+                    <label for="ls-field119144534" class="ls-field-label">Ваш e-mail</label>
+        
+        
+        <div class="ls-field-holder">
+            
+    <input type="text"     id="ls-field119144534"
+    class="ls-field-input "
+    value=""    name="mail"                    
+        
+        
+        data-parsley-required="1"
+            
+        
+        
+        data-parsley-type="email"
+        
+    
+ />
+
+        </div>
+
+        
+            </div>
+
+
+
+    
+
+
+
+
+
+
+
+<button
+                    type="submit"
+            value=""
+                                                name="submit_reset"        class="ls-button ls-button--primary  "
+        >
+    
+    
+    
+    Получить ссылку на изменение пароля
+
+    </button>
+</form>
+                        </div>
+                    
+                    
+                    
+                    
+                </div>
+                        </div>
+</div>
+
+    
+
+    
+    
+            
+</div>
+    
+
+    
+    
+    
+
+    
+    
+
+
+<div class="ls-toolbar  js-toolbar-default" >
+            
+
+
+
+
+<div class="ls-toolbar-item ls-toolbar-item--scrollup  js-toolbar-scrollup" >
+            <i class="ls-toolbar-icon"></i>
+    </div>
+    </div>
+
+    
+
+
+    
+			<script type="text/javascript">
+			var _lsIsLoadGA=(typeof(window._gaq)=='undefined') ? false : true ;
+
+			  var _gaq = _gaq || [];
+			  _gaq.push(['lscounter._setAccount', 'UA-28922093-1']);
+			  _gaq.push(['lscounter._trackPageview']);
+
+			if (!_lsIsLoadGA) {
+			  (function() {
+				var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+				ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+				var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+			  })();
+			}
+			</script>
+		
+
+
+    
+    
+        
+        <script type="text/javascript" src="http://mycontroller.ru/application/tmp/templates/cache/synio/18c15bfc2ac9911672c80495c92ba5fa.js?v=0" ></script>
+<script type="text/javascript" src="//yastatic.net/share/share.js?v=0" ></script>
+<script type="text/javascript" src="https://www.google.com/recaptcha/api.js?onload=__do_nothing__&render=explicit&amp;v=0" ></script>
+
+
+
+        <script>
+            ls.lang.load({"comments.comments_declension":"%%count%% \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0439;%%count%% \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u044f;%%count%% \u043a\u043e\u043c\u043c\u0435\u043d\u0442\u0430\u0440\u0438\u0435\u0432","comments.unsubscribe":"\u041e\u0442\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f","comments.subscribe":"\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f","comments.folding.unfold":"\u0420\u0430\u0437\u0432\u0435\u0440\u043d\u0443\u0442\u044c","comments.folding.fold":"\u0421\u0432\u0435\u0440\u043d\u0443\u0442\u044c","comments.folding.unfold_all":"\u0420\u0430\u0437\u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0432\u0441\u0435","comments.folding.fold_all":"\u0421\u0432\u0435\u0440\u043d\u0443\u0442\u044c \u0432\u0441\u0435","poll.notices.error_answers_max":"\u041c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e \u0432\u043e\u0437\u043c\u043e\u0436\u043d\u043e\u0435 \u0447\u0438\u0441\u043b\u043e \u0432\u0430\u0440\u0438\u0430\u043d\u0442\u043e\u0432 \u043e\u0442\u0432\u0435\u0442\u0430 %%count%%","favourite.add":"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0438\u0437\u0431\u0440\u0430\u043d\u043d\u043e\u0435","favourite.remove":"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0438\u0437 \u0438\u0437\u0431\u0440\u0430\u043d\u043d\u043e\u0433\u043e","field.geo.select_city":"\u0423\u043a\u0430\u0436\u0438\u0442\u0435 \u0433\u043e\u0440\u043e\u0434","field.geo.select_region":"\u0423\u043a\u0430\u0436\u0438\u0442\u0435 \u0440\u0435\u0433\u0438\u043e\u043d","blog.blog":"\u0411\u043b\u043e\u0433","blog.add.fields.type.note_open":"\u041e\u0442\u043a\u0440\u044b\u0442\u044b\u0439 \u2014 \u043a \u044d\u0442\u043e\u043c\u0443 \u0431\u043b\u043e\u0433\u0443 \u043c\u043e\u0436\u0435\u0442 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043b\u044e\u0431\u043e\u0439 \u0436\u0435\u043b\u0430\u044e\u0449\u0438\u0439, \u0442\u043e\u043f\u0438\u043a\u0438 \u0432\u0438\u0434\u043d\u044b \u0432\u0441\u0435\u043c","blog.add.fields.type.note_close":"\u0417\u0430\u043a\u0440\u044b\u0442\u044b\u0439 \u2014 \u043f\u0440\u0438\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u044c\u0441\u044f \u043c\u043e\u0436\u043d\u043e \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e \u043f\u0440\u0438\u0433\u043b\u0430\u0448\u0435\u043d\u0438\u044e \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0446\u0438\u0438 \u0431\u043b\u043e\u0433\u0430, \u0442\u043e\u043f\u0438\u043a\u0438 \u0432\u0438\u0434\u044f\u0442 \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0434\u043f\u0438\u0441\u0447\u0438\u043a\u0438","blog.search.result_title":"\u041d\u0430\u0439\u0434\u0435\u043d %%count%% \u0431\u043b\u043e\u0433;\u041d\u0430\u0439\u0434\u0435\u043d\u043e %%count%% \u0431\u043b\u043e\u0433\u0430;\u041d\u0430\u0439\u0434\u0435\u043d\u043e %%count%% \u0431\u043b\u043e\u0433\u043e\u0432","blog.blocks.navigator.blog":"\u0411\u043b\u043e\u0433","common.success.add":"\u0423\u0441\u043f\u0435\u0448\u043d\u043e \u0434\u043e\u0431\u0430\u0432\u043b\u0435\u043d\u043e","common.success.remove":"\u0423\u0434\u0430\u043b\u0435\u043d\u0438\u0435 \u043f\u0440\u043e\u0448\u043b\u043e \u0443\u0441\u043f\u0435\u0448\u043d\u043e","common.remove_confirm":"\u0414\u0435\u0439\u0441\u0442\u0432\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u0443\u0434\u0430\u043b\u0438\u0442\u044c?","pagination.notices.first":"\u0412\u044b \u043d\u0430 \u043f\u0435\u0440\u0432\u043e\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435!","pagination.notices.last":"\u0412\u044b \u043d\u0430 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0439 \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0435!","user.actions.unfollow":"\u041e\u0442\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f","user.actions.follow":"\u041f\u043e\u0434\u043f\u0438\u0441\u0430\u0442\u044c\u0441\u044f","user.friends.status.added":"\u0423\u0434\u0430\u043b\u0438\u0442\u044c \u0438\u0437 \u0434\u0440\u0443\u0437\u0435\u0439","user.friends.status.notfriends":"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0434\u0440\u0443\u0437\u044c\u044f","user.friends.status.pending":"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0434\u0440\u0443\u0437\u044c\u044f","user.friends.status.rejected":"\u0417\u0430\u044f\u0432\u043a\u0430 \u043e\u0442\u043a\u043b\u043e\u043d\u0435\u043d\u0430","user.friends.status.sent":"\u0417\u0430\u044f\u0432\u043a\u0430 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u0435\u043d\u0430","user.friends.status.linked":"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0432 \u0434\u0440\u0443\u0437\u044c\u044f","user.settings.profile.notices.error_max_userfields":"\u041d\u0435\u043b\u044c\u0437\u044f \u0434\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 %%count%% \u043e\u0434\u0438\u043d\u0430\u043a\u043e\u0432\u044b\u0445 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u043e\u0432","user.search.result_title":"\u041d\u0430\u0439\u0434\u0435\u043d %%count%% \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c;\u041d\u0430\u0439\u0434\u0435\u043d\u043e %%count%% \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f;\u041d\u0430\u0439\u0434\u0435\u043d\u043e %%count%% \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439","more.text":"\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0435\u0449\u0435","more.text_count":"\u041f\u043e\u0434\u0433\u0440\u0443\u0437\u0438\u0442\u044c \u0435\u0449\u0435 (%%count%%)","more.empty":"\u0411\u043e\u043b\u044c\u0448\u0435 \u043d\u0435\u0447\u0435\u0433\u043e \u043f\u043e\u0434\u0433\u0440\u0443\u0436\u0430\u0442\u044c","validate.tags.count":"\u041f\u043e\u043b\u0435 %%field%% \u0441\u043e\u0434\u0435\u0440\u0436\u0438\u0442 \u043d\u0435\u0432\u0435\u0440\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u0442\u0435\u0433\u043e\u0432 (\u0442\u0435\u0433\u043e\u0432 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043e\u0442 %%min%% \u0434\u043e %%max%%)","uploader.attach.count":"%%count%% \u0444\u0430\u0439\u043b \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d;%%count%% \u0444\u0430\u0439\u043b\u0430 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043e;%%count%% \u0444\u0430\u0439\u043b\u043e\u0432 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043e","uploader.attach.empty":"\u041d\u0435\u0442 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043d\u044b\u0445 \u0444\u0430\u0439\u043b\u043e\u0432"});
+            ls.registry.set({"recaptcha.site_key":"","comment_max_tree":7,"comment_show_form":false,"comment_use_paging":false,"topic_max_blog_count":3,"block_stream_show_tip":true,"poll_max_answers":20});
+        </script>
+    
+
+
+    
+</body>
+</html>

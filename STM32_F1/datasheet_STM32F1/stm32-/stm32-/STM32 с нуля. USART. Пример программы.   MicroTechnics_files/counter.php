@@ -1,0 +1,1 @@
+if (typeof pluso != "undefined") pluso.setCounter("0", "http://microtechnics.ru/stm32-uchebnyj-kurs-usart/", undefined, undefined, undefined);

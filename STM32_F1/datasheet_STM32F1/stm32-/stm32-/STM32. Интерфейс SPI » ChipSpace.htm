@@ -1,0 +1,1296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0030)http://chipspace.ru/stm32-spi/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="pingback" href="http://chipspace.ru/xmlrpc.php">
+
+	<title>  STM32. Интерфейс SPI » ChipSpace</title>
+	<meta name="description" content="Рассмотрена работа с интерфейсом SPI микроконтроллеров STM32.">
+	<meta name="keywords" content="stm32,spi stm32">
+<link rel="shortcut icon" href="http://chipspace.ru/wp-content/uploads/2013/06/Favicon_32.jpg">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента" href="http://chipspace.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев" href="http://chipspace.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев к «STM32. Интерфейс SPI»" href="http://chipspace.ru/stm32-spi/feed/">
+<link rel="stylesheet" id="wp_sidebarlogin_css_styles-css" href="./STM32. Интерфейс SPI » ChipSpace_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-css" href="./STM32. Интерфейс SPI » ChipSpace_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-skin-1-css" href="./STM32. Интерфейс SPI » ChipSpace_files/skin.css" type="text/css" media="all">
+<!--[if !IE]>--><link rel="stylesheet" id="suffusion-rounded-css" href="./STM32. Интерфейс SPI » ChipSpace_files/rounded-corners.css" type="text/css" media="all">
+<!--<![endif]-->
+<!--[if gt IE 8]><link rel='stylesheet' id='suffusion-rounded-css'  href='http://chipspace.ru/wp-content/themes/suffusion/rounded-corners.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]><link rel='stylesheet' id='suffusion-ie-css'  href='http://chipspace.ru/wp-content/themes/suffusion/ie-fix.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="suffusion-generated-css" href="./STM32. Интерфейс SPI » ChipSpace_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript" async="" src="./STM32. Интерфейс SPI » ChipSpace_files/watch.js"></script><script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/blockui.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sidebar_login_params = {"ajax_url":"http:\/\/chipspace.ru\/wp-admin\/admin-ajax.php","login_nonce":"51fbee32d8"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/sidebar-login.js"></script>
+<script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/prettify_mod.js"></script>
+<script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/comment-reply.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var Suffusion_JS = {"wrapper_width_type_page_template_1l_sidebar_php":"fixed","wrapper_max_width_page_template_1l_sidebar_php":"1200","wrapper_min_width_page_template_1l_sidebar_php":"600","wrapper_orig_width_page_template_1l_sidebar_php":"75","wrapper_width_type_page_template_1r_sidebar_php":"fixed","wrapper_max_width_page_template_1r_sidebar_php":"1200","wrapper_min_width_page_template_1r_sidebar_php":"600","wrapper_orig_width_page_template_1r_sidebar_php":"75","wrapper_width_type_page_template_1l1r_sidebar_php":"fixed","wrapper_max_width_page_template_1l1r_sidebar_php":"","wrapper_min_width_page_template_1l1r_sidebar_php":"600","wrapper_orig_width_page_template_1l1r_sidebar_php":"75","wrapper_width_type_page_template_2l_sidebars_php":"fixed","wrapper_max_width_page_template_2l_sidebars_php":"1200","wrapper_min_width_page_template_2l_sidebars_php":"600","wrapper_orig_width_page_template_2l_sidebars_php":"75","wrapper_width_type_page_template_2r_sidebars_php":"fixed","wrapper_max_width_page_template_2r_sidebars_php":"1200","wrapper_min_width_page_template_2r_sidebars_php":"600","wrapper_orig_width_page_template_2r_sidebars_php":"75","wrapper_width_type":"fluid","wrapper_max_width":"1200","wrapper_min_width":"600","wrapper_orig_width":"98","wrapper_width_type_page_template_no_sidebars_php":"fluid","wrapper_max_width_page_template_no_sidebars_php":"1200","wrapper_min_width_page_template_no_sidebars_php":"600","wrapper_orig_width_page_template_no_sidebars_php":"98","suf_nav_delay":"500","suf_nav_effect":"none","suf_navt_delay":"500","suf_navt_effect":"fade","suf_jq_masonry_enabled":"disabled","suf_fix_aspect_ratio":"preserve","suf_show_drop_caps":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32. Интерфейс SPI » ChipSpace_files/suffusion.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://chipspace.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://chipspace.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32L. System clock configuration. Утилита для конфигурации тактовых частот и создания файла system_stm32l1xx.c." href="http://chipspace.ru/stm32-system-clock-configuration/">
+<link rel="next" title="STM32. Стандартные библиотеки для модуля SPI" href="http://chipspace.ru/stm32-spi-stdperiph_lib/">
+<link rel="canonical" href="./STM32. Интерфейс SPI » ChipSpace_files/STM32. Интерфейс SPI » ChipSpace.htm">
+<link rel="shortlink" href="http://chipspace.ru/?p=1110">
+<!-- Start Additional Feeds -->
+<!-- End Additional Feeds -->
+<!-- location header -->
+<!-- Include AudioPlayer via Suffusion -->
+<script type="text/javascript">
+/* <![CDATA[ */
+	if (typeof AudioPlayer != 'undefined') {
+		AudioPlayer.setup("http://chipspace.ru/wp-content/themes/suffusion/scripts/player.swf", {
+			width: 500,
+			initialvolume: 100,
+			transparentpagebg: "yes",
+			left: "000000",
+			lefticon: "FFFFFF"
+		});
+	}
+/* ]]> */
+</script>
+<!-- /AudioPlayer -->
+<!-- THEMEKITFORWP STYLE OPTIONS prettify-wordpress-->
+			<style>.str{ color: #800; }
+			.kwd{ color: #008; }
+			.com{ color: #0f800f; }
+			.typ{ color: #606; }
+			.lit{ color: #066; }
+			.pun{ color: #660; }
+			.pln{ color: #0e0e11; }
+			.tag{ color: #008; }
+			.atn{ color: #606; }
+			.atv{ color: #088108; }
+			.dec{ color: #606; }
+			.prettyprint, .prettyprint code{ background-color: #fdfcfc;}
+			.prettyprint{border: #5c71b7 solid 1px;padding: 10px; margin: 0 0 20px 0; overflow: auto; position: relative;}
+			.prettyprint{-moz-border-radius: 0px;border-radius: 0px;}
+			.prettyprint, .prettyprint code{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #333333;  font-family: Courier New, Courier New, monospace; }
+			.prettyprint:after{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #999999;  font-family: Courier, MonoSpace; }
+			.prettyprint:after{ content: attr(rel); position: absolute; top: 15px; line-height: 0; right: 12px; }
+			</style><!-- END THEMEKITFORWP STYLE OPTIONS --></head>
+<body class="single single-post postid-1110 single-format-standard light-theme-gray-1">
+    			<div id="nav-top" class="tab fix">
+		<div class="col-control right">
+		</div><!-- /.col-control -->
+	</div><!-- /#nav-top -->
+		<div id="wrapper" class="fix">
+					<div id="header-container" class="fix">
+					<div id="header" class="fix">
+			<h2 class="blogtitle"><a href="http://chipspace.ru/">ChipSpace</a></h2>
+		<div class="description"></div>
+    </div><!-- /header -->
+ 	<div id="nav" class="tab fix">
+		<div class="col-control left">
+	<!-- right-header-widgets -->
+	<div id="right-header-widgets" class="warea">
+	
+<form method="get" class="searchform " action="http://chipspace.ru/">
+	<input type="text" name="s" class="searchfield" value="Поиск" onfocus="if (this.value == &#39;Поиск&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Поиск&#39;;}">
+	<input type="submit" class="searchsubmit" value="" name="searchsubmit">
+</form>
+	</div>
+	<!-- /right-header-widgets -->
+<ul class="sf-menu">
+
+					<li><a href="http://chipspace.ru/">Главная</a></li><li class="page_item page-item-762"><a href="http://chipspace.ru/contact/">Контакты</a></li>
+<li class="page_item page-item-2800"><a href="http://chipspace.ru/%d1%80%d0%b0%d0%b7%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%ba%d0%b0-%d1%8d%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bd%d0%b8%d0%ba%d0%b8/">Разработка электроники</a></li>
+<li class="page_item page-item-1125"><a href="http://chipspace.ru/links/">Ссылки</a></li>
+<li><a href="http://feeds.feedburner.com/chipspace" title="Подписка на RSS-ленту новостей дает возможность узнавать об обновлениях на сайте" target="_blank">RSS</a></li>
+<li><a href="http://chipspace.ru/karta-sajta/" title="Полный список статей" target="_blank">Содержание</a></li>
+
+</ul>
+		</div><!-- /col-control -->
+	</div><!-- /nav -->
+			</div><!-- //#header-container -->
+			<div id="container" class="fix">
+				    <div id="main-col">
+		  	<div id="content">
+	<div class="post-1110 post type-post status-publish format-standard hentry category-microcontrollers-stm32 tag-stm32 tag-stm32-spi tag-stm32-discovery category-9-id full-content" id="post-1110">
+<div class="title-container fix">
+	<div class="title">
+		<h1 class="posttitle"><a href="./STM32. Интерфейс SPI » ChipSpace_files/STM32. Интерфейс SPI » ChipSpace.htm" class="entry-title" rel="bookmark" title="STM32. Интерфейс SPI">STM32. Интерфейс SPI</a></h1>
+		<div class="postdata fix">
+					<span class="category"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»" rel="category tag">STM32</a></span>
+							<span class="comments"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/stm32-spi/#respond">Добавить комментарий</a></span>
+					</div><!-- /.postdata -->
+		</div><!-- /.title -->
+		<div class="date"><span class="month">Окт</span> <span class="day">03</span><span class="year">2012</span></div>
+	</div><!-- /.title-container -->
+	<span class="post-format-icon">&nbsp;</span>		<div class="entry-container fix">
+			<div class="entry fix">
+<p class="first-para"><em>SPI (Serial Pheripheral Interface) – </em>последовательный синхронный интерфейс для обмена данными между микросхемами. Этот интерфейс подразумевает четкую иерархию – всегда есть ведущее устройство “Master” и подчиненное устройство “Slave” (или несколько устройств на одной шине). Master выбирает подчиненное устройство, с которым будет производить обмен данными в текущий момент. Подчиненные устройства Slave ожидают команды от Master для начала обмена данными. Сигнал синхронизации генерирует Master и, далее, ведущее и подчиненное устройства начинают обмен данными. Ведущим устройством очень часто является микроконтроллер, а подчиненными устройствами могут быть различные микросхемы: память, АЦП и ЦАП, микроконтроллеры, и другие.</p>
+<p><span id="more-1110"></span>Простейшая схема подключения при использовании интерфейса SPI с одним ведущим и одним подчиненным устройством приведена на рисунке.
+</p><p><a href="http://chipspace.ru/wp-content/uploads/2013/11/SPI.gif"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="SPI" border="0" alt="SPI" src="./STM32. Интерфейс SPI » ChipSpace_files/SPI_thumb.gif" width="469"></a></p>
+<p>На этом рисунке, как уже упоминалось выше, Master – ведущее устройство, Slave – подчиненное. Как видно из рисунка, одноименные выводы соединены друг с другом. Рассмотрим подробнее назначение используемых выводов.</p>
+<ul>
+<li><strong>MOSI</strong> (<em>Master Output Slave Input</em>) – в зависимости от режима работы это вход или выход. Если устройство является ведущим (Master), то вывод будет являться выходом для передачи данных подчиненному устройству (<em><strong>Master Output</strong> <span style="color: #808080">Slave Input</span></em>). В обратном случае, когда устройство является подчиненным (Slave), этот вывод будет входом для приема данных от ведущего устройства (<em><span style="color: #808080">Master Output</span></em> <em><strong>Slave Input</strong></em>). </li>
+<li><strong>MISO</strong> (<em>Master Input Slave Output</em>) – этот вывод также служит для передачи или приема данных, но в обратном направлении, чем предыдущий. То есть, если устройство является ведущим (Master), вывод является входом для приема данных от подчиненного устройства (<em><strong>Master Input</strong> <span style="color: #808080">Slave Output</span></em>). А для подчиненного устройства (Slave) этот вывод – выход для передачи данных ведущему устройству (<em><span style="color: #808080">Master Input</span> <strong>Slave Output</strong></em>). Стрелки на рисунке у выводов MOSI и MISO отображают направление потока данных. </li>
+<li><strong>SCK</strong> (<em>Serial Clock</em>) – тактовый сигнал. Генерируется ведущим устройством (Master). </li>
+<li><strong>NSS</strong> (<em>Slave Select</em>) – выбор подчиненного устройства. Низкий уровень на этом входе у подчиненного устройства означает, что оно выбрано ведущим устройством для обмена данными. </li>
+</ul>
+<p>Это краткая информация о назначении выводов при использовании данного интерфейса.    <br>С выводами MOSI и MISO все однозначно – это передача и прием данных.     <br>Для тактового сигнала (линия SCK) имеются несколько комбинаций полярности сигнала (высокий или низкий уровень сигнала в состоянии ожидания, когда нет обмена данными) и фазы сигнала синхронизации. Под фазой сигнала синхронизации имеется в виду привязка моментов выдачи данных на шину и чтения данных с шины к соответствующим моментам изменения уровней тактового сигнала. Для устройств Master и Slave настройки режимов тактовой линии SCK должны совпадать. В документации на конкретное периферийное устройство можно найти информацию о полярности и фазе тактового сигнала, используемых при чтении и передаче данных. Производителем микросхемы может быть предусмотрен всего один из возможных режимов, поэтому при настройке ведущего устройства (микроконтроллера), эту информацию необходимо учитывать.     <br>Вывод NSS у микроконтроллеров STM32 тоже может быть сконфигурирован по разному. Все возможные варианты настроек линий SCK и NSS рассмотрим подробней, но чуть позже.</p>
+<p>Пока же начнем с внутренней структуры модуля SPI и принципов его функционирования.</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/Single-master_single-slave-application.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Single master_single slave application" border="0" alt="Single master_single slave application" src="./STM32. Интерфейс SPI » ChipSpace_files/Single-master_single-slave-application_thumb.jpg" width="620"></a></p>
+<p>На этом рисунке изображены основные элементы модулей SPI ведущего и подчиненного устройств, задействованные при обмене данными. Генератор ведущего устройства (SPI clock generator) формирует тактовый сигнал, управляющий регистрами сдвига обоих устройств. Регистр сдвига ведущего устройства Master с каждым тактовым импульсом сдвигает свое содержимое, при этом на выход MOSI последовательно выдаются данные, а со входа MISO считываются данные и загружаются в тот же регистр сдвига, но с другой стороны. Когда подчиненное устройство начинает принимать данные на вход MOSI, эти данные последовательно заносятся в его регистр сдвига. Одновременно, с приходом каждого нового тактового импульса, с другой стороны регистра сдвига данные “выталкиваются” на выход MISO, эти данные передаются ведущему устройству. Перед началом передачи данных между устройствами, эти данные должны быть загружены в регистры сдвига обоих устройств. Прямого доступа к регистру сдвига нет, для записи и чтения данных существует регистр SPI_DR, который взаимодействует с регистром сдвига. Перед началом передачи данных, эти данные необходимо записать в регистр SPI_DR, а принятые данные считываются из этого же регистра. Никаких противоречий здесь нет, пользователю виден только один регистр SPI_DR, но фактически этот регистр разделен на два отдельных буферных регистра: Tx buffer и Rx buffer. При операции записи в регистр SPI_DR происходит запись в Tx buffer и в регистр сдвига, эти данные предназначены для передачи. После окончания приема данных, содержимое регистра сдвига переносится в Rx buffer. При операции чтения из регистра SPI_DR, происходит обращение уже к Rx buffer и оттуда считываются принятые данные.</p>
+<p>Модуль SPI STM32 может оперировать с данными размерностью 8 или 16 разрядов. Направление передачи данных может быть разным: первым может передаваться старший значащий бит (MSB) или младший значащий бит (LSB).</p>
+<p>На рисунке приведена общая блок-схема модуля SPI.</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/SPI-block-diagram.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="SPI block diagram" border="0" alt="SPI block diagram" src="./STM32. Интерфейс SPI » ChipSpace_files/SPI-block-diagram_thumb.jpg" width="660"></a></p>
+<p>Кроме уже знакомых регистров Shift register, Rx buffer, Tx buffer, здесь изображены следующие компоненты:</p>
+<ul>
+<li>2 регистра управления – SPI_CR1, SPI_CR2, а также регистр статуса SPI_SR. </li>
+<li>Генератор тактового сигнала – Baud rate generator. Скорость обмена данными (частота сигнала на выходе SCK) задается с помощью разрядов BR[2:0] регистра SPI_CR1. Частота может задаваться от Fpclk/2 до Fpclk/256, где Fpclk – входная частота тактирования модуля SPI. </li>
+<li>Управляющая логика – Master control logic. Управляет блоком передачи/приема устройства (выводы MOSI/MISO) в зависимости от заданных настроек. Могут использоваться различные режимы работы модуля SPI: полнодуплексный режим (передача и прием данных осуществляются через разные выводы); режим передачи и приема с использованием одной двунаправленной линии; режим работы только на прием данных (передатчик отключен). </li>
+<li>Блок Communication&nbsp; control, как видно из рисунка может выставить некоторые флаги ошибок в регистре статуса SPI_SR, например, потери данных <strong>OVR</strong> (когда в приемный буфер поступили новые данные, а предыдущие еще не были считаны, соответственно, они будут перезаписаны и потеряны); <strong>MODF</strong> – флаг сигнализирует, что при работе устройства в режиме Master на вход NSS поступил сигнал низкого уровня и устройство должно быть переведено в режим Slave; <strong>CRCERR</strong> – при проверке контрольной суммы выявлена ошибка. </li>
+<li>Мультиплексор выбора режимов работы вывода NSS, изображен вот таким блоком на рисунке. </li>
+</ul>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/Multiplex-NSS.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Multiplex NSS" border="0" alt="Multiplex NSS" src="./STM32. Интерфейс SPI » ChipSpace_files/Multiplex-NSS_thumb.jpg" width="154"></a></p>
+<p>Рассмотрим подробней режимы конфигурации вывода NSS модуля SPI. Дополнительный вывод NSS предназначен для выбора подчиненного устройства подачей на его вход SS (Slave Select) сигнала низкого уровня. Этот вывод позволяет ведущему устройству Master поддерживать связь с конкретным подчиненным устройством, не создавая конфликтов на шине данных.&nbsp; В ведущем устройстве Master вывод NSS может использоваться в качестве выхода (установлен бит SSOE) и управлять ведомым устройством. Если в режиме Master вывод NSS сконфигурирован как вход, то на нем должен быть высокий уровень. В противном случае, низкий уровень на входе NSS ведущего устройства Master вызовет переход модуля SPI в состояние “ошибка режима Master”, при этом устройство автоматически перейдет в режим Slave.</p>
+<p>Управление NSS может быть программным или аппаратным. Выбор режима зависит от состояния бита SSM регистра SPI_CR1.</p>
+<ul>
+<li>SSM = 1 — программное управление NSS. Уведомление о выборе Slave Select формируется внутри модуля SPI. Логический уровень сигнала на выводе NSS в данном случае игнорируется, вместо него определяющим становится значение бита SSI, которым и заменяется состояние входа NSS. Напомню, если устройство Master, то SSI должен быть установлен, что аналогично высокому уровню на входе NSS. Иначе, модуль перейдет в режим Slave, просигнализировав об “ошибке режима Master” установкой бита MODF и может сгенерировать прерывание, если это разрешено. В этом режиме внешний вывод NSS освобождается и может быть использован в приложении для других целей как обычный GPIO. </li>
+<li>SSM = 0 – аппаратное управление NSS. В этом режиме вывод NSS используется модулем SPI в двух разных конфигурациях, в зависимости от состояния разряда SSOE регистра SPI_CR2, который разрешает использовать этот вывод в качестве выхода или же нет.- Когда NSS разрешено работать в качестве выхода (SSM = 0, SSOE = 1), эта конфигурация используется только в режиме Master. Когда ведущее устройство начинает соединение, NSS переводится в состояние низкого уровня, и поддерживается в этом состоянии до момента деактивации модуля SPI.
+<p>- В другой конфигурации NSS запрещено использовать как выход (SSM = 0, SSOE = 0). Это позволяет использовать “мультимастерный” режим для нескольких ведущих устройств Master. Для устройств Slave вход NSS так и остается входом выбора устройства для обмена данными, управляемым низким уровнем.</p>
+</li>
+</ul>
+<p>Для управления выбором подчиненных устройств Slave select, в ведущем устройстве Master вместо вывода NSS можно задействовать любые другие выводы портов микроконтроллера. Подача низкого уровня на вход Slave select подчиненного устройства может быть воспринята некоторыми микросхемами как сигнал к началу обмена данными, поэтому принудительно подключать вход NSS к низкому уровню можно не у всех микросхем (у STM32 так можно делать).</p>
+<p>Теперь рассмотрим различные комбинации полярности и фазы тактового сигнала. Всего тут возможны 4 режима работы, которые задаются битами CPOL и CPHA регистра SPI_CR1. Бит CPOL (clock polarity) определяет уровень сигнала синхронизации (высокий или низкий) на линии SCK в состоянии ожидания. При CPOL = 0 в состоянии ожидания будет низкий уровень сигнала на выходе SCK, а при CPOL = 1 – высокий уровень. Состояние бита CPHA задает перепад сигнала (переход из высокого уровня в низкий или наоборот), который будет являться стробирующим при фиксации данных на выводах MOSI и MISO. В зависимости от полярности тактового сигнала, заданной в разряде CPOL, бит CPHA задает первый или второй перепад тактового сигнала (falling edge или rising edge) в качестве стробирующего. 4 различных комбинации бит CPOL и CPHA и соответствующие им режимы приведены на рисунке ниже. На этом рисунке Capture strobe – моменты фиксации данных.</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/Data-clock-timing-diagram.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Data clock timing diagram" border="0" alt="Data clock timing diagram" src="./STM32. Интерфейс SPI » ChipSpace_files/Data-clock-timing-diagram_thumb.jpg" width="488"></a></p>
+<p>Теперь обратимся к регистрам модуля SPI. В микроконтроллерах STM32F, начиная с устройств high density, модуль SPI может содержать регистры для работы с интерфейсом I2S. То есть платы STM32L-DISCOVERY и STM32VL-DISCOVERY не поддерживают этот протокол. Далее при рассмотрении регистров будут описаны только те из них, которые относятся непосредственно к интерфейсу SPI. Интерфейс I2S предназначен для систем передачи аудиоданных, он более специализированный и, в данный момент, рассматриваться не будет.</p>
+<p><span style="color: #408080"><strong>Регистр управления SPI_CR1:</strong></span></p>
+<p><strong>Бит 15 — BIDIMODE — </strong>разрешает или запрещает использование двунаправленного режима обмена данными по одной линии</p>
+<p>0: Режим 2-х однонаправленных линий данных    <br>1: Режим 1-ой двунаправленной линии данных</p>
+<p><strong>Бит 14 — BIDIOE — </strong>в режиме двунаправленного обмена данными по одной линии, разрешает или запрещает передачу данных</p>
+<p>0: Выход неактивен (только прием данных)    <br>1: Выход активен (только передача данных)     <br><em>В режиме Master используется вывод MOSI, в режиме Slave – MISO.</em></p>
+<p><strong>Биты 13 и&nbsp; <strong>12</strong> — CRCEN и <strong>CRCNEXT</strong>&nbsp;</strong>задействуют подсчет контрольной суммы данных.</p>
+<p><strong>Бит 11 — DFF – </strong>формат данных</p>
+<p>0: 8 бит    <br>1: 16 бит</p>
+<p><strong>Бит 10 — RXONLY – </strong>только прием. В комбинации с битом BIDIMODE задает направление передачи данных.</p>
+<p>0: Полнодуплексный режим (передача и прием данных)    <br>1: Выход отключен (только прием данных)</p>
+<p><strong>Бит 9 — SSM – </strong>программное управление выбором устройства (NSS). Когда этот бит установлен, вместо уровня на входе NSS контролируется состояние бита SSI.</p>
+<p>0: Программный режим отключен    <br>1: Программный режим включен</p>
+<p><strong>Бит 8 — SSI – </strong>состояние этого бита воздействует на устройство только при установленном бите SSM (при программном управлении NSS). Значение этого бита принудительно заменяет состояние входа NSS, которое при этом игнорируется</p>
+<p><strong>Бит 7 — LSBFIRST – </strong>порядок передачи данных</p>
+<p>0: Первым передается старший значащий разряд – MSB    <br>1: Первым передается младший значащий разряд – LSB</p>
+<p><strong>Бит 6 — SPE – </strong>включение модуля SPI</p>
+<p>0: модуль отключен    <br>1: модуль включен</p>
+<p><strong>Биты 5:3 — BR[2:0] – </strong>выбор скорости обмена</p>
+<p>000: Fpclk/2    <br>001: Fpclk/4     <br>……………     <br>111: Fpclk/256</p>
+<p><strong>Бит 2 – MSTR</strong> – выбор режима Master</p>
+<p>0: Режим Slave    <br>1: Режим Master</p>
+<p><strong>Бит 1 – CPOL – </strong>полярность тактового сигнала</p>
+<p>0: Низкий уровень в режиме ожидания на выводе SCK    <br>1: Высокий уровень в режиме ожидания на выводе SCK</p>
+<p><strong>Бит 0 – CPHA</strong> – фаза тактового сигнала</p>
+<p>0: Строб данных происходит по первому перепаду тактового сигнала    <br>1: Строб данных происходит по второму перепаду тактового сигнала</p>
+<p>&nbsp;</p>
+<p><span style="color: #408080"><strong>Регистр управления SPI_CR2:</strong></span></p>
+<p><strong>Бит 7 – TXEIE – </strong>разрешение прерывания при опустошении буфера передачи Tx buffer</p>
+<p>0: Прерывание запрещено    <br>1: Разрешена генерация прерывания при установке флага TXE в регистре SPI_SR</p>
+<p><strong>Бит 6 – RXNEIE – </strong>разрешение прерывания при поступлении данных в буфер приемника Rx buffer</p>
+<p>0: Прерывание запрещено    <br>1: Разрешена генерация прерывания при установке флага RXNE в регистре SPI_SR</p>
+<p><strong>Бит 5 – ERRIE – </strong>разрешение прерывания при возникновении ошибки. Установленные флаги ошибок CRCERR, OVR, MODF вызовут генерацию прерывания об ошибке.</p>
+<p>0: Прерывание запрещено    <br>1: Прерывание разрешено</p>
+<p><strong>Бит 2 – SSOE</strong> – разрешение использования вывода NSS в качестве выход</p>
+<p>0: Выход неактивен    <br>1: Выход активен</p>
+<p><strong>Бит 1 – TXDMAEN – </strong>активация/деактивация запроса DMA для буфера передачи Tx buffer. Когда этот бит установлен, запрос DMA формируется при установке флага TXE в регистре SPI_SR</p>
+<p>0: Запрос DMA запрещен    <br>1: Запрос DMA разрешен</p>
+<p><strong>Бит 0 – RXDMAEN </strong><strong>– </strong>активация/деактивация запроса DMA для буфера приема Rx buffer. Когда этот бит установлен, запрос DMA формируется при установке флага RXNE в регистре SPI_SR</p>
+<p>0: Запрос DMA запрещен    <br>1: Запрос DMA разрешен</p>
+<p>&nbsp;</p>
+<p><strong><span style="color: #408080">Регистр статуса SPI_SR:</span></strong></p>
+<p><strong>Бит 7 – BSY – </strong>флаг занятости. Установлен, когда происходит обмен данными и буфер передатчика содержит данные</p>
+<p><strong>Бит 6 – OVR</strong> – Устанавливается при потере данных. Поступили новые данные, которые перезаписали предыдущие в регистре данных.</p>
+<p><strong>Бит 5 – MODF</strong> – сбой режима работы. Этот флаг может быть установлен, например, при работе устройства в режиме Master, когда при этом на его вход NSS поступил сигнал низкого уровня, переводящий устройство в режим Slave.</p>
+<p><strong>Бит 4 – CRCERR</strong> – этот флаг устанавливается при ошибке, возникшей при проверке контрольной суммы CRC.</p>
+<p><strong>Бит 1 – TXE – </strong>устанавливается при опустошении буфера передатчика</p>
+<p><strong>Бит 0 – RXNE</strong> – устанавливается когда буфер приемника содержит данные, то есть не пустой.</p>
+<p><span style="color: #408080"><strong>Регистр данных SPI_DR – </strong></span><span style="color: #000000">16 младших разрядов этого регистра предназначены для записи передаваемых или чтения принятых данных. </span></p>
+<p>Регистры, задействованные для подсчета контрольных сумм — <strong><span style="color: #408080">SPI_CRCPR, SPI_RXCRCR, SPI_TXCRCR</span></strong>. Их в данный момент рассматривать не будем.</p>
+<p>Перейдем к практической части. Поскольку, для примера работы необходимо организовать связь хотя бы между одним ведущим и одним подчиненным устройством, для этих целей задействуем два модуля SPI одного микроконтроллера. Модуль SPI1 будет работать в режиме Master, а модуль SPI2 — в режиме Slave.</p>
+<p>Порядок настройки модуля в режим Master:</p>
+<ul>
+<li>Устанавливаем скорость обмена в разрядах BR[2:0] регистра SPI_CR1. </li>
+<li>Устанавливаем полярность и фазу тактового сигнала с помощью разрядов CPOL, CPHA регистра SPI_CR1. </li>
+<li>Задаем размерность данных (бит DFF). </li>
+<li>Задаем порядок передачи бит данных (бит LSBFIRST). </li>
+<li>Если вывод NSS будет использоваться как вход в аппаратном режиме, то необходимо подать на него высокий уровень. Если вывод будет использоваться в программном режиме, то необходимо установить биты SSM и SSI. Если вывод NSS при этом будет использоваться в качестве выхода, то необходимо установить бит SSOE. </li>
+<li>Установить биты MSTR и SPE. </li>
+</ul>
+<p>Порядок настройки модуля в режим Slave:</p>
+<ul>
+<li>Задаем размерность данных (бит DFF) как у ведущего устройства. </li>
+<li>Устанавливаем полярность и фазу тактового сигнала с помощью разрядов CPOL, CPHA регистра SPI_CR1. Эти настройки должны совпадать с настройками ведущего устройства. </li>
+<li>Задаем порядок передачи бит данных (бит LSBFIRST). Эти настройки должны совпадать с настройками ведущего устройства. </li>
+<li>В аппаратном режиме вывод NSS должен быть соединен с низким уровнем во время обмена данными. Если используется программный режим, то необходимо установить следующую комбинацию разрядов – SSM = 1, SSI = 0. </li>
+<li>Очистить бит MSTR и установить бит SPE. </li>
+</ul>
+<p>Для модулей SPI будем использовать следующие настройки:</p>
+<ul>
+<li>программное управление NSS у ведущего устройства, аппаратное у подчиненного. </li>
+<li>8 – разрядный размер данных </li>
+<li>порядок передачи данных – первым идет старший бит MSB </li>
+<li>полярность и фаза тактового сигнала CPOL = 0, CPHA = 0 </li>
+<li>скорость обмена – Fpclk/256 </li>
+</ul>
+<p>На плате STM32VL-DISCOVERY соединим одноименные выводы модулей SPI1 и SPI2 (MOSI, MISO, SCK, NSS).</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/b2559d48046d.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Схема подключения" border="0" alt="Схема подключения" src="./STM32. Интерфейс SPI » ChipSpace_files/thumb30.jpg" width="542"></a></p>
+<ul>
+<li>MOSI:&nbsp; PA7 &lt;-&gt; PB15 </li>
+<li>MISO:&nbsp; PA6 &lt;-&gt; PB14 </li>
+<li>SCK:&nbsp;&nbsp;&nbsp; PA5 &lt;-&gt; PB13 </li>
+<li>NSS:&nbsp;&nbsp;&nbsp;&nbsp; PA4 &lt;-&gt; PB12 </li>
+</ul>
+<p>Расположение выводов приведено для платы STM32VL-DISCOVERY.</p>
+<p>Алгоритм программы будет следующим:    <br>Настраиваем модуль SPI1 в режим Master, а модуль SPI2 в режим Slave. Оба модуля одновременно передают друг другу по одному байту данных, после каждого сеанса обмена байтами введена программная задержка.     <br>Сначала записываем данные в буфер передатчика модуля SPI2 (Slave), при этом используются только 2 возможных числа: 0×01 или 0×03.     <br>Затем записываем значение в буфер передатчика модуля SPI1 (Master). Сначала пишем в буфер подчиненного устройства, а затем уже ведущего, потому что запись в буфер ведущего сразу же даст старт обмену данными. В буфер SPI1 (Master) можно записать любое значение (у меня в программе это число 0x0F), анализироваться будут только значения, передаваемые от SPI2 (Slave).     <br>Как только оба модуля обменяются байтом данных, считывается значение из приемного буфера модуля SPI1 и анализируется. В зависимости от значения принятых данных (0×01 или 0×03), зажигается один из двух светодиодов. Как видите, алгоритм упрощен до минимума, а светодиоды задействованы для визуального контроля значения принятых величин.</p>
+<p>Далее приведен текст программы с комментариями для серии STM32F. Код проверен на плате STM32VL-DISCOVERY.</p>
+<pre class="prettyprint"><code class="language-c"><span class="com">#include</span><span class="pln"> </span><span class="str">"stm32f10x.h"</span><span class="pln"><br><br>uint8_t temp</span><span class="pun">,</span><span class="pln"> send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">;</span><span class="pln"><br><br></span><span class="com">//Инициализация GPIO</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> gpio_init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">//Линии SPI1 (Master)</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">APB2ENR </span><span class="pun">|=</span><span class="pln"> </span><span class="pun">(</span><span class="pln">RCC_APB2ENR_AFIOEN </span><span class="pun">|</span><span class="pln"> RCC_APB2ENR_IOPAEN </span><span class="pun">|</span><span class="pln"> RCC_APB2ENR_IOPBEN </span><span class="pun">|</span><span class="pln"> RCC_APB2ENR_IOPCEN</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Тактирование портов А, В, C и альтернативных функций</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">CRL </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_CRL_CNF7 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_CNF5 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_CNF4</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Очистка бит выбора режима</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">CRL </span><span class="pun">|=</span><span class="pln"> GPIO_CRL_CNF7_1 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_CNF5_1 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_CNF4_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PA7(MOSI), PA5(SCK), PA4(NSS) - AF, Output, PP</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">CRL </span><span class="pun">|=</span><span class="pln"> GPIO_CRL_MODE7 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_MODE5 </span><span class="pun">|</span><span class="pln"> GPIO_CRL_MODE4</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Выходы MOSI, SCK, NSS - 50MHz</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">CRL </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">GPIO_CRL_MODE6</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PA5(MISO) - Input</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">CRL </span><span class="pun">|=</span><span class="pln"> GPIO_CRL_CNF6_0</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PA5(MISO) - Input floating</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Линии SPI2 (Slave)</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_CRH_CNF14 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF15 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF13 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF12</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Очистка бит выбора режима</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">|=</span><span class="pln"> GPIO_CRH_CNF14_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PB14(MISO) - AF, Output, PP</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">|=</span><span class="pln"> GPIO_CRH_MODE14</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Выход MISO - 50MHz</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_CRH_MODE15 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_MODE13 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_MODE12</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PB15(MOSI), PB13(SCK), PB12(NSS) - Input</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">|=</span><span class="pln"> GPIO_CRH_CNF15_0 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF13_0 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF12_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PB15(MOSI), PB13(SCK) - Input floating, PB12(NSS) - Input pull-up </span><span class="pln"><br><br>&nbsp; </span><span class="com">//Led</span><span class="pln"><br>&nbsp; GPIOC</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_CRH_CNF8 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_CNF9</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PC8, PC9 - Output, PP</span><span class="pln"><br>&nbsp; GPIOC</span><span class="pun">-&gt;</span><span class="pln">CRH </span><span class="pun">|=</span><span class="pln"> GPIO_CRH_MODE8 </span><span class="pun">|</span><span class="pln"> GPIO_CRH_MODE9</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PC8, PC9 - 50MHz</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Инициализация SPI1, SPI2</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> spi_init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">/*Настройка SPI1 (Master)<br>&nbsp; 8 бит данных, MSB передается первым, программный режим управления NSS<br>&nbsp; вывод NSS (PA4) разрешено использовать в качестве выхода*/</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">APB2ENR </span><span class="pun">|=</span><span class="pln"> RCC_APB2ENR_SPI1EN</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Тактирование модуля SPI1</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_BR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Baud rate = Fpclk/256</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPOL</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Полярность тактового сигнала</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPHA</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Фаза тактового сигнала</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_DFF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//8 бит данных</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_LSBFIRST</span><span class="pun">;</span><span class="pln"> </span><span class="com">//MSB передается первым</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SSM</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Программный режим NSS</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SSI</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Аналогично состоянию, когда на входе NSS высокий уровень</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR2 </span><span class="pun">|=</span><span class="pln"> SPI_CR2_SSOE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Вывод NSS - выход управления slave select</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_MSTR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим Master</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SPE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включаем SPI1</span><span class="pln"><br><br>&nbsp; </span><span class="com">/*Настройка SPI2 (Slave)<br>&nbsp; 8 бит данных, MSB передается первым, аппаратный режим управления NSS<br>&nbsp; вывод NSS (PB12) - вход*/</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">APB1ENR </span><span class="pun">|=</span><span class="pln"> RCC_APB1ENR_SPI2EN</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Тактирование модуля SPI2</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_DFF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//8 бит данных</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPOL</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Полярность тактового сигнала</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPHA</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Фаза тактового сигнала</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_LSBFIRST</span><span class="pun">;</span><span class="pln"> </span><span class="com">//MSB передается первым</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_SSM</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Аппаратное управление входом NSS</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_MSTR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим Slave</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SPE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включаем SPI2</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">/*Функция обмена данными между модулями SPI1 и SPI2.<br>В качестве аргумента при вызове функции передаются числа 0x01 или 0x03,<br>которые затем записываются в буфер передатчика SPI2.<br>Значение, записываемое в буфер передатчика SPI1 неважно, в данном случае 0x0F<br>После обмена байтами данных, значение, принятое модулем SPI1 считывается из<br>регистра данных SPI1_DR в переменную temp*/</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> spi_exchange</span><span class="pun">(</span><span class="pln">uint8_t send_data</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> send_data</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Пишем в буфер передатчика SPI2</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x0F</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Пишем в буфер передатчика SPI1. После этого стартует обмен данными</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">SPI1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> SPI_SR_RXNE</span><span class="pun">));</span><span class="pln"> </span><span class="com">//Ожидаем окончания приема данных модулем SPI1 (RXNE =1 - приемный буфер содержит данные)</span><span class="pln"><br>&nbsp; temp </span><span class="pun">=</span><span class="pln"> SPI1</span><span class="pun">-&gt;</span><span class="pln">DR</span><span class="pun">;</span><span class="com">//Считываем данные из приемного буфера SPI1. При этой операции происходит очистка буфера и сброс флага RXNE</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Основной цикл программы</span><span class="pln"><br></span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; gpio_init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации портов</span><span class="pln"><br>&nbsp; spi_init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации модулей SPI</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">/*Вызов функции обмена данными.<br>&nbsp; &nbsp; В качестве аргумента поочередно передаются значения 0x01 или 0x03*/</span><span class="pln"><br>&nbsp; &nbsp; spi_exchange</span><span class="pun">(</span><span class="pln">send_data</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">switch</span><span class="pun">(</span><span class="pln">temp</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">/*Если SPI1 принял 0x01, зажигаем соответствующий светодиод,<br>&nbsp; &nbsp; &nbsp; и меняем значение аргумента, передаваемого функции обмена данными<br>&nbsp; &nbsp; &nbsp; при следующем вызове на 0x03*/</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">:</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOC</span><span class="pun">-&gt;</span><span class="pln">BSRR </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BS8 </span><span class="pun">|</span><span class="pln"> GPIO_BSRR_BR9</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x03</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">break</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">/*Если SPI1 принял 0x03, зажигаем соответствующий светодиод,<br>&nbsp; &nbsp; &nbsp; и меняем значение аргумента, передаваемого функции обмена данными<br>&nbsp; &nbsp; &nbsp; при следующем вызове на 0x01*/</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0x03</span><span class="pun">:</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOC</span><span class="pun">-&gt;</span><span class="pln">BSRR </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BR8 </span><span class="pun">|</span><span class="pln"> GPIO_BSRR_BS9</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">break</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">//Временная задержка между вызовами функции обмена данными</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">uint32_t i</span><span class="pun">=</span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">&lt;</span><span class="lit">0x001FFFFF</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++);</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></code></pre>
+<p>Для платы STM32L-DISCOVERY отличия в настройках будут связаны с различиями в структуре регистров GPIO между сериями STM32F и STM32L, другими выводами управления светодиодами, другой системной тактовой частотой. Для серии STM32L можно использовать те же выводы микроконтроллера. Но на плате STM32L-DISCOVERY выводы PA7 (MOSI) и PA6 (MISO) не выведены на внешний разъем. Поэтому вместо них задействованы выводы PA12 (MOSI) и PA11 (MISO), остальные выводы те же самые. При настройке выводов GPIO STM32L для работы в режиме альтернативной функции, в частности для использования вывода модулем SPI или другой периферией, в регистрах альтернативных функций GPIO нужной линии порта надо присвоить соответствующую альтернативную функцию. В составе регистров порта ввода-вывода для этой цели предназначены два регистра: AFRL – для линий порта 0..7, AFRH – для линий порта 8..15. У серии STM32L, чтобы модуль SPI управлял определенным выводом порта, то есть использовал этот вывод в качестве одной из своих линий (MOSI, MISO…) необходимо сделать следующие настройки. Сначала для вывода порта нужно задать режим работы с альтернативной функцией. А затем, в регистрах альтернативных функций задать для соответствующих выводов порта номер альтернативной функции. Для SPI1 это альтернативная функция AFIO5. На рисунке ниже приведены регистры альтернативных функций порта GPIOA, где выделенные поля соответствуют выводам порта А, используемым для работы с модулем SPI1. В них и нужно записать число 0×05 для работы этих выводов в режиме альтернативной функции №5 (SPI1).</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/ae2ae5699511.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Регистры альтернативных функций" border="0" alt="Регистры альтернативных функций" src="./STM32. Интерфейс SPI » ChipSpace_files/thumb31.jpg" width="699"></a></p>
+<p>Для выводов, работающих с SPI2, альтернативная функция в данном случае будет тоже AFIO5. Это выводы PB15(MOSI), PB14(MISO), PB13(SCK), PB12(NSS). Для платы STM32L-DISCOVERY необходимо соединить выводы в таком порядке:</p>
+<p>&nbsp;</p>
+<ul>
+<li>MOSI:&nbsp; PA12 &lt;-&gt; PB15 </li>
+<li>MISO:&nbsp; PA11 &lt;-&gt; PB14 </li>
+<li>SCK:&nbsp;&nbsp;&nbsp; PA5&nbsp; &lt;-&gt; PB13 </li>
+<li>NSS:&nbsp;&nbsp;&nbsp;&nbsp; PA4&nbsp; &lt;-&gt; PB12 </li>
+</ul>
+<p>&nbsp;</p>
+<p>Настройки непосредственно модулей SPI для серий STM32F и STM32L абсолютно одинаковы, разница в кодах программ присутствует только в функции инициализации портов GPIO, а также управления светодиодами. Ниже приведен текст программы для серии STM32L, который проверен на плате STM32L-DISCOVERY.</p>
+<pre class="prettyprint"><code class="language-c"><span class="com">#include</span><span class="pln"> </span><span class="str">"stm32l1xx.h"</span><span class="pln"><br><br>uint8_t temp</span><span class="pun">,</span><span class="pln"> send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">;</span><span class="pln"><br><br></span><span class="com">//Инициализация GPIO</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> gpio_init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">AHBENR </span><span class="pun">|=</span><span class="pln"> RCC_AHBENR_GPIOAEN </span><span class="pun">|</span><span class="pln"> RCC_AHBENR_GPIOBEN</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Тактирование портов A, B</span><span class="pln"><br>&nbsp; </span><span class="com">//Линини SPI1 (Master)</span><span class="pln"><br>&nbsp; </span><span class="com">//PA12(MOSI), PA11(MISO), PA5(SCK), PA4(NSS) - AF, Push-Pull, AF5(SPI1)</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">MODER </span><span class="pun">|=</span><span class="pln"> GPIO_MODER_MODER12_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER11_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER5_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER4_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Alternate function</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">OTYPER </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_OTYPER_OT_12 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_11 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_5 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_4</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Push-Pull</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">AFR</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">|=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">16</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">12</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PA12 = AF5, PA11 = AF5</span><span class="pln"><br>&nbsp; GPIOA</span><span class="pun">-&gt;</span><span class="pln">AFR</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]</span><span class="pln"> </span><span class="pun">|=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">20</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">16</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PA5 = AF5, PA4 = AF5</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Линии SPI2 (Slave)</span><span class="pln"><br>&nbsp; </span><span class="com">//PB15(MOSI), PB14(MISO), PB13(SCK), PB12(NSS) - AF, Push-Pull, AF5(SPI1)</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">MODER </span><span class="pun">|=</span><span class="pln"> GPIO_MODER_MODER15_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER14_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER13_1 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER12_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Alternate function</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">OTYPER </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_OTYPER_OT_15 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_14 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_13 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_11</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Push-Pull</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">AFR</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">|=</span><span class="pln"> </span><span class="pun">(</span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">28</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">24</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">20</span><span class="pln"> </span><span class="pun">|</span><span class="pln"> </span><span class="lit">5</span><span class="pun">&lt;&lt;</span><span class="lit">16</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PB15, PB14, P13, PB12 = AF5 </span><span class="pln"><br><br>&nbsp; </span><span class="com">//LED</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">MODER </span><span class="pun">|=</span><span class="pln"> GPIO_MODER_MODER6_0 </span><span class="pun">|</span><span class="pln"> GPIO_MODER_MODER7_0</span><span class="pun">;</span><span class="pln"> </span><span class="com">//PB6, PB7 - GP Output</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">OTYPER </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_OTYPER_OT_6 </span><span class="pun">|</span><span class="pln"> GPIO_OTYPER_OT_7</span><span class="pun">);</span><span class="pln"> </span><span class="com">//PB6, PB7 - Push-Pull</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">OSPEEDR </span><span class="pun">|=</span><span class="pln"> GPIO_OSPEEDER_OSPEEDR6 </span><span class="pun">|</span><span class="pln"> GPIO_OSPEEDER_OSPEEDR7</span><span class="pun">;</span><span class="pln"> </span><span class="com">//40 MHz</span><span class="pln"><br>&nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">PUPDR </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~(</span><span class="pln">GPIO_PUPDR_PUPDR6 </span><span class="pun">|</span><span class="pln"> GPIO_PUPDR_PUPDR7</span><span class="pun">);</span><span class="pln"> </span><span class="com">//No pull</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br>&nbsp;</span><span class="com">//Инициализация SPI1, SPI2</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> spi_init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">/*Настройка SPI1 (Master)<br>&nbsp; 8 бит данных, MSB передается первым, программный режим управления NSS,<br>&nbsp; вывод NSS (PA4) разрешено использовать в качестве выхода*/</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">APB2ENR </span><span class="pun">|=</span><span class="pln"> RCC_APB2ENR_SPI1EN</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Тактирование модуля SPI1</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_BR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Baud rate = Fpclk/256</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPOL</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Полярность тактового сигнала</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPHA</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Фаза тактового сигнала</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_DFF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//8 бит данных</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_LSBFIRST</span><span class="pun">;</span><span class="pln"> </span><span class="com">//MSB передается первым</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SSM</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Программный режим NSS</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SSI</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Аналогично состоянию, когда на входе NSS высокий уровень</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR2 </span><span class="pun">|=</span><span class="pln"> SPI_CR2_SSOE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Вывод NSS - выход управления slave select</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_MSTR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим Master</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SPE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включаем SPI1</span><span class="pln"><br><br>&nbsp; </span><span class="com">/*Настройка SPI2 (Slave)<br>&nbsp; 8 бит данных, MSB передается первым, аппаратный режим управления NSS,<br>&nbsp; вывод NSS (PB12) - вход*/</span><span class="pln"><br>&nbsp; RCC</span><span class="pun">-&gt;</span><span class="pln">APB1ENR </span><span class="pun">|=</span><span class="pln"> RCC_APB1ENR_SPI2EN</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Тактирование модуля SPI2</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_DFF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//8 бит данных</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPOL</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Полярность тактового сигнала</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_CPHA</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Фаза тактового сигнала</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_LSBFIRST</span><span class="pun">;</span><span class="pln"> </span><span class="com">//MSB передается первым</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_SSM</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Аппаратное управление входом NSS</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">SPI_CR1_MSTR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим Slave</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">CR1 </span><span class="pun">|=</span><span class="pln"> SPI_CR1_SPE</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включаем SPI2</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">/*Функция обмена данными между модулями SPI1 и SPI2.<br>В качестве аргумента при вызове функции передаются числа 0x01 или 0x03,<br>которые затем записываются в буфер передатчика SPI2.<br>Значение, записываемое в буфер передатчика SPI1 неважно, в данном случае 0x0F.<br>После обмена байтами данных, значение, принятое модулем SPI1 считывается из<br>регистра данных SPI1_DR в переменную temp*/</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> spi_exchange</span><span class="pun">(</span><span class="pln">uint8_t send_data</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; SPI2</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> send_data</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Пишем в буфер передатчика SPI2</span><span class="pln"><br>&nbsp; SPI1</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x0F</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Пишем в буфер передатчика SPI1. После этого стартует обмен данными</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">SPI1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> SPI_SR_RXNE</span><span class="pun">));</span><span class="pln"> </span><span class="com">//Ожидаем окончания приема данных модулем SPI1 (RXNE =1 - приемный буфер содержит данные)</span><span class="pln"><br>&nbsp; temp </span><span class="pun">=</span><span class="pln"> SPI1</span><span class="pun">-&gt;</span><span class="pln">DR</span><span class="pun">;</span><span class="com">//Считываем данные из приемного буфера SPI1. При этой операции происходит очистка буфера и сброс флага RXNE</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Основной цикл программы</span><span class="pln"><br></span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; gpio_init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации портов</span><span class="pln"><br>&nbsp; spi_init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации модулей SPI</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">/*Вызов функции обмена данными.<br>&nbsp; &nbsp; В качестве аргумента поочередно передаются значения 0x01 или 0x03*/</span><span class="pln"><br>&nbsp; &nbsp; spi_exchange</span><span class="pun">(</span><span class="pln">send_data</span><span class="pun">);</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">switch</span><span class="pun">(</span><span class="pln">temp</span><span class="pun">)</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">/*Если SPI1 принял 0x01, зажигаем соответствующий светодиод,<br>&nbsp; &nbsp; &nbsp; и меняем значение аргумента, передаваемого функции обмена данными<br>&nbsp; &nbsp; &nbsp; при следующем вызове на 0x03*/</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">:</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">BSRRH </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BS_7</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">BSRRL </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BS_6</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x03</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">break</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="com">/*Если SPI1 принял 0x03, зажигаем соответствующий светодиод,<br>&nbsp; &nbsp; &nbsp; и меняем значение аргумента, передаваемого функции обмена данными<br>&nbsp; &nbsp; &nbsp; при следующем вызове на 0x01*/</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">case</span><span class="pln"> </span><span class="lit">0x03</span><span class="pun">:</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">BSRRH </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BS_6</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; GPIOB</span><span class="pun">-&gt;</span><span class="pln">BSRRL </span><span class="pun">|=</span><span class="pln"> GPIO_BSRR_BS_7</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; send_data </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0x01</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="kwd">break</span><span class="pun">;</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="com">//Временная задержка между вызовами функции обмена данными</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">for</span><span class="pun">(</span><span class="pln">uint32_t i</span><span class="pun">=</span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">&lt;</span><span class="lit">0x0001FFFF</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++);</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span></code></pre>
+<p>
+  <br>При отладке в “железе” обнаружен небольшой “баг”. Пошаговое выполнение программы приводит к зависанию на строке </p>
+<p></p>
+<pre class="prettyprint"><code class="language-c"><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">SPI1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> SPI_SR_RXNE</span><span class="pun">));</span></code></pre>
+<p>Это происходит, если для просмотра в отладчике открыты регистры SPI1. С чем связано не знаю, могу предположить, что при этом происходит чтение данных из SPI1_DR отладчиком IAR, а в результате сброс бита RXNE еще до вызова его проверки. В этом случае он так и не устанавливается. Если закрыть панель с содержимым регистров SPI1,&nbsp; все работает стабильно.</p>
+<p>Осциллограммы на выводах.</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/SCK.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="SCK" border="0" alt="SCK" src="./STM32. Интерфейс SPI » ChipSpace_files/SCK_thumb.jpg" width="565"></a></p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/MOSI.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="MOSI" border="0" alt="MOSI" src="./STM32. Интерфейс SPI » ChipSpace_files/MOSI_thumb.jpg" width="573"></a></p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/MISO_1.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="MISO_1" border="0" alt="MISO_1" src="./STM32. Интерфейс SPI » ChipSpace_files/MISO_1_thumb.jpg" width="570"></a></p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/MISO_3.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="MISO_3" border="0" alt="MISO_3" src="./STM32. Интерфейс SPI » ChipSpace_files/MISO_3_thumb.jpg" width="569"></a></p>
+<p>На осциллограммах фазы сигналов MOSI, MISO не привязаны к фазам сигнала SCK, поскольку каждая осциллограмма записана в ждущем режиме отдельно, без привязки к другим сигналам. Поэтому проверять по этим осциллограммам соответствие фаз сигналов режиму, установленному разрядом CPHA модулей, не стоит.</p>
+<p><a href="http://chipspace.ru/archives/STM32F_SPI.rar" target="_blank">Проект STM32F_SPI</a></p>
+<p><a href="http://chipspace.ru/archives/STM32L_SPI.rar" target="_blank">Проект STM32L_SPI</a></p>
+<p>Другие статьи:</p>
+<ul>
+<li><a title="STM32L. Система формирования тактовых частот Reset and Clock Control (RCC)" href="http://chipspace.ru/stm32l-sistema-taktirovaniya/" target="_blank">STM32L. Система формирования тактовых частот Reset and Clock Control (RCC)</a> </li>
+<li><a title="STM32L1xx. Внешние прерывания" href="http://chipspace.ru/stm32l1-exti/" target="_blank">STM32L1xx. Внешние прерывания</a> </li>
+<li><a title="STM32_GPIO_configuration - программа для настройки портов ввода-вывода" href="http://chipspace.ru/stm32_gpio_configuration/" target="_blank">STM32_GPIO_configuration — программа для настройки портов ввода-вывода</a> </li>
+</ul>
+<div></div>
+			</div><!--/entry -->
+		</div><!-- .entry-container -->
+<div class="post-footer postdata fix">
+<span class="author"><span class="icon">&nbsp;</span>Опубликовано <a href="http://chipspace.ru/author/mrz/">ChipSpace</a> в 01:05</span>		<span class="tags"><span class="icon">&nbsp;</span>С меткой:<a href="http://chipspace.ru/tag/stm32/" rel="tag">stm32</a>, <a href="http://chipspace.ru/tag/stm32-spi/" rel="tag">stm32 spi</a>, <a href="http://chipspace.ru/tag/stm32-discovery/" rel="tag">stm32-discovery</a><br></span>
+	</div><!-- .post-footer -->
+<div id="comments">
+<h3 class="comments"><span class="icon">&nbsp;</span>
+	37 Ответов в “STM32. Интерфейс SPI”</h3>
+<ol class="commentlist">
+	<li id="comment-138" class="comment byuser comment-author-sergey140600 even thread-even depth-1">
+				<div id="div-comment-138" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/baa1cbebfc5b5a17f5514e5f928f2a37" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">sergey140600</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-138">
+				31.12.2012 в 00:22</a>				</div>
+
+			</div>
+	
+			<p>Здравствуйте. Хотел спросить был ли опыт работы с модулем SPI на STM32L152? Судя по описанию отличий между ними нет. Однако у меня МК не хочет управлять NSS в режиме hard. Если я правильно понимаю он должен аппаратно сбрасывать сигнал NSS перед началом передачи и устанавливать после завершения передачи. Вместо этого NSS постоянно в нуле. Выводы SPI сконфигурированы как AFIO5.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-139" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-139" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-139">
+				31.12.2012 в 01:08</a>				</div>
+
+			</div>
+	
+			<p>Я столкнулся с той же проблемой, и решения пока не нашел. Действительно, NSS не управляется как должен. Пробовал различные варианты настроек SPI, но так же не видел изменений уровней на этом выводе. Читаю документацию и думаю…</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-154" class="comment byuser comment-author-metcenger even thread-even depth-1">
+				<div id="div-comment-154" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-154">
+				16.01.2013 в 20:39</a>				</div>
+
+			</div>
+	
+			<p>Непонятно: для проца STM32L152 при выборе другой ноги PA12 на (MOSI) , просто нужно указать, что нога PA12 альтернативная и в регистре альтернативных ф-й задать режим SPI (0×05)? И процессор уже автоматом назначит ногу РА12 на MOSI?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-155" class="comment odd alt depth-2">
+				<div id="div-comment-155" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-155">
+				16.01.2013 в 21:19</a>				</div>
+
+			</div>
+	
+			<p>Да.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-180" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-180" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-180">
+				31.01.2013 в 16:35</a>				</div>
+
+			</div>
+	
+			<p>не совсем понятно с этим NSS. Если у меня STM32 мастер, он управляет по SPI внешней микросхемой. Что нужно сделать с NSS? Можно его просто в воздухе оставить и не подключать к микросхеме?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-182" class="comment odd alt depth-2">
+				<div id="div-comment-182" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-182">
+				31.01.2013 в 23:22</a>				</div>
+
+			</div>
+	
+			<p>У микросхемы скорее всего этот вывод должен быть задействован, если она работает Slave. Надо документацию смотреть.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-189" class="comment byuser comment-author-metcenger even thread-even depth-1">
+				<div id="div-comment-189" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-189">
+				01.02.2013 в 18:40</a>				</div>
+
+			</div>
+	
+			<p>Запустил Ваш проект с замкнутыми друг на друга MISO и MOSI. Убрал инициализацию второго SPI, добавил USART.<br>
+Все работает. Но как только добавляю к проекту файл<br>
+startup_stm32l1xx_md.s<br>
+так сразу хрень в USART прет.</p>
+<p>как это влияет?</p>
+<p>тут проект<br>
+<a href="http://files.mail.ru/2B5417EE688C412E99C0E9CB966A7569" rel="nofollow">http://files.mail.ru/2B5417EE688C412E99C0E9CB966A7569</a></p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-190" class="comment odd alt depth-2">
+				<div id="div-comment-190" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-190">
+				01.02.2013 в 19:38</a>				</div>
+
+			</div>
+	
+			<p>Я чуть позже проверю, завтра постараюсь ответить. Еще не понял всей задумки, что в итоге работает? USART1 и SPI1 только на передачу, так?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-191" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-191" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-191">
+				01.02.2013 в 20:26</a>				</div>
+
+			</div>
+	
+			<p>все просто- без файла<br>
+startup_stm32l1xx_md.s , включенного в проект USART корректно работает и все передает.<br>
+стоит его только включить, сразу чушь ползет. То -ли по SPI гадость лезет, либо по USART.</p>
+<p>но это он 100%</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-192" class="comment odd alt depth-2">
+				<div id="div-comment-192" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-192">
+				02.02.2013 в 16:34</a>				</div>
+
+			</div>
+	
+			<p>Попробовал все варианты, результат один и тот же, что с этим файлом, что без него:<br>
+<a href="http://chipspace.ru/picture/02.gif" rel="nofollow">http://chipspace.ru/picture/02.gif</a><br>
+Такой должен быть результат?<br>
+Еще в препроцессоре добавлял пути к файлам:<br>
+$PROJ_DIR$\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32L1xx\startup\iar\<br>
+$PROJ_DIR$\Libraries\STM32L1xx_StdPeriph_Driver\src\<br>
+Результат тот же. Кстати, почему в проекте не прописаны эти пути, а IAR не выдает ошибки, что не находит эти файлы? Я в проекте глубоко не разбирался, может они где-то прописаны?<br>
+При запуске в отладчике, в дизассемблере происходит остановка на строке:<br>
+0x80005ec: 0xbeab      BKPT      #0xab<br>
+В терминале результат тот же.<br>
+Мне кажется, что проще создать новый пустой проект и туда постепенно добавлять все эти функции и подключать библиотеки, проверяя все ПОЭТАПНО. Разбираться откуда берутся проблемы в этом проекте будет намного сложнее и дольше.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-193" class="comment even depth-3">
+				<div id="div-comment-193" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-193">
+				02.02.2013 в 16:52</a>				</div>
+
+			</div>
+	
+			<p>Как видите, мой результат несколько отличается, я не заметил различий между работой проектов с этим файлом или без него. Возможно, дело вовсе не в файле startup_stm32l1xx_md.s, который отвечает за низкоуровневую инициализацию контроллера. Но его подключение иногда, но не всегда, может дать какой-то эффект. У меня этот проект вообще ведет себя странно, ему неважно подключен этот файл или нет, прописаны пути к библиотекам или нет.<br>
+Я бы не советовал отказываться от этого файла, не могу сказать будут ли последствия. Поэтому советую не лезть в «дебри», а пойти путем, который указал в предыдущем посте.<br>
+Кстати, сравнил в Total Commander файл startup_stm32l1xx_md.s из проекта с тем же файлом, но из библиотек на своем компьютере. Полностью идентичны.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-194" class="comment odd alt thread-even depth-1">
+				<div id="div-comment-194" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-194">
+				02.02.2013 в 17:27</a>				</div>
+
+			</div>
+	
+			<p>А версия IAR 6.50 действительно не ругается на отсутствие путей<br>
+$PROJ_DIR$\Libraries\CMSIS\CM3\DeviceSupport\ST\STM32L1xx\startup\iar\<br>
+$PROJ_DIR$\Libraries\STM32L1xx_StdPeriph_Driver\src\<br>
+Попробовал на новом проекте.<br>
+Я то по привычке все прописываю.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-195" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-195" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-195">
+				02.02.2013 в 20:41</a>				</div>
+
+			</div>
+	
+			<p>Давайте еще раз.<br>
+Замыкаем на плате L выводы PA11 PA12.<br>
+результат<br>
+<a href="http://s019.radikal.ru/i614/1302/e5/08fb185635ba.jpg" rel="nofollow">http://s019.radikal.ru/i614/1302/e5/08fb185635ba.jpg</a></p>
+<p>проект<br>
+<a href="http://files.mail.ru/CEF255840A1D4BAD883C4C1C20C38254" rel="nofollow">http://files.mail.ru/CEF255840A1D4BAD883C4C1C20C38254</a></p>
+<p>как только добавляю файл в проект startup_stm32l1xx_md.s<br>
+результат<br>
+<a href="http://i062.radikal.ru/1302/e4/ec52cbe4584f.jpg" rel="nofollow">http://i062.radikal.ru/1302/e4/ec52cbe4584f.jpg</a><br>
+т.е. хрень)</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-196" class="comment odd alt depth-2">
+				<div id="div-comment-196" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-196">
+				02.02.2013 в 21:27</a>				</div>
+
+			</div>
+	
+			<p>Пишу тут статейку, задействовал библиотеки. Заметил, что переменная SystemCoreClock = 32МГЦ, хотя работаю от генератора MSI с частотой 2.097МГЦ.<br>
+Попробуйте обновить ее командой SystemCoreClockUpdate(); в самом начале основного цикла main(). У меня после этого значение стало 2.097МГц, то есть равно частоте MSI, как и положено. Может с этим и связаны ваши проблемы.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-197" class="comment even depth-2">
+				<div id="div-comment-197" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-197">
+				02.02.2013 в 22:35</a>				</div>
+
+			</div>
+	
+			<p>SPI принимает с ошибками. Пока не нашел почему, но проблему локализовал.<br>
+Еще переменная data объявлена как глобальная в main.c и как локальная одновременно в void Usart1_Send_symbol(), хранится в двух регистрах R0 и R4. Именно здесь это не вызывает ошибок, но это неправильно.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-198" class="comment odd alt thread-even depth-1">
+				<div id="div-comment-198" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-198">
+				02.02.2013 в 23:07</a>				</div>
+
+			</div>
+	
+			<p>Меняй файл system_stm32l1xx.c на родной библиотечный, с ним все работает как надо. Будем разбираться что не так с этой утилитой от ST, про которую я писал здесь<br>
+<a href="http://chipspace.ru/stm32-system-clock-configuration/" rel="nofollow">http://chipspace.ru/stm32-system-clock-configuration/</a></p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-199" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-199" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-199">
+				03.02.2013 в 01:45</a>				</div>
+
+			</div>
+	
+			<p>Итак, родной библиотечный файл- все работает в ажуре. Я имею ввиду файл system_stm32l1xx.c<br>
+Что же этот файл нам дает? Он дает запуск от кварца 8 МГц и частотой системной 32 МГц. Если кварца нет (а на плату L он не запаян), благодаря этому файлу, частота шины MSI 2 с копейками МГц. Автоматика, да и только. Так вот- кварца нет, все работает. Как только запаял кварц, кондеры, резистор(на схеме есть), сразу хрень.<br>
+удалил файл, частота шины стала 2,092 МГц.- вывод в терминалку нормальный.<br>
+т.е. упорно не хочет выводить корректно при частоте шины 32 МГц, хоть с кварцем, хоть RC.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-200" class="comment byuser comment-author-metcenger odd alt thread-even depth-1">
+				<div id="div-comment-200" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-200">
+				03.02.2013 в 01:52</a>				</div>
+
+			</div>
+	
+			<p>SystemCoreClockUpdate(); //обновили частоту<br>
+не помогло</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-201" class="comment even depth-2">
+				<div id="div-comment-201" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-201">
+				03.02.2013 в 11:53</a>				</div>
+
+			</div>
+	
+			<p>На 32МГц не работает, значит. Настройки флэш-памяти тоже сделал, как тут описано<br>
+<a href="http://chipspace.ru/stm32l-max-sysclk/" rel="nofollow">http://chipspace.ru/stm32l-max-sysclk/</a><br>
+иначе бы не работало.<br>
+Я поэкспериментирую как работает модуль SPI на максимальных частотах. Быстро не обещаю.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-206" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-206" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-206">
+				03.02.2013 в 13:41</a>				</div>
+
+			</div>
+	
+			<p>В общем, изменение baud rate не влияет, я уже попробовал, тут и так задана минимальная скорость. Модуль SPI должен работать до 16Мбит/сек, можно задавать делителем коэффициент от минимального 2 на тактовой 32МГц, а у нас 256.<br>
+Надо посмотреть сигналы, как доберусь до осциллографа (на работе) — займусь дальше.</p>
+<p>И, по-моему, строка<br>
+while(!(SPI1-&gt;SR &amp; SPI_SR_TXE))<br>
+      ;<br>
+как то не на своем месте <img src="./STM32. Интерфейс SPI » ChipSpace_files/icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-207" class="comment even thread-even depth-1">
+				<div id="div-comment-207" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-207">
+				03.02.2013 в 13:41</a>				</div>
+
+			</div>
+	
+			<p>А ведь у тебя регистр DR закольцован, работает и на передачу и на прием. В нужный ли момент в таком случае флаг окончания приема RXNE выставляется? Попробуй все же задействовать в качестве приемника второй модуль SPI.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-208" class="comment byuser comment-author-metcenger odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-208" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-208">
+				03.02.2013 в 14:11</a>				</div>
+
+			</div>
+	
+			<p>Подтверди пож-ста, что на данной плате, с моим проектом ты получаешь тот же результат? PA11 на PA12 замкнуты.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-209" class="comment byuser comment-author-metcenger even thread-even depth-1">
+				<div id="div-comment-209" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-209">
+				03.02.2013 в 14:29</a>				</div>
+
+			</div>
+	
+			<p>я вторым SPI задействовал микросхему W5100. И получал результат не очень. Данные от W5100 шли в мой SPI и не корректно воспринимались. Начал копать и вышел на такую странность, как в проекте. Данные от w5100 на осцилле были одни, а воспринимались как другие.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-210" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-210" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-210">
+				03.02.2013 в 15:44</a>				</div>
+
+			</div>
+	
+			<p>Ага, при 32МГц тактовой неправильно принимает, подтверждаю <img src="./STM32. Интерфейс SPI » ChipSpace_files/icon_smile.gif" alt=":)" class="wp-smiley"> . И все же попробуй, как я предлагал, может в этом дело. Чисто ради эксперимента.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-211" class="comment even thread-even depth-1">
+				<div id="div-comment-211" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-211">
+				03.02.2013 в 15:45</a>				</div>
+
+			</div>
+	
+			<p>Пока на этом остановился, хочу на осциллографе глянуть.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-217" class="comment odd alt depth-2">
+				<div id="div-comment-217" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-217">
+				04.02.2013 в 16:55</a>				</div>
+
+			</div>
+	
+			<p>Пока не получилось глянуть осциллограммы, у меня ST-LINK/V2 с Дискавери на работе не хочет определяться, систему недавно переставили, что-то глючит. Попробую завтра внешниий ST-LINK принести и подключиться.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-218" class="comment even thread-odd thread-alt depth-1">
+				<div id="div-comment-218" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-218">
+				05.02.2013 в 00:31</a>				</div>
+
+			</div>
+	
+			<p>Как и следовало ожидать, без файла startup_stm32l1xx_md.s никакой начальной инициализации у тебя просто нет. Ниже скриншоты работы с файлом и без. Переменная SystemCoreClock — значение тактовой частоты, что ясно из названия. Обновляем это значение функцией SystemCoreClockUpdate(); и видим результат.<br>
+Тактовая частота с файлом инициализации<br>
+<a href="http://chipspace.ru/picture/03.gif" rel="nofollow">http://chipspace.ru/picture/03.gif</a><br>
+А теперь без него<br>
+<a href="http://chipspace.ru/picture/04.gif" rel="nofollow">http://chipspace.ru/picture/04.gif</a><br>
+В этом случае тактируется по дефолту от MSI.<br>
+Вот ответ на вопрос — как влияет подключение файла инициализации.<br>
+Осталось разобраться с модулями SPI.<br>
+Снова советую разомкнуть PA11, PA12 и проверить работу на двух модулях SPI, а не на одном. По datasheet должно работать до 16МБит/сек.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-219" class="comment byuser comment-author-metcenger odd alt thread-even depth-1">
+				<div id="div-comment-219" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-219">
+				10.02.2013 в 01:29</a>				</div>
+
+			</div>
+	
+			<p>в общем, пришел к такому выводу:<br>
+при настройке в утилите тактовой частоты PCLK2 на 8 МГц через делитель APB2 prescaler, при этом сама частота шины = 32 МГц, вне зависимости от кварца или RC, то все работает.<br>
+Так же поднимал частоту системную до 12 МГц- все работало.<br>
+Получается, что наш SPI не хочет тактироваться от частот выше 12 МГц (а при частоте шины 32 МГц больше 8 МГц и не выставить)</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-220" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-220" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-220">
+				18.02.2013 в 18:33</a>				</div>
+
+			</div>
+	
+			<p>решил проблему.<br>
+нужно в инициализацию портов добавлять скорость порта, т.е.</p>
+<p>GPIOA-&gt;OSPEEDR |=GPIO_OSPEEDER_OSPEEDR5 | GPIO_OSPEEDER_OSPEEDR11 | GPIO_OSPEEDER_OSPEEDR12;  //ноги 40 МГц</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-221" class="comment odd alt depth-2">
+				<div id="div-comment-221" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-221">
+				18.02.2013 в 19:24</a>				</div>
+
+			</div>
+	
+			<p>SPI на 16 МГц работает?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-222" class="comment byuser comment-author-metcenger even thread-even depth-1">
+				<div id="div-comment-222" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-222">
+				19.02.2013 в 00:42</a>				</div>
+
+			</div>
+	
+			<p>да, все четко. сейчас проверил.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-483" class="comment byuser comment-author-s7 odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-483" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/2a3fad59483bc38290539b0c96b29cb2" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">s7</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-483">
+				15.01.2014 в 01:01</a>				</div>
+
+			</div>
+	
+			<p>Длина имеет значение !<br>
+Сделал такой же длинный шлейф из 4-х проводов как на фото…. залил прошивку…. ни один светодиод не горит <img src="./STM32. Интерфейс SPI » ChipSpace_files/icon_sad.gif" alt=":(" class="wp-smiley"><br>
+В отладке видно, что temp возвращает 0<br>
+добавил в SWITCH горение 2-х светодиодов на этот случай…<br>
+     case 0×00:<br>
+       GPIOC-&gt;BSRR |= GPIO_BSRR_BS8 | GPIO_BSRR_BS9; // горение 2-х светодиодов на случай отсутствия связи<br>
+     send_data = 0×03;<br>
+      break;</p>
+<p>решил всё таки проверить влияние длины и формы шлейфа — просто смял его в небольшой комочек и прижал к плате…. замигали поочерёдно светодиоды…<br>
+расправил шлейф — горят оба = SPI ничего поймать не может из-за помех…<br>
+взял алюминиевый скотч (фольга с липким слоем), обмотал шлейф, к земле не подключал… замигали поочерёдно светодиоды… даже в расправленном положении.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-520" class="comment byuser comment-author-lcleo even thread-even depth-1">
+				<div id="div-comment-520" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/0bfc5220866a37960aa42bcf2a0ee12e" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">lcleo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-520">
+				18.05.2014 в 22:13</a>				</div>
+
+			</div>
+	
+			<p>А как в данном примере управляется линия NSS? Со стороны слейва понятно — аппаратный режим и он просто ожидает низкого уровня на NSS. А вот вывод NSS мастера в программном режиме в режиме выхода и установлен бит SSI регистра CR1 т.е. на выводе NSS высокий уровень? в функции передачи по SPI нет кода который бы выставил низкий уровень на NSS(SSI=0). Получается на NSS Всегда высокий уровень? Как тогда принимает данные слейв?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-521" class="comment byuser comment-author-mrz bypostauthor odd alt depth-2">
+				<div id="div-comment-521" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-521">
+				19.05.2014 в 10:33</a>				</div>
+
+			</div>
+	
+			<p>Здесь несколько режимов управления выводом NSS, я попробую написать о них подробней, но придется немного подождать. Я уже сразу не вспомню, надо почитать документацию. А по логике вещей уровень на NSS должен «опускаться» перед началом передачи мастера, то есть сразу после записи числа в его регистр данных.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-522" class="comment byuser comment-author-lcleo even depth-3">
+				<div id="div-comment-522" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/0bfc5220866a37960aa42bcf2a0ee12e" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">lcleo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-522">
+				19.05.2014 в 11:29</a>				</div>
+
+			</div>
+	
+			<p>Запустил пример на STM32L152RBT6 discovery, пробовал и аппартатный и програмный режимы управления линией NSS, в обоих случаях на нем низкий уровень: 0.32В до строчки SPI1-&gt;CR1 |= SPI_CR1_SPE; //Включаем SPI1 в функции инициализации spi, после же этой строчки уровень 0.12В Может неисправна моя плата….</p>
+<p>Если правильно понял референс мануал, NSS прижимается к земле мастером при начале обмена данными(т.е. до  обмена NSS=1 ) и остается на низком уровне до ОТКЛЮЧЕНИЯ модуля SPI — это в аппартаном режиме, данный алгоритм не соответствует нормальной логике работы линии Chip select…  неправильный NSS получается<br>
+Если же выбран программный режим управления NSS в режиме мастера,NSS  в режиме выхода — то в мануале нет информации(SSM=1 SSOE=1).Или в этом случае не актуален прогррамный режим и сигнал на NSS нельзя выставить программно битом SSI и выход ведет себя также как при режиме аппаратногоо управления</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-571" class="comment byuser comment-author-spinfly odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-571" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="SPinFly" src="./STM32. Интерфейс SPI » ChipSpace_files/Kid3-48x48.jpg" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">SPinFly</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-571">
+				27.09.2014 в 20:53</a>				</div>
+
+			</div>
+	
+			<p>//Инициализация SPI1, SPI2<br>
+void spi_init()<br>
+{<br>
+  /*Настройка SPI1 (Master)<br>
+  8 бит данных, MSB передается первым, программный режим управления NSS<br>
+  вывод NSS (PA4) разрешено использовать в качестве выхода*/<br>
+ ….<br>
+….<br>
+….<br>
+  SPI1-&gt;CR1 |= SPI_CR1_SSM; //Программный режим NSS<br>
+  SPI1-&gt;CR1 |= SPI_CR1_SSI; //Аналогично состоянию, когда на входе NSS высокий уровень<br>
+  SPI1-&gt;CR2 |= SPI_CR2_SSOE; //Вывод NSS — выход управления slave select</p>
+<p>Программный режим мастера (SSI=1), Тогда вывод NSS отключается и используется для других целей. А  как же тогда ведомое устр-во переходит в режим Slave ?<br>
+если :….<br>
+/*Настройка SPI2 (Slave)<br>
+SPI2-&gt;CR1 &amp;= ~SPI_CR1_SSM; //Аппаратное управление входом NSS ——&gt;&gt; NSS подключается к линии и ждет низкого сигнала для приема в то время как вывод от мастера отключен.<br>
+  SPI2-&gt;CR1 &amp;= ~SPI_CR1_MSTR; //Режим Slave</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-572" class="comment byuser comment-author-mrz bypostauthor even depth-2">
+				<div id="div-comment-572" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. Интерфейс SPI » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-spi/#comment-572">
+				30.09.2014 в 13:44</a>				</div>
+
+			</div>
+	
+			<p>Программно.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ol>
+<div class="navigation fix">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+</div>
+								<div id="respond">
+				<h3 id="reply-title"><span class="icon">&nbsp;</span>Оставить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://chipspace.ru/stm32-spi/#respond" style="display:none;">Отменить ответ</a></small></h3>
+									<p class="must-log-in"><a href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-spi%2F">Вы должны авторизироваться для добавления комментария</a></p>												</div><!-- #respond -->
+						</div>	</div><!--/post -->
+<div class="post-nav">
+<table>
+<tbody><tr>
+	<td class="previous"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32-system-clock-configuration/" rel="prev">STM32L. System clock configuration. Утилита для конфигурации тактовых частот и создания файла system_stm32l1xx.c.</a></td>
+	<td class="next"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32-spi-stdperiph_lib/" rel="next">STM32. Стандартные библиотеки для модуля SPI</a></td>
+</tr>
+</tbody></table>
+</div>
+      </div><!-- content -->
+    </div><!-- main col -->
+<div id="sidebar-shell-1" class="sidebar-shell sidebar-shell-right">
+<div class="dbx-group right boxed warea" id="sidebar">
+<!--widget start --><div id="categories-3" class="dbx-box suf-widget widget_categories"><h3 class="dbx-handle plain">Рубрики</h3><div class="dbx-content">		<ul>
+	<li class="cat-item cat-item-102"><a href="http://chipspace.ru/category/gps/" title="Просмотреть все записи в рубрике «GPS»">GPS</a> (4)
+</li>
+	<li class="cat-item cat-item-90"><a href="http://chipspace.ru/category/analog-digital-devices/" title="Просмотреть все записи в рубрике «Аналого-цифровые устройства»">Аналого-цифровые устройства</a> (2)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://chipspace.ru/category/analog/" title="Просмотреть все записи в рубрике «Аналоговая электроника»">Аналоговая электроника</a> (1)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://chipspace.ru/category/indicators/" title="Просмотреть все записи в рубрике «Индикаторы»">Индикаторы</a> (1)
+</li>
+	<li class="cat-item cat-item-86"><a href="http://chipspace.ru/category/interface/" title="Просмотреть все записи в рубрике «Интерфейсы»">Интерфейсы</a> (1)
+</li>
+	<li class="cat-item cat-item-68"><a href="http://chipspace.ru/category/microcontrollers/" title="Просмотреть все записи в рубрике «Микроконтроллеры»">Микроконтроллеры</a> (44)
+<ul class="children">
+	<li class="cat-item cat-item-65"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-atmel/" title="Просмотреть все записи в рубрике «Atmel»">Atmel</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»">STM32</a> (43)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-111"><a href="http://chipspace.ru/category/cpld-fpga/" title="Просмотреть все записи в рубрике «ПЛИС»">ПЛИС</a> (1)
+</li>
+	<li class="cat-item cat-item-114"><a href="http://chipspace.ru/category/site/" title="Просмотреть все записи в рубрике «Сайт»">Сайт</a> (1)
+</li>
+		</ul>
+</div></div><!--widget end --><!--widget start --><div id="wp_sidebarlogin-2" class="dbx-box suf-widget widget_wp_sidebarlogin"><h3 class="dbx-handle plain"><span>Войти</span></h3><div class="dbx-content">		<form method="post" action="http://chipspace.ru/stm32-spi/?_login=fef78fc4f2">
+		
+			<p><label for="user_login">Имя пользователя:</label> <input name="log" value="" class="text" id="user_login" type="text"></p>
+			<p><label for="user_pass">Пароль:</label> <input name="pwd" class="text" id="user_pass" type="password"></p>			
+	
+						
+			<p class="rememberme"><input name="rememberme" class="checkbox" id="rememberme" value="forever" type="checkbox"> <label for="rememberme">Запомнить меня</label></p>
+			
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" value="Войти »">
+				<input type="hidden" name="redirect_to" class="redirect_to" value="http://chipspace.ru/stm32-spi/">
+				<input type="hidden" name="sidebarlogin_posted" value="1">
+				<input type="hidden" name="testcookie" value="1">
+			</p>
+			
+					
+		</form>
+		<ul class="sidebarlogin_otherlinks"><li><a href="http://chipspace.ru/wp-login.php?action=register" rel="nofollow">Регистрация</a></li><li><a href="http://chipspace.ru/wp-login.php?action=lostpassword" rel="nofollow">Забыли пароль?</a></li></ul></div></div><!--widget end --></div><!--/sidebar -->
+</div>
+	</div><!-- /container -->
+
+	<div id="cred">
+		<table>
+			<tbody><tr>
+				<td class="cred-left">© 2011. Екатеринбург. 
+</td>
+				<td class="cred-center">			</td></tr>
+		</tbody></table>
+	</div>
+<!-- 73 queries, 32MB in 0,627 seconds. -->
+</div><!--/wrapper -->
+<!-- location footer -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter11339371 = new Ya.Metrika({id:11339371,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/11339371" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+</body></html>

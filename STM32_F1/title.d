@@ -1,0 +1,10 @@
+title.o: title.c
+title.o: .\F1_main_libs\stm32f10x.h
+title.o: C:\Keil\ARM\CMSIS\Include\core_cm3.h
+title.o: C:\Keil\ARM\RV31\Inc\stdint.h
+title.o: C:\Keil\ARM\CMSIS\Include\core_cmInstr.h
+title.o: C:\Keil\ARM\CMSIS\Include\core_cmFunc.h
+title.o: .\F1_main_libs\system_stm32f10x.h
+title.o: .\F1_main_libs\stm32f10x_conf.h
+title.o: .\STM32_SPL\inc\stm32f10x_gpio.h
+title.o: .\STM32_SPL\inc\stm32f10x_rcc.h

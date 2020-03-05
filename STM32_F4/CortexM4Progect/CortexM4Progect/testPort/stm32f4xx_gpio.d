@@ -1,0 +1,11 @@
+stm32f4xx_gpio.o: ..\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_gpio.c
+stm32f4xx_gpio.o: ..\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_gpio.h
+stm32f4xx_gpio.o: ..\Patch\stm32f4xx.h
+stm32f4xx_gpio.o: ..\Patch\core_cm4.h
+stm32f4xx_gpio.o: C:\Keil\ARM\RV31\Inc\stdint.h
+stm32f4xx_gpio.o: ..\Patch\core_cmInstr.h
+stm32f4xx_gpio.o: ..\Patch\core_cmFunc.h
+stm32f4xx_gpio.o: ..\Patch\core_cm4_simd.h
+stm32f4xx_gpio.o: ..\Patch\system_stm32f4xx.h
+stm32f4xx_gpio.o: ..\Patch\stm32f4xx_conf.h
+stm32f4xx_gpio.o: ..\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h

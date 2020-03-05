@@ -1,0 +1,1491 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0034)http://chipspace.ru/stm32-usart-4/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="pingback" href="http://chipspace.ru/xmlrpc.php">
+
+	<title>  STM32. USART. Часть 4 — Финал » ChipSpace</title>
+	<meta name="description" content="Рассмотрена работа с модулем USART STM32.">
+	<meta name="keywords" content="stm32,usart stm32,uart stm32">
+<link rel="shortcut icon" href="http://chipspace.ru/wp-content/uploads/2013/06/Favicon_32.jpg">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента" href="http://chipspace.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев" href="http://chipspace.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев к «STM32. USART. Часть 4 — Финал»" href="http://chipspace.ru/stm32-usart-4/feed/">
+<link rel="stylesheet" id="wp_sidebarlogin_css_styles-css" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-css" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-skin-1-css" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/skin.css" type="text/css" media="all">
+<!--[if !IE]>--><link rel="stylesheet" id="suffusion-rounded-css" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/rounded-corners.css" type="text/css" media="all">
+<!--<![endif]-->
+<!--[if gt IE 8]><link rel='stylesheet' id='suffusion-rounded-css'  href='http://chipspace.ru/wp-content/themes/suffusion/rounded-corners.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]><link rel='stylesheet' id='suffusion-ie-css'  href='http://chipspace.ru/wp-content/themes/suffusion/ie-fix.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="suffusion-generated-css" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript" async="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/watch.js"></script><script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blockui.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sidebar_login_params = {"ajax_url":"http:\/\/chipspace.ru\/wp-admin\/admin-ajax.php","login_nonce":"51fbee32d8"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/sidebar-login.js"></script>
+<script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/prettify_mod.js"></script>
+<script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/comment-reply.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var Suffusion_JS = {"wrapper_width_type_page_template_1l_sidebar_php":"fixed","wrapper_max_width_page_template_1l_sidebar_php":"1200","wrapper_min_width_page_template_1l_sidebar_php":"600","wrapper_orig_width_page_template_1l_sidebar_php":"75","wrapper_width_type_page_template_1r_sidebar_php":"fixed","wrapper_max_width_page_template_1r_sidebar_php":"1200","wrapper_min_width_page_template_1r_sidebar_php":"600","wrapper_orig_width_page_template_1r_sidebar_php":"75","wrapper_width_type_page_template_1l1r_sidebar_php":"fixed","wrapper_max_width_page_template_1l1r_sidebar_php":"","wrapper_min_width_page_template_1l1r_sidebar_php":"600","wrapper_orig_width_page_template_1l1r_sidebar_php":"75","wrapper_width_type_page_template_2l_sidebars_php":"fixed","wrapper_max_width_page_template_2l_sidebars_php":"1200","wrapper_min_width_page_template_2l_sidebars_php":"600","wrapper_orig_width_page_template_2l_sidebars_php":"75","wrapper_width_type_page_template_2r_sidebars_php":"fixed","wrapper_max_width_page_template_2r_sidebars_php":"1200","wrapper_min_width_page_template_2r_sidebars_php":"600","wrapper_orig_width_page_template_2r_sidebars_php":"75","wrapper_width_type":"fluid","wrapper_max_width":"1200","wrapper_min_width":"600","wrapper_orig_width":"98","wrapper_width_type_page_template_no_sidebars_php":"fluid","wrapper_max_width_page_template_no_sidebars_php":"1200","wrapper_min_width_page_template_no_sidebars_php":"600","wrapper_orig_width_page_template_no_sidebars_php":"98","suf_nav_delay":"500","suf_nav_effect":"none","suf_navt_delay":"500","suf_navt_effect":"fade","suf_jq_masonry_enabled":"disabled","suf_fix_aspect_ratio":"preserve","suf_show_drop_caps":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/suffusion.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://chipspace.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://chipspace.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32. USART. Часть 3" href="http://chipspace.ru/stm32-usart-3/">
+<link rel="next" title="STM32. Системный таймер SysTick." href="http://chipspace.ru/stm32-systick/">
+<link rel="canonical" href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/STM32. USART. Часть 4 — Финал » ChipSpace.htm">
+<link rel="shortlink" href="http://chipspace.ru/?p=938">
+<!-- Start Additional Feeds -->
+<!-- End Additional Feeds -->
+<!-- location header -->
+<!-- Include AudioPlayer via Suffusion -->
+<script type="text/javascript">
+/* <![CDATA[ */
+	if (typeof AudioPlayer != 'undefined') {
+		AudioPlayer.setup("http://chipspace.ru/wp-content/themes/suffusion/scripts/player.swf", {
+			width: 500,
+			initialvolume: 100,
+			transparentpagebg: "yes",
+			left: "000000",
+			lefticon: "FFFFFF"
+		});
+	}
+/* ]]> */
+</script>
+<!-- /AudioPlayer -->
+<!-- THEMEKITFORWP STYLE OPTIONS prettify-wordpress-->
+			<style>.str{ color: #800; }
+			.kwd{ color: #008; }
+			.com{ color: #0f800f; }
+			.typ{ color: #606; }
+			.lit{ color: #066; }
+			.pun{ color: #660; }
+			.pln{ color: #0e0e11; }
+			.tag{ color: #008; }
+			.atn{ color: #606; }
+			.atv{ color: #088108; }
+			.dec{ color: #606; }
+			.prettyprint, .prettyprint code{ background-color: #fdfcfc;}
+			.prettyprint{border: #5c71b7 solid 1px;padding: 10px; margin: 0 0 20px 0; overflow: auto; position: relative;}
+			.prettyprint{-moz-border-radius: 0px;border-radius: 0px;}
+			.prettyprint, .prettyprint code{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #333333;  font-family: Courier New, Courier New, monospace; }
+			.prettyprint:after{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #999999;  font-family: Courier, MonoSpace; }
+			.prettyprint:after{ content: attr(rel); position: absolute; top: 15px; line-height: 0; right: 12px; }
+			</style><!-- END THEMEKITFORWP STYLE OPTIONS --></head>
+<body class="single single-post postid-938 single-format-standard light-theme-gray-1">
+    			<div id="nav-top" class="tab fix">
+		<div class="col-control right">
+		</div><!-- /.col-control -->
+	</div><!-- /#nav-top -->
+		<div id="wrapper" class="fix">
+					<div id="header-container" class="fix">
+					<div id="header" class="fix">
+			<h2 class="blogtitle"><a href="http://chipspace.ru/">ChipSpace</a></h2>
+		<div class="description"></div>
+    </div><!-- /header -->
+ 	<div id="nav" class="tab fix">
+		<div class="col-control left">
+	<!-- right-header-widgets -->
+	<div id="right-header-widgets" class="warea">
+	
+<form method="get" class="searchform " action="http://chipspace.ru/">
+	<input type="text" name="s" class="searchfield" value="Поиск" onfocus="if (this.value == &#39;Поиск&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Поиск&#39;;}">
+	<input type="submit" class="searchsubmit" value="" name="searchsubmit">
+</form>
+	</div>
+	<!-- /right-header-widgets -->
+<ul class="sf-menu">
+
+					<li><a href="http://chipspace.ru/">Главная</a></li><li class="page_item page-item-762"><a href="http://chipspace.ru/contact/">Контакты</a></li>
+<li class="page_item page-item-2800"><a href="http://chipspace.ru/%d1%80%d0%b0%d0%b7%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%ba%d0%b0-%d1%8d%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bd%d0%b8%d0%ba%d0%b8/">Разработка электроники</a></li>
+<li class="page_item page-item-1125"><a href="http://chipspace.ru/links/">Ссылки</a></li>
+<li><a href="http://feeds.feedburner.com/chipspace" title="Подписка на RSS-ленту новостей дает возможность узнавать об обновлениях на сайте" target="_blank">RSS</a></li>
+<li><a href="http://chipspace.ru/karta-sajta/" title="Полный список статей" target="_blank">Содержание</a></li>
+
+</ul>
+		</div><!-- /col-control -->
+	</div><!-- /nav -->
+			</div><!-- //#header-container -->
+			<div id="container" class="fix">
+				    <div id="main-col">
+		  	<div id="content">
+	<div class="post-938 post type-post status-publish format-standard hentry category-microcontrollers-stm32 tag-stm32 tag-stm32-discovery tag-usart category-9-id full-content" id="post-938">
+<div class="title-container fix">
+	<div class="title">
+		<h1 class="posttitle"><a href="./STM32. USART. Часть 4 — Финал » ChipSpace_files/STM32. USART. Часть 4 — Финал » ChipSpace.htm" class="entry-title" rel="bookmark" title="STM32. USART. Часть 4 — Финал">STM32. USART. Часть 4 — Финал</a></h1>
+		<div class="postdata fix">
+					<span class="category"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»" rel="category tag">STM32</a></span>
+							<span class="comments"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/stm32-usart-4/#respond">Добавить комментарий</a></span>
+					</div><!-- /.postdata -->
+		</div><!-- /.title -->
+		<div class="date"><span class="month">Авг</span> <span class="day">19</span><span class="year">2012</span></div>
+	</div><!-- /.title-container -->
+	<span class="post-format-icon">&nbsp;</span>		<div class="entry-container fix">
+			<div class="entry fix">
+<p class="first-para">В завершающей части рассмотрены примеры работы с модулем USART микроконтроллеров серий STM32F и STM32L, и, в данном случае уже осуществляется двунаправленный обмен данными между компьютером и микроконтроллером. Изменения в настройках будут небольшие – всего лишь разрешим работу приемника USART и сконфигурируем под него нужный вывод GPIO. Ниже будут приведены примеры программ, проверенные на двух отладочных платах:</p>
+<ul>
+<li>STM32L-DISCOVERY (серия STM32L) и </li>
+<li>STM32VL-DISCOVERY (серия STM32F), </li>
+</ul>
+<p>а также в конце статьи можно загрузить готовые проекты в IAR.</p>
+<p><span id="more-938"></span>В предыдущих примерах к преобразователю USB&lt;—&gt;UART, собранному на микросхеме FT232RL, подключался только один вывод микроконтроллера USART1_Tx, поскольку там выполнялась передача данных только в направлении микроконтроллер STM32 –&gt; компьютер. Теперь же будет задействован еще один вывод — USART1_Rx, через него микроконтроллер будет принимать данные от компьютера.
+</p><p><a href="http://chipspace.ru/wp-content/uploads/2013/11/USART_Rx_Tx.gif"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="USART_Rx_Tx" border="0" alt="USART_Rx_Tx" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/USART_Rx_Tx_thumb.gif" width="796"></a></p>
+<p>Для включения приемника USART1 необходимо выполнить следующие операции:</p>
+<ul>
+<li>Настроить вывод PA10 на работу в качестве входа для USART1. Это должен быть вход без подтягивающих резисторов (Floating Input) и в режиме альтернативной функции. </li>
+<li>Разрешить работу приемника USART1. Физически это выполняется установкой бита RE — Receiver enable в управляющем регистре USART_CR1. </li>
+</ul>
+<p>Алгоритм программы будет следующий:</p>
+<ul>
+<li>Инициализация периферии: включение тактирования нужных модулей, настройка выводов порта, настройка приемопередатчика USART1 </li>
+<li>После инициализации шлем компьютеру сообщение о готовности к работе </li>
+<li>Ожидаем поступления данных от компьютера – это бесконечный цикл, в нем проверяем состояние бита RXNE регистра USART_SR. Установка этого бита означает, что регистр данных не пустой, в него поступили данные </li>
+<li>Если бит RXNE установлен, считываем данные </li>
+<li>Эти же данные отправляем обратно </li>
+</ul>
+<p>Ниже приведены тексты программ для двух серий – STM32L и STM32F. Отличия в них минимальные и касаются только настроек задействованных выводов портов, поскольку порты GPIO в этих сериях имеют некоторые отличия, в особенности это касается их регистров. Настройки USART будут абсолютно одинаковы, даже выводы портов используются те же самые, так как в данном случае эти устройства STM32 являются pin-to-pin совместимыми.</p>
+<p>Пример кода для серии STM32F (проверен на плате STM32VL-DISCOVERY):</p>
+<pre class="prettyprint"><code><span class="com">#include</span><span class="pln"> </span><span class="str">"stm32f10x.h"</span><span class="pln"><br><br></span><span class="com">//Структуры для инициализации GPIOA и USART1</span><span class="pln"><br>GPIO_InitTypeDef &nbsp; &nbsp;GPIO_InitStruct</span><span class="pun">;</span><span class="pln"><br>USART_InitTypeDef &nbsp; &nbsp;USART_InitStruct</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Init</span><span class="pun">(</span><span class="kwd">void</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции инициализации периферии</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">uint8_t</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции передачи символа</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции передачи строки</span><span class="pln"><br><br></span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">;</span><span class="pln"><br>uint8_t data</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="typ">Init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации периферии</span><span class="pln"><br>&nbsp; </span><span class="com">//Передаем строку, сообщающую о готовности микроконтроллера к обмену данными</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="str">"I'm ready"</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">((</span><span class="pln">USART1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> USART_SR_RXNE</span><span class="pun">))</span><span class="pln"> </span><span class="com">//Проверяем поступление данных от компьютера</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; data </span><span class="pun">=</span><span class="pln"> USART1</span><span class="pun">-&gt;</span><span class="pln">DR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Считываем принятые данные</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">data</span><span class="pun">);</span><span class="pln"> </span><span class="com">//И тут же отсылаем их обратно</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция инициализации периферии</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">//Включаем тактирование GPIOA, USART1 и альтернативных функций AFIO</span><span class="pln"><br>&nbsp; RCC_APB2PeriphClockCmd</span><span class="pun">((</span><span class="pln">RCC_APB2Periph_USART1 </span><span class="pun">|</span><span class="pln"> RCC_APB2Periph_GPIOA </span><span class="pun">|</span><span class="pln"> RCC_APB2Periph_AFIO</span><span class="pun">),</span><span class="pln"> ENABLE</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализации вывода PA9 - USART1_Tx</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Pin </span><span class="pun">=</span><span class="pln"> GPIO_Pin_9</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Настройки вывода PA9</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Speed </span><span class="pun">=</span><span class="pln"> GPIO_Speed_50MHz</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Скорость порта максимальная</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Mode </span><span class="pun">=</span><span class="pln"> GPIO_Mode_AF_PP</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим альтернативной функции, выход Push-Pull</span><span class="pln"><br>&nbsp; GPIO_Init</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">GPIO_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах GPIOА</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализации вывода PA10 - USART1_Rx</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Pin </span><span class="pun">=</span><span class="pln"> GPIO_Pin_10</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Настройки вывода PA10</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Mode &nbsp;</span><span class="pun">=</span><span class="pln"> GPIO_Mode_IN_FLOATING</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Input floating</span><span class="pln"><br>&nbsp; GPIO_Init</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">GPIO_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах GPIOА</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализация USART1</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_BaudRate </span><span class="pun">=</span><span class="pln"> </span><span class="lit">9600</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Скорость обмена 9600 бод</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_WordLength </span><span class="pun">=</span><span class="pln"> USART_WordLength_8b</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Длина слова 8 бит</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_StopBits </span><span class="pun">=</span><span class="pln"> USART_StopBits_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//1 стоп-бит</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_Parity </span><span class="pun">=</span><span class="pln"> USART_Parity_No </span><span class="pun">;</span><span class="pln"> </span><span class="com">//Без проверки четности</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_HardwareFlowControl </span><span class="pun">=</span><span class="pln"> USART_HardwareFlowControl_None</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Без аппаратного контроля</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_Mode </span><span class="pun">=</span><span class="pln"> USART_Mode_Rx </span><span class="pun">|</span><span class="pln"> USART_Mode_Tx</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включен передатчик и приемник USART1</span><span class="pln"><br>&nbsp; USART_Init</span><span class="pun">(</span><span class="pln">USART1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">USART_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах USART1</span><span class="pln"><br><br>&nbsp; USART_Cmd</span><span class="pun">(</span><span class="pln">USART1</span><span class="pun">,</span><span class="pln"> ENABLE</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Включаем USART1</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция передачи символа</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">uint8_t data</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">USART1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> USART_SR_TC</span><span class="pun">));</span><span class="pln"> </span><span class="com">//Проверяем установку флага TC - завершения предыдущей передачи</span><span class="pln"><br>&nbsp; USART1</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> data</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Записываем значение в регистр данных - передаем символ</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция передачи строки через USART</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; uint8_t i</span><span class="pun">=</span><span class="lit">0</span><span class="pun">;</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="pln">str</span><span class="pun">[</span><span class="pln">i</span><span class="pun">])</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">str</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]);</span><span class="pln"><br>&nbsp; &nbsp; i</span><span class="pun">++;</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="str">'n'</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="str">'r'</span><span class="pun">);</span><span class="pln"><br></span><span class="pun">}</span></code></pre>
+<p>Пример кода для серии STM32L (проверен на плате STM32L-DISCOVERY):</p>
+<pre class="prettyprint"><span class="com">#include</span><span class="pln"> </span><span class="str">"stm32l1xx.h"</span><span class="pln"><br><br></span><span class="com">//Структуры для инициализации GPIOA и USART1</span><span class="pln"><br>GPIO_InitTypeDef &nbsp; &nbsp;GPIO_InitStruct</span><span class="pun">;</span><span class="pln"><br>USART_InitTypeDef &nbsp; &nbsp;USART_InitStruct</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Init</span><span class="pun">(</span><span class="kwd">void</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции инициализации периферии</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">uint8_t</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции передачи символа</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Объявление функции передачи строки</span><span class="pln"><br><br></span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">;</span><span class="pln"><br>uint8_t data</span><span class="pun">;</span><span class="pln"><br><br></span><span class="kwd">int</span><span class="pln"> main</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="typ">Init</span><span class="pun">();</span><span class="pln"> </span><span class="com">//Вызов функции инициализации периферии</span><span class="pln"><br>&nbsp; </span><span class="com">//Передаем строку, сообщающую о готовности микроконтроллера к обмену данными</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="str">"I'm ready"</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="lit">1</span><span class="pun">)</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="kwd">if</span><span class="pun">((</span><span class="pln">USART1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> USART_SR_RXNE</span><span class="pun">))</span><span class="pln"> </span><span class="com">//Проверяем поступление данных от компьютера</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; data </span><span class="pun">=</span><span class="pln"> USART1</span><span class="pun">-&gt;</span><span class="pln">DR</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Считываем принятые данные</span><span class="pln"><br>&nbsp; &nbsp; &nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">data</span><span class="pun">);</span><span class="pln"> </span><span class="com">//И тут же отсылаем их обратно</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция инициализации периферии</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Init</span><span class="pun">()</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="com">//Инициализация выводов: PA9 - USART1_TX, PA10 - USART1_RX</span><span class="pln"><br>&nbsp; RCC_AHBPeriphClockCmd</span><span class="pun">(</span><span class="pln">RCC_AHBPeriph_GPIOA</span><span class="pun">,</span><span class="pln"> ENABLE</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Включаем тактирование GPIOА</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Для выводов PA9, PA10 выбираем альтернативную функцию работы с USART1</span><span class="pln"><br>&nbsp; GPIO_PinAFConfig</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> GPIO_PinSource9</span><span class="pun">,</span><span class="pln"> GPIO_AF_USART1</span><span class="pun">);</span><span class="pln"><br>&nbsp; GPIO_PinAFConfig</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> GPIO_PinSource10</span><span class="pun">,</span><span class="pln"> GPIO_AF_USART1</span><span class="pun">);</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализации вывода PA10 - USART1_Rx По умолчанию он Input floating</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Pin </span><span class="pun">=</span><span class="pln"> GPIO_Pin_10</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Настройки вывода PA10</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Mode </span><span class="pun">=</span><span class="pln"> GPIO_Mode_AF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим альтернативной функции</span><span class="pln"><br>&nbsp; GPIO_Init</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">GPIO_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах GPIOА</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализации вывода PA9 - USART1_Tx</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Pin </span><span class="pun">=</span><span class="pln"> GPIO_Pin_9</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Настройки вывода PA9</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Mode </span><span class="pun">=</span><span class="pln"> GPIO_Mode_AF</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Режим альтернативной функции</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_OType </span><span class="pun">=</span><span class="pln"> GPIO_OType_PP</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Выход Push-Pull</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_PuPd </span><span class="pun">=</span><span class="pln"> GPIO_PuPd_NOPULL</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Выход без подтягивающих резисторов</span><span class="pln"><br>&nbsp; GPIO_InitStruct</span><span class="pun">.</span><span class="pln">GPIO_Speed </span><span class="pun">=</span><span class="pln"> GPIO_Speed_40MHz</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Скорость порта максимальная</span><span class="pln"><br>&nbsp; GPIO_Init</span><span class="pun">(</span><span class="pln">GPIOA</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">GPIO_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах GPIOА</span><span class="pln"><br><br>&nbsp; </span><span class="com">//Инициализация USART1</span><span class="pln"><br>&nbsp; RCC_APB2PeriphClockCmd</span><span class="pun">(</span><span class="pln">RCC_APB2Periph_USART1</span><span class="pun">,</span><span class="pln"> ENABLE</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Включаем тактирование USART1</span><span class="pln"><br><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_BaudRate </span><span class="pun">=</span><span class="pln"> </span><span class="lit">9600</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Скорость обмена 9600 бод</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_WordLength </span><span class="pun">=</span><span class="pln"> USART_WordLength_8b</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Длина слова 8 бит</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_StopBits </span><span class="pun">=</span><span class="pln"> USART_StopBits_1</span><span class="pun">;</span><span class="pln"> </span><span class="com">//1 стоп-бит</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_Parity </span><span class="pun">=</span><span class="pln"> USART_Parity_No </span><span class="pun">;</span><span class="pln"> </span><span class="com">//Без проверки четности</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_HardwareFlowControl </span><span class="pun">=</span><span class="pln"> USART_HardwareFlowControl_None</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Без аппаратного контроля</span><span class="pln"><br>&nbsp; USART_InitStruct</span><span class="pun">.</span><span class="pln">USART_Mode </span><span class="pun">=</span><span class="pln"> USART_Mode_Rx </span><span class="pun">|</span><span class="pln"> USART_Mode_Tx</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Включен передатчик и приемник USART1</span><span class="pln"><br>&nbsp; USART_Init</span><span class="pun">(</span><span class="pln">USART1</span><span class="pun">,</span><span class="pln"> </span><span class="pun">&amp;</span><span class="pln">USART_InitStruct</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Заданные настройки сохраняем в регистрах USART1</span><span class="pln"><br><br>&nbsp; USART_Cmd</span><span class="pun">(</span><span class="pln">USART1</span><span class="pun">,</span><span class="pln"> ENABLE</span><span class="pun">);</span><span class="pln"> </span><span class="com">//Включаем USART1</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция передачи символа</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">uint8_t data</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">USART1</span><span class="pun">-&gt;</span><span class="pln">SR </span><span class="pun">&amp;</span><span class="pln"> USART_SR_TC</span><span class="pun">));</span><span class="pln"> </span><span class="com">//Проверяем установку флага TC - завершения предыдущей передачи</span><span class="pln"><br>&nbsp; USART1</span><span class="pun">-&gt;</span><span class="pln">DR </span><span class="pun">=</span><span class="pln"> data</span><span class="pun">;</span><span class="pln"> </span><span class="com">//Записываем значение в регистр данных - передаем символ</span><span class="pln"><br></span><span class="pun">}</span><span class="pln"><br><br></span><span class="com">//Функция передачи строки через USART</span><span class="pln"><br></span><span class="kwd">void</span><span class="pln"> </span><span class="typ">Usart1_Send_String</span><span class="pun">(</span><span class="kwd">char</span><span class="pun">*</span><span class="pln"> str</span><span class="pun">)</span><span class="pln"><br></span><span class="pun">{</span><span class="pln"><br>&nbsp; uint8_t i</span><span class="pun">=</span><span class="lit">0</span><span class="pun">;</span><span class="pln"><br>&nbsp; </span><span class="kwd">while</span><span class="pun">(</span><span class="pln">str</span><span class="pun">[</span><span class="pln">i</span><span class="pun">])</span><span class="pln"><br>&nbsp; </span><span class="pun">{</span><span class="pln"><br>&nbsp; &nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="pln">str</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]);</span><span class="pln"><br>&nbsp; &nbsp; i</span><span class="pun">++;</span><span class="pln"><br>&nbsp; </span><span class="pun">}</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="str">'n'</span><span class="pun">);</span><span class="pln"><br>&nbsp; </span><span class="typ">Usart1_Send_symbol</span><span class="pun">(</span><span class="str">'r'</span><span class="pun">);</span><span class="pln"><br></span><span class="pun">}</span></pre>
+<p>Подключаем железо, запускаем программу Terminal. В программе Terminal устанавливаем галочку в поле <strong>CR </strong>в секции передатчика, она находится внизу окна. При этом к передаваемой строке в конце добавляется управляющий символ, это дает нам возможность осуществлять автоматический перевод строки при пересылке тех же данных обратно в компьютер. Далее коннектимся к виртуальному порту, запускаем в IAR загрузку программы в плату, а затем её выполнение. Должны увидеть в Terminal прием строки “I’m ready” – микроконтроллер настроен и готов к обмену данными. В текстовом поле передатчика (внизу окна) набираем текст посылки и жмем кнопку <strong>Send</strong>. Не оригинальничая, я набрал там текст “Hello World!!!”. После каждого нажатия кнопки <strong>Send</strong> мы должны наблюдать отправку и прием этих символов в соответствующих полях программы Terminal, как видно на картинке ниже:</p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/Terminal_usart_4.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="Terminal_usart_4" border="0" alt="Terminal_usart_4" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/Terminal_usart_4_thumb.jpg" width="713"></a></p>
+<p>Максимальную скорость обмена “выжал” 256000 бод для STM32VL-DISCOVERY и 128000 бод для STM32L-DISCOVERY. Это потому, что на плате STM32L-DISCOVERY нет внешнего кварца и при настройках по дефолту тактирование будет от внутреннего источника MSI с частотой всего лишь 2,097 МГц.</p>
+<p>Ну, вот и все. Архивы с проектами в IAR можно скачать по ссылкам:</p>
+<p><a href="http://chipspace.ru/archives/STM32VL-DISCOVERY_usart_4.rar" target="_blank">Пример для платы STM32VL-DISCOVERY (серия STM32F)</a></p>
+<p><a href="http://chipspace.ru/archives/STM32L-DISCOVERY_usart_4.rar" target="_blank">Пример для платы STM32L-DISCOVERY (серия STM32L)</a></p>
+<p>Другие статьи:</p>
+<p>&nbsp;</p>
+<ul>
+<li><a title="STM32. Интерфейс SPI" href="http://chipspace.ru/stm32-spi/" target="_blank">STM32. Интерфейс SPI</a> </li>
+<li><a title="STM32. FLASH память. Структура" href="http://chipspace.ru/stm32-flash-structure/" target="_blank">STM32. FLASH память. Структура</a> </li>
+<li><a title="STM32. General-Purpose Timers. Режим захвата." href="http://chipspace.ru/stm32-general-purpose-timers-input-capture/" target="_blank">STM32. General-Purpose Timers. Режим захвата.</a> </li>
+</ul>
+			</div><!--/entry -->
+		</div><!-- .entry-container -->
+<div class="post-footer postdata fix">
+<span class="author"><span class="icon">&nbsp;</span>Опубликовано <a href="http://chipspace.ru/author/mrz/">ChipSpace</a> в 16:00</span>		<span class="tags"><span class="icon">&nbsp;</span>С меткой:<a href="http://chipspace.ru/tag/stm32/" rel="tag">stm32</a>, <a href="http://chipspace.ru/tag/stm32-discovery/" rel="tag">stm32-discovery</a>, <a href="http://chipspace.ru/tag/usart/" rel="tag">usart</a><br></span>
+	</div><!-- .post-footer -->
+<div id="comments">
+<h3 class="comments"><span class="icon">&nbsp;</span>
+	52 Ответов в “STM32. USART. Часть 4 — Финал”</h3>
+<ol class="commentlist">
+	<li id="comment-89" class="comment byuser comment-author-nosferatu even thread-even depth-1">
+				<div id="div-comment-89" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="Nosferatu" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/Nosferatu_6k-48x48.jpg" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Nosferatu</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-89">
+				23.08.2012 в 09:22</a>				</div>
+
+			</div>
+	
+			<p>Чего то у меня с «STM32L-DISCOVERY», в терминале отображается только то, что я отправляю, а строка “I’m ready” не отображается.<br>
+В двух проектах из предыдущих статей тоже нечего не отображается, ошибок при этом ни каких не выдаёт.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-90" class="comment odd alt depth-2">
+				<div id="div-comment-90" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-90">
+				23.08.2012 в 13:04</a>				</div>
+
+			</div>
+	
+			<p>Проекты именно мои не работают, загруженные с сайта? Предлагаю перейти на форум, там можно картинки прикрепить. Хотелось бы скриншот программы Терминал посмотреть.<br>
+Схема один в один воспроизведена? Линии Rx &lt; --&gt; Tx не перепутаны?<br>
+Светодиоды на FT232 запаяны? По ним можно контролировать прием-отправку с этой микросхемы.<br>
+А вообще именно с этой платой пришлось больше всего поплясать с бубном при настройке UART, а также бутлодера. Что на плате stm32vl-discovery, что на макетке с stm32f103 все с полпинка запустилось.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-91" class="comment byuser comment-author-nosferatu even depth-3">
+				<div id="div-comment-91" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="Nosferatu" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/Nosferatu_6k-48x48.jpg" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Nosferatu</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-91">
+				23.08.2012 в 23:24</a>				</div>
+
+			</div>
+	
+			<p>Моя невнимательность. Почему то решил что на плате STM32L-DISCOVERY уже стоит FT232, как на arduino, и паять нечего не нужно.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-104" class="comment byuser comment-author-grek81 odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-104" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5815e679e476d1a79828e67974e66a8b" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">grek81</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-104">
+				19.11.2012 в 15:15</a>				</div>
+
+			</div>
+	
+			<p>В проекте на  (серия STM32L) поправь вот эту строчку.У Вас там восклицательный знак упущен.<br>
+while(!(USART1-&gt;SR &amp; USART_SR_TC)); //Проверяем установку флага TC — завершения предыдущей передачи</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-108" class="comment even thread-even depth-1">
+				<div id="div-comment-108" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-108">
+				19.11.2012 в 18:06</a>				</div>
+
+			</div>
+	
+			<p>Спасибо, поправлю.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-252" class="comment byuser comment-author-izvestkovo odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-252" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/36c0608a94335d0551450be6c7fdefd7" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">izvestkovo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-252">
+				18.03.2013 в 08:42</a>				</div>
+
+			</div>
+	
+			<p>здравствуйте, я Вам писал в предыдущей статье о передачи не понятных символов с платы Stm32l,  теперь я тоже самое сделал и с этими готовым проектом только зашил всё это на другую плату, а точнее на Stm32-H103, проект скомпелировался, но проблема осталась та же, подскажите чего делать?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-254" class="comment even thread-even depth-1">
+				<div id="div-comment-254" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-254">
+				18.03.2013 в 18:31</a>				</div>
+
+			</div>
+	
+			<p>Надо разобраться все же в причине неверного приема с платы STM32L-DISCOVERY. У меня нет платы STM32-H103, проверить я на ней не могу. Да и таких проблем, как у вас, у меня не было. Разбираться все-таки вам придется самому, мне просто невозможно проверить что у вас пошло не так, я не экстрасенс.<br>
+Либо высылайте полную информацию:<br>
+- схема подключения (полностью, все мельчайшие детали), не на словах, а именно рисунок;<br>
+- используемая программа терминала (высылайте саму программу);<br>
+- настройки терминала во всех подробностях, можно скриншоты.<br>
+- какой преобразователь USB-UART используете, с какими драйверами.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-255" class="comment byuser comment-author-izvestkovo odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-255" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/36c0608a94335d0551450be6c7fdefd7" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">izvestkovo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-255">
+				18.03.2013 в 22:23</a>				</div>
+
+			</div>
+	
+			<p>1. Программа терминала скачана с вашего сайта, по ссылке в одной из четырех частей статьи об USART.<br>
+2. настройка терминала полностью совпадает с вашим скриншотом терминала.<br>
+3. преобразователь USB-UART использую, однако сегодня проверял на осцилографе, передача даннных с компьютера через преобразователь выходит верной, но после приема на плату и передачи обратно на ком-порт еще до преоразователя, получается чушь, также подключал ножки ввода/вывода самой платы к ком-порту тоже самое.<br>
+4. передвал «1″ по таблице ASCII, это в HEX должно 031, на выходе из преобразователя USB-USART или на входе платы, посмотрел осцилографом, все нормально, а вот IAR в HEX показывает 067.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-256" class="comment even depth-2">
+				<div id="div-comment-256" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-256">
+				18.03.2013 в 23:08</a>				</div>
+
+			</div>
+	
+			<p>Вы опять же даете мне только результат, и никакой информации более. Если все точь в точь как у меня, то повторюсь, я не сталкивался с такой проблемой. Рад бы помочь, но как? Может быть я подобное видел при несовпадении скорости, точно не помню. Может все же что-то сделано не совсем так, как у меня?<br>
+Я повторюсь, надо больше информации:<br>
+- схема<br>
+- осциллограф цифровой? можно записать осциллограммы?<br>
+- скриншоты IAR с принятыми данными<br>
+Здесь важно все до мелочей. На вопрос «все точно так же, но не работает, почему?» дать ответ просто невозможно.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-257" class="comment odd alt depth-2">
+				<div id="div-comment-257" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-257">
+				18.03.2013 в 23:21</a>				</div>
+
+			</div>
+	
+			<p>Скайп есть? Аська? Зашли в почту <a href="mailto:mailbox@chipspace.ru">mailbox@chipspace.ru</a>, пообщаемся плотней завтра, сейчас у нас уже ночь. Думаю так быстрей выйдет.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-258" class="comment even depth-2">
+				<div id="div-comment-258" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-258">
+				19.03.2013 в 06:36</a>				</div>
+
+			</div>
+	
+			<p>И еще раз повторю, что нужны:<br>
+- схема;<br>
+- настройки терминала (скриншоты);<br>
+- какой преобразователь USB-UART используете, с какими драйверами;<br>
+- осциллограммы, если возможно;<br>
+- скриншоты IAR с принятыми данными.<br>
+Только тогда буду разбираться. Еще раз повторю, что не экстрасенс.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-260" class="comment odd alt depth-2">
+				<div id="div-comment-260" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-260">
+				21.03.2013 в 00:54</a>				</div>
+
+			</div>
+	
+			<p>«Программа терминала скачана с вашего сайта, по ссылке в одной из четырех частей статьи об USART.»<br>
+Получил программу в письме. Я такой не выкладывал.<br>
+Давайте сначала запустим все так же, как у меня в статье, с тем же терминалом.<br>
+Я напомню, вы уже обращались с проблемой, и проблему вам создал «крякнутый» IAR.<br>
+Тут лучше действовать последовательно и взять за основу проверенный проект без каких либо изменений. А потом уже творчество <img src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/icon_smile.gif" alt=":)" class="wp-smiley"> .<br>
+Шлите данные заново. Возможно, что вопросов еще будет много.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-264" class="comment byuser comment-author-izvestkovo even depth-3">
+				<div id="div-comment-264" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/36c0608a94335d0551450be6c7fdefd7" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">izvestkovo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-264">
+				01.04.2013 в 22:52</a>				</div>
+
+			</div>
+	
+			<p>Спасибо огромное, всё заработало как в примере.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-265" class="comment odd alt depth-3">
+				<div id="div-comment-265" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-265">
+				01.04.2013 в 23:07</a>				</div>
+
+			</div>
+	
+			<p>В чем проблема была?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-266" class="comment byuser comment-author-izvestkovo even depth-4">
+				<div id="div-comment-266" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/36c0608a94335d0551450be6c7fdefd7" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">izvestkovo</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-266">
+				02.04.2013 в 09:46</a>				</div>
+
+			</div>
+	
+			<p>необходим был преобразователь интерфейсов USART-RS232 и всё заработало.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-267" class="comment odd alt depth-5">
+				<div id="div-comment-267" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-267">
+				02.04.2013 в 11:20</a>				</div>
+
+			</div>
+	
+			<p>Видимо преобразователь уровней? Это же один интерфейс.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-312" class="comment byuser comment-author-bootloader even thread-even depth-1">
+				<div id="div-comment-312" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/4172f5164d721af864458a34fd3d7a2c" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">bootloader</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-312">
+				03.06.2013 в 13:48</a>				</div>
+
+			</div>
+	
+			<p>неплохо было бы написать сразу про использование усарт с дма.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-313" class="comment odd alt depth-2">
+				<div id="div-comment-313" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-313">
+				03.06.2013 в 20:00</a>				</div>
+
+			</div>
+	
+			<p>Да там особо писать нечего, просто пример кода можно выложить. Где-то вроде есть у меня, поищу.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-314" class="comment even depth-2">
+				<div id="div-comment-314" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-314">
+				10.06.2013 в 01:10</a>				</div>
+
+			</div>
+	
+			<p>Есть у меня такой проект, но там не только usart и dma, довольно много лишнего и он еще не завершен. Могу сделать простенький пример, в котором массив из RAM передается в usart через dma. Пойдет?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-357" class="comment byuser comment-author-shredder2003 odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-357" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/4cb503202c4a6829f45a269b902680b9" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">shredder2003</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-357">
+				24.09.2013 в 01:52</a>				</div>
+
+			</div>
+	
+			<p>Друг, не работает!<br>
+у меня видимо другая ревизия платы.<br>
+В твоём проекте: STM32L152xB<br>
+у меня = STM32L152xС<br>
+поэтому при попытке отладить ругается:</p>
+<p>Mon Sep 23, 2013 23:39:10: Loaded macro file: D:\IAR\arm\config\flashloader\ST\FlashSTM32L15x_L16x.mac<br>
+Mon Sep 23, 2013 23:39:10: ST-Link firmware too old<br>
+Mon Sep 23, 2013 23:39:10: Selecting SWD as current target interface.<br>
+Mon Sep 23, 2013 23:39:10: Hardware reset with strategy 0 was performed<br>
+Mon Sep 23, 2013 23:39:10: Initial reset was performed<br>
+Mon Sep 23, 2013 23:39:10: 736 bytes downloaded (4.18 Kbytes/sec)<br>
+Mon Sep 23, 2013 23:39:10: Loaded debugee: D:\IAR\arm\config\flashloader\ST\FlashSTM32L15xxxRAM16K.out<br>
+Mon Sep 23, 2013 23:39:10: Target reset<br>
+Mon Sep 23, 2013 23:39:11: Skipping flash loading pass because there is no data in the designated range: 0×8080000-0x8080FFF.<br>
+Mon Sep 23, 2013 23:39:11: Downloaded D:\IAR\projects\STM32L-DISCOVERY_usart_4\STM32L_usart_4\Debug\Exe\c.out to flash memory. </p>
+<p>как поменять в проекте эту настройку правильно, подскажи плиз?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-358" class="comment byuser comment-author-shredder2003 even depth-2">
+				<div id="div-comment-358" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/4cb503202c4a6829f45a269b902680b9" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">shredder2003</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-358">
+				24.09.2013 в 02:07</a>				</div>
+
+			</div>
+	
+			<p>ага, поменял ревизию.<br>
+теперь проблема такая:<br>
+на стороне модема получаю вот что:<br>
+&lt;&lt;&gt;&gt;<br>
+а при отправке с модема, в ответ ничего не приходит.</p>
+<p>Помоги разобраться пожалуйста?<br>
+Уже до этого в кейле твой проект пытался оживлять, там так же — отправка с платы работает, а приём — нет.<br>
+Есть тимвьюер, могу по камере скайпа показать, как оно соединено.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-359" class="comment byuser comment-author-shredder2003 odd alt thread-even depth-1">
+				<div id="div-comment-359" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/4cb503202c4a6829f45a269b902680b9" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">shredder2003</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-359">
+				24.09.2013 в 02:08</a>				</div>
+
+			</div>
+	
+			<p>кто-то съел данные.<br>
+вот что на стороне модема:</p>
+<p>root@OpenWrt:~# cat /dev/ttyATH0<br>
+I’m ready</p>
+<p>I</p>
+<p>I</p>
+<p>I</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-360" class="comment even thread-odd thread-alt depth-1">
+				<div id="div-comment-360" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-360">
+				24.09.2013 в 19:52</a>				</div>
+
+			</div>
+	
+			<p>Даже не знаю на что думать, столько проблем сразу вылезло. Попробуй заново создать проект, только пользуйся нормальной IDE, не крякнутой, на эти грабли уже наступали. Попробуй простейший пример, что-то послать и принять, потом дальше двигайся. Если есть осциллограф, то глянь что реально идет по проводам, посылай простейшие символы и смотри что реально передается. Проверь настройки скорости обмена, тоже может быть причиной неверного приема.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-361" class="comment byuser comment-author-shredder2003 odd alt thread-even depth-1">
+				<div id="div-comment-361" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/4cb503202c4a6829f45a269b902680b9" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">shredder2003</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-361">
+				25.09.2013 в 00:04</a>				</div>
+
+			</div>
+	
+			<p>ура, решилось.</p>
+<p>приём платой проверял обратной отправкой того же самого.<br>
+на модеме принимал командой «cat /dev/ttyATH0″<br>
+А она, злодейка, текстовая, т.е. пока не пошлёшь символ новой строки, всё принятое держит в буфере, не отображает.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-380" class="comment byuser comment-author-larionov even thread-odd thread-alt depth-1">
+				<div id="div-comment-380" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-380">
+				11.10.2013 в 10:59</a>				</div>
+
+			</div>
+	
+			<p>Здравствуйте! Прошу оказать помощь. Пробую настроить USART1 на STM32L-DISCOVERY. Инициализацию портов и самого USART1 беру из вашей статьи. В отладчике не работает запись данных в регистр DR для передачи, т.е. эта строчка: USART1-&gt;DR = data; В регистре DR всегда находятся нули. Могу отправить код программы на почту.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-382" class="comment odd alt thread-even depth-1">
+				<div id="div-comment-382" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-382">
+				11.10.2013 в 22:31</a>				</div>
+
+			</div>
+	
+			<p>Так и должно быть, в отладчике содержимое регистра DR будет нулевым. Когда ты его смотришь в отладчике, там все уже передано и регистр пустой. Тут разница в том, что отладчик шагает по программе, а периферия работает аппаратно  и отладчик видит только текущие фиксированные состояния регистров.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-384" class="comment byuser comment-author-larionov even depth-2">
+				<div id="div-comment-384" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-384">
+				12.10.2013 в 01:46</a>				</div>
+
+			</div>
+	
+			<p>Значит ли это что флаг TC в отладчике будет всегда установлен?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-385" class="comment byuser comment-author-larionov odd alt depth-3">
+				<div id="div-comment-385" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-385">
+				12.10.2013 в 02:00</a>				</div>
+
+			</div>
+	
+			<p>И ещё проблема, на работе встроенный (в плату STM32L-DISCOVERY) ST-link V2 работает как и положено на USB 2.0. Дома при подключении на порт USB 2.0 работает со скоростью USB 1.0. Пробовал и разные порты и BIOS ковырял и драйвера все перепробовал — ничего не помогает. А все флешки работают на скорости USB 2.0 во всех портах. Подскажите, как настроить ST-link V2 на работу со скоростью USB 2.0 ?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-387" class="comment even depth-3">
+				<div id="div-comment-387" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-387">
+				12.10.2013 в 10:42</a>				</div>
+
+			</div>
+	
+			<p>Не факт, что какой-либо флаг будет отображаться верно в отладчике. Точнее сказать, он может быть и установится и сбросится последовательно, но ни вы, ни отладчик этого не успеете увидеть.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-388" class="comment odd alt depth-3">
+				<div id="div-comment-388" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-388">
+				12.10.2013 в 10:44</a>				</div>
+
+			</div>
+	
+			<p>По поводу USB и всего что внутри компьютера, для меня это темный лес, как там все работает. Конечно, я отличу жесткий диск от блока питания, но не более того. <img src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/icon_smile.gif" alt=":)" class="wp-smiley"><br>
+По моему скорость работы непостоянна и может меняться.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-397" class="comment byuser comment-author-larionov even thread-odd thread-alt depth-1">
+				<div id="div-comment-397" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-397">
+				14.10.2013 в 21:56</a>				</div>
+
+			</div>
+	
+			<p>Возможно ли реализовать следующую программу в микроконтроллере:</p>
+<p>- инициализация портов и USART1;</p>
+<p>- разрешить прерывание по приему сообщения: USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);</p>
+<p>- сделать отправку сообщения по USART по нажатию пользовательской кнопки;</p>
+<p>- принять сообщение и выйти в программу обработчика прерывания.</p>
+<p>При этом контроллер НЕ БУДЕТ связан с ПК! Вывод микроконтроллера TX будет соединен с выводом RX. Такое своеобразное «Эхо» внутри контроллера. Возможно ли это?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-399" class="comment odd alt depth-2">
+				<div id="div-comment-399" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-399">
+				14.10.2013 в 22:17</a>				</div>
+
+			</div>
+	
+			<p>А попробовать сложно? <img src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/icon_smile.gif" alt=":)" class="wp-smiley">  Даже com-порта не надо задействовать. Теоретически должно сработать, поскольку регистр данных фактически разделен на 2 — передатчика и приемника, то есть они разные. А практически что-то я не пробовал.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-400" class="comment byuser comment-author-larionov even thread-even depth-1">
+				<div id="div-comment-400" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-400">
+				14.10.2013 в 23:19</a>				</div>
+
+			</div>
+	
+			<p>Я попробовал. Прерывание по приему сообщения (USART_ITConfig(USART1, USART_IT_RXNE, ENABLE)) не срабатывает ни в какую. На отправку работает, на прием — нет. Готов прислать код программы, может подскажите в чем я косячу?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-401" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-401" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-401">
+				15.10.2013 в 00:04</a>				</div>
+
+			</div>
+	
+			<p>Да я ж сам не пробовал, может и правда так не будет работать. Там же еще один UART есть как минимум, может его лучше на прием задействовать.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-415" class="comment byuser comment-author-larionov even thread-even depth-1">
+				<div id="div-comment-415" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-415">
+				22.10.2013 в 22:57</a>				</div>
+
+			</div>
+	
+			<p>А возможно ли организовать следующую идею:<br>
+1) Подключить только кабель к COM-порту;<br>
+2) Замкнуть в кабеле выводы RX и TX;<br>
+3) С помощью программы Terminal отправить сообщение на COM-порт;<br>
+4) Будет ли получено это сообщение ПК? Возможно ли организовать такую программу «Эхо» для проверки работоспособности COM-порта?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-416" class="comment odd alt depth-2">
+				<div id="div-comment-416" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-416">
+				22.10.2013 в 23:25</a>				</div>
+
+			</div>
+	
+			<p>Да вроде должно работать.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-417" class="comment byuser comment-author-larionov even thread-odd thread-alt depth-1">
+				<div id="div-comment-417" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-417">
+				22.10.2013 в 23:45</a>				</div>
+
+			</div>
+	
+			<p>Блин, а у меня не работает. Придется искать другой кабель.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-418" class="comment odd alt depth-2">
+				<div id="div-comment-418" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-418">
+				23.10.2013 в 01:36</a>				</div>
+
+			</div>
+	
+			<p>Я не могу точно сказать. Давно уже не пользовался физическим com-портом. Лучше погугли.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-419" class="comment byuser comment-author-larionov even thread-even depth-1">
+				<div id="div-comment-419" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-419">
+				24.10.2013 в 22:28</a>				</div>
+
+			</div>
+	
+			<p>Все сделал как у вас в статье, при подключении STM32L посылает на ПК символ  и больше ничего не происходит.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-420" class="comment byuser comment-author-larionov odd alt depth-2">
+				<div id="div-comment-420" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-420">
+				24.10.2013 в 22:36</a>				</div>
+
+			</div>
+	
+			<p>Символ . Причем только когда подключаю плату к ПК. Из терминала ничего не принимается</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-421" class="comment byuser comment-author-larionov even thread-odd thread-alt depth-1">
+				<div id="div-comment-421" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-421">
+				24.10.2013 в 22:37</a>				</div>
+
+			</div>
+	
+			<p>Че за фигня! Символ 0</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-422" class="comment odd alt depth-2">
+				<div id="div-comment-422" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-422">
+				25.10.2013 в 00:53</a>				</div>
+
+			</div>
+	
+			<p>Видимо что-то не так. У меня же работает.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-423" class="comment byuser comment-author-larionov even thread-even depth-1">
+				<div id="div-comment-423" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/5edd27d80624f2d443f579e87c2753de" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Larionov</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-423">
+				25.10.2013 в 10:02</a>				</div>
+
+			</div>
+	
+			<p>Причем если замыкаю rx и tx на преобразователе, «Эхо» работает. Значит косяк в программе.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-459" class="comment byuser comment-author-andreywinchester odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-459" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f1a489e7ae00f33502366a2192a333e5" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">AndreyWinchester</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-459">
+				08.12.2013 в 15:43</a>				</div>
+
+			</div>
+	
+			<p>Хочу сделать дальномер на основе ИК датчика sharp  на stm32f100. Данные с ИК датчика получаю на аналоговый вход и отправляю по UART в терминал. Но в терминал приходят рандомные числа, хотя расстояние до объекта остаетя постоянным. Может кто-нибудь знает в чем может быть проблема?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-460" class="comment byuser comment-author-mrz bypostauthor even depth-2">
+				<div id="div-comment-460" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-460">
+				08.12.2013 в 18:26</a>				</div>
+
+			</div>
+	
+			<p>ИК датчик выдает постоянное напряжение/ток, которое пропорционально дистанции? Или у него на выходе импульсы?<br>
+Я бы в первую очередь посмотрел сигнал на входе АЦП STM32.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-461" class="comment byuser comment-author-andreywinchester odd alt depth-3">
+				<div id="div-comment-461" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f1a489e7ae00f33502366a2192a333e5" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">AndreyWinchester</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-461">
+				09.12.2013 в 13:02</a>				</div>
+
+			</div>
+	
+			<p>На осциллографе постоянный уровень,</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-462" class="comment byuser comment-author-andreywinchester even depth-4">
+				<div id="div-comment-462" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f1a489e7ae00f33502366a2192a333e5" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">AndreyWinchester</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-462">
+				09.12.2013 в 13:03</a>				</div>
+
+			</div>
+	
+			<p>соответственно пропорциональный дистанции</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-463" class="comment byuser comment-author-mrz bypostauthor odd alt depth-3">
+				<div id="div-comment-463" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-463">
+				09.12.2013 в 17:44</a>				</div>
+
+			</div>
+	
+			<p>Тогда в режиме отладки надо поработать, пошагово. Запускать программно преобразование и смотреть на результат в АЦП. Потом пробовать пересылать. Вот так постепенно разбить программу на кусочки и постепенно отладить. Возьмите готовый пример для АЦП и попробуйте. Затем USART и т.д. Только так могу посоветовать, конкретно с данным датчиком я не работал, к сожалению.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-464" class="comment byuser comment-author-andreywinchester even depth-4">
+				<div id="div-comment-464" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f1a489e7ae00f33502366a2192a333e5" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">AndreyWinchester</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-464">
+				10.12.2013 в 14:14</a>				</div>
+
+			</div>
+	
+			<p>спасибо. буду разбираться</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li id="comment-523" class="comment byuser comment-author-minas odd alt thread-even depth-1">
+				<div id="div-comment-523" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/d4fc1723d37871f20365417abe830ad6" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Minas</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-523">
+				25.05.2014 в 02:46</a>				</div>
+
+			</div>
+	
+			<p>Взял пример для stm32L -discovery, воткнул в кокос, скомпилировал, зашил. Затем подсоединил преобразователь usb-ttl на cp2102 к PA9 и PA10 запустил программку для работы с com портом и ничего! Нет строки I’m ready. Куда копать совершенно не знаю</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-524" class="comment byuser comment-author-mrz bypostauthor even depth-2">
+				<div id="div-comment-524" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-524">
+				25.05.2014 в 10:03</a>				</div>
+
+			</div>
+	
+			<p>Ну тут копать можно в разные стороны, направлений много.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-525" class="comment byuser comment-author-minas odd alt depth-3">
+				<div id="div-comment-525" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32. USART. Часть 4 — Финал » ChipSpace_files/d4fc1723d37871f20365417abe830ad6" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Minas</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32-usart-4/#comment-525">
+				25.05.2014 в 20:12</a>				</div>
+
+			</div>
+	
+			<p>ну хоть какие-нить варианты предложите, а то уже даже и не знаю что думать.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="navigation fix">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+</div>
+								<div id="respond">
+				<h3 id="reply-title"><span class="icon">&nbsp;</span>Оставить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://chipspace.ru/stm32-usart-4/#respond" style="display:none;">Отменить ответ</a></small></h3>
+									<p class="must-log-in"><a href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32-usart-4%2F">Вы должны авторизироваться для добавления комментария</a></p>												</div><!-- #respond -->
+						</div>	</div><!--/post -->
+<div class="post-nav">
+<table>
+<tbody><tr>
+	<td class="previous"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32-usart-3/" rel="prev">STM32. USART. Часть 3</a></td>
+	<td class="next"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32-systick/" rel="next">STM32. Системный таймер SysTick.</a></td>
+</tr>
+</tbody></table>
+</div>
+      </div><!-- content -->
+    </div><!-- main col -->
+<div id="sidebar-shell-1" class="sidebar-shell sidebar-shell-right">
+<div class="dbx-group right boxed warea" id="sidebar">
+<!--widget start --><div id="categories-3" class="dbx-box suf-widget widget_categories"><h3 class="dbx-handle plain">Рубрики</h3><div class="dbx-content">		<ul>
+	<li class="cat-item cat-item-102"><a href="http://chipspace.ru/category/gps/" title="Просмотреть все записи в рубрике «GPS»">GPS</a> (4)
+</li>
+	<li class="cat-item cat-item-90"><a href="http://chipspace.ru/category/analog-digital-devices/" title="Просмотреть все записи в рубрике «Аналого-цифровые устройства»">Аналого-цифровые устройства</a> (2)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://chipspace.ru/category/analog/" title="Просмотреть все записи в рубрике «Аналоговая электроника»">Аналоговая электроника</a> (1)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://chipspace.ru/category/indicators/" title="Просмотреть все записи в рубрике «Индикаторы»">Индикаторы</a> (1)
+</li>
+	<li class="cat-item cat-item-86"><a href="http://chipspace.ru/category/interface/" title="Просмотреть все записи в рубрике «Интерфейсы»">Интерфейсы</a> (1)
+</li>
+	<li class="cat-item cat-item-68"><a href="http://chipspace.ru/category/microcontrollers/" title="Просмотреть все записи в рубрике «Микроконтроллеры»">Микроконтроллеры</a> (44)
+<ul class="children">
+	<li class="cat-item cat-item-65"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-atmel/" title="Просмотреть все записи в рубрике «Atmel»">Atmel</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»">STM32</a> (43)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-111"><a href="http://chipspace.ru/category/cpld-fpga/" title="Просмотреть все записи в рубрике «ПЛИС»">ПЛИС</a> (1)
+</li>
+	<li class="cat-item cat-item-114"><a href="http://chipspace.ru/category/site/" title="Просмотреть все записи в рубрике «Сайт»">Сайт</a> (1)
+</li>
+		</ul>
+</div></div><!--widget end --><!--widget start --><div id="wp_sidebarlogin-2" class="dbx-box suf-widget widget_wp_sidebarlogin"><h3 class="dbx-handle plain"><span>Войти</span></h3><div class="dbx-content">		<form method="post" action="http://chipspace.ru/stm32-usart-4/?_login=1ca99b1ac4">
+		
+			<p><label for="user_login">Имя пользователя:</label> <input name="log" value="" class="text" id="user_login" type="text"></p>
+			<p><label for="user_pass">Пароль:</label> <input name="pwd" class="text" id="user_pass" type="password"></p>			
+	
+						
+			<p class="rememberme"><input name="rememberme" class="checkbox" id="rememberme" value="forever" type="checkbox"> <label for="rememberme">Запомнить меня</label></p>
+			
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" value="Войти »">
+				<input type="hidden" name="redirect_to" class="redirect_to" value="http://chipspace.ru/stm32-usart-4/">
+				<input type="hidden" name="sidebarlogin_posted" value="1">
+				<input type="hidden" name="testcookie" value="1">
+			</p>
+			
+					
+		</form>
+		<ul class="sidebarlogin_otherlinks"><li><a href="http://chipspace.ru/wp-login.php?action=register" rel="nofollow">Регистрация</a></li><li><a href="http://chipspace.ru/wp-login.php?action=lostpassword" rel="nofollow">Забыли пароль?</a></li></ul></div></div><!--widget end --></div><!--/sidebar -->
+</div>
+	</div><!-- /container -->
+
+	<div id="cred">
+		<table>
+			<tbody><tr>
+				<td class="cred-left">© 2011. Екатеринбург. 
+</td>
+				<td class="cred-center">			</td></tr>
+		</tbody></table>
+	</div>
+<!-- 83 queries, 32MB in 0,613 seconds. -->
+</div><!--/wrapper -->
+<!-- location footer -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter11339371 = new Ya.Metrika({id:11339371,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/11339371" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+</body></html>

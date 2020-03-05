@@ -1,0 +1,3121 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0057)http://mycontroller.ru/stm32-generator-programmnogo-koda/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 Генератор программного кода</title>
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 Генератор программного кода_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 Генератор программного кода»" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 Генератор программного кода_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 Генератор программного кода_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 Генератор программного кода_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 Генератор программного кода_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Часы на STM32F100RB. Печатная плата" href="http://mycontroller.ru/chasyi-na-stm32f100rb-pechatnaya-plata/">
+<link rel="next" title="STM32 GPIO. Введение" href="http://mycontroller.ru/stm32-portyi-vvoda-vyivoda-vvedenie/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 Генератор программного кода_files/STM32 Генератор программного кода.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=211">
+
+<link rel="stylesheet" href="./STM32 Генератор программного кода_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 Генератор программного кода_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 Генератор программного кода_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 Генератор программного кода_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/chasyi-na-stm32f100rb-pechatnaya-plata/" rel="prev">Часы на STM32F100RB. Печатная плата</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-portyi-vvoda-vyivoda-vvedenie/" rel="next">STM32 GPIO. Введение</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 Генератор программного кода_files/STM32 Генератор программного кода.htm" rel="bookmark" title="Постоянная ссылка на STM32 Генератор программного кода">
+STM32 Генератор программного кода</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>&nbsp;</p>
+<p>Возникла у меня идея написать программу, с помощью которой можно генерить код настройки переферийных устройств микроконтроллеров STM32.</p>
+<p>Зачем это надо ?</p>
+<p>Дело в том, что в этих контроллерах больно хитромудрая настройка переферии: &nbsp;большое количество регистров для каждого переферийного устройства и, соответственно, большое количество режимов (если сравнивать с контроллерами архитектуры AVR). Литературы на русском языке не много.</p>
+<p>Бывало разберешся в чем-то, а через месяц-два вылетит из головы. И опять приходится по даташитам лазить.</p>
+<p>Поэтому решил написать программу, которой можно конфигурировать переферию.</p>
+<p><span id="more-211"></span><br>
+Начав эту работу, понял что она имеет смысл. Благодаря ей смог лучше разобраться в работе некоторых переферийных устройств, научился лучше читать даташиты. Ну и сама программа может быть пригодится.</p>
+<p>Генерируемый программой код обладает некоторой избыточностью. Это сделано для наглядности.</p>
+<p>Кто разбирается в микроконтроллерах и языке программирования С сможет без проблем оптимизировать код.</p>
+<p>Педупреждаю: <em>возможны некоторые неточности в генерируемом коде.</em></p>
+<p>Стараюсь проверять код в железе, но на все время не хватает. Поэтому буду благодарен за конструктивную критику и постараюсь устранять ошибки.</p>
+<p>Пока доступно конфигурирование следующей переферии:</p>
+<ul>
+<li>порты ввода-вывода;</li>
+<li>система тактирования;</li>
+<li>модуль USART;</li>
+<li>контроллер DMA;</li>
+<li>RTC;</li>
+<li>начал добавлять ADC.</li>
+</ul>
+<p>Поддерживаемые контроллеры :</p>
+<ul>
+<li>STM32F100</li>
+<li>STM32F103</li>
+</ul>
+<p>Также приводится справка по распиновке поддерживаемых контроллеров.</p>
+<p style="text-align: center;"><strong>О&nbsp; ПЛАНАХ РАЗВИТИЯ ПРОГРАММЫ</strong></p>
+<p>Хочу в ближайшее время добавить работу с RTC, другими таймерами, &nbsp;АЦП,&nbsp; ЦАП,&nbsp; сторожевыми таймерами.</p>
+<p>Также хочу добавить поддержку других контроллеров, но пока не определился с тем, какие стоит добавлять.</p>
+<p>&nbsp;</p>
+<p>Программу STM32generator можно скачать сдесь: &nbsp;<strong><a href="http://mycontroller.ru/downloads/STM32generator.exe?id=1">СКАЧАТЬ ПРОГРАММУ&nbsp;</a></strong></p>
+<p>Последнее изменение 20120310 в 09:00</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»" rel="category tag">STM32 генератор</a>, <a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»" rel="category tag">ПОЛЕЗНЫЙ СОФТ</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (63) на “STM32 Генератор программного кода”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-3">
+     <div id="comment-3">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Владимир:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-3">26.01.2012 в 10:33</a></div>
+
+      <p>Спасибо Вам огромное за такой наглядный генератор кода!<br>
+Это очень нужная и полезная вещь!<br>
+Наглядный графический интерфейс — это круто!<br>
+Очень хотелось бы чтобы программа развивалась и наращивалась как с точки зрения настройки периферии, так с точки зрения поддерживаемых серий!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=3#respond" onclick="return addComment.moveForm(&quot;comment-3&quot;, &quot;3&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-8">
+     <div id="comment-8">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">admin:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-8">27.01.2012 в 08:32</a></div>
+
+      <p>Планирую постепенно расширять переферию и поддерживаемые серии</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=8#respond" onclick="return addComment.moveForm(&quot;comment-8&quot;, &quot;8&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-21">
+     <div id="comment-21">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">ВитГо:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-21">07.02.2012 в 14:59</a></div>
+
+      <p>У меня почему-то при попытке скачивания ссылка уходит на .com и соответственно дает ошибку…<br>
+скачал вручную поправив ссылку</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=21#respond" onclick="return addComment.moveForm(&quot;comment-21&quot;, &quot;21&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-22">
+     <div id="comment-22">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">ВитГо:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-22">07.02.2012 в 15:00</a></div>
+
+      <p>За калькулятор ОГРОМНОЕ СПАСИБО !! </p>
+<p>Более наглядного не видел !!!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=22#respond" onclick="return addComment.moveForm(&quot;comment-22&quot;, &quot;22&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-25">
+     <div id="comment-25">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Сергей:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-25">08.02.2012 в 09:47</a></div>
+
+      <p>У Вас появились статьи с описанеим таймера. Планириуете ли Вы обновление генератора кода? Когда примерно можно ожидать обновленную версию?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=25#respond" onclick="return addComment.moveForm(&quot;comment-25&quot;, &quot;25&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment byuser comment-author-admin bypostauthor odd alt thread-even depth-1" id="li-comment-26">
+     <div id="comment-26">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-26">08.02.2012 в 09:56</a></div>
+
+      <p>Планирую включить в генератор кода поддержку таймеров, но прежде закончу статьи, посвященные им. Думаю, что это займет полторы-две недели.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=26#respond" onclick="return addComment.moveForm(&quot;comment-26&quot;, &quot;26&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-50">
+     <div id="comment-50">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Dmytro:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-50">16.02.2012 в 17:22</a></div>
+
+      <p>Отличная програма!!!<br>
+На чем написана?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=50#respond" onclick="return addComment.moveForm(&quot;comment-50&quot;, &quot;50&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-51">
+     <div id="comment-51">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-51">16.02.2012 в 21:20</a></div>
+
+      <p>Написана на delphi.<br>
+Нашел одну неточность при генерировании кода конфигурирования порта.<br>
+Постараюсь в ближайшее время исправить.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=51#respond" onclick="return addComment.moveForm(&quot;comment-51&quot;, &quot;51&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-83">
+     <div id="comment-83">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Павел:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-83">18.02.2012 в 14:27</a></div>
+
+      <p>У меня при попытке скачать генератор кода «Хром не может открыть страницу <a href="http://mycontroller/downloads/STM32generator.exe" rel="nofollow">http://mycontroller/downloads/STM32generator.exe</a>«. Пришлось скачивать с easyelectronics.ru</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=83#respond" onclick="return addComment.moveForm(&quot;comment-83&quot;, &quot;83&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-84">
+     <div id="comment-84">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-84">18.02.2012 в 15:18</a></div>
+
+      <p>Я понял. Попробую разобраться.<br>
+У меня Опера — проблем не было</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=84#respond" onclick="return addComment.moveForm(&quot;comment-84&quot;, &quot;84&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-111">
+     <div id="comment-111">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">alexsis:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-111">27.02.2012 в 08:30</a></div>
+
+      <p>Большое человеческое спасибо</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=111#respond" onclick="return addComment.moveForm(&quot;comment-111&quot;, &quot;111&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-127">
+     <div id="comment-127">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Сергей32:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-127">02.03.2012 в 10:29</a></div>
+
+      <p>Не совсем корректно работает автогенерация (установлена галочка автогенерации) кода настройки системы тактирования при попытке выставить делитель AHB равным 512. Генерируется следующее:<br>
+///<br>
+RCC-&gt;CFGR &amp;= ~RCC_CFGR_HPRE;         //Очистка битов предделителя «AHB Prescaler»<br>
+///<br>
+Если выбрать из выпадающего списка 512, а потом нажать на кнопку генерации — появляется полноценный кусок кода.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=127#respond" onclick="return addComment.moveForm(&quot;comment-127&quot;, &quot;127&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-128">
+     <div id="comment-128">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-128">02.03.2012 в 10:41</a></div>
+
+      <p>Спасибо, исправлю</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=128#respond" onclick="return addComment.moveForm(&quot;comment-128&quot;, &quot;128&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-157">
+     <div id="comment-157">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Chettuser:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-157">09.03.2012 в 09:42</a></div>
+
+      <p>Спасибо!<br>
+Отличная прога!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=157#respond" onclick="return addComment.moveForm(&quot;comment-157&quot;, &quot;157&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-159">
+     <div id="comment-159">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Chettuser:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-159">09.03.2012 в 13:35</a></div>
+
+      <p>[quote]Также хочу добавить поддержку других контроллеров, но пока не определился с тем, какие стоит добавлять.[/quote]<br>
+Ориентируйтесь на доступные отладочные платы из серии Discovery. Я, например, заказал себе STM32L-Discovery с STM32L152RBT6 на борту. Думаю отличий от STM32F1xx у них немного. Ещё что-нибудь из STM32F2xxx и F4xxx. Надо смотреть что у них отличается.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=159#respond" onclick="return addComment.moveForm(&quot;comment-159&quot;, &quot;159&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-174">
+     <div id="comment-174">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Константин:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-174">19.03.2012 в 16:42</a></div>
+
+      <p>Спасибо!<br>
+Программа весьма полезная, наглядная и несомненно востребованная при освоении контроллеров STM32</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=174#respond" onclick="return addComment.moveForm(&quot;comment-174&quot;, &quot;174&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-182">
+     <div id="comment-182">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Дмитрий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-182">23.03.2012 в 22:32</a></div>
+
+      <p>В linux под вайном работает.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=182#respond" onclick="return addComment.moveForm(&quot;comment-182&quot;, &quot;182&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-217">
+     <div id="comment-217">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Sergey:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-217">06.04.2012 в 08:56</a></div>
+
+      <p>Интересный софт.<br>
+Была идея сваять для что-то подобное, но к сожалению дальше GPIO калькулятора на бейсике дело не продвинулось.</p>
+<p>Спасибо за ваш труд.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=217#respond" onclick="return addComment.moveForm(&quot;comment-217&quot;, &quot;217&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-234">
+     <div id="comment-234">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vladimir:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-234">13.04.2012 в 14:12</a></div>
+
+      <p>А нельзя сделать англоязычный вариант? А то у меня показывает только ?? вместо русского.. Пределывать винду немогу.. У меня стоит софт спецефический..</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=234#respond" onclick="return addComment.moveForm(&quot;comment-234&quot;, &quot;234&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-235">
+     <div id="comment-235">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Василий:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-235">13.04.2012 в 22:19</a></div>
+
+      <p>Привет) Спасибо за программку! Ты просто молодчина) Нашел маленький глюк: При установке/снятии галочки «включить умножитель» на блоке «PLLMUL» во вкладке «Тактирование», значение на выходе не меняется, будто «умножитель» все время включен.<br>
+Удачи в разработке программы, буду с нетерпением ждать новые релизы.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=235#respond" onclick="return addComment.moveForm(&quot;comment-235&quot;, &quot;235&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-236">
+     <div id="comment-236">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-236">14.04.2012 в 07:07</a></div>
+
+      <p>Спасибо за замечание, испралю.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=236#respond" onclick="return addComment.moveForm(&quot;comment-236&quot;, &quot;236&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-237">
+     <div id="comment-237">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Asrtonom:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-237">14.04.2012 в 07:42</a></div>
+
+      <p>Добавить CAN возможно к этому генератору?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=237#respond" onclick="return addComment.moveForm(&quot;comment-237&quot;, &quot;237&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-238">
+     <div id="comment-238">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-238">14.04.2012 в 09:27</a></div>
+
+      <p>Конечно, но я пока на таймерах и АЦП застрял</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=238#respond" onclick="return addComment.moveForm(&quot;comment-238&quot;, &quot;238&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-239">
+     <div id="comment-239">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">vka:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-239">17.04.2012 в 10:58</a></div>
+
+      <p>очень ждем новой версии пограммы, полезная вещь, разрузила эту рутину<br>
+былоб еще неплохо добавить уставку обьединения генерируемого кода в единый файл инициализации</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=239#respond" onclick="return addComment.moveForm(&quot;comment-239&quot;, &quot;239&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-242">
+     <div id="comment-242">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">tetraa:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-242">18.04.2012 в 00:10</a></div>
+
+      <p>Очень класная прога, научился прогать stm32 по ней, автору спасибо, ПС дма ошибка в разрешении прериваний, генерит<br>
+DMA1_Channel4-&gt;CCR  |=  DMA_CCR4_TEIE;               //событие «конец обмена»,<br>
+должно быть<br>
+DMA1_Channel4-&gt;CCR  |=  DMA_CCR4_TCIE;               //событие «конец обмена»<br>
+проверил работает)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=242#respond" onclick="return addComment.moveForm(&quot;comment-242&quot;, &quot;242&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-243">
+     <div id="comment-243">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vladimir:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-243">19.04.2012 в 10:29</a></div>
+
+      <p>Даже через AppLoc показывает меню по русски но сам текст внизу иероглифами.. Работать с ним могу только когда паралельно запущены два раза. Один раз серез AppLoc И РАЗ ПРОСТО ТАК :) сДЕЛАЙТЕ АНГЛИЙСКУЮ ВЕРСИЮ!!! Очень интересная и полезная ппрограма!!!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=243#respond" onclick="return addComment.moveForm(&quot;comment-243&quot;, &quot;243&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-244">
+     <div id="comment-244">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-244">19.04.2012 в 10:54</a></div>
+
+      <p>Немног позже…</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=244#respond" onclick="return addComment.moveForm(&quot;comment-244&quot;, &quot;244&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-251">
+     <div id="comment-251">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">влад:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-251">22.04.2012 в 01:18</a></div>
+
+      <p>присоединяюсь к благодарностям. ты облегчил жизнь миллионам страждущих оживить камни.<br>
+копался бы я в этих установках полгода а то и больше. а так за пару вечеров светодиодом заморгало. с нетерпением жду таймеров.<br>
+если не пишет сторонний камень через дискавери поставьте 10 пф на SWDIO и VSS,<br>
+ промучился неделю блин.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=251#respond" onclick="return addComment.moveForm(&quot;comment-251&quot;, &quot;251&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-355">
+     <div id="comment-355">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Камов Сергей:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-355">01.05.2012 в 01:58</a></div>
+
+      <p>Благодарю от всей души! Если нужно будет подсобить — пишите.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=355#respond" onclick="return addComment.moveForm(&quot;comment-355&quot;, &quot;355&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-416">
+     <div id="comment-416">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Chettuser:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-416">23.05.2012 в 17:38</a></div>
+
+      <p>Тоже пока буксую на таймерах, крепкий орешек оказался. Но я «специализируюсь» по L-серии, придётся разбираться самому, надо же продолжать начатую тему-факультатив по STM32L-Discovery (которая дополнительно к основной обучалке).<br>
+Просто сейчас времени пока нет — чувствую что придётся сменить работу и место жительства, пока не до МК в общем то… :(</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=416#respond" onclick="return addComment.moveForm(&quot;comment-416&quot;, &quot;416&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-420">
+     <div id="comment-420">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-420">24.05.2012 в 02:49</a></div>
+
+      <p>Я уже почти разобрался, но не могу придумать, как лучше оформить работу с таймерами в генераторе кода. Ищу оптимальный вариант.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=420#respond" onclick="return addComment.moveForm(&quot;comment-420&quot;, &quot;420&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment odd alt depth-3" id="li-comment-446">
+     <div id="comment-446">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Chettuser:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-446">28.05.2012 в 19:12</a></div>
+
+      <p>Кажется Вы не могли разобраться с DMA, если я не ошибаюсь?<br>
+Посмотрите: <a href="http://radiokot.ru/forum/viewtopic.php?f=20&t=54469" rel="nofollow">http://radiokot.ru/forum/viewtopic.php?f=20&amp;t=54469</a><br>
+Может быть чем то поможет.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=446#respond" onclick="return addComment.moveForm(&quot;comment-446&quot;, &quot;446&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-484">
+     <div id="comment-484">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">DragonSmile:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-484">10.06.2012 в 19:30</a></div>
+
+      <p>Из IE6 программа не скачивается. DM 5.9.5 скачивает.</p>
+<p>На первой же странице ошибка — триггер Шмитта пишется через две буквочки «г» и две буквочки «т». Надо бы исправить…</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=484#respond" onclick="return addComment.moveForm(&quot;comment-484&quot;, &quot;484&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-559">
+     <div id="comment-559">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Мимопробегал:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-559">13.06.2012 в 12:11</a></div>
+
+      <p>На мой взгляд в данном виде- тупиковый вариант. Вот если вложить труда чуть больше, и создать конструктор, чтобы самому можно было добавлять блоки, чекбоксы… и что генерировать при определенных действиях, то легион анонимусов все доделал бы куда быстрее.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=559#respond" onclick="return addComment.moveForm(&quot;comment-559&quot;, &quot;559&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-664">
+     <div id="comment-664">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">weellcom:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-664">23.06.2012 в 11:39</a></div>
+
+      <p>Отличная прога! БОЛЬШОЕ Спасибо!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=664#respond" onclick="return addComment.moveForm(&quot;comment-664&quot;, &quot;664&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-724">
+     <div id="comment-724">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">gsaOD76:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-724">07.07.2012 в 21:52</a></div>
+
+      <p>Спасибо огромное! Давно хотел перейти на STM32, благодаря данной программе и статьям с сайта очень быстро освоил. Все доступно и наглядно. Если будете дописывать, то таймера добавляйте в первую очередь, без них никак.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=724#respond" onclick="return addComment.moveForm(&quot;comment-724&quot;, &quot;724&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-742">
+     <div id="comment-742">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Ded:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-742">12.07.2012 в 20:56</a></div>
+
+      <p>Спасибо за интересные материалы. Снимаю шляпу. Не в обиду — видимо, правильней писать «перИферия».</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=742#respond" onclick="return addComment.moveForm(&quot;comment-742&quot;, &quot;742&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1009">
+     <div id="comment-1009">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1009">27.08.2012 в 07:00</a></div>
+
+      <p>Совершенно верно подмечено.<br>
+Потамучто была двойка по руссскому языку</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1009#respond" onclick="return addComment.moveForm(&quot;comment-1009&quot;, &quot;1009&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-770">
+     <div id="comment-770">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">ДЕнис:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-770">24.07.2012 в 14:21</a></div>
+
+      <p>Спасибо, отлично просто для начинающих в самый раз для помощи с STM32)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=770#respond" onclick="return addComment.moveForm(&quot;comment-770&quot;, &quot;770&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-798">
+     <div id="comment-798">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Tac_Evawocim:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-798">31.07.2012 в 21:09</a></div>
+
+      <p>Хорошая прога, но такие вещи надо делать open-source, чтобы кто угодно мог добавить новую конфигурацию.<br>
+А иначе либо сам закопаешься, либо прога очень быстро потеряет актуальность (как сейчас, с поддержкой всего двух старых контроллеров.. :)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=798#respond" onclick="return addComment.moveForm(&quot;comment-798&quot;, &quot;798&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-1008">
+     <div id="comment-1008">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1008">27.08.2012 в 06:52</a></div>
+
+      <p>Согласен. Если есть предложения — можем обсудить.<br>
+А что касается поддержки двух контроллеров, то не все так страшно. Использование периферии в разных процессорах во многом похоже.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1008#respond" onclick="return addComment.moveForm(&quot;comment-1008&quot;, &quot;1008&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-814">
+     <div id="comment-814">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn"><a href="http://djbook.ru/" rel="external nofollow" class="url">RaD</a>:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-814">04.08.2012 в 20:17</a></div>
+
+      <p>Понравилась идея, мне нужна такая программа, правда с более богатым функционалом.<br>
+Можно сделать мультиязычный вариант на PyQt, можем скооперироваться в данной теме через Github.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=814#respond" onclick="return addComment.moveForm(&quot;comment-814&quot;, &quot;814&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-968">
+     <div id="comment-968">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Orenstar:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-968">21.08.2012 в 22:01</a></div>
+
+      <p>Автор молодец!!! Спасибо за прогу!!! Будем ждать нового релиза</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=968#respond" onclick="return addComment.moveForm(&quot;comment-968&quot;, &quot;968&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-1011">
+     <div id="comment-1011">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Аноним:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1011">27.08.2012 в 15:59</a></div>
+
+      <p>Увы, вместо русского ?????.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1011#respond" onclick="return addComment.moveForm(&quot;comment-1011&quot;, &quot;1011&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-1014">
+     <div id="comment-1014">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1014">27.08.2012 в 21:16</a></div>
+
+      <p>А винда какая?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1014#respond" onclick="return addComment.moveForm(&quot;comment-1014&quot;, &quot;1014&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1021">
+     <div id="comment-1021">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Аноним:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1021">28.08.2012 в 10:50</a></div>
+
+      <p>такую простенькую программу можно написать на JScript здесь на сайте.<br>
+тут вам и мультисистемность, и многоязычность.<br>
+и open-source заодно. и добавлять легко, любой может в комментах кусок кода предложить или у себя на сайте или компе добавить</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1021#respond" onclick="return addComment.moveForm(&quot;comment-1021&quot;, &quot;1021&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-1077">
+     <div id="comment-1077">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn"><a href="http://www.arhimed.dp.ua/" rel="external nofollow" class="url">Солнцеворот</a>:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1077">05.09.2012 в 14:40</a></div>
+
+      <p>А что там с кодировкой? При попытке перенести сгенерированый код в Блокнот (или куда-угодно еще) вместо русского языка закарлючки и вопросительные знаки.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1077#respond" onclick="return addComment.moveForm(&quot;comment-1077&quot;, &quot;1077&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1082">
+     <div id="comment-1082">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">drvlas:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1082">06.09.2012 в 11:45</a></div>
+
+      <p>Супер! Наглядность на высоте! Даже наличие ошибок не умаляет заслуги автора. Ошибки устранятся, а удобство останется :)<br>
+И потом, проверять сгенерированное все равно желательно. Как на предмет оптимизации, так и с банальной проверкой.</p>
+<p>Желаю дальнейших творческих удач!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1082#respond" onclick="return addComment.moveForm(&quot;comment-1082&quot;, &quot;1082&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-1104">
+     <div id="comment-1104">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1104">10.09.2012 в 10:19</a></div>
+
+      <p>Большое спасибо за программу!!!</p>
+<p>Идея гениальная, реализация на высоте!!!<br>
+Единственное желание — поддержка других серий (у меня сейчас STM32F207), так как в них совсем другие имена регистров. Хотя бы в плане настройки GPIO, тактирования и UART-ов. Но и на этом ОГРОМНОЕ спасибо!</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1104#respond" onclick="return addComment.moveForm(&quot;comment-1104&quot;, &quot;1104&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1145">
+     <div id="comment-1145">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Александр:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1145">17.09.2012 в 04:34</a></div>
+
+      <p>Надо по таймерам, иначе голова кругом идёт.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1145#respond" onclick="return addComment.moveForm(&quot;comment-1145&quot;, &quot;1145&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-1147">
+     <div id="comment-1147">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1147">17.09.2012 в 07:15</a></div>
+
+      <p>Согласен. Просто не могу пока придумать, как лучше это выполнить</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1147#respond" onclick="return addComment.moveForm(&quot;comment-1147&quot;, &quot;1147&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-1151">
+     <div id="comment-1151">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Аноним:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1151">17.09.2012 в 15:37</a></div>
+
+      <p>А вы выложите исхожники для народа. Пускай гуи плодятся. Попытался в netbeans состряпять интерфейс, в итоге качаю дельфи или с булдер. Хотя бы простые таймеры попробую сделать.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1151#respond" onclick="return addComment.moveForm(&quot;comment-1151&quot;, &quot;1151&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-1187">
+     <div id="comment-1187">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vladimir:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1187">21.09.2012 в 12:15</a></div>
+
+      <p>Отличная идея…<br>
+И правильно задуманный дизайн программы…<br>
+Полноценные версии, спокойно могли бы продавать…<br>
+Я, сам бы купил с удовольствием, сэкономило бы туча времени…..<br>
+Но тут слишком много работы….<br>
+Потяните, ли…?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1187#respond" onclick="return addComment.moveForm(&quot;comment-1187&quot;, &quot;1187&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-1193">
+     <div id="comment-1193">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Аноним:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1193">22.09.2012 в 01:27</a></div>
+
+      <p>Предлагаю отправить на опенс сорс если нет коммерческих планов</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1193#respond" onclick="return addComment.moveForm(&quot;comment-1193&quot;, &quot;1193&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-1197">
+     <div id="comment-1197">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1197">22.09.2012 в 05:06</a></div>
+
+      <p>Коммерческих планов нет.<br>
+Я думаю сейчас над тем, как сделать эдакий универсальный конструктор(конфигуратор), с помощью которого каждый желающий сможет добавить нужный тип контроллера и нужный модуль. Но нужно определиться с самой концепцией. В самом начале необходимо знать, какими возможностями должна обладать программа. Я понимаю, что нужно обеспечить поддержку разных типов контроллеров, и не обязательно STM32. Нужно определится с внешним видом и т.д.<br>
+Если поделитесь своими соображениями по этому поводу, буду благодарен.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1197#respond" onclick="return addComment.moveForm(&quot;comment-1197&quot;, &quot;1197&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment odd alt depth-3" id="li-comment-1200">
+     <div id="comment-1200">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Аноним:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1200">22.09.2012 в 22:48</a></div>
+
+      <p><a href="http://we.easyelectronics.ru/sasha85ru/nabrosok-shpargalki-dlya-avr.html#comment77251" rel="nofollow">http://we.easyelectronics.ru/sasha85ru/nabrosok-shpargalki-dlya-avr.html#comment77251</a></p>
+<p>А как на счёт вида что, ставим чехбокс, рядом описание бита в регистре?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1200#respond" onclick="return addComment.moveForm(&quot;comment-1200&quot;, &quot;1200&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-1385">
+     <div id="comment-1385">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Тоха:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1385">03.10.2012 в 20:37</a></div>
+
+      <p>1. Please сделайте English версию, а то знаки вопроса “????????” уже задолбали, хотя даже и сними интерфейс интуитивно понятен. Лезть в прогу и менять строки с UTF-8 на ANSI времени нет.<br>
+2. Если не жадный открой проект на sourceforge.net, народ прогу быстро допилит, яб тоже чет дописал в свободное время.</p>
+<p>По моему прога нужная, многие начали сваливать с Atmel`ов и переходить на stm32, но новая структура кортекса при первом знакомстве, мягко говоря выморажывает, визард нужет точно :)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1385#respond" onclick="return addComment.moveForm(&quot;comment-1385&quot;, &quot;1385&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-1387">
+     <div id="comment-1387">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1387">03.10.2012 в 22:35</a></div>
+
+      <p>Посмотрите на главной странице сайта последний пост.<br>
+Там об этом.<br>
+Скоро выложу для тестирования конструктор компонентов.И исходники тоже</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1387#respond" onclick="return addComment.moveForm(&quot;comment-1387&quot;, &quot;1387&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-1553">
+     <div id="comment-1553">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Info:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1553">18.10.2012 в 02:41</a></div>
+
+      <p>Ошибка в генерации кода для USART2<br>
+  GPIOA-&gt;CRL   |=   GPIO_CRL_MODE2 | GPIO_CRH_CNF2_1;<br>
+Нужно исправить<br>
+GPIO_CRH_CNF2_1 на GPIO_CRL_CNF2_1</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1553#respond" onclick="return addComment.moveForm(&quot;comment-1553&quot;, &quot;1553&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-1556">
+     <div id="comment-1556">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">x893:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1556">18.10.2012 в 08:58</a></div>
+
+      <p>У ST тоже задумка была неплохая с Microxplorer<br>
+<a href="http://www.st.com/internet/evalboard/product/251717.jsp" rel="nofollow">http://www.st.com/internet/evalboard/product/251717.jsp</a><br>
+но забросили</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1556#respond" onclick="return addComment.moveForm(&quot;comment-1556&quot;, &quot;1556&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment even depth-2" id="li-comment-1748">
+     <div id="comment-1748">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Info:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-1748">28.10.2012 в 18:15</a></div>
+
+      <p>Да, жаль что они перестали развивать этот проект.<br>
+Намного упростили бы жизнь разработчикам в виде готовой конфигурации по желанию пользователя — этим можно было бы более продвинуть свои МК в массы.<br>
+Могли бы его перевести в open source — мы уже сами бы обточили.</p>
+<p>Но все равно она успешно используется для визуального понимания использования выводов, ремапа и разводке платы.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=1748#respond" onclick="return addComment.moveForm(&quot;comment-1748&quot;, &quot;1748&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2238">
+     <div id="comment-2238">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">crane:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-2238">15.11.2012 в 11:15</a></div>
+
+      <p>Очень круто. Но есть большое «НО» — низкоуровность.<br>
+Почему б не использовать официальную библиотеку периферии от ST?<br>
+Готов помочь в развитии именно в этом направлении.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=2238#respond" onclick="return addComment.moveForm(&quot;comment-2238&quot;, &quot;2238&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2240">
+     <div id="comment-2240">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#comment-2240">16.11.2012 в 16:08</a></div>
+
+      <p>Идельный вариант — это если и библиотека и с помощью регистров. Чтобы пользователь сам мог выбрать нужный способ.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/?replytocom=2240#respond" onclick="return addComment.moveForm(&quot;comment-2240&quot;, &quot;2240&quot;, &quot;respond&quot;, &quot;211&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="211" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-generator-programmnogo-koda/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,353 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 Генератор программного кода_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

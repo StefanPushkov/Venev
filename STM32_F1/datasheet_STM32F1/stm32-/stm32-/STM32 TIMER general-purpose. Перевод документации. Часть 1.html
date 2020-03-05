@@ -1,0 +1,552 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0101)http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 TIMER general-purpose. Перевод документации. Часть 1</title>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/script.js.Без названия"></script>
+<link rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/old_site/feed/default.htm">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/old_site/feed/atom/default.htm"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 TIMER general-purpose. Перевод документации. Часть 1»" href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/feed/default.htm">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/wordpress-file-monitor.php@ver=scan" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/bwp-syntax.css@ver=3.3.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/download-css.css@ver=1.50" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/pagenavi-css.css@ver=2.70" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/jquery.js@ver=1.7.1"></script>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/bwp-syntax.js@ver=3.3.1"></script>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/external-tracking.min.js@ver=6.0.2"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/old_site/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 ADC Примеры использования: инжектированные каналы" href="http://mycontroller.ru/old_site/stm32-adc-primeryi-ispolzovaniya-inzhektirovannyie-kanalyi/default.htm">
+<link rel="next" title="STM32 TIMER general-purpose. Перевод документации. Часть 2" href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/default.htm">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm">
+<link rel="shortlink" href="http://mycontroller.ru/old_site/@p=2249">
+
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS BEGIN -->
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/wpsf-js.php"></script> 
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS END -->
+
+
+<link rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<!--ipt type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</scri-->
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/old_site/default.htm">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/old_site/default.htm"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/old_site/o-sayte/default.htm"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/old_site/programmyi/default.htm"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/old_site/stm32-adc-primeryi-ispolzovaniya-inzhektirovannyie-kanalyi/default.htm" rel="prev">STM32 ADC Примеры использования: инжектированные каналы</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/default.htm" rel="next">STM32 TIMER general-purpose. Перевод документации. Часть 2</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm" rel="bookmark" title="Постоянная ссылка на STM32 TIMER general-purpose. Перевод документации. Часть 1">
+STM32 TIMER general-purpose. Перевод документации. Часть 1</a>
+</h2>
+<div class="art-PostContent">
+
+          <p><em>Для лучшего понимания работы таймеров, решил сделать перевод описания с английского. Буду постепенно его выкладывать. По окончанию хочу объединить все в один файл в формате PDF. Сообщайте, если заметите неточности.</em><br>
+<span id="more-2249"></span></p>
+<p><strong>Базовый модуль таймера</strong></p>
+<p>Базовая часть программируемого таймера включает в себя 16-ти разрядный счетчик с независимым регистром автоматической перезагрузки. Счетчик может работать в следующих режимах: сложение, вычитание, сложение/вычитание. Тактовый сигнал на вход счетчика подается через делитель с настраиваемым коэффициентом деления.</p>
+<p>Счетный регистр, регистр автоматической перезагрузки и регистр делителя может быть записан или прочитан программно. Это справедливо даже во время работы счетчика.</p>
+<p>Базовый модуль включает в себя:</p>
+<ul>
+<li>счетный регистр (TIMx_CNT);</li>
+<li>регистр делителя (TIMx_PSC);</li>
+<li>регистр автоматической перезагрузки (TIMx_ARR);</li>
+</ul>
+<p>Регистр автоматической перезагрузки является предварительно загружаемым. Запись и чтение этого регистра доступны посредством регистра предварительной загрузки. Содержимое регистра предварительной загрузки передается в ARR постоянно или после каждого события обновления (UEV), в зависимости от состояния бита ARPE регистра TIMx_CR1. Событие обновления формируется, когда происходит переполнение счетчика (при работе на вычитание или сложение) и если бит UDIS равен нулю. Событие обновления также может генерироваться программно. Генерирование события обновления подробно описано для каждой конфигурации таймера.</p>
+<p>Счетный регистр тактируется сигналом CK_CNT, поступающим с выхода предделителя, если счет разрешен установкой в единицу бита CEN (<em>counter enable bit) </em>регистра TIMx_CR1.</p>
+<p><em>Обратите внимание, что фактически сигнал </em><em>CNT</em><em>_</em><em>EN</em><em> поступит через один такт сигнала </em><em>CK_CNT </em><em>после включения разряда </em><em>CEN</em><em>.</em></p>
+<p>&nbsp;</p>
+<p><strong>Описание предделителя</strong></p>
+<p>Предделитель может разделить тактовую частоту на любое значение, лежащее в пределах от 1 до 65536. Он представляет собой 16-разрядный счетчик, который управляется через 16-разрядный регистр (TIMx_PSC). Его можно изменять в процессе счета (<em>на лету</em>), так как запись в этот регистр выполняется посредством буфера. Новый коэффициент деления вступит в силу после очередного события обновления.</p>
+<p>Ниже приведены два примера изменения счетчика на <em>лету</em>.</p>
+<p>Временные диаграммы изменения коэффициента деления с 1 на 2</p>
+<p align="center"><a href="http://mycontroller.ru/old_site/wp-content/uploads/image83.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb83.png" alt="image" width="487" height="248" border="0"></a></p>
+<p>Временные диаграммы изменения коэффициента деления с 1 на 4</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image84.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb84.png" alt="image" width="495" height="225" border="0"></a></p>
+<p><strong>Режимы счета</strong></p>
+<p><strong>Счет вверх (сложение)</strong></p>
+<p>В этом режиме счетный регистр считает с нуля до значения автозагрузки (содержимого регистра TIMx_ARR ), затем происходит сброс в ноль и генерирование события переполнения счетчика.</p>
+<p>Событие переполнения может генерироваться после каждого переполнения счетчика или установкой бита UG регистра TIMx_CR1 (программным способом или используя режим ведомого).</p>
+<p>Событие UEV можно отключить установкой бита UDIS регистра TIMx_CR1. Это позволяет избежать обновления данными из буферного регистра, если в нем содержится новое значение делителя. Благодаря этому изменение не происходит пока бит UDIS не будет сброшен в 0. Однако сброс счетного регистра происходит, как и регистра делителя (но коэффициент деления делителя не изменяется). К тому же, если в регистре TIMx_CR1 установлен разряд URS (update request selection – выбор запроса обновления), установка бита UG генерирует событие обновления UEV c установкой флага UEF (без генерирования прерывания и запроса DMA). Это позволяет избежать генерирования обновления и прерывания при очистке счетчика по событию захвата ( ???).</p>
+<p>Когда происходит событие обновления, все регистры обновляются и флаг обновления (бит UIF регистра TIMx_SR) устанавливается (в зависимости от бита URS):</p>
+<ul>
+<li>буфер делителя перезагружается предварительно заданным значением (содержащимся в регистре TIMx_PSC );</li>
+<li>вспомогательный регистр автозагрузки обновляется значением, записанным в регистр TIMx_ARR.</li>
+</ul>
+<p><em>Получается, что изменения регистров </em><em>TIMx_</em><em>ARR</em><em> и TIMx_</em><em>PSC</em><em> вступают в силу после события обновления </em><em>UEV</em><em> (примечание переводчика</em><em>) </em></p>
+<p>На следующих диаграммах показаны некоторые примеры поведения таймера при разных тактовых частотах и при значении ARR=0×36.</p>
+<p>Деление частоты тактирования на 1</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image85.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb85.png" alt="image" width="519" height="210" border="0"></a></p>
+<p>Деление частоты тактирования на 2</p>
+<p align="center"><a href="http://mycontroller.ru/old_site/wp-content/uploads/image86.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb86.png" alt="image" width="521" height="215" border="0"></a></p>
+<p>Деление частоты тактирования на 4</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image87.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb87.png" alt="image" width="519" height="212" border="0"></a></p>
+<p>Событие обновления, когда ARPE=0</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image88.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb88.png" alt="image" width="519" height="268" border="0"></a></p>
+<p>Событие обновления, когда ARPE=1</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image89.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb89.png" alt="image" width="518" height="298" border="0"></a></p>
+<p><strong>Счет вниз (вычитание)</strong></p>
+<p>В режиме счета вниз счетчик считает от значения автозагрузки (содержится в регистре TIMx_ARR) вниз до нуля, перезагружается значением автозагрузки и генерируется событие переполнения счетчика.</p>
+<p>Событие обновления может генерироваться после каждого переполнения счетчика или <a name="_GoBack"></a>установкой разряда UG регистра TIMx_EGR (программно или используя режим ведомого).</p>
+<p>Событие UEV можно отключить установкой бита UDIS регистра TIMx_CR1. Это позволяет избежать обновления данными из буферного регистра, если в нем содержится новое значение делителя. Благодаря этому изменение не происходит, пока бит UDIS не будет сброшен в 0. Однако сброс счетного регистра происходит, как и регистра делителя (но коэффициент деления делителя не изменяется). К тому же, если в регистре TIMx_CR1 установлен разряд URS (update request selection – выбор запроса обновления), установка бита UG генерирует событие обновления UEV c установкой флага UEF (без генерирования прерывания и запроса DMA). Это позволяет избежать генерирования обновления и прерывания при очистке счетчика по событию захвата ( ???).</p>
+<p>Когда происходит событие обновления, все регистры обновляются и флаг обновления (бит UIF регистра TIMx_SR) устанавливается (в зависимости от бита URS):</p>
+<ul>
+<li>буфер делителя перезагружается предварительно заданным значением (содержащимся в регистре TIMx_PSC );</li>
+<li>вспомогательный регистр автозагрузки обновляется значением, записанным в регистр TIMx_ARR</li>
+</ul>
+<p>На следующих диаграммах показаны некоторые примеры поведения таймера при разных тактовых частотах и при значении ARR=0×36.</p>
+<p>Деление частоты тактирования на 1</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image90.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb90.png" alt="image" width="487" height="205" border="0"></a></p>
+<p>Деление частоты тактирования на 2</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image91.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb91.png" alt="image" width="495" height="200" border="0"></a></p>
+<p>Деление частоты тактирования на 4</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image92.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb92.png" alt="image" width="485" height="204" border="0"></a></p>
+<p>Update event when repetition counter is not used<strong> </strong><em>(</em><em>перевести</em><em> </em><em>по</em><em> </em><em>смыслу</em><em> </em><em>не</em><em> </em><em>смог</em><em>)</em></p>
+<p>&nbsp;</p>
+<p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image93.png"><img style="display: block; float: none; margin-left: auto; margin-right: auto; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/image_thumb93.png" alt="image" width="478" height="245" border="0"></a></p>
+<p><strong>Режим выравнивания по центру (режим счета вверх/вниз)</strong></p>
+<p>В режиме выравнивания по центру счетчик считает от нуля до значения, на единицу меньше значения автоматической перезагрузки (TIMx_ARR-1); генерируется событие переполнение счетчика; ведется счет от значения автоматической перезагрузки до 1; генерируется событие переполнение счетчика и после перезапуска счет продолжается с нуля.</p>
+<p>В этом режиме бит направления счета (DIR в регистре TIMx_CR1) не может быть изменен программно. Он изменяется аппаратно и указывает направление счета. Событие обновления генерируется при каждом переполнении счетчика (при счете вверх или вниз) или установкой бита UG регистра TIMx_EGR (программно или используя режим ведомого таймера). В этом случае счетный регистр, а также счетчик делителя перезапускается с нуля.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/default.htm" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/old_site/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="2249" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input type="hidden" name="refJS" value="http%3A//mycontroller.ru/old_site/stm32-adc-primeryi-ispolzovaniya-inzhektirovannyie-kanalyi/default.htm">
+	<p style="font-size:9px;clear:both;">Spam Protection by <a href="http://mycontroller.ru/www.polepositionmarketing.com/library/wp-spamfree/default.htm" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/default.htm" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bootloader/default.htm" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/default.htm" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usart/default.htm" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dma/default.htm" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bkp-registryi/default.htm" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/rtc/default.htm" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/timer/default.htm" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/spi/default.htm" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/adc/default.htm" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dac/default.htm" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usb/default.htm" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/default.htm" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/termodatchik-ds18b20/default.htm" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/enkoder/default.htm" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/default.htm" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/default.htm" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/default.htm" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/chasyi-na-stm32f100rb/default.htm" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/umnyiy-dom/default.htm" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/waveplayer/default.htm" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/sintezator-eliza/default.htm" title="Просмотреть все записи в рубрике «Синтезатор &quot;Элиза&quot;»">Синтезатор "Элиза"</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/default.htm" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/stm32-generator-koda/default.htm" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/old_site/stm32-interfeys-i2c-opisanie/default.htm" title="STM32 Интерфейс I2C. Описание">STM32 Интерфейс I2C. Описание</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm" title="STM32 Синтезатор речи “Элиза”. Продолжение">STM32 Синтезатор речи “Элиза”. Продолжение</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm" title="STM32 Синтезатор речи “Элиза”">STM32 Синтезатор речи “Элиза”</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-novaya-versiya/default.htm" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-konstruktor-komponentov/default.htm" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<acript type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</acript></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="linkcat-2" class="widget widget_links"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Ссылки</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+
+	<ul class="xoxo blogroll">
+<li><a href="http://mycontroller.ru/old_site/forum">Форум сайта</a></li>
+
+	</ul>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+
+
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm#">Contact Us</a> | <a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm#">Terms of Use</a> | <a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm#">Trademarks</a> | <a href="http://mycontroller.ru/old_site/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/default.htm#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+
+</div>
+
+<!-- 25 запросов. 0,278 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 1_files/shCore.js.Без названия"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

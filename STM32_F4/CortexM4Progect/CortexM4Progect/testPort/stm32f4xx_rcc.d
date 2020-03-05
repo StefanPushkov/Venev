@@ -1,0 +1,10 @@
+stm32f4xx_rcc.o: ..\STM32F4xx_StdPeriph_Driver\src\stm32f4xx_rcc.c
+stm32f4xx_rcc.o: ..\STM32F4xx_StdPeriph_Driver\inc\stm32f4xx_rcc.h
+stm32f4xx_rcc.o: ..\Patch\stm32f4xx.h
+stm32f4xx_rcc.o: ..\Patch\core_cm4.h
+stm32f4xx_rcc.o: C:\Keil\ARM\RV31\Inc\stdint.h
+stm32f4xx_rcc.o: ..\Patch\core_cmInstr.h
+stm32f4xx_rcc.o: ..\Patch\core_cmFunc.h
+stm32f4xx_rcc.o: ..\Patch\core_cm4_simd.h
+stm32f4xx_rcc.o: ..\Patch\system_stm32f4xx.h
+stm32f4xx_rcc.o: ..\Patch\stm32f4xx_conf.h

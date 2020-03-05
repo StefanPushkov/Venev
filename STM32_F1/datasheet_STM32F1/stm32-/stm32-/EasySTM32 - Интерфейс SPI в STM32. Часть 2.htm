@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0054)http://easystm32.ru/interfaces/45-spi-interface-part-2 -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru-ru" lang="ru-ru" dir="ltr" slick-uniqueid="3"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><script type="text/javascript" src="https://mc.yandex.ru/watch/14614684?wmode=5&callback=_ymjsp420696829&page-ref=http%3A%2F%2Feasystm32.ru%2F&page-url=http%3A%2F%2Feasystm32.ru%2Finterfaces%2F45-spi-interface-part-2&browser-info=j%3A1%3As%3A1366x768x32%3Ask%3A1%3Af%3A10.2.154%3Al%3A3.0.40818.0%3Afpr%3A161590820801%3Acn%3A1%3Aw%3A1350x620%3Az%3A240%3Ai%3A20150601122142%3Aet%3A1433146902%3Aen%3Autf-8%3Av%3A632%3Ac%3A1%3Ala%3Aru%3Als%3A78483634128%3Arqn%3A5%3Arn%3A895021789%3Ahid%3A723883539%3Ads%3A0%2C0%2C858%2C23%2C0%2C0%2C%2C304%2C16%2C%2C%2C%2C1174%3Afp%3A1002%3Arqnl%3A1%3Ast%3A1433146902%3At%3AEasySTM32%20-%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D1%84%D0%B5%D0%B9%D1%81%20SPI%20%D0%B2%20STM32.%20%D0%A7%D0%B0%D1%81%D1%82%D1%8C%202"></script>
+  <!--<base href="http://easystm32.ru/interfaces/45-spi-interface-part-2">--><base href=".">
+  
+  <meta name="keywords" content="Микроконтроллеры, электроника, STM32">
+  <meta name="author" content="Medved">
+  <meta name="description" content="Микроконтроллеры STM32">
+  <meta name="generator" content="Joomla! - Open Source Content Management">
+  <title>EasySTM32 - Интерфейс SPI в STM32. Часть 2</title>
+  <link href="http://easystm32.ru/templates/shoplab/favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <link href="http://easystm32.ru/component/search/?Itemid=110&catid=12&id=45&format=opensearch" rel="search" title="Искать EasySTM32" type="application/opensearchdescription+xml">
+  <style type="text/css">
+
+#wrapper { margin: 0 auto; width: 960px;padding:0;}
+	.s-c-s #colmid { left:245px;}
+	.s-c-s #colright { margin-left:-245px;}
+	.s-c-s #col1pad { margin-left:245px;}
+	.s-c-s #col2 { left:0px;width:245px;}
+	.s-c-s #col3 { width:0px;}
+	.s-c-x #colright { left:245px;}
+	.s-c-x #col1wrap { right:245px;}
+	.s-c-x #col1 { margin-left:245px;}
+	.s-c-x #col2 { right:245px;width:245px;}
+	.x-c-s #colright { margin-left:-0px;}
+	.x-c-s #col1 { margin-left:0px;}
+	.x-c-s #col3 { left:0px;width:0px;}
+  </style>
+  <script type="text/javascript" async="" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/watch.js"></script><script src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/mootools-core.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/core.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/caption.js" type="text/javascript"></script>
+  <script src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/mootools-more.js" type="text/javascript"></script>
+  <script type="text/javascript">
+window.addEvent('load', function() {
+				new JCaption('img.caption');
+			});
+function keepAlive() {	var myAjax = new Request({method: "get", url: "index.php"}).send();} window.addEvent("domready", function(){ keepAlive.periodical(840000); });
+  </script>
+  <link type="text/css" rel="stylesheet" href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/shCore.css">
+<link type="text/css" rel="stylesheet" href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/shThemeDefault.css">
+<script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/shCore.js"></script>
+  <script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/shBrushCpp.js"></script>
+
+<link rel="stylesheet" href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/system.css" type="text/css">
+<link rel="stylesheet" href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/styles.css" type="text/css" media="screen,projection">
+<script language="javascript" type="text/javascript">  
+  window.addEvent('domready', function(){  
+      var top_panel = document.id('top-panel');
+    var sub_panel = document.id('sub-panel');
+    var topFx = new Fx.Slide(top_panel);
+    if (Cookie.read('top-panel') == '1') {
+      topFx.show();
+    } else {
+      topFx.hide();      
+    }
+    sub_panel.addEvents({
+      'click' : function(){
+        if (topFx.open) {
+          Cookie.write('top-panel', '0');
+        } else {
+          Cookie.write('top-panel', '1');
+        }
+        topFx.toggle();
+      }
+    });
+  });  
+</script>
+<style type="text/css" id="begun-block-css-353320860">.begun_adv * {clear:none !important;color:#000 !important;float:none !important;margin:0 !important;padding:0 !important;letter-spacing:normal !important;word-spacing:normal !important;z-index:auto !important;font-size:12px !important;font:normal normal 12px Arial,sans-serif !important;text-transform:none !important;list-style:none !important;position:static !important;text-indent:0 !important;visibility:visible !important;white-space:normal !important;}.begun_adv_common {position:relative !important;width:100% !important;}.begun_adv_common tr,.begun_adv_common td,.begun_adv_common a,.begun_adv_common b,.begun_adv_common div,.begun_adv_common span {background:none !important;border:none !important;}#begun_block_353320860 {height:auto !important;width:auto !important;line-height:normal !important;margin:0 !important;padding:0 !important;font:12px/18px Arial,sans-serif !important;color:#000 !important;text-align:left !important;}#begun_block_353320860 wbr {display:inline-block !important;}#begun_block_353320860 .begun_adv_span {display:inline-block !important;position:relative !important;width:auto !important;height:auto !important;margin:0 !important;padding:0 !important;}#begun_block_353320860 .begun_adv {-moz-box-sizing:border-box !important;-webkit-box-sizing:border-box !important;box-sizing:border-box !important;}#begun_block_353320860 *:after,#begun_block_353320860 *:before {content:normal !important;}#begun_block_353320860 b {font-weight:bold !important;display:inline !important;}#begun_block_353320860 .begun_adv,#begun_block_353320860 table,#begun_block_353320860 td,#begun_block_353320860 div {padding:0 !important;text-align:left !important;table-layout:auto !important;}#begun_block_353320860 .begun_adv table {border:none !important;border-collapse:collapse !important;}#begun_block_353320860 td {vertical-align:middle !important;}#begun_block_353320860 .begun_adv_cell {text-align:left !important;}#begun_block_353320860 .begun_adv_bullit {color:#aaa !important;}#begun_block_353320860 .begun_adv_title,#begun_block_353320860 .begun_adv_text {display:block !important;}#begun_block_353320860 .begun_adv_title .begun_favicon {width:16px !important;height:16px !important;margin-right:6px !important;vertical-align:middle !important;}#begun_block_353320860 a.begun_adv_sys_logo {position:absolute !important;right:0 !important;bottom:0 !important;z-index:1 !important;height:16px !important;padding:0 5px 2px 1px !important;background:#f7fff5 !important;}#begun_block_353320860 span.begun_adv_age {position:absolute !important;right:0 !important;top:0 !important;padding:2px 5px 0 0 !important;font-style:italic !important;color:#622678 !important;color:#000000 !important;font-weight:bold !important;}#begun_block_353320860 .begun_hover a.begun_adv_sys_logo {background: !important;}#begun_block_353320860 .begun_adv_sys_logo,#begun_block_353320860 .begun_adv_sys_logo a {font-size:14px !important;line-height:16px !important;text-align:right !important;color:#000000 !important;text-decoration:none !important;font-weight:bold !important;font-style:normal !important;}#begun_block_353320860 .begun_adv_sys_logo strong {display:none !important;line-height:16px !important;font-size:14px !important;font-weight:bold !important;letter-spacing:-1px !important;color:#000000 !important;}#begun_block_353320860 .begun_adv_sys_logo strong {*display:inline !important;}#begun_block_353320860 .begun_adv_sys_logo img {*display:none !important;}#begun_block_353320860 .begun_collapsable .begun_adv_cell .begun_adv_cell {padding:5px 2px 4px 5px !important;}#begun_block_353320860 .begun_adv_fix .begun_adv_title {margin-bottom:2px !important;}#begun_block_353320860 .begun_adv_fix .begun_adv_common {overflow:hidden !important;width:auto !important;}#begun_block_353320860.begun_auto_rich .begun_adv_fix .begun_adv_common {overflow:visible !important;}#begun_block_353320860 .begun_adv_text {padding:2px 0 !important;line-height:1 !important;}#begun_block_353320860 .begun_adv_block {border:none !important;cursor:pointer !important;cursor:hand !important;}#begun_block_353320860 .begun_adv_title a.begun_cross {float:right !important;margin-left:8px !important;font-size:18px !important;text-decoration:none !important;font-weight:normal !important;line-height:14px !important;color:#118F00 !important;opacity:0.25 !important;filter:alpha(opacity=25) !important;}#begun_block_353320860 .begun_adv_title a.begun_cross:hover {color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone {width:12px !important;margin:1px 3px 0 0 !important;position:absolute !important;top:0 !important;left:0 !important;}#begun_block_353320860 .begun_adv_phone_wrapper {padding-left:15px !important;white-space:nowrap !important;position:relative !important;display:inline-block !important;_display:inline !important;zoom:1 !important;}#begun_block_353320860 .begun_adv_phone_wrapper.begun_adv_phone_no_icon {padding-left:0 !important;}#begun_block_353320860 div.begun_adv_contact > .begun_adv_phone {margin:0 5px 0 0 !important;}#begun_block_353320860 .begun_adv_phone b {border:#000 solid 0 !important;height:1px !important;font-size:1px !important;line-height:1px !important;display:block !important;overflow:hidden !important;}#begun_block_353320860 .begun_adv_phone .p0,#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p5,#begun_block_353320860 .begun_adv_phone .p8 {background-color:#000 !important;}#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p7,#begun_block_353320860 .begun_adv_phone .p8 {margin:0 1px !important;}#begun_block_353320860 .begun_adv_phone .p2,#begun_block_353320860 .begun_adv_phone .p7 {border-width:0 4px !important;}#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p6 {margin:0 2px !important;}#begun_block_353320860 .begun_adv_phone .p0 {margin:0 3px !important;}#begun_block_353320860 .begun_adv_phone .p4 {border-width:0 3px !important;}#begun_block_353320860 .begun_adv_phone .p5 {margin:0 4px !important;}#begun_block_353320860 .begun_adv_phone .p6 {border-width:0 2px !important;}#begun_block_353320860 .begun_adv_phone .p8 {height:2px !important;}#begun_block_353320860 .begun_adv_phone b {border-color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone .p0,#begun_block_353320860 .begun_adv_phone .p1,#begun_block_353320860 .begun_adv_phone .p3,#begun_block_353320860 .begun_adv_phone .p5,#begun_block_353320860 .begun_adv_phone .p8 {background-color:#118F00 !important;}#begun_block_353320860 .begun_adv_phone {font-size:11px !important;line-height:11px !important;margin-top:1px !important;}#begun_block_353320860 .begun_adv_title * {line-height:1.2 !important;color:#0073a8 !important;font-size:18px !important;font-size: !important;font-weight:normal !important;font-weight: !important;}#begun_block_353320860 .begun_collapsable .begun_adv_title *{font-size:12px !important;}#begun_block_353320860 .begun_adv_title a:hover,#begun_block_353320860 .begun_adv_title a:hover * {color:#f00 !important;color:#FF0000 !important;}#begun_block_353320860 .begun_adv_text * {line-height:1.2 !important;color:#000 !important;color:#000000 !important;font-size:12px !important;font-size: !important;text-decoration:none !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_cell .begun_adv_block .begun_adv_text {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_cell .begun_adv_block .begun_adv_text * {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_hor .begun_adv_cell .begun_adv_block .begun_adv_text {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_hor .begun_adv_cell .begun_adv_block .begun_adv_text * {font-size:14px !important;font-size: !important;}#begun_block_353320860 .begun_adv_geo,#begun_block_353320860 .begun_adv_geo * {color:#000 !important;color:#000000 !important;text-decoration:none !important;font-size: !important;font-weight:bold !important;cursor:text !important;}#begun_block_353320860 div.begun_adv_contact {*position:relative !important;*top:3px !important;*margin-top:-3px !important;}#begun_block_353320860 .begun_adv_contact,#begun_block_353320860 .begun_adv_contact * {color:#118F00 !important;font-size:12px !important;font-size: !important;line-height:1.2 !important;}#begun_block_353320860 .begun_adv_contact span {padding-right:2px !important;}#begun_block_353320860 .begun_adv_contact a {color:#118F00 !important;text-decoration:none !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb {float:left !important;display:block !important;_display:inline !important;z-index:1 !important;overflow:hidden !important;zoom:1 !important;margin:0 auto 5px 7px !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb img {z-index:20 !important;}#begun_block_353320860 .begun_adv_rich {overflow:visible !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_image {float:left !important;margin-right:10px !important;_margin-right:7px !important;top:0 !important;width:72px !important;height:72px !important;position:relative !important;}#begun_block_353320860 .begun_adv_thumb .begun_adv_block {margin-left:60px !important;_zoom:1 !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_block {margin-left:82px !important;_margin-left:79px !important;word-wrap:break-word !important;}#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block * {text-align:left !important;}#begun_block_353320860 .begun_adv_cell .begun_adv_phone_wrapper .begun_adv_phone *,#begun_block_353320860.begun_auto_rich .begun_adv_cell .begun_adv_phone_wrapper .begun_adv_phone *,#begun_block_353320860 #begun_warn_353320860.banners_count_3 .begun_adv_cell .begun_adv_phone * {font-size:1px !important;}#begun_block_353320860 .begun_adv_ver .begun_adv_phone {margin-top:3px !important;}#begun_block_353320860 .begun_mobile_classic .begun_adv_common .begun_adv_table .begun_adv_title * {font-size:18px !important;}#begun_block_353320860 .begun_mobile_classic .begun_adv_common .begun_adv_table .begun_adv_text * {font-size:14px !important;}#begun_block_353320860 .begun_mobile_rich .begun_adv_common .begun_adv_table .begun_adv_title * {font-size:24px !important;font-weight:bold !important;}#begun_block_353320860 .begun_mobile_rich .begun_adv_common .begun_adv_table .begun_adv_text * {font-size:18px !important;}#begun_block_353320860 .gift {display:none !important;}#begun_block_353320860 .begun_warn_message {position:relative !important;display:block !important;margin-top:4px !important;padding-left:16px !important;line-height:10px !important;font-size:9px !important;text-indent:-16px !important;color:#aaa !important;}#begun_block_353320860 .begun_warn_message .begun_warn_icon {display:inline-block !important;position:relative !important;padding-right:16px !important;vertical-align:top !important;_display:inline !important;zoom:1 !important;}#begun_block_353320860 .begun_warn_message .begun_warn_icon i {position:absolute !important;top:-2px !important;width:12px !important;height:13px !important;background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAANCAYAAACdKY9CAAAACXBIWXMAAAsSAAALEgHS3X78AAAA10lEQVQoz43SvUpDQRAF4G/XC2muxD98AYsEe7HIC1jYiM+RSsFWGxvzLkJsfAVha4m1VhKCcmvRZoQ1iObAMGcPZ9iZ3UmlFBV2cYL9OD/iFq/fhqYyn+ESrZ+Y4CqyHOJ1CC067EV0od2ERyqlHOABKYrfsRH8Df3gnzjMGFfmv5AwzhhZHaNcXbkK+g2esV2JLUrFa7xk3P3S62bE8mzTVErZwRO2/nmlBQYN5jjFFOvo4SJMvchdeOapWo1hfN4R1kL7wD3OMVtejRmOo7VhpS3qIb4AJKgth4BJRpoAAAAASUVORK5CYII=") transparent 0 0 no-repeat !important;}#begun_block_353320860 .begun_brand {position:absolute !important;right:0 !important;top:0 !important;overflow:hidden !important;}#begun_block_353320860 .begun_brand_icon {background:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEQAAAAiCAYAAADmvn/1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6RDlCOUIyNzRGQkFCMTFFMzlGRkM4NjA5RUYzQTZEMDciIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6RDlCOUIyNzVGQkFCMTFFMzlGRkM4NjA5RUYzQTZEMDciPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpEOUI5QjI3MkZCQUIxMUUzOUZGQzg2MDlFRjNBNkQwNyIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpEOUI5QjI3M0ZCQUIxMUUzOUZGQzg2MDlFRjNBNkQwNyIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PoIXLyIAAAUoSURBVHja7Fl9LONnHH+K9rSHXosjdUq9FGdrjDPcbLPZhHPzrkEiFi+RiD+EXBAiMotElk1IhIX5x9HNRfYH4Zy3ududxVKCi5eKY16yeulpq1cU7b5Pc02wc1fHLrvr75tIfs/v0+ft83yez/P7PkgajeZH9A7FtV7a17vqbcrr1jc6Ceju7rYcHx83QwYWJxISGhoam5ube40gxMDjpYRsbGzQYmJirru6ukbhv6SkpA+lUqkJxvb29khFRUXu3t7eYQ4ODrFeXl43CgoKruL3GFer1aisrMzVx8cnFOM8Hi8cFPfezs6Ots/k5GTfoKCgzw/3h3E/P78QXbmhoeFKQEBAiKOjI65/Mycn531d/fMIHt3/dISMjY1dGRwc5DCZzG0IikAg8AJSAjCWmJjoV15e/olEIrno5OS0CUGrqKgI5PP5WjwzM/ODkpKSz5aWli6x2Wwp4NTKysrr0dHRgRgfGRmxHR4eZh/uDzzLCt454ufq6mrHjIyMG1NTU5ft7e1lcrmcUlVVFRAZGRl4ViIuGFHRLbcfUBon/1+YycsqwuovwQDvGhsba/DK29nZJcBEWBjr6upyByLWZ2dnfzUyMtIqAsoxnZ2d7gA/am9v5wKRz+bm5u6Ym5sfYNzFxSWmr6/PBfD7rxp0c3MzF9rVCIXCNmdn521cn8vlRvf393MPDg4e4DGdhgSq8UXkb/kFCrD8EoXYxCFLig1qXqw+HSEMBmNb1zGZTNZYW1sr1tbWzHFZqVRSYPtQsaR1v9/a2jJVqVTaNmFFqRwOR4LJ0EoRSAPCns7Pz1vpMwGFQnEB+n+GydDVh62zCQRbr66uklkslkpfMj61vom+8fwJMSmXj7zv+Pv26Qg5HvDNcqRsZmam8vDwkOjKh58pFMr+7u7uadsnHS6TSKQz+wSDbIW+4/2sVYgulAcK9L3oFnos+1N/QkxMTNSwmgyQJwmrBLyCvLy8DIvGUGKcRqOpYMDqxsZGoW7LYLXA6mEFCcE3NicmJuzCw8M/hpWVT09PM8GPnHXt0+l08Mcd8szMDM3NzU2Jt6RIJLKkUqmq8zw1QmzjtWQo9mXorvgX9EhyD/0h6UNb+9IXz/ukhsLCwqbBB67CCREP3iEDr7DCWyI9PX0E41FRUZMtLS1eMPF4bJorKyv0xcVFJrx/jPHa2tqHKSkpQeA1HnjxQeIyW1tbOfzuEsbBnEVDQ0McX1/fWCBkDZsvkEmPjY2dOE9CWFRH1CkWoG8ns04kQS9C2traHhYXFz/t7e1lg1eYwqDX4+LihvLy8p5gvKmpadjd3V3a0dHBAfXQYLJbqamp41BnFuNAJgtIfQInUTtWmKmpqdrT0zMCntUYz87O/svCwqKjvr7eA3zJDJOelpY2VlpaOvPc0MVw7MuOHJM83gYsCgW3pS8h98R30KRciDRIPw8m/Ve5TERExEdAiqeNjQ1WxhbeSmKxmB4cHCwCkn9763KZs0Zra+tQfn7+76CidWyOWGGFhYUPQFH30f84SES2S+Qyr1QIwQKhkNc4dt9ayZNIXxEKIbYMQQhByJsIf39/gpDn1xaopqYGX1kaLiGQSCLIpFFdXR1aWFhAWVlZCLLzd//YfVHw+Xx8HYGYTObhyyh8TWl4CmGz2fiq4ggZMpkMpaeno9HRUcNTSEJCAr7ORBKJBAkEAtTT04MGBgbw/a9hfKkeDwcHB1RfX681UIVCYXjJ3fFPd29vb/w/IMPNdolchvhSJQh5o/GPAAMATQ0zrB0WLrMAAAAASUVORK5CYII=") no-repeat scroll right -18px rgba(0,0,0,0) !important;display:inline-block !important;height:16px !important;position:relative !important;transition:width 0.3s ease 0s !important;vertical-align:top !important;width:16px !important;}#begun_block_353320860 .begun_brand_name {display:inline-block !important;left:100% !important;line-height:16px !important;margin-right:5px !important;opacity:0 !important;overflow:hidden !important;position:relative !important;transition:all 0.3s ease 0s !important;vertical-align:middle !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_name + .begun_brand_icon {width:16px !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_name {display:inline-block !important;left:0 !important;margin-right:5px !important;opacity:1 !important;}#begun_block_353320860 .begun_brand:hover .begun_brand_icon {width:68px !important;background-position:right 0 !important;}#begun_fullscreen_mobile_block_wrapper .fullscreen_layer {position:fixed !important;width:100% !important;height:100% !important;left:0 !important;top:0 !important;z-index:9999999 !important;background:url("//autocontext.begun.ru/img/background_fullscreen.png") !important;}#begun_close_fullscreen {position:fixed !important;top:20px !important;right:20px !important;z-index:99999999 !important;}#begun_close_fullscreen img {width:40px !important;height:40px !important;}#begun_block_3 {position:fixed !important;z-index:9999999 !important;}#begun_block_353320860 .begun_adv a { /* .begun_adv increases the selectors specifity. #id a {display: block} - common pattern #6453, #6620 */display: inline;vertical-align: baseline;text-decoration: underline;opacity: 1 !important;}#begun_block_353320860 .begun_adv {background-color: #f7fff5; /* no !important for hover */border: 1px solid #2cba00; /* no !important for hover */font-family:inherit; /* no !important for hover */}#begun_block_353320860 .begun_adv *, .begun_adv *:hover {width: auto; /* no !important for rich-images */height: auto; /* no !important for rich-images */background: none; /* no !important for hover */border: none; /* no !important for hover */}#begun_block_353320860 .begun_adv.begun_hover {background-color: ; /* no !important for hover */border: 1px solid ; /* no !important for hover */ /* no !important for hover */}#begun_block_353320860 td {overflow: visible;}#begun_block_353320860 .begun_adv_rich .begun_active_image {z-index:1000;}#begun_block_353320860 .begun_adv_rich .begun_active_image img {z-index:1000 !important;}#begun_block_353320860 .begun_adv_rich .begun_adv_image img {border:1px solid #2cba00;position:absolute !important;background:#fff !important;top:0;left:0;max-width:none !important;z-index:20;cursor:pointer;}#begun_block_353320860 .begun_adv_rich .begun_adv_picture {position:absolute !important;z-index:20;}#begun_block_353320860 .begun_collapsed {height:45px !important;overflow:hidden !important;}#begun_block_353320860 .begun_collapsed .begun_adv_title {margin-bottom:30px !important;}#begun_block_353320860 .begun_adv_common_horizontal {    position: relative !important;    margin: 10px !important;    line-height: 1 !important;    font-size: 12px !important;    font-family: Arial, "Helvetica CY", "Nimbus Sans L", sans-serif !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container {    position: relative !important;    margin-right: 25px !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container:after {    content: "" !important;    display: block !important;    height: 0 !important;    clear: both !important;    visibility: hidden !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_container_inner {    overflow: hidden !important;    width: auto !important!}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_cell {    float: left !important;    width: 24.625% !important;    padding-bottom: 17px !important;    margin: 0 0 0 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun_adv_cell {    float: none !important;    width: auto !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun_adv_cell {    width: 49.75% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun_adv_cell {    width: 33% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun_adv_cell {    width: 19.64% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun_adv_cell {    width: 16.3% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun_adv_cell {    width: 13.914285714285714285714285714286% !important;    margin: 3px 0 3px 0.4% !important;}#begun_block_353320860 .begun_adv_container.begun_hover {	background-color: transparent !important;	border: medium none !important;}#begun_block_353320860 .begun_adv_container.begun_hover .begun_adv_block:hover {	background-color:  !important;	border: 1px solid  !important;}#begun_block_353320860 .begun-adv_border-bottom {    position: absolute !important;    bottom: 0 !important;    display: block !important;    height: 0 !important;    width: 24.625% !important;    border-top: 1px solid #ececec !important;	border-top: 1px solid #2cba00 !important;}#begun_block_353320860 .begun_adv_container.begun_hover .begun_adv_cell:hover .begun-adv_border-bottom {	border-color:  !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun-adv_border-bottom {    width: 100% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun-adv_border-bottom {    width: 49.75% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun-adv_border-bottom {    width: 33% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun-adv_border-bottom {    width: 19.64% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun-adv_border-bottom {    width: 16.3% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun-adv_border-bottom {    width: 13.914285714285714285714285714286% !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_cell:first-child {    margin-left: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block {    padding-bottom: 20000px !important;    border: 1px solid #ececec !important;    border: 1px solid #2cba00 !important;    margin-bottom: -20000px !important;    margin-left: 0 !important;	background-color: #f7fff5 !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block {	zoom: 1;	display: block;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block:after {    content: "" !important;    display: block !important;    height: auto !important;    visibility: hidden !important;	clear: both !important; }#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_block img {    border: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_row {    padding: 4px 7px 0 !important;    overflow: hidden !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_row + .begun_adv_row {    padding-top: 0 !important;    margin-top: 2px !important;    overflow: hidden !important;    padding-bottom: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title {    margin-bottom: 2px !important;    font-weight: bold !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title * {    font-weight: bold !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title {    line-height: 16px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title a {    text-decoration: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_text {    margin: 2px 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_text a {    text-decoration: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links {    margin: 1px 0 !important;    font-size: 11px !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links {    margin: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links a {    line-height: 1.2 !important;    color: #3377b0 !important;    margin: 2px 7px 2px 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_additional-links a:first-child {    margin-left: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning {    font-size: 10px !important;    vertical-align: middle !important;    color: #ababab !important;}#begun_block_353320860 .begun_warn_message {	margin-top: 3px !important;	padding: 0 !important;	text-indent: 0 !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning {    line-height: 12px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_icon {    display: inline-block !important;    margin-right: 3px !important;    vertical-align: middle !important;    text-decoration: none !important;    font-style: normal !important;}.begun_adv_contact_inner {    display: inline-block !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning .begun_adv_icon {    height: 13px !important;    width: 12px !important;    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_warning_text {    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact {    position: absolute !important;    top: auto !important;	bottom: 0 !important;    float: right !important;    display: block !important;    width: 24.625% !important;    padding-bottom: 4px !important;    margin-top: 0 !important;    margin-left: -1px !important;    line-height: 13px !important;    text-decoration: none !important;    text-align: right !important;}#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block .begun_adv_contact,#begun_block_353320860.begun_auto_rich .banners_count_1 .begun_adv_block .begun_adv_contact * {	text-align: right !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact .begun_adv_contact_inner {	padding-right: 7px !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_1 .begun_adv_contact {    width: 100% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_2 .begun_adv_contact {    width: 49.75% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_3 .begun_adv_contact {    width: 33% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_5 .begun_adv_contact {    width: 19.64% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_6 .begun_adv_contact {    width: 16.3% !important;}#begun_block_353320860 .begun_adv_common_horizontal.banners_count_7 .begun_adv_contact {    width: 13.914285714285714285714285714286% !important;}*:first-child + html #begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact {	float: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_contact .begun_adv_contact {	position: static !important;	float: none !important;	display: inline !important;	padding: 0 !important;	font-size: inherit !important;	line-height: inherit !important;	width: auto !important;}#begun_block_353320860 .begun_adv_contact,#begun_block_353320860 .begun_adv_contact * {	line-height: 13px !important;}#begun_block_353320860 .begun_adv_contact span {	padding-right: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_vertical-line {    float: right !important;    height: 0 !important;    width: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_vertical-line i {    position: absolute !important;    bottom: 0 !important;    z-index: 1 !important;    height: 45px !important;    width: 0 !important;    margin-left: -1px !important;    border-left: 1px solid !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_info-block {    position: absolute !important;    top: 0 !important;    right: 0 !important;    float: right !important;    height: 100% !important;    width: 25px !important;    text-align: right !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_info-block img {    border: none !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_age {    display: block !important;    margin-top: 8px !important;    font-size: 11px !important;    font-weight: bold !important;    color: #999 !important;}#begun_block_353320860 span.begun_adv_age {	color: #999999 !important;	display: block !important;	font-size: 11px !important;	font-style: normal !important;	font-weight: bold !important;	margin-top: 8px !important;	padding: 0 !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo_new {    position: absolute !important;    right: 0 !important;    bottom: 2px !important;    display: block !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo_new img {	vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_sys_logo img {    vertical-align: middle !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image {    float: left !important;    height: 70px !important;    width: 70px !important;    margin-bottom: 2px !important;    margin-right: 5px !important;    position: static !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_rich_mini .begun_adv_image {    height: 60px !important;    width: 60px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image .snap_noshots {    position: absolute !important;    height: 70px !important;    width: 70px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_rich_mini .begun_adv_image .snap_noshots {    height: 60px !important;    width: 60px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_image img {    position: relative !important;    z-index: 2 !important;    margin: 0 !important;    vertical-align: middle !important;    transition: all 0.3s !important;}#begun_block_353320860 .begun_adv_thumb .begun_thumb {	float: left !important;	height: 70px !important;	width: 70px !important;	border-bottom: none !important;	border-right: none !important;	margin: 6px 7px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title .begun_adv_icon {    margin-right: 3px !important;    vertical-align: middle !important;    max-height: 16px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_title span {    text-decoration: underline;    vertical-align: middle;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image {    height: 100px !important;    width: 100px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image a{    height: 100px !important;    width: 100px !important;}#begun_block_353320860 .begun_adv_common_horizontal .begun_adv_rich_price_domain .begun_adv_image a .begun_adv_picture{    height: 100px !important;    width: 100px !important;    left: 0 !important;    top: 0 !important;    border: 1px solid #d1d1d1 !important;}#begun_block_353320860 .begun_adv_price_domain .begun_adv_title *{	color:#646464 !important;	text-decoration: none !important;}#begun_block_353320860 .begun_adv_price_domain .begun_adv_text *{	color:#646464 !important;}#begun_block_353320860 .begun_adv_common_horizontal.begun_adv_price_domain .begun_rich_mini .begun_adv_image img {    border: 1px solid #d1d1d1 !important;}#begun_block_353320860 .begun_adv_common_horizontal.begun_adv_price_domain .begun_adv_cell {    padding-bottom: 0 !important;}</style><iframe style="height:0;width:0;border:0" width="0" height="0"></iframe></head>
+<body>
+<div id="popup_name" class="popup_block">
+</div>
+
+<div class="topground"></div>
+<div id="main"> 
+  <div id="wrapper">
+      <div id="header"><div class="headtop"><div style="margin-top: 0px; margin-right: 0px; margin-bottom: 0px; margin-left: 0px; position: static; overflow-x: hidden; overflow-y: hidden; height: 0px; "><div id="top-panel" style="margin-right: 0px; margin-bottom: 0px; margin-left: 0px; margin-top: -20px; "> 
+<div class="currency"></div>
+       </div></div>
+        <div id="sub-panel">
+
+</div></div>
+              <div class="logo">  
+                <a href="http://easystm32.ru/" id="logo" title="EasySTM32.ru"><img src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/logo.jpg" alt=""></a>
+        </div>
+          <div class="supertop"><div class="left"></div><div class="arm">
+<ul class="menu">
+<li class="item-106"><a href="http://easystm32.ru/donate">Donate!</a></li></ul>
+</div><div class="clr"></div></div>      
+    </div>
+  <div id="navigace"><div class="levy">
+<img alt="" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/levy.png">
+</div>   <div class="pravy">
+<img alt="" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/pravy.png">
+</div>  
+        <form action="http://easystm32.ru/interfaces" method="post">
+<div class="search">
+<input name="searchword" id="mod-search-searchword" maxlength="20" class="inputbox" type="text" size="20" value="Поиск..." onblur="if (this.value==&#39;&#39;) this.value=&#39;Поиск...&#39;;" onfocus="if (this.value==&#39;Поиск...&#39;) this.value=&#39;&#39;;"><input type="image" class="button" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/buttonsearch.png" onclick="this.form.searchword.focus();" alt="submit"><input type="hidden" name="task" value="search">
+<input type="hidden" name="option" value="com_search">
+<input type="hidden" name="Itemid" value="110">
+</div>
+</form>
+      
+<ul class="menu">
+<li class="item-122"><a href="http://easystm32.ru/soft">Программы</a></li><li class="item-120"><a href="http://easystm32.ru/library">Библиотека</a></li><li class="item-119"><a href="http://easystm32.ru/about">О сайте</a></li><li class="item-121"><a href="http://easystm32.ru/contacts">Обратная связь</a></li><li class="item-123"><a href="http://easystm32.ru/links">Ссылки</a></li><li class="item-148"><a href="http://easystm32.ru/?format=feed&type=rss">RSS</a></li></ul>
+</div>
+    <div id="message">
+        
+<div id="system-message-container">
+</div>
+    </div>
+            <div id="main-content" class="s-c-s">
+            <div id="colmask">
+                <div id="colmid">
+                    <div id="colright">
+                        <div id="col1wrap">
+              <div id="col1pad">
+                              <div id="col1">
+                   
+<div class="component"><div class="breadcrumbs-pad">
+<script type="text/javascript">
+var begun_auto_pad = 353320856;
+var begun_block_id = 353320860;
+</script>
+<script src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/autocontext2.js" type="text/javascript"></script><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/autocontext2_main.29d8eb265e.js"></script><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/begun_scripts.41017b8627.js"></script><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/begun_utils.bf173c6d6f.js"></script><div id="begun_block_353320860" class="begun_auto_rich"><div class="begun_adv_common_horizontal banners_count_4"><div class="begun_adv_container "><div class="begun_adv_new_layout begun_adv_container_inner begun_adv_thumb"><div class="begun_adv_cell begun_adv_rich" title="www.lkg.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzTowMTChbigc0HW0wT0X08dVmeTs9VDT2EWoCBiJ6mUw-WZVhiZ0U4R1CaeIlblr3*qjTQUbpipt2CrPp3vNPbi8owGKM45pqeHT5Ct0R4vWj6rvgaag0vbrsDfgQd-yBfd4CdjmDhdu5PhpXXiAqaOO0TUV*zYguZd2w7G1psIQRwgwF-XPsqK9QESUTUruFXhvzaRSrS7R7qa6gtyo1i3HoOtTjEhPb5cktsSslEE-ussQ9PUszpQpiYkV21ZLCJ7vSw3CXBKFwCdUis52jPcdBhvGPb-H6e7QY6xdOMjTwP0qRAzHBlXOj*UlgFt9wZfCdwZLwa*LJg4F7g0KkXQ*TeXmku2dzxI1mKRjNMby8xAAPz7Mrg5VNNc3tNzsipYS0xCur*4ta7NK1krmhmkgA*AMyA1EKEm*LqapUpCQvbdtKFLb5M6ob97ih5WANRXCUafitllA4mt-7An1EkenS2wzziMYuPGqrDttu8uz7DkHNudLKBchgqX83ccV6J52Czqzv3Wt&amp;eurl%5B%5D=d-2ZzXV0dXSYLdthpTAbsqgaUfF*Gz0p9tUE9ZNgbJLw99ay&amp;show_time=1433146902310&amp;mouseover_time=1433146902782&amp;mouseover_count=1" _banner_id="384614264"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzTowMTChbigc0HW0wT0X08dVmeTs9VDT2EWoCBiJ6mUw-WZVhiZ0U4R1CaeIlblr3*qjTQUbpipt2CrPp3vNPbi8owGKM45pqeHT5Ct0R4vWj6rvgaag0vbrsDfgQd-yBfd4CdjmDhdu5PhpXXiAqaOO0TUV*zYguZd2w7G1psIQRwgwF-XPsqK9QESUTUruFXhvzaRSrS7R7qa6gtyo1i3HoOtTjEhPb5cktsSslEE-ussQ9PUszpQpiYkV21ZLCJ7vSw3CXBKFwCdUis52jPcdBhvGPb-H6e7QY6xdOMjTwP0qRAzHBlXOj*UlgFt9wZfCdwZLwa*LJg4F7g0KkXQ*TeXmku2dzxI1mKRjNMby8xAAPz7Mrg5VNNc3tNzsipYS0xCur*4ta7NK1krmhmkgA*AMyA1EKEm*LqapUpCQvbdtKFLb5M6ob97ih5WANRXCUafitllA4mt-7An1EkenS2wzziMYuPGqrDttu8uz7DkHNudLKBchgqX83ccV6J52Czqzv3Wt&eurl%5B%5D=d-2ZzXV0dXSYLdthpTAbsqgaUfF*Gz0p9tUE9ZNgbJLw99ay&show_time=1433146902310&mouseover_time=1433146902782&mouseover_count=1" class="snap_noshots" target="_blank"><img src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/59037633333868f4d45956b9a260b9e5.jpg" _big_photo_src="http://models.static.price.ru/images/models/400x400/split-sistema/mitsubishi-electric-pka-rp35hal/59037633333868f4d45956b9a260b9e5.jpg" _small_photo_src="http://models.static.price.ru/images/models/70x70/split-sistema/mitsubishi-electric-pka-rp35hal/59037633333868f4d45956b9a260b9e5.jpg" class="begun_adv_picture" alt="" style="top: 24px; width: 70px; height: 22px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTowMTChbigc0HW0wT0X08dVmeTs9VDT2EWoCBiJ6mUw-WZVhiZ0U4R1CaeIlblr3*qjTQUbpipt2CrPp3vNPbi8owGKM45pqeHT5Ct0R4vWj6rvgaag0vbrsDfgQd-yBfd4CdjmDhdu5PhpXXiAqaOO0TUV*zYguZd2w7G1psIQRwgwF-XPsqK9QESUTUruFXhvzaRSrS7R7qa6gtyo1i3HoOtTjEhPb5cktsSslEE-ussQ9PUszpQpiYkV21ZLCJ7vSw3CXBKFwCdUis52jPcdBhvGPb-H6e7QY6xdOMjTwP0qRAzHBlXOj*UlgFt9wZfCdwZLwa*LJg4F7g0KkXQ*TeXmku2dzxI1mKRjNMby8xAAPz7Mrg5VNNc3tNzsipYS0xCur*4ta7NK1krmhmkgA*AMyA1EKEm*LqapUpCQvbdtKFLb5M6ob97ih5WANRXCUafitllA4mt-7An1EkenS2wzziMYuPGqrDttu8uz7DkHNudLKBchgqX83ccV6J52Czqzv3Wt&eurl%5B%5D=d-2ZzXV0dXSYLdthpTAbsqgaUfF*Gz0p9tUE9ZNgbJLw99ay&show_time=1433146902310&mouseover_time=1433146902782&mouseover_count=1" title="www.lkg.ru"><span>Electric PKA-RP35HAL</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTowMTChbigc0HW0wT0X08dVmeTs9VDT2EWoCBiJ6mUw-WZVhiZ0U4R1CaeIlblr3*qjTQUbpipt2CrPp3vNPbi8owGKM45pqeHT5Ct0R4vWj6rvgaag0vbrsDfgQd-yBfd4CdjmDhdu5PhpXXiAqaOO0TUV*zYguZd2w7G1psIQRwgwF-XPsqK9QESUTUruFXhvzaRSrS7R7qa6gtyo1i3HoOtTjEhPb5cktsSslEE-ussQ9PUszpQpiYkV21ZLCJ7vSw3CXBKFwCdUis52jPcdBhvGPb-H6e7QY6xdOMjTwP0qRAzHBlXOj*UlgFt9wZfCdwZLwa*LJg4F7g0KkXQ*TeXmku2dzxI1mKRjNMby8xAAPz7Mrg5VNNc3tNzsipYS0xCur*4ta7NK1krmhmkgA*AMyA1EKEm*LqapUpCQvbdtKFLb5M6ob97ih5WANRXCUafitllA4mt-7An1EkenS2wzziMYuPGqrDttu8uz7DkHNudLKBchgqX83ccV6J52Czqzv3Wt&eurl%5B%5D=d-2ZzXV0dXSYLdthpTAbsqgaUfF*Gz0p9tUE9ZNgbJLw99ay&show_time=1433146902310&mouseover_time=1433146902782&mouseover_count=1" title="www.lkg.ru">Сплит-система. На складе. Цена 145 681 р.</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTowMTChbigc0HW0wT0X08dVmeTs9VDT2EWoCBiJ6mUw-WZVhiZ0U4R1CaeIlblr3*qjTQUbpipt2CrPp3vNPbi8owGKM45pqeHT5Ct0R4vWj6rvgaag0vbrsDfgQd-yBfd4CdjmDhdu5PhpXXiAqaOO0TUV*zYguZd2w7G1psIQRwgwF-XPsqK9QESUTUruFXhvzaRSrS7R7qa6gtyo1i3HoOtTjEhPb5cktsSslEE-ussQ9PUszpQpiYkV21ZLCJ7vSw3CXBKFwCdUis52jPcdBhvGPb-H6e7QY6xdOMjTwP0qRAzHBlXOj*UlgFt9wZfCdwZLwa*LJg4F7g0KkXQ*TeXmku2dzxI1mKRjNMby8xAAPz7Mrg5VNNc3tNzsipYS0xCur*4ta7NK1krmhmkgA*AMyA1EKEm*LqapUpCQvbdtKFLb5M6ob97ih5WANRXCUafitllA4mt-7An1EkenS2wzziMYuPGqrDttu8uz7DkHNudLKBchgqX83ccV6J52Czqzv3Wt&eurl%5B%5D=d-2ZzXV0dXSYLdthpTAbsqgaUfF*Gz0p9tUE9ZNgbJLw99ay&show_time=1433146902310&mouseover_time=1433146902782&mouseover_count=1" title="www.lkg.ru">www.lkg.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzY*BgIHgRxf8mpu9mvKucaAZTc8nVG-KxS6LH7rvvfVoLG*nt7UW87nAn0BEAQImdg7uiPpXZSVjpO72uU1NvqvGxnxmtnhxHXdSzoR3CwBa5VLCqkXseBjw-rkI1PmSlmkbH41cGB*yuDL3GbaDi6Kcl4CtUqdruKsck*M1zVYOFL30IxACBp3EWRU80iOM59Bb84cAcW2uZbOfu6YZfwjFCaXmYA8oYHRR0Oc2a4IA0jD-gSTODPNiYdt*aRiZpXNj1*HrhW5BfdNCmMjyvgRetlJeCeuiz2ljBYM3rLn*o8sJNYxq0h-PxskoTeGScCIWM3ZYqfSMKKUsj-twcxoW9Ob0LVR9KIaN4-lxKOJX7GTrPoOHJLwmW9gL5rtsssHo1pw-uJFsogSSK**esojRCRUQoRb1EJq2GlNXxiSacUvlXb4DotCCQUpp2cPnZZc0OQ28Ir99LQ4NwX2jfjz2-sJDtWZiVCGUNVi0Y3JzkiuxW8W3MdehvjVnoPpwIT4YFX50qzCTRh5Hc4p7RBLcq4GyTKzpOFixDzmrovDcmAdv5hcdbmWJKmwIiQHG*g69Lg71o9ZE4Lyf5AwsTkv7y6ROxukzMFLj4453oB4*LydiRf2k2-ltOVtWdavD2tTUIVws1fA4xpRWZRh5u85yfMiMetp0zw&amp;eurl%5B%5D=d-2ZzQkICQhsokydWcznTlTmrQ2C58HVCin4CWkvd3BHpTcyjmUY8dYNS7w&amp;show_time=1433146902310" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzY*BgIHgRxf8mpu9mvKucaAZTc8nVG-KxS6LH7rvvfVoLG*nt7UW87nAn0BEAQImdg7uiPpXZSVjpO72uU1NvqvGxnxmtnhxHXdSzoR3CwBa5VLCqkXseBjw-rkI1PmSlmkbH41cGB*yuDL3GbaDi6Kcl4CtUqdruKsck*M1zVYOFL30IxACBp3EWRU80iOM59Bb84cAcW2uZbOfu6YZfwjFCaXmYA8oYHRR0Oc2a4IA0jD-gSTODPNiYdt*aRiZpXNj1*HrhW5BfdNCmMjyvgRetlJeCeuiz2ljBYM3rLn*o8sJNYxq0h-PxskoTeGScCIWM3ZYqfSMKKUsj-twcxoW9Ob0LVR9KIaN4-lxKOJX7GTrPoOHJLwmW9gL5rtsssHo1pw-uJFsogSSK**esojRCRUQoRb1EJq2GlNXxiSacUvlXb4DotCCQUpp2cPnZZc0OQ28Ir99LQ4NwX2jfjz2-sJDtWZiVCGUNVi0Y3JzkiuxW8W3MdehvjVnoPpwIT4YFX50qzCTRh5Hc4p7RBLcq4GyTKzpOFixDzmrovDcmAdv5hcdbmWJKmwIiQHG*g69Lg71o9ZE4Lyf5AwsTkv7y6ROxukzMFLj4453oB4*LydiRf2k2-ltOVtWdavD2tTUIVws1fA4xpRWZRh5u85yfMiMetp0zw&eurl%5B%5D=d-2ZzQkICQhsokydWcznTlTmrQ2C58HVCin4CWkvd3BHpTcyjmUY8dYNS7w&show_time=1433146902310" class="snap_noshots" target="_blank"><img src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/8cf38b7ae5648afa72e4de3230a92098.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/ff8a8f5753a85da826493473f10f7fe0/pluselectro.ru/upload/iblock/8cf/8cf38b7ae5648afa72e4de3230a92098.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/ff8a8f5753a85da826493473f10f7fe0/pluselectro.ru/upload/iblock/8cf/8cf38b7ae5648afa72e4de3230a92098.jpeg" class="begun_adv_picture" alt="" style="left: 6px; height: 70px; width: 58px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzY*BgIHgRxf8mpu9mvKucaAZTc8nVG-KxS6LH7rvvfVoLG*nt7UW87nAn0BEAQImdg7uiPpXZSVjpO72uU1NvqvGxnxmtnhxHXdSzoR3CwBa5VLCqkXseBjw-rkI1PmSlmkbH41cGB*yuDL3GbaDi6Kcl4CtUqdruKsck*M1zVYOFL30IxACBp3EWRU80iOM59Bb84cAcW2uZbOfu6YZfwjFCaXmYA8oYHRR0Oc2a4IA0jD-gSTODPNiYdt*aRiZpXNj1*HrhW5BfdNCmMjyvgRetlJeCeuiz2ljBYM3rLn*o8sJNYxq0h-PxskoTeGScCIWM3ZYqfSMKKUsj-twcxoW9Ob0LVR9KIaN4-lxKOJX7GTrPoOHJLwmW9gL5rtsssHo1pw-uJFsogSSK**esojRCRUQoRb1EJq2GlNXxiSacUvlXb4DotCCQUpp2cPnZZc0OQ28Ir99LQ4NwX2jfjz2-sJDtWZiVCGUNVi0Y3JzkiuxW8W3MdehvjVnoPpwIT4YFX50qzCTRh5Hc4p7RBLcq4GyTKzpOFixDzmrovDcmAdv5hcdbmWJKmwIiQHG*g69Lg71o9ZE4Lyf5AwsTkv7y6ROxukzMFLj4453oB4*LydiRf2k2-ltOVtWdavD2tTUIVws1fA4xpRWZRh5u85yfMiMetp0zw&eurl%5B%5D=d-2ZzQkICQhsokydWcznTlTmrQ2C58HVCin4CWkvd3BHpTcyjmUY8dYNS7w&show_time=1433146902310" title="pluselectro.ru"><span>Выключатель пакетный ПВ3-40</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzY*BgIHgRxf8mpu9mvKucaAZTc8nVG-KxS6LH7rvvfVoLG*nt7UW87nAn0BEAQImdg7uiPpXZSVjpO72uU1NvqvGxnxmtnhxHXdSzoR3CwBa5VLCqkXseBjw-rkI1PmSlmkbH41cGB*yuDL3GbaDi6Kcl4CtUqdruKsck*M1zVYOFL30IxACBp3EWRU80iOM59Bb84cAcW2uZbOfu6YZfwjFCaXmYA8oYHRR0Oc2a4IA0jD-gSTODPNiYdt*aRiZpXNj1*HrhW5BfdNCmMjyvgRetlJeCeuiz2ljBYM3rLn*o8sJNYxq0h-PxskoTeGScCIWM3ZYqfSMKKUsj-twcxoW9Ob0LVR9KIaN4-lxKOJX7GTrPoOHJLwmW9gL5rtsssHo1pw-uJFsogSSK**esojRCRUQoRb1EJq2GlNXxiSacUvlXb4DotCCQUpp2cPnZZc0OQ28Ir99LQ4NwX2jfjz2-sJDtWZiVCGUNVi0Y3JzkiuxW8W3MdehvjVnoPpwIT4YFX50qzCTRh5Hc4p7RBLcq4GyTKzpOFixDzmrovDcmAdv5hcdbmWJKmwIiQHG*g69Lg71o9ZE4Lyf5AwsTkv7y6ROxukzMFLj4453oB4*LydiRf2k2-ltOVtWdavD2tTUIVws1fA4xpRWZRh5u85yfMiMetp0zw&eurl%5B%5D=d-2ZzQkICQhsokydWcznTlTmrQ2C58HVCin4CWkvd3BHpTcyjmUY8dYNS7w&show_time=1433146902310" title="pluselectro.ru">На складе. <b>Цена</b> 556 р. Доступные <b>цены</b>, высокое качество!</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzY*BgIHgRxf8mpu9mvKucaAZTc8nVG-KxS6LH7rvvfVoLG*nt7UW87nAn0BEAQImdg7uiPpXZSVjpO72uU1NvqvGxnxmtnhxHXdSzoR3CwBa5VLCqkXseBjw-rkI1PmSlmkbH41cGB*yuDL3GbaDi6Kcl4CtUqdruKsck*M1zVYOFL30IxACBp3EWRU80iOM59Bb84cAcW2uZbOfu6YZfwjFCaXmYA8oYHRR0Oc2a4IA0jD-gSTODPNiYdt*aRiZpXNj1*HrhW5BfdNCmMjyvgRetlJeCeuiz2ljBYM3rLn*o8sJNYxq0h-PxskoTeGScCIWM3ZYqfSMKKUsj-twcxoW9Ob0LVR9KIaN4-lxKOJX7GTrPoOHJLwmW9gL5rtsssHo1pw-uJFsogSSK**esojRCRUQoRb1EJq2GlNXxiSacUvlXb4DotCCQUpp2cPnZZc0OQ28Ir99LQ4NwX2jfjz2-sJDtWZiVCGUNVi0Y3JzkiuxW8W3MdehvjVnoPpwIT4YFX50qzCTRh5Hc4p7RBLcq4GyTKzpOFixDzmrovDcmAdv5hcdbmWJKmwIiQHG*g69Lg71o9ZE4Lyf5AwsTkv7y6ROxukzMFLj4453oB4*LydiRf2k2-ltOVtWdavD2tTUIVws1fA4xpRWZRh5u85yfMiMetp0zw&eurl%5B%5D=d-2ZzQkICQhsokydWcznTlTmrQ2C58HVCin4CWkvd3BHpTcyjmUY8dYNS7w&show_time=1433146902310" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzZSam5qbtm4xV1ZwVz9jvG3UgALqmaIHCONG0ncicDil4aJqenjbPnSKLDATY58s7F2-JUnb6PoqO4JWC2lu-nuyLuMIXyBCB99ofsHys-iRPZvjD-WRZZ1OB2-MSpz2tnA9XuHiY-RIHcXjikqMfLdVPWsQ9VPXvmxbqLCjq1RiM2vplnmY*aLxrgvdjJaYNY63TXItVWgRa8I8lsaNJKCtQI3cictC45Z8qcSOytEUB0jNCOHaBdXMQ6f2x-Osxq0ecb*ZPEKM7HgayoIfpuJZjUH9HW1e3DGwEAsKntxN1BQ1PxfgySMAtpvL1jn8kGGBAGa36Ur0-b0qEvhPe640Ppy-IkmavBChYdw7gLzHXgOW7w05eBtO6dM*w5wgIKgjCJHZg-guDHx1-958UPiZj8HESGsy4Em52O1be6H-IKDHKdRriEoxuFGn2QPA97159SW0jUWPxeNvDdRYnrsLfyEvrpRfFxtbdWXUmq3JY4jQeWKvodl-0cRIihlDyqF0RKpIBeWS5FX30sdxAtgob0KaYM46qpTXYbeNDToChUaN8Wi2WsxSlYTlA5mgrz42BrgpGGMBnWw6utL0U5eKwAKE0m-JpQYgXo*bNgAS-NmCsnmO-EWXUD5pDpmpV3*EcW8Yy1AiNKFoxZHGYL-4HaAFGLrnGw&amp;eurl%5B%5D=d-2ZzQoLCgsMHQQBxVB70sh6MZEee11JlrVklRq4UH5Ome*T8Yt1NiuPwbE&amp;show_time=1433146902310" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzZSam5qbtm4xV1ZwVz9jvG3UgALqmaIHCONG0ncicDil4aJqenjbPnSKLDATY58s7F2-JUnb6PoqO4JWC2lu-nuyLuMIXyBCB99ofsHys-iRPZvjD-WRZZ1OB2-MSpz2tnA9XuHiY-RIHcXjikqMfLdVPWsQ9VPXvmxbqLCjq1RiM2vplnmY*aLxrgvdjJaYNY63TXItVWgRa8I8lsaNJKCtQI3cictC45Z8qcSOytEUB0jNCOHaBdXMQ6f2x-Osxq0ecb*ZPEKM7HgayoIfpuJZjUH9HW1e3DGwEAsKntxN1BQ1PxfgySMAtpvL1jn8kGGBAGa36Ur0-b0qEvhPe640Ppy-IkmavBChYdw7gLzHXgOW7w05eBtO6dM*w5wgIKgjCJHZg-guDHx1-958UPiZj8HESGsy4Em52O1be6H-IKDHKdRriEoxuFGn2QPA97159SW0jUWPxeNvDdRYnrsLfyEvrpRfFxtbdWXUmq3JY4jQeWKvodl-0cRIihlDyqF0RKpIBeWS5FX30sdxAtgob0KaYM46qpTXYbeNDToChUaN8Wi2WsxSlYTlA5mgrz42BrgpGGMBnWw6utL0U5eKwAKE0m-JpQYgXo*bNgAS-NmCsnmO-EWXUD5pDpmpV3*EcW8Yy1AiNKFoxZHGYL-4HaAFGLrnGw&eurl%5B%5D=d-2ZzQoLCgsMHQQBxVB70sh6MZEee11JlrVklRq4UH5Ome*T8Yt1NiuPwbE&show_time=1433146902310" class="snap_noshots" target="_blank"><img src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/96fefaf73e66633351078036ecb0c24e.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/cc05e5c7be17718d072741611934556c/pluselectro.ru/upload/iblock/96f/96fefaf73e66633351078036ecb0c24e.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/cc05e5c7be17718d072741611934556c/pluselectro.ru/upload/iblock/96f/96fefaf73e66633351078036ecb0c24e.jpeg" class="begun_adv_picture" alt="" style="left: 9px; height: 70px; width: 52px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZSam5qbtm4xV1ZwVz9jvG3UgALqmaIHCONG0ncicDil4aJqenjbPnSKLDATY58s7F2-JUnb6PoqO4JWC2lu-nuyLuMIXyBCB99ofsHys-iRPZvjD-WRZZ1OB2-MSpz2tnA9XuHiY-RIHcXjikqMfLdVPWsQ9VPXvmxbqLCjq1RiM2vplnmY*aLxrgvdjJaYNY63TXItVWgRa8I8lsaNJKCtQI3cictC45Z8qcSOytEUB0jNCOHaBdXMQ6f2x-Osxq0ecb*ZPEKM7HgayoIfpuJZjUH9HW1e3DGwEAsKntxN1BQ1PxfgySMAtpvL1jn8kGGBAGa36Ur0-b0qEvhPe640Ppy-IkmavBChYdw7gLzHXgOW7w05eBtO6dM*w5wgIKgjCJHZg-guDHx1-958UPiZj8HESGsy4Em52O1be6H-IKDHKdRriEoxuFGn2QPA97159SW0jUWPxeNvDdRYnrsLfyEvrpRfFxtbdWXUmq3JY4jQeWKvodl-0cRIihlDyqF0RKpIBeWS5FX30sdxAtgob0KaYM46qpTXYbeNDToChUaN8Wi2WsxSlYTlA5mgrz42BrgpGGMBnWw6utL0U5eKwAKE0m-JpQYgXo*bNgAS-NmCsnmO-EWXUD5pDpmpV3*EcW8Yy1AiNKFoxZHGYL-4HaAFGLrnGw&eurl%5B%5D=d-2ZzQoLCgsMHQQBxVB70sh6MZEee11JlrVklRq4UH5Ome*T8Yt1NiuPwbE&show_time=1433146902310" title="pluselectro.ru"><span>Выключатель пакетный IP56</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZSam5qbtm4xV1ZwVz9jvG3UgALqmaIHCONG0ncicDil4aJqenjbPnSKLDATY58s7F2-JUnb6PoqO4JWC2lu-nuyLuMIXyBCB99ofsHys-iRPZvjD-WRZZ1OB2-MSpz2tnA9XuHiY-RIHcXjikqMfLdVPWsQ9VPXvmxbqLCjq1RiM2vplnmY*aLxrgvdjJaYNY63TXItVWgRa8I8lsaNJKCtQI3cictC45Z8qcSOytEUB0jNCOHaBdXMQ6f2x-Osxq0ecb*ZPEKM7HgayoIfpuJZjUH9HW1e3DGwEAsKntxN1BQ1PxfgySMAtpvL1jn8kGGBAGa36Ur0-b0qEvhPe640Ppy-IkmavBChYdw7gLzHXgOW7w05eBtO6dM*w5wgIKgjCJHZg-guDHx1-958UPiZj8HESGsy4Em52O1be6H-IKDHKdRriEoxuFGn2QPA97159SW0jUWPxeNvDdRYnrsLfyEvrpRfFxtbdWXUmq3JY4jQeWKvodl-0cRIihlDyqF0RKpIBeWS5FX30sdxAtgob0KaYM46qpTXYbeNDToChUaN8Wi2WsxSlYTlA5mgrz42BrgpGGMBnWw6utL0U5eKwAKE0m-JpQYgXo*bNgAS-NmCsnmO-EWXUD5pDpmpV3*EcW8Yy1AiNKFoxZHGYL-4HaAFGLrnGw&eurl%5B%5D=d-2ZzQoLCgsMHQQBxVB70sh6MZEee11JlrVklRq4UH5Ome*T8Yt1NiuPwbE&show_time=1433146902310" title="pluselectro.ru">На складе. <b>Цена</b> 1 657 р. Отличные <b>цены</b>, большой выбор!</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzZSam5qbtm4xV1ZwVz9jvG3UgALqmaIHCONG0ncicDil4aJqenjbPnSKLDATY58s7F2-JUnb6PoqO4JWC2lu-nuyLuMIXyBCB99ofsHys-iRPZvjD-WRZZ1OB2-MSpz2tnA9XuHiY-RIHcXjikqMfLdVPWsQ9VPXvmxbqLCjq1RiM2vplnmY*aLxrgvdjJaYNY63TXItVWgRa8I8lsaNJKCtQI3cictC45Z8qcSOytEUB0jNCOHaBdXMQ6f2x-Osxq0ecb*ZPEKM7HgayoIfpuJZjUH9HW1e3DGwEAsKntxN1BQ1PxfgySMAtpvL1jn8kGGBAGa36Ur0-b0qEvhPe640Ppy-IkmavBChYdw7gLzHXgOW7w05eBtO6dM*w5wgIKgjCJHZg-guDHx1-958UPiZj8HESGsy4Em52O1be6H-IKDHKdRriEoxuFGn2QPA97159SW0jUWPxeNvDdRYnrsLfyEvrpRfFxtbdWXUmq3JY4jQeWKvodl-0cRIihlDyqF0RKpIBeWS5FX30sdxAtgob0KaYM46qpTXYbeNDToChUaN8Wi2WsxSlYTlA5mgrz42BrgpGGMBnWw6utL0U5eKwAKE0m-JpQYgXo*bNgAS-NmCsnmO-EWXUD5pDpmpV3*EcW8Yy1AiNKFoxZHGYL-4HaAFGLrnGw&eurl%5B%5D=d-2ZzQoLCgsMHQQBxVB70sh6MZEee11JlrVklRq4UH5Ome*T8Yt1NiuPwbE&show_time=1433146902310" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div><div class="begun_adv_cell begun_adv_rich" title="pluselectro.ru" onclick="Begun.Autocontext.clickBanner(event, this)" _url="http://click01.begun.ru/click.jsp?url=d-2ZzTM8PTwgki31k5K0k-uneKkQRMYuXWbDzCeCFrPmtPxhJWauvrwf*rBO6PTXp1voKGNUPSVWQ3onNo9bBmRj83a-I*4FUi1PCtJlc8z-vvWcMJbuAvicaJBDCmLBR5H7u30wU*zvbvlFEMjuh0eBcbrqLE3b-E8eAaR62RC41HiQx0Zgu1tHUzOVZt2dzLuBQ8pduBb*j64z5dPIG6L48x-SuMikzdQyUWpea2HtAgp-Fv8z*bafRw9oJ9gZNYkLrpXQv-A46S1WXEPzAMHaGLcaeGVx49YsKzDu4HZ3UebgEv4f2dLmb8fFj7IlutDj6gxkmomypqLMDu7Ah-mQkwBRzZthZTlUjovkVYZv95vbeeENG7T*2IFjjvlScmwsLWUiPYnLEZZG1svC2l5mEbzBYs0*BogtTuLgKuShCAfIsw0N5KOsz8KFsuSLqW0tJPb8qB*dyGh*sra9wz0pCLsXI2JMLQfVccixO02-eTH*GCe9fePJLtUVt-CsAd-CpBrM-Uf1Lc6GbI8STinGhmQZWgl5soz1kqDCtW5V9Sdn3Q7fUPRbnaOmG-kLWcupcfov27woREwbWHI0Ebkiasj8UD4fHySB8h3GSsGFeCZLu3jXWz-O6Dk8wbVVuNxMf5gZrQ52G2rR&amp;eurl%5B%5D=d-2ZzXd2d3Y077rCBpO4EQu58lLduJ6KVXanVvLk8Rttu8tE&amp;show_time=1433146902310" _banner_id="384173008"><div class="begun_adv_block"><div class="begun_adv_image"><a href="http://click01.begun.ru/click.jsp?url=d-2ZzTM8PTwgki31k5K0k-uneKkQRMYuXWbDzCeCFrPmtPxhJWauvrwf*rBO6PTXp1voKGNUPSVWQ3onNo9bBmRj83a-I*4FUi1PCtJlc8z-vvWcMJbuAvicaJBDCmLBR5H7u30wU*zvbvlFEMjuh0eBcbrqLE3b-E8eAaR62RC41HiQx0Zgu1tHUzOVZt2dzLuBQ8pduBb*j64z5dPIG6L48x-SuMikzdQyUWpea2HtAgp-Fv8z*bafRw9oJ9gZNYkLrpXQv-A46S1WXEPzAMHaGLcaeGVx49YsKzDu4HZ3UebgEv4f2dLmb8fFj7IlutDj6gxkmomypqLMDu7Ah-mQkwBRzZthZTlUjovkVYZv95vbeeENG7T*2IFjjvlScmwsLWUiPYnLEZZG1svC2l5mEbzBYs0*BogtTuLgKuShCAfIsw0N5KOsz8KFsuSLqW0tJPb8qB*dyGh*sra9wz0pCLsXI2JMLQfVccixO02-eTH*GCe9fePJLtUVt-CsAd-CpBrM-Uf1Lc6GbI8STinGhmQZWgl5soz1kqDCtW5V9Sdn3Q7fUPRbnaOmG-kLWcupcfov27woREwbWHI0Ebkiasj8UD4fHySB8h3GSsGFeCZLu3jXWz-O6Dk8wbVVuNxMf5gZrQ52G2rR&eurl%5B%5D=d-2ZzXd2d3Y077rCBpO4EQu58lLduJ6KVXanVvLk8Rttu8tE&show_time=1433146902310" class="snap_noshots" target="_blank"><img src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/b44b4e2e8e7d713d05db770cc82475af.jpeg" _big_photo_src="http://price.static.price.ru/400x400/elektrooborudovanie/857ee4a2957edfddbd6a1d83f9a991b2/pluselectro.ru/upload/iblock/b44/b44b4e2e8e7d713d05db770cc82475af.jpeg" _small_photo_src="http://price.static.price.ru/70x70/elektrooborudovanie/857ee4a2957edfddbd6a1d83f9a991b2/pluselectro.ru/upload/iblock/b44/b44b4e2e8e7d713d05db770cc82475af.jpeg" class="begun_adv_picture" alt="" style="top: 0.5px; width: 70px; height: 69px; "></a></div><div class="begun_adv_row"><div class="begun_adv_title"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTM8PTwgki31k5K0k-uneKkQRMYuXWbDzCeCFrPmtPxhJWauvrwf*rBO6PTXp1voKGNUPSVWQ3onNo9bBmRj83a-I*4FUi1PCtJlc8z-vvWcMJbuAvicaJBDCmLBR5H7u30wU*zvbvlFEMjuh0eBcbrqLE3b-E8eAaR62RC41HiQx0Zgu1tHUzOVZt2dzLuBQ8pduBb*j64z5dPIG6L48x-SuMikzdQyUWpea2HtAgp-Fv8z*bafRw9oJ9gZNYkLrpXQv-A46S1WXEPzAMHaGLcaeGVx49YsKzDu4HZ3UebgEv4f2dLmb8fFj7IlutDj6gxkmomypqLMDu7Ah-mQkwBRzZthZTlUjovkVYZv95vbeeENG7T*2IFjjvlScmwsLWUiPYnLEZZG1svC2l5mEbzBYs0*BogtTuLgKuShCAfIsw0N5KOsz8KFsuSLqW0tJPb8qB*dyGh*sra9wz0pCLsXI2JMLQfVccixO02-eTH*GCe9fePJLtUVt-CsAd-CpBrM-Uf1Lc6GbI8STinGhmQZWgl5soz1kqDCtW5V9Sdn3Q7fUPRbnaOmG-kLWcupcfov27woREwbWHI0Ebkiasj8UD4fHySB8h3GSsGFeCZLu3jXWz-O6Dk8wbVVuNxMf5gZrQ52G2rR&eurl%5B%5D=d-2ZzXd2d3Y077rCBpO4EQu58lLduJ6KVXanVvLk8Rttu8tE&show_time=1433146902310" title="pluselectro.ru"><span>Выключатель пакетный</span></a></div><div class="begun_adv_text"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTM8PTwgki31k5K0k-uneKkQRMYuXWbDzCeCFrPmtPxhJWauvrwf*rBO6PTXp1voKGNUPSVWQ3onNo9bBmRj83a-I*4FUi1PCtJlc8z-vvWcMJbuAvicaJBDCmLBR5H7u30wU*zvbvlFEMjuh0eBcbrqLE3b-E8eAaR62RC41HiQx0Zgu1tHUzOVZt2dzLuBQ8pduBb*j64z5dPIG6L48x-SuMikzdQyUWpea2HtAgp-Fv8z*bafRw9oJ9gZNYkLrpXQv-A46S1WXEPzAMHaGLcaeGVx49YsKzDu4HZ3UebgEv4f2dLmb8fFj7IlutDj6gxkmomypqLMDu7Ah-mQkwBRzZthZTlUjovkVYZv95vbeeENG7T*2IFjjvlScmwsLWUiPYnLEZZG1svC2l5mEbzBYs0*BogtTuLgKuShCAfIsw0N5KOsz8KFsuSLqW0tJPb8qB*dyGh*sra9wz0pCLsXI2JMLQfVccixO02-eTH*GCe9fePJLtUVt-CsAd-CpBrM-Uf1Lc6GbI8STinGhmQZWgl5soz1kqDCtW5V9Sdn3Q7fUPRbnaOmG-kLWcupcfov27woREwbWHI0Ebkiasj8UD4fHySB8h3GSsGFeCZLu3jXWz-O6Dk8wbVVuNxMf5gZrQ52G2rR&eurl%5B%5D=d-2ZzXd2d3Y077rCBpO4EQu58lLduJ6KVXanVvLk8Rttu8tE&show_time=1433146902310" title="pluselectro.ru">На складе. Цена 266 р. Приобретайте по лучшей цене!</a></div></div><div class="begun_adv_contact"><span class="begun_adv_contact_inner"><span class="begun_adv_contact"><a class="snap_noshots" target="_blank" href="http://click01.begun.ru/click.jsp?url=d-2ZzTM8PTwgki31k5K0k-uneKkQRMYuXWbDzCeCFrPmtPxhJWauvrwf*rBO6PTXp1voKGNUPSVWQ3onNo9bBmRj83a-I*4FUi1PCtJlc8z-vvWcMJbuAvicaJBDCmLBR5H7u30wU*zvbvlFEMjuh0eBcbrqLE3b-E8eAaR62RC41HiQx0Zgu1tHUzOVZt2dzLuBQ8pduBb*j64z5dPIG6L48x-SuMikzdQyUWpea2HtAgp-Fv8z*bafRw9oJ9gZNYkLrpXQv-A46S1WXEPzAMHaGLcaeGVx49YsKzDu4HZ3UebgEv4f2dLmb8fFj7IlutDj6gxkmomypqLMDu7Ah-mQkwBRzZthZTlUjovkVYZv95vbeeENG7T*2IFjjvlScmwsLWUiPYnLEZZG1svC2l5mEbzBYs0*BogtTuLgKuShCAfIsw0N5KOsz8KFsuSLqW0tJPb8qB*dyGh*sra9wz0pCLsXI2JMLQfVccixO02-eTH*GCe9fePJLtUVt-CsAd-CpBrM-Uf1Lc6GbI8STinGhmQZWgl5soz1kqDCtW5V9Sdn3Q7fUPRbnaOmG-kLWcupcfov27woREwbWHI0Ebkiasj8UD4fHySB8h3GSsGFeCZLu3jXWz-O6Dk8wbVVuNxMf5gZrQ52G2rR&eurl%5B%5D=d-2ZzXd2d3Y077rCBpO4EQu58lLduJ6KVXanVvLk8Rttu8tE&show_time=1433146902310" title="pluselectro.ru">pluselectro.ru</a></span></span><i class="begun_adv_vertical-line"><i></i></i></div></div><i class="begun-adv_border-bottom"></i></div></div></div><div class="begun_adv_info-block"><span class="begun_adv_age">18+</span></div><a class="begun_adv_sys_logo_new" href="http://www.begun.ru/advertiser/services/mtb.php?utm_source=begun_network&utm_medium=logo&utm_campaign=banners" target="_blank" style="display:"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAIAAADZrBkAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo0QzQ3NzM1NTg1QUVFMzExQjBDMDlFMkFCQjFEQzYxMSIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDoyMEZGOTU0RERCNzUxMUUzODFGRTgyRjg0RjBFQkRCRiIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDoyMEZGOTU0Q0RCNzUxMUUzODFGRTgyRjg0RjBFQkRCRiIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M2IChXaW5kb3dzKSI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkE1MEU5QjY3MDdCNEUzMTFBRUE0Qjk4RTBDOEUyRTlDIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjRDNDc3MzU1ODVBRUUzMTFCMEMwOUUyQUJCMURDNjExIi8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+sSOgOQAAAMBJREFUeNpi1NnJQAZgYmAYJtoYgZAMbdkqjQKswiRok+SQ69Jbnq5Uy8XCiyzOglW1Jq+hvZivpbCrAb8lEyPz979fX/98hk8bUFG91swg6WRkwXVP5/7+9wufI2PlC9D0HHy9ZcLtSjRl6LYFSiUByf8M/89/OHr87e6jb3Zc/ngK0xco2lgYWRW5NQ693tp1s/Dht9t4gopZLBbB+cfwj5OFu+5q8offbwnEJFpSBsYs0IUkpxJi9AyVHAAQYABfejoD7C69BAAAAABJRU5ErkJggg==" border="0" alt="price"></a></div></div><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/context.jsp" id="begun_js_1"></script><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/begun_tpl_block_horizontal.60c20350c2.js" id="begun_js_2"></script><script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/auto_rich.82b13c15be.js" id="begun_js_3"></script>
+                                        
+                                    </div><div class="item-page">
+		<h2>
+								<a href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/EasySTM32 - Интерфейс SPI в STM32. Часть 2.htm">
+						Интерфейс SPI в STM32. Часть 2</a>
+						</h2>
+			
+		<p style="text-align: justify;">В <a href="http://easystm32.ru/interfaces/43-spi-interface-part-1">предыдущей статье</a> я попробовал очень кратко рассказать о SPI интерфейсе, а сейчас настало время практики. &nbsp;В микроконтроллерах STM32F407Vxxx существуют аж целых три аппаратных SPI интерфейса. В других менее крутых контроллерах SPI модули не имеют существенных отличий, разве что их там поменьше. Чтоб не запутаться на каких ногах вашего контроллера висит SPI, рекомендую воспользоваться программой&nbsp;<a href="http://easystm32.ru/useful-things/26-microxplorer-utility">MicroXplorer</a>.&nbsp;Если SPI-ноги контроллера уже заняты, то следует напомнить о такой замечательной вещи как remap (позволяет перенести SPI на другие ноги). Посмотреть что и куда ремапится можно так же при помощи этой программы. У моего контроллера все SPI интерфейсы расположены на этих ногах:&nbsp;</p>
+<p>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/logo(1).jpg" alt="logo" width="473" height="523"></p>
+<p style="text-align: justify;">Для упрощения работы со всей периферией микроконтроллера, (таймеры, UART, SPI итд) компания ST придумала библиотеку под названием&nbsp;stdperiph_lib. Раньше я почему-то старался не использовать &nbsp;её, но сейчас я осознал, что с её использованием код становится более понятным и читаемым + улучшается переносимость кода с одного STM32 контроллера на другой. Из-за этого, начиная с этой статьи, я буду использовать эту библиотеку для инициализации периферии.&nbsp;Чтоб понять как использовать SPI, крайне желательно ознакомиться со всеми регистрами через которые происходит взаимодействие с ним. Их как обычно достаточно много, но если разобраться, то ничего особо сложного в них нет. По идее библиотека&nbsp;<span style="text-align: justify;">stdperiph_lib как раз и предназначена для того, чтоб избавить программиста от необходимости напрямую взаимодействовать с регистрами настройки периферии, но я считаю что нужно иметь хотя-бы примерное представление о том, что и как она настраивает.&nbsp;</span></p>
+ 
+<h2>Регистр&nbsp;SPI_CR1</h2>
+<p><a href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_CR1.png"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_CR1.png" alt="SPI CR1" width="650" height="93"></a></p>
+<p style="text-align: justify;"><strong>BIDIMODE</strong> - если этот бит установлен, то прием и передача данных осуществляются по одному проводу (не считая SCK). При этом, как я понял, MOSI вывод мастера подключается к MISO слейва. Экзотический режим на мой взгляд :)</p>
+<p style="text-align: justify;"><strong>BIDIOE</strong> - этот бит используется в однопроводном режиме. Если он установлен - SPI модуль только передает данные. Если сброшен - то принимает.</p>
+<p style="text-align: justify;"><strong>CRCEN</strong> - включает аппаратный модуль расчёт контрольной суммы. 0 - выкл, 1 - вкл. Изменять состояние этого бита можно только когда SPI модуль выключен (бит SPE=0).</p>
+<p style="text-align: justify;"><strong>CRCNEXT</strong> - если этот бит установлен, то после следующей передачи байта данных, будет отправлена контрольная сумма.</p>
+<p style="text-align: justify;"><strong>DFF</strong> - если бит сброшен, то SPI модуль передает/принимает данные по 8 бит, в противном случаее передается/принимается сразу по 16 бит. Изменять состояние этого бита можно только когда SPI модуль выключен (бит SPE=0).</p>
+<p style="text-align: justify;"><strong>RXONLY</strong> - если используется 2-х проводной режим (см бит BIDIMODE) то установка этого бита запрещает передачу, SPI модуль работает только на приём</p>
+<p style="text-align: justify;">Перед описанием следующих двух бит, нужно отметить одну интересную особенность вывода NSS (он же SS он же CS). Если SPI модуль настроен в режиме слейва, то он может получать сигнал с ноги NSS или же программно. Если бит <strong>SSM</strong> сброшен, то сигнал SS будет считываться с ноги NSS, а если он установлен, то состояние ноги NSS игноирируется. В таком случае для управления сигналом SS возлагается на бит <strong>SSI</strong>. Бит установлен - есть сигнал SS, в противном случае нет. Если же SPI модуль работает в режиме мастера, то ногу NSS нужно подтянуть к питанию или включить программное управление (SSM=1) и установить бит SSI. В противном случае - SPI модуль подумает, что появился новый мастер и сам станет слейвом. Этот момент для меня был не совсем очевиден и я потратил много времени чтоб разобраться.&nbsp;</p>
+<p style="text-align: justify;"><strong>LSBFIRST</strong> - задает порядок передачи бит: <br> 0 - сначала передается старший бит <br> 1 - сначала передается младший бит</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>SPE</strong> - выключает/выключает SPI модуль</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>BR2</strong>,<strong>BR1</strong>,<strong>BR0</strong> - задают скорость приема/передачи (частоту SCK). Частота тактирования модуля SPI делится на число, которое задается комбинацией этих трех бит.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">&nbsp;</p>
+<table style="border-collapse: collapse; border: none;" border="1" cellspacing="0" cellpadding="0">
+<tbody>
+<tr style="height: 13.6pt;">
+<td style="width: 116.95pt; border: 1pt solid windowtext; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">BR2</p>
+</td>
+<td style="width: 116.95pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">BR1</p>
+</td>
+<td style="width: 116.95pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">BR0</p>
+</td>
+<td style="width: 116.95pt; border-style: solid solid solid none; border-top-color: windowtext; border-right-color: windowtext; border-bottom-color: windowtext; border-top-width: 1pt; border-right-width: 1pt; border-bottom-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">Делитель</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">2</p>
+</td>
+</tr>
+<tr style="height: 13.6pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 13.6pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">4</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">8</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">16</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">32</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">64</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">128</p>
+</td>
+</tr>
+<tr style="height: 14.4pt;">
+<td style="width: 116.95pt; border-style: none solid solid; border-right-color: windowtext; border-bottom-color: windowtext; border-left-color: windowtext; border-right-width: 1pt; border-bottom-width: 1pt; border-left-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1</p>
+</td>
+<td style="width: 116.95pt; border-style: none solid solid none; border-bottom-color: windowtext; border-bottom-width: 1pt; border-right-color: windowtext; border-right-width: 1pt; padding: 0cm 5.4pt; height: 14.4pt;" valign="top" width="156">
+<p style="margin-bottom: 0.0001pt; text-align: justify;">256</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">Изменять состояние этих бит можно только когда SPI модуль выключен (бит SPE=0).</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>MSTR</strong> - если бит установлен - SPI модуль является мастером, иначе слейвом.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>CPOL</strong> - полярность сигнала SCK. (см. табличку из <a href="http://easystm32.ru/interfaces/43-spi-interface-part-1">прошлой статьи</a>).</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>CPHA</strong> - фаза сигнала SCK (см. табличку из <a href="http://easystm32.ru/interfaces/43-spi-interface-part-1">прошлой статьи</a>).</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">&nbsp;</p>
+<h2>Регистр&nbsp;SPI_CR2</h2>
+<p><a href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_CR2.png"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_CR2.png" alt="SPI CR2" width="650" height="96"></a></p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>TXEIE</strong> - разрешает прерывание, когда буфер передачи пуст (всё передалось)</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>RXNEIE</strong> - разрешает прерывание, когда буфер заполнен данными и их можно забирать.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>ERRIE</strong> - разрешает прерывание в случае возникновения ошибки. Их всего три, чтоб разобраться какая возникла, нужно смотреть состояние бит в регистре статуса. Об этом чуть ниже.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>FRF</strong> - Frame format, не разбирался что это такое.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">0 -&nbsp; SPI Motorola mode</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">1 - SPI TI mode</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;">По умолчанию там ноль, без надобности не трогать :)</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>SSOE</strong> – Если этот бит выставлен, то SPI модуль (в режиме мастера разумеется) сам управляет выводом NSS. Т.е. как я понял перед началом передачи выставляет ноль на этом выводе, а после завершения – выставляет единицу. Возможно это не правильно, у меня так и не получилось ничего с этим битом сделать.</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>TXDMAEN</strong> - разрешает/запрещает запрос DMA по завершению передачи</p>
+<p style="margin-bottom: 0.0001pt; text-align: justify;"><strong>RXDMAEN</strong> - разрешает/запрещает запрос DMA по завершению приема</p>
+<h2 style="margin-bottom: 0.0001pt; text-align: justify;">Статусный регистр SPI_SR</h2>
+<p><a href="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_SR.png"><img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/SPI_SR.png" alt="SPI SR" width="650" height="92"></a></p>
+<p><strong>FRE</strong> - Frame error flag, пока не совсем понятно что это за флаг ошибки, он используется когда SPI модуль работает в режиме «TI mode» (бит FRF=1). Еще он относится к интерфейсу I2S, о нем будет отдельная статья. (не путать с I2C)</p>
+<p><strong>BSY</strong> - если этот бит установлен, значит модуль SPI сейчас занят передачей данных.</p>
+<p><strong>OVR</strong> - бит выставляется в том случае, если в SPI модуль поступили новые данные и перетерли старые которые не были прочитаны.</p>
+<p><strong>MODF</strong> - выставляется в том случае если мастер внезапно перестал быть мастером. Такое возможно когда нога мастера NSS настроена как вход и на неё поступил сигнал низкого уровня.</p>
+<p><strong>CRCERR</strong> - ошибка контрольной суммы</p>
+<p><strong>UDR</strong> – флаг не используется в режиме SPI</p>
+<p><strong>TXE</strong> - Передача данных завершилась</p>
+<p><strong>RXNE</strong> - Приём данных завершен</p>
+<h2>Регистр SPI_DR</h2>
+<p>Представляет собой 16-ти битный регистр данных. На самом деле регистров два – один для передачи, а другой для приёма, но работа с ними осуществляется через один регистр SPI_DR. Если мы что-то в него пишем, то запись данных производится в регистр для передачи. Если читаем, то данные считываются из регистра для приёма данных.</p>
+<h2>Регистр SPI_CRCPR</h2>
+<p>Сюда записывают некоторое число, которое как-то должно повлиять на расчет контрольной суммы. По умолчанию там записано число 7.</p>
+<h2>Регистр SPI_TXCRCR</h2>
+<p>Сюда записывается контрольная сумма, которая посчиталась для передаваемых данных.</p>
+<h2>Регистр SPI_RXCRCR</h2>
+<p>Сюда записывается контрольная сумма, которая посчиталась для принятых данных.</p>
+<h2>Примеры кода</h2>
+<p style="text-align: justify;">Теперь настало время для кода. Для первых трёх примеров можно использовать плату <a href="http://easystm32.ru/stm32f4-discovery/41-otsenochnaya-plata-stm32f4discovery">STM32F4DISCOVERY</a>. Четвертый пример требует для запуска второй контроллер или еще одну отладочную платку <a href="http://easystm32.ru/stm32vl-discovery/9-acquaintance-with-stm32vl-discovery">STM32VLDISCOVERY</a>. Для начала рассмотрим простой пример, коего будет достаточно в 95% всех случаев. Пример показывает как настроить SPI1 в режиме мастера и отправить данные. В бесконечном цикле происходит передача одного и того же байта (0x93).&nbsp;&nbsp;</p>
+<p style="text-align: justify;"><span style="text-align: justify;"><script type="text/javascript">
+	SyntaxHighlighter.config.clipboardSwf = "http://easystm32.ru/plugins/content/CodeCitation/codecitation/scripts/clipboard.swf";
+	SyntaxHighlighter.defaults["auto-links"] = true;
+	SyntaxHighlighter.defaults["collapse"] = false;
+	SyntaxHighlighter.defaults["gutter"] = true;
+	SyntaxHighlighter.defaults["smart-tabs"] = true;
+	SyntaxHighlighter.defaults["tab-size"] = 4;
+	SyntaxHighlighter.defaults["toolbar"] = true;
+	SyntaxHighlighter.defaults["wrap-lines"] = true;	
+	SyntaxHighlighter.all();
+</script></span></p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:cpp">#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+
+int main(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  SPI_InitTypeDef SPI_InitStructure;
+ 
+  // Тактирование модуля SPI1 и порта А
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+ 
+  // Настраиваем ноги SPI1 для работы в режиме альтернативной функции
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
+ 
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6 | GPIO_Pin_5;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+ 
+  //Заполняем структуру с параметрами SPI модуля
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; //полный дуплекс
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; // передаем по 8 бит
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; // Полярность и
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; // фаза тактового сигнала
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft; // Управлять состоянием сигнала NSS программно
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32; // Предделитель SCK
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; // Первым отправляется старший бит
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Master; // Режим - мастер
+  SPI_Init(SPI1, &amp;SPI_InitStructure); //Настраиваем SPI1
+  SPI_Cmd(SPI1, ENABLE); // Включаем модуль SPI1....
+ 
+  // Поскольку сигнал NSS контролируется программно, установим его в единицу
+  // Если сбросить его в ноль, то наш SPI модуль подумает, что
+  // у нас мультимастерная топология и его лишили полномочий мастера.
+  SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+ 
+  while(1) {
+    SPI_I2S_SendData(SPI1, 0x93); //Передаем байт 0x93 через SPI1
+    while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET) //Передатчик занят?
+      ; // значит ничего не делаем
+  }
+}
+</pre></div><p></p>
+<p style="text-align: justify;">Следующий пример показывает как данные могут быть приняты тем же модулем SPI который их отправил. Для этого потребуется замкнуть выводы PA7 и PA6. Он стоят рядом, можно просто накинуть перемычку. Если в SPI пришел тот же байт который мы отправили, то загорается зеленый светодиод, в противном случае - красный.&nbsp;</p>
+<p style="text-align: justify;"><span style="text-align: justify;"><span style="text-align: justify;"></span></span></p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:cpp"> 
+#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+ 
+#define LED_PORT GPIOD
+#define LED_GREEN (1&lt;&lt;12)
+#define LED_RED (1&lt;&lt;14)
+ 
+
+int main(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  SPI_InitTypeDef SPI_InitStructure;
+ 
+  //Тактирование порта со светодиодами
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+ 
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+ 
+  //Пины со светодиодами настраиваем как выходы
+  GPIO_InitStructure.GPIO_Pin = ( LED_GREEN | LED_RED ) ;
+  GPIO_Init(LED_PORT, &amp;GPIO_InitStructure);
+ 
+  // Тактирование модуля SPI1 и порта А
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+ 
+  // Настраиваем ноги SPI1 для работы в режиме альтернативной функции
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
+ 
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6 | GPIO_Pin_5;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+ 
+  //Заполняем структуру с параметрами SPI модуля
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; //полный дуплекс
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; // передаем по 8 бит
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; // Полярность и
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; // фаза тактового сигнала
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft; // Управлять состоянием сигнала NSS программно
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32; // Предделитель SCK
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; // Первым отправляется старший бит
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Master; // Режим - мастер
+  SPI_Init(SPI1, &amp;SPI_InitStructure); //Настраиваем SPI1
+  SPI_Cmd(SPI1, ENABLE); // Включаем модуль SPI1....
+ 
+  // Поскольку сигнал NSS контролируется программно, установим его в единицу
+  // Если сбросить его в ноль, то наш SPI модуль подумает, что
+  // у нас мультимастерная топология и его лишили полномочий мастера.
+  SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+ 
+  uint16_t data = 0;
+  while(1) {
+    SPI_I2S_SendData(SPI1, 0x93); //Передаем байт 0x93 через SPI1
+    while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET) //Передатчик занят?
+      ; // значит ничего не делаем
+ 
+    if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET) { //Если данные пришли
+      data = SPI_I2S_ReceiveData(SPI1); //Читаем принятые данные
+        if (data==0x93) { //Пришли правильные данные ?
+            GPIO_Write(LED_PORT,LED_GREEN);
+          } else {
+            GPIO_Write(LED_PORT,LED_RED);
+        }
+      }
+   }
+}
+
+
+</pre></div><p></p>
+<p style="text-align: justify;">Если кроме байт данных нужно еще и отсылать контрольную сумму, то можно сделать это так как написано ниже. В инициализации SPI модуля почти ничего не поменялось: &nbsp;</p>
+<p style="text-align: justify;"></p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:cpp">#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+
+int main(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  SPI_InitTypeDef SPI_InitStructure;
+  // Тактирование модуля SPI1 и порта А
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+  // Настраиваем ноги SPI1 для работы в режиме альтернативной функции
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
+ 
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6 | GPIO_Pin_5;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+  //Заполняем структуру с параметрами SPI модуля
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; //полный дуплекс
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; // передаем по 8 бит
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; // Полярность и
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; // фаза тактового сигнала
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft; // Управлять состоянием сигнала NSS программно
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32; // Предделитель SCK
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; // Первым отправляется старший бит
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Master; // Режим - мастер
+  SPI_InitStructure.SPI_CRCPolynomial = 0x07; // Задаем значение параметра CRCPolynomial
+  SPI_CalculateCRC(SPI1,ENABLE); //Включаем расчёт CRC
+  SPI_Init(SPI1, &amp;SPI_InitStructure); //Настраиваем SPI1
+  SPI_Cmd(SPI1, ENABLE); // Включаем модуль SPI1....
+  // Поскольку сигнал NSS контролируется программно, установим его в единицу
+  // Если сбросить его в ноль, то наш SPI модуль подумает, что
+  // у нас мультимастерная топология и его лишили полномочий мастера.
+  SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+  SPI_I2S_SendData(SPI1, 0xAA); 
+  while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+  SPI_I2S_SendData(SPI1, 0xBB); 
+  while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+ 
+  SPI_TransmitCRC(SPI1); //сразу после последней передачи данных
+  // отправить контрольную сумму которая рассчиталась из трех переданых байт
+  // 0xAA ,0xBB, 0xCC и некого числа которое называется CRCPolynomial (7 по дефолту) 
+  // Алгоритм по которому она считается мне неизвестен, пока не вникал.
+ 
+  SPI_I2S_SendData(SPI1, 0xCC); //Передаем последний байт и контрольную сумму
+  while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET);
+ 
+  return 0;
+ 
+}
+</pre></div><p></p>
+<div style="text-align: justify;">Ну и напоследок пример поинтересней. Первый контроллер шлёт байты данных, второй их принимает и отсылает обратно (во время следующей отправки данных) . &nbsp;Первый проверяет что вернулось то, что отслылали. Если это так, то загорается зеленый светодиод. В противном случае красный. Чтоб запустить нужно соединить две отладочных платы вот так:</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div>&nbsp;<img style="display: block; margin-left: auto; margin-right: auto;" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/boards.jpg" alt="boards" width="650" height="440"></div>
+<div style="text-align: justify;">Исходный код для платы STM32VLDISCOVERY</div>
+<div style="text-align: justify;">&nbsp;</div>
+<div><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:cpp">#include "stm32f10x.h"
+#include "stm32f10x_gpio.h"
+#include "stm32f10x_rcc.h"
+#include "stm32f10x_spi.h"
+ 
+int main(void) {
+ 
+  GPIO_InitTypeDef GPIO_InitStructure;
+  SPI_InitTypeDef SPI_InitStructure;
+ 
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC , ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+  GPIO_InitStructure.GPIO_Pin = (GPIO_Pin_9 | GPIO_Pin_8);
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOC , &amp;GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4 | GPIO_Pin_6 ;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_5 | GPIO_Pin_7;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+  //Заполняем структуру с параметрами SPI модуля
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; //полный дуплекс
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; // передаем по 8 бит
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; // Полярность и
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; // фаза тактового сигнала
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Hard; // Управлять состоянием сигнала NSS аппаратно
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32; // Предделитель SCK
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; // Первым отправляется старший бит
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Slave; // Режим - слейв
+  SPI_Init(SPI1, &amp;SPI_InitStructure); //Настраиваем SPI1
+  SPI_I2S_ITConfig(SPI1,SPI_I2S_IT_RXNE,ENABLE); //Включаем прерывание по приему байта
+  SPI_Cmd(SPI1, ENABLE); // Включаем модуль SPI1....
+  NVIC_EnableIRQ(SPI1_IRQn); //Разрешаем прерывания от SPI1
+ 
+  while(1) {
+    // все работает на прерываниях
+  }
+}
+ 
+//Обработчик прерываний от SPI1
+ 
+void SPI1_IRQHandler (void) {
+  if (SPI_I2S_GetFlagStatus(SPI1,SPI_I2S_FLAG_RXNE)==SET) {
+    // Прерывание вызвано приемом байта ?
+    uint8_t data = SPI1-&gt;DR; //Читаем то что пришло
+    GPIOC-&gt;ODR ^= (GPIO_Pin_9 | GPIO_Pin_8); //Инвертируем состояние светодиодов
+    SPI1-&gt;DR = data; //И отправляем обратно то что приняли
+  }
+}
+</pre></div></div>
+<div style="text-align: justify;">&nbsp;</div>
+<div style="text-align: justify;">Исходный код для платы STM32F4DISCOVERY&nbsp;</div>
+<p style="text-align: justify;"></p><div style="overflow: hidden; display: block; height: auto; width: inherit;"><pre class="brush:cpp"> 
+#include "stm32f4xx.h"
+#include "stm32f4xx_gpio.h"
+#include "stm32f4xx_rcc.h"
+#include "stm32f4xx_spi.h"
+ 
+#define LED_PORT GPIOD
+#define LED_GREEN (1&lt;&lt;12)
+#define LED_RED (1&lt;&lt;14)
+#define LED_BLUE (1&lt;&lt;15)
+ 
+void delay(void) {
+ volatile uint32_t i;
+ for (i=1; i != 0x1FFFF; i++)
+  ;
+}
+int main(void) {
+  GPIO_InitTypeDef GPIO_InitStructure;
+  SPI_InitTypeDef SPI_InitStructure;
+  //Тактирование порта со светодиодами
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  //Пины со светодиодами настраиваем как выходы
+  GPIO_InitStructure.GPIO_Pin = ( LED_GREEN | LED_RED | LED_BLUE) ;
+  GPIO_Init(LED_PORT, &amp;GPIO_InitStructure);
+  // Тактирование модуля SPI1 и порта А
+  RCC_APB2PeriphClockCmd(RCC_APB2Periph_SPI1, ENABLE);
+  RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+  // Настраиваем ноги SPI1 для работы в режиме альтернативной функции
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource7, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource5, GPIO_AF_SPI1);
+  GPIO_PinAFConfig(GPIOA, GPIO_PinSource6, GPIO_AF_SPI1);
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_NOPULL;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_7 | GPIO_Pin_6 | GPIO_Pin_5;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_OUT;
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_InitStructure.GPIO_OType = GPIO_OType_PP;
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4;
+  GPIO_Init(GPIOA, &amp;GPIO_InitStructure);
+  //Заполняем структуру с параметрами SPI модуля
+  SPI_InitStructure.SPI_Direction = SPI_Direction_2Lines_FullDuplex; //полный дуплекс
+  SPI_InitStructure.SPI_DataSize = SPI_DataSize_8b; // передаем по 8 бит
+  SPI_InitStructure.SPI_CPOL = SPI_CPOL_Low; // Полярность и
+  SPI_InitStructure.SPI_CPHA = SPI_CPHA_1Edge; // фаза тактового сигнала
+  SPI_InitStructure.SPI_NSS = SPI_NSS_Soft; // Управлять состоянием сигнала NSS программно
+  SPI_InitStructure.SPI_BaudRatePrescaler = SPI_BaudRatePrescaler_32; // Предделитель SCK
+  SPI_InitStructure.SPI_FirstBit = SPI_FirstBit_MSB; // Первым отправляется старший бит
+  SPI_InitStructure.SPI_Mode = SPI_Mode_Master; // Режим - мастер
+  SPI_Init(SPI1, &amp;SPI_InitStructure); //Настраиваем SPI1
+  SPI_Cmd(SPI1, ENABLE); // Включаем модуль SPI1....
+  // Поскольку сигнал NSS контролируется программно, установим его в единицу
+  // Если сбросить его в ноль, то наш SPI модуль подумает, что
+  // у нас мультимастерная топология и его лишили полномочий мастера.
+  SPI_NSSInternalSoftwareConfig(SPI1, SPI_NSSInternalSoft_Set);
+  uint8_t data = 0;
+  while(1) {
+    GPIO_ResetBits(GPIOA,GPIO_Pin_4); //Подаем сигнал CS слейву
+    SPI_I2S_SendData(SPI1, data); //Передаем байт 0x93 через SPI1
+    while(SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_BSY) == SET) //Передатчик занят?
+      ; // значит ничего не делаем
+    GPIO_SetBits(GPIOA,GPIO_Pin_4); //Снимаем сигнал CS
+    if (SPI_I2S_GetFlagStatus(SPI1, SPI_I2S_FLAG_RXNE) == SET) { //Если данные пришли
+      if ((data-1) == (uint8_t) SPI_I2S_ReceiveData(SPI1)) { //Пришли правильные данные ?
+       //Возможно тут есть неочевидный момент. Отправляем data, а ожидаем (data-1).
+       // Это связано  с тем, что слейв не может передавать данные пока мастер не
+       // инициирует обмен данными. Таким образом если мастер сейчас передает
+       // число 123, то оно ему вернется когда он будет передавать следующий байт (124). 
+        GPIO_SetBits(LED_PORT,LED_GREEN);
+        GPIO_ResetBits(LED_PORT,LED_RED);
+      } else {
+        GPIO_SetBits(LED_PORT,LED_RED);
+        GPIO_ResetBits(LED_PORT,LED_GREEN);
+      }
+    }
+    data++; 
+    delay();
+    GPIO_ToggleBits(LED_PORT,LED_BLUE); //Подмигнем синим светодиодом
+  }
+}</pre></div><p></p>
+<p style="text-align: justify;">Если мои наработки по части SPI окажутся полезными то я буду рад :) Если есть вопросы и замечания - &nbsp;пишите, постараюсь ответить.&nbsp;</p>	</div>
+</div>
+                                                                 </div>
+              </div>
+                        </div>
+                                    <div id="col2">
+                          	<div class="moduletable_menu"> 
+		      
+		<h3 class="module-title">Разделы сайта</h3>
+				<div class="res">
+	    <div class="module-content">
+	        
+<ul class="menu">
+<li class="item-101"><a href="http://easystm32.ru/">Главная страница</a></li><li class="item-108"><a href="http://easystm32.ru/for-beginners">Для начинающих</a></li><li class="item-107"><a href="http://easystm32.ru/stm32vl-discovery">STM32VL Discovery</a></li><li class="item-147"><a href="http://easystm32.ru/stm32f4-discovery">STM32F4 Discovery</a></li><li class="item-109"><a href="http://easystm32.ru/tools">Инструменты</a></li><li class="item-110 current active"><a href="http://easystm32.ru/interfaces">Интерфейсы</a></li><li class="item-111"><a href="http://easystm32.ru/technologies">Технологии</a></li><li class="item-112"><a href="http://easystm32.ru/useful-things">Полезности</a></li><li class="item-113"><a href="http://easystm32.ru/indication">Индикация</a></li><li class="item-114"><a href="http://easystm32.ru/power-supplies">Питание</a></li><li class="item-115"><a href="http://easystm32.ru/projects">Проекты</a></li><li class="item-116"><a href="http://easystm32.ru/sensors">Датчики</a></li><li class="item-117"><a href="http://easystm32.ru/debug">Отладка</a></li></ul>
+        </div>
+        </div><div class="modul"></div></div>
+		<div class="moduletable"> 
+		      
+		<h3 class="module-title">Форма входа</h3>
+				<div class="res">
+	    <div class="module-content">
+	        <form action="http://easystm32.ru/interfaces" method="post" id="login-form">
+		<fieldset class="userdata">
+	<p id="form-login-username">
+		<label for="modlgn-username">Логин</label>
+		<input id="modlgn-username" type="text" name="username" class="inputbox" size="18">
+	</p>
+	<p id="form-login-password">
+		<label for="modlgn-passwd">Пароль</label>
+		<input id="modlgn-passwd" type="password" name="password" class="inputbox" size="18">
+	</p>
+		<p id="form-login-remember">
+		<label for="modlgn-remember">Запомнить меня</label>
+		<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes">
+	</p>
+		<input type="submit" name="Submit" class="button" value="Войти">
+	<input type="hidden" name="option" value="com_users">
+	<input type="hidden" name="task" value="user.login">
+	<input type="hidden" name="return" value="aW5kZXgucGhwP29wdGlvbj1jb21fY29udGVudCZ2aWV3PWFydGljbGUmY2F0aWQ9MTImaWQ9NDUmSXRlbWlkPTExMA==">
+	<input type="hidden" name="a444e8fe1b460cebd7b9f43f7fea4c52" value="1">	</fieldset>
+	<ul>
+		<li>
+			<a href="http://easystm32.ru/component/users/?view=reset">
+			Забыли пароль?</a>
+		</li>
+		<li>
+			<a href="http://easystm32.ru/component/users/?view=remind">
+			Забыли логин?</a>
+		</li>
+			</ul>
+	</form>
+        </div>
+        </div><div class="modul"></div></div>
+	
+                        </div>
+                                            </div>
+                </div>
+            </div>
+            <div id="footer">
+    
+    <div class="copy">
+    Copyright &nbsp;© 2012 <a href="http://easystm32.ru/component/xmap/xml?option=com_xmap&view=xml&id=1">EasySTM32.</a> All Rights Reserved. Запрещено копирование материалов без активной ссылки на этот сайт.<br>
+	Реклама:     </div>
+					<!-- Yandex.Metrika counter -->
+				<script type="text/javascript">
+				(function (d, w, c) {
+					(w[c] = w[c] || []).push(function() {
+						try {
+							w.yaCounter14614684 = new Ya.Metrika({id:14614684});
+						} catch(e) {}
+					});
+					
+					var n = d.getElementsByTagName("script")[0],
+						s = d.createElement("script"),
+						f = function () { n.parentNode.insertBefore(s, n); };
+					s.type = "text/javascript";
+					s.async = true;
+					s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+					if (w.opera == "[object Opera]") {
+						d.addEventListener("DOMContentLoaded", f);
+					} else { f(); }
+				})(document, window, "yandex_metrika_callbacks");
+				</script>
+				<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/14614684" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+				<!-- /Yandex.Metrika counter -->
+
+
+	<div id="dummy"></div>
+    <div id="debug">
+  
+  </div>
+</div>
+        </div>  
+    </div>
+            </div> 
+
+   <script type="text/javascript" src="./EasySTM32 - Интерфейс SPI в STM32. Часть 2_files/jquery.min.js"></script> 
+   <script type="text/javascript"> 
+$(document).ready(function(){
+						   		   
+	//When you click on a link with class of poplight and the href starts with a # 
+	$('a.poplight[href^=#]').click(function() {
+		var popID = $(this).attr('rel'); //Get Popup Name
+		var popURL = $(this).attr('href'); //Get Popup href to define size
+				
+		//Pull Query & Variables from href URL
+		var param= popURL.substr(1);
+		var data = "<iframe width=\"500\" height=\"438\" src=\"http://easystm32.ru/getreg.php" + param + "\"></iframe>";
+		document.getElementById('popup_name').innerHTML=data;
+		//Добавить кнопку "Закрыть" в наше окно, прописываете прямой путь к картинке кнопки
+		$('#' + popID).fadeIn().css({ 'width': Number( 500 ) }).prepend('<a href="#" class="close"><img src="/templates/shoplab/images/close_pop.png" class="btn_close" title="Закрыть окно" alt="Закрыть" /></a>');
+		
+		//Определяет запас на выравнивание по центру (по вертикали по горизонтали)мы добавим 80px к высоте / ширине, значение полей вокруг содержимого (padding) и ширину границы устанавливаем в CSS
+		var popMargTop = ($('#' + popID).height() + 80) / 2;
+		var popMargLeft = ($('#' + popID).width() + 80) / 2;
+		
+		//Применяем отступы в всплывающем окне
+		$('#' + popID).css({ 
+			'margin-top' : -popMargTop,
+			'margin-left' : -popMargLeft
+		});
+		
+		//Фон слоя затемнения
+		$('body').append('<div id="fade"></div>'); //Добавляем слой затемнения.
+		$('#fade').css({'filter' : 'alpha(opacity=80)'}).fadeIn(); //Постепенное исчезание слоя - .css({'filter' : 'alpha(opacity=80)'}) используется для фиксации в IE, фильтр для устранения бага тупого IE 
+		
+		return false;
+	});
+	
+	
+	//Закрыть всплывающее окно и слой затемнения
+	$('a.close, #fade').live('click', function() { //При нажатии рядом, окно и слой затемнения закрываются 
+	  	$('#fade , .popup_block').fadeOut(function() {
+			$('#fade, a.close').remove();  
+	}); //fade them both out
+		
+		return false;
+	});
+ 
+	
+});
+</script>
+   
+  
+</body></html>

@@ -1,0 +1,1828 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0097)http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 Синтезатор речи “Элиза”. Продолжение</title>
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/script.js.Без названия"></script>
+<link rel="stylesheet" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="../wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/old_site/feed/default.htm">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/old_site/feed/atom/default.htm"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 Синтезатор речи “Элиза”. Продолжение»" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/feed/default.htm">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/wordpress-file-monitor.php@ver=scan" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/bwp-syntax.css@ver=3.3.1" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/download-css.css@ver=1.50" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/pagenavi-css.css@ver=2.70" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/jquery.js@ver=1.7.1"></script>
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/bwp-syntax.js@ver=3.3.1"></script>
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/external-tracking.min.js@ver=6.0.2"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/old_site/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 Синтезатор речи “Элиза”" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm">
+<link rel="next" title="STM32 Интерфейс I2C. Описание" href="http://mycontroller.ru/old_site/stm32-interfeys-i2c-opisanie/default.htm">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm">
+<link rel="shortlink" href="http://mycontroller.ru/old_site/@p=3477">
+
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS BEGIN -->
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/wpsf-js.php"></script> 
+<!-- Protected by WP-SpamFree v2.1.1.2 :: JS END -->
+
+
+<link rel="stylesheet" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 Синтезатор речи “Элиза”. Продолжение_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<!--ipt type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</scri-->
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/old_site/default.htm">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/old_site/default.htm"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/old_site/o-sayte/default.htm"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/old_site/programmyi/default.htm"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm" rel="prev">STM32 Синтезатор речи “Элиза”</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/old_site/stm32-interfeys-i2c-opisanie/default.htm" rel="next">STM32 Интерфейс I2C. Описание</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm" rel="bookmark" title="Постоянная ссылка на STM32 Синтезатор речи “Элиза”. Продолжение">
+STM32 Синтезатор речи “Элиза”. Продолжение</a>
+</h2>
+<div class="art-PostContent">
+
+          <p>Проведя ряд испытаний понял, что 8-ми разрядный звук – это не самое лучшее решение. При маленькой громкости слышны искажения.</p>
+<p>Экспериментально вычислил, что оптимальным будет использование файлов 16-разрядных с частотой дискретизации 22050 Гц. В итоге получится тот же поток данных, что и при 8-ми разрядах и частоте 44100.</p>
+<p>Изменения в проигрыватель WAV файлов внёс. Вместо 16-ти разрядов он реально использует 12, но это значительно лучше, чем 8. С частотой 22050 Гц он достойно справляется, а вот 44100 уже не берет.</p>
+<p>Если кого заинтересуют исходники, то приведу в порядок и выложу их.</p>
+<p>Помимо изменений в программе сделал устройство в “железе”. До этого использовал отладочную плату.</p>
+<p>Схема устройства следующая:</p>
+<p><span id="more-3477"></span>
+</p><p><a href="http://mycontroller.ru/old_site/wp-content/uploads/image_thumb710.png"><img style="background-image: none; border-right-width: 0px; padding-left: 0px; padding-right: 0px; display: inline; border-top-width: 0px; border-bottom-width: 0px; border-left-width: 0px; padding-top: 0px" title="image_thumb7" border="0" alt="image_thumb7" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/image_thumb7_thumb.png" width="685" height="438"></a></p>
+<p>Сразу предусмотрел УНЧ, чтобы можно было проверить устройство (а может и использовать) без внешнего усилителя. Данная микросхема способна выдать до 1Вт при нагрузке 8 Ом. Не знаю как она воспроизводит один ват, но пол вата точно выдает.</p>
+<p>Из приятных бонусов следует отметить наличие в этой микросхеме регулировки усиления (читай громкости) напряжением. Для этого предназначен вывод 4. Я его подключил к выходу второго ЦАПа, благодаря чему контроллер может регулировать громкость.</p>
+<p>После сборки устройство заработало сразу, но проявился один косяк. Помимо полезного сигнала прослушивается небольшая помеха с частотой меньше килогерца (определял на слух). На маленькой громкости она почти не заметна, но хочется совершенства. Думаю, что возможно две причины: во-первых, возможно я накосячил с разводкой платы (поставил всего два блокировочных конденсатора, плюс к этому тянул шины питания не самым оптимальным образом). Во-вторых, возможно всё дело в контроллере. На отладочной плате у меня стоял контроллер, в котором питание аналоговой части выполняется через отдельные выводы. А в этом устройстве использован 48-ми выводной контроллер, в нем питание аналоговой части и цифровой совмещены. Если причина первая, то ее можно решить модернизацией платы для следующего устройства (нужно сделать несколько), а вот если вторая причина, то нужна замена контроллера.</p>
+<p>Ну а в целом устройство получилось неплохое. Размер платы примерно со спичечный коробок.</p>
+<p>Теперь нужно переделать всю библиотеку слов под 16 разрядов.</p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/default.htm" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>, <a href="http://mycontroller.ru/old_site/category/bez-rubriki/default.htm" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»" rel="category tag">МОИ ПРОЕКТЫ</a>, <a href="http://mycontroller.ru/old_site/category/bez-rubriki/sintezator-eliza/default.htm" title="Просмотреть все записи в рубрике «Синтезатор &quot;Элиза&quot;»" rel="category tag">Синтезатор "Элиза"</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<h3 id="comments">Комментарии (29) на “STM32 Синтезатор речи “Элиза”. Продолжение”</h3>
+
+
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+	<ul class="commentlist">
+       <li class="comment even thread-even depth-1" id="li-comment-2523">
+     <div id="comment-2523">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Саня:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2523">06.01.2013 в 16:05</a></div>
+
+      <p>Доброе время суток! круто! классные статьи! :)<br>
+вот хочу себе МП3 плеер прикупить, но как-то в нем всегда хочется чего-то добавить! теперь точно передумаю и может руки дойдут собрать себе свой. правда на другом проце и с аудиокодеками по I2S. не сталкивались? на плате F4 установлены. но пока руки не дохадят, работа учеба!<br>
+Большое спасибо за классный материал! :))))</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2523#respond" onclick="return addComment.moveForm(&quot;comment-2523&quot;, &quot;2523&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-2524">
+     <div id="comment-2524">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2524">06.01.2013 в 20:46</a></div>
+
+      <p>У F4 возможности конечно солиднее.<br>
+Просто на данном этапе я ставил цель сделать «бюджетное» решение.<br>
+F100 дешевле, поэтому остановился на нём. И воспроизведения WAV пока достаточно.<br>
+Хочу довести до ума этот вариант, заказать печатные платы, потому что мне нужно несколько таких синтезаторов встроить в реальные устройства.<br>
+А поработать с Ф4 хочу тоже.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2524#respond" onclick="return addComment.moveForm(&quot;comment-2524&quot;, &quot;2524&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2526">
+     <div id="comment-2526">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2526">09.01.2013 в 04:21</a></div>
+
+      <p>Работаю с мк STM32F100C4T6 в связке с усилком TDA7233, использую звук 8 бит 22 кГц, качество очень хорошее и без помех. В свое время наткнулся на наводки связанные с неправильной разводкой питания, но давно исправил. Из написанного могу судить что у вас проблемы либо с разводкой либо с усилителем либо с программой.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2526#respond" onclick="return addComment.moveForm(&quot;comment-2526&quot;, &quot;2526&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-2527">
+     <div id="comment-2527">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2527">09.01.2013 в 07:27</a></div>
+
+      <p>С усилителем вряд ли.<br>
+Я подключал разные.<br>
+Значит проблема в разводке или косяк в программе.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2527#respond" onclick="return addComment.moveForm(&quot;comment-2527&quot;, &quot;2527&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-2528">
+     <div id="comment-2528">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2528">09.01.2013 в 07:52</a></div>
+
+      <p>Если можно, покажите разводку и прогу отвечающую за воспроизведение 8 битного звука. А я пока выделю кусок своей проги кот отвечает за звук.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2528#respond" onclick="return addComment.moveForm(&quot;comment-2528&quot;, &quot;2528&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-2529">
+     <div id="comment-2529">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2529">09.01.2013 в 08:39</a></div>
+
+      <p>Здесь <a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/#more-3441" rel="nofollow">http://mycontroller.ru/stm32-sintezator-rechi-ldquo-eliza-rdquo/#more-3441</a> можно скачать весь проект<br>
+Часть программы, которая воспроизводит звук, находится в файлах «WavePlayer.c» и «WavePlayer.h»</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2529#respond" onclick="return addComment.moveForm(&quot;comment-2529&quot;, &quot;2529&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2530">
+     <div id="comment-2530">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2530">09.01.2013 в 08:45</a></div>
+
+      <p>while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)); //ждем освобождение первой части буфера</p>
+<p>Я уже писал об этом — этот флаг будет срабатывать много много раз после заполнения половины буфера. дело в том что прерывание или проверку по заполнению половины надо отключать после первого срабатывания условия и потом включать после срабатывания условия полного обмена. Это осоьенность работы DMA всех стмок что мне попадались.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2530#respond" onclick="return addComment.moveForm(&quot;comment-2530&quot;, &quot;2530&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-2531">
+     <div id="comment-2531">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2531">09.01.2013 в 09:05</a></div>
+
+      <p>Я слышал про этот косяк, но не предавал ему значения.<br>
+Сейчас попробую врубиться.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2531#respond" onclick="return addComment.moveForm(&quot;comment-2531&quot;, &quot;2531&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-3" id="li-comment-2532">
+     <div id="comment-2532">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2532">09.01.2013 в 09:13</a></div>
+
+      <p>Так в моем случае это не должно влиять:<br>
+- идет воспроизведение превой части, ждем срабатывания флага DMA_ISR_HTIF3 (тут проблем не должно быть);<br>
+- после срабатывания DMA_ISR_HTIF3 сбрасываю его и заполняю освободившуюся часть (воспроизведение идет со второй половины);<br>
+- жду освобождения втоой половины. Если при этом срабатывает флаг DMA_ISR_HTIF3 мне не страшно;<br>
+- после освобождения второй половины загружаю её и начинаю всё с начала.<br>
+Проблем не должно быть.<br>
+Хотя…<br>
+Если при работе со втоой половиной срабатывает флаг первой, то перейдя к началу возможны проблемы.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2532#respond" onclick="return addComment.moveForm(&quot;comment-2532&quot;, &quot;2532&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2533">
+     <div id="comment-2533">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2533">09.01.2013 в 09:15</a></div>
+
+      <p>просто выключите проверку половины после первого срабатывания и включите при срабатывании проверки по полному обмену. Кстати на самом деле это не косяк а логичная работа — просто когда буфер заполняется дальше половины то половина то у него каждый раз заполнена, и это удобно в конкретных случаях.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2533#respond" onclick="return addComment.moveForm(&quot;comment-2533&quot;, &quot;2533&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2534">
+     <div id="comment-2534">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2534">09.01.2013 в 09:23</a></div>
+
+      <p>«Косяк» — это применительно к моему случаю.<br>
+Сделал так:<br>
+while(!(DMA1-&gt;ISR &amp; DMA_ISR_TCIF3));      //ждем освобождение второй части буфера<br>
+DMA1-&gt;IFCR |= DMA_ISR_TCIF3;              //сбросить флаг<br>
+DMA1-&gt;IFCR |= DMA_ISR_HTIF3;              //сбросить флаг<br>
+Т.е. после освобождении второй части сбрасываю оба флага. Результат тот же.<br>
+Похоже что помеха идет с частотой обноления буфера, т.е. всякий раз, когда читается карта.<br>
+При 16 битах частота помехи в два раза больше, чем при 8</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2534#respond" onclick="return addComment.moveForm(&quot;comment-2534&quot;, &quot;2534&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2535">
+     <div id="comment-2535">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2535">09.01.2013 в 09:27</a></div>
+
+      <p>так не пойдет… нужно именно отключать проверку<br>
+while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)); //ждем освобождение первой части буфера</p>
+<p>то есть сделать ее с условием<br>
+if (n = 0)<br>
+{<br>
+while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)); //ждем освобождение первой части буфера<br>
+{<br>
+// код<br>
+n = 1;<br>
+}<br>
+}</p>
+<p>while(!(DMA1-&gt;ISR &amp; DMA_ISR_TCIF3)); //ждем освобождение второй части буфера<br>
+{<br>
+//код<br>
+n = 0;<br>
+}</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2535#respond" onclick="return addComment.moveForm(&quot;comment-2535&quot;, &quot;2535&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2537">
+     <div id="comment-2537">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2537">09.01.2013 в 09:33</a></div>
+
+      <p>Но ведь пока не освободится вторая половина, я к первой не перехожу.<br>
+Осободилась вторая — сбросил оба флага — перехожу к первой.<br>
+Прерывания не используются.<br>
+Наверное я сегодня туго соображаю.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2537#respond" onclick="return addComment.moveForm(&quot;comment-2537&quot;, &quot;2537&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2536">
+     <div id="comment-2536">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2536">09.01.2013 в 09:32</a></div>
+
+      <p>а вообще еще лучше все это сделать через прерывания и освободить ядро от натуги </p>
+<p>void DMA1_Channel3_IRQHandler (void)<br>
+{<br>
+  if (DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)<br>
+  {<br>
+    DMA1_Channel3-&gt;CCR &amp;= ~DMA_CCR3_HTIE;  // запрет прерывания по половине</p>
+<p>    //ваш код</p>
+<p>    DMA1-&gt;IFCR |= DMA_ISR_HTIF3; // очистка флага прерывания<br>
+  }<br>
+  else if (DMA1-&gt;ISR &amp; DMA_ISR_TCIF3) // по завершению обмена<br>
+  {<br>
+    //ваш код</p>
+<p>    DMA1-&gt;IFCR |= DMA_IFCR_CGIF1;          // отчистка флага прерывания полного обмена<br>
+    DMA1_Channel3-&gt;CCR  |=  DMA_CCR3_HTIE; // разрешение прерывания по половине обмена<br>
+  }</p>
+<p>DMA1-&gt;IFCR |= DMA_IFCR_CGIF3; // сбросить все прерывания канала 3<br>
+}</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2536#respond" onclick="return addComment.moveForm(&quot;comment-2536&quot;, &quot;2536&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-odd thread-alt depth-1" id="li-comment-2539">
+     <div id="comment-2539">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2539">09.01.2013 в 09:37</a></div>
+
+      <p>модулю DMA пофиг что вы освободили первую половину — главное что вы работаете со второй — поэтому и срабатывет флаг половины обмена</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2539#respond" onclick="return addComment.moveForm(&quot;comment-2539&quot;, &quot;2539&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-2540">
+     <div id="comment-2540">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2540">09.01.2013 в 11:59</a></div>
+
+      <p>Дык, я 1)прерывания не использую; 2)дожидаюсь освобождения второй половины, сбрасываю оба флага (ДМА в это время уже начал кидать первую часть в ЦАП), загружаю вторую часть (тем временем ещё воспроизводится первая), перехожу к ожиданию освобождения первой части (и вот тут как раз и начинается анализ флага освобождения первой части)</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2540#respond" onclick="return addComment.moveForm(&quot;comment-2540&quot;, &quot;2540&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-3" id="li-comment-2541">
+     <div id="comment-2541">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2541">09.01.2013 в 12:48</a></div>
+
+      <p>Провел эксперимент: загрузил в буфер 0х80 и постоянно его воспроизводил. Если при этом обращения к карте памяти не выполнять, то всё нормально. Если обращаться к карте — идёт помеха. Похоже проблема в разводке.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2541#respond" onclick="return addComment.moveForm(&quot;comment-2541&quot;, &quot;2541&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2542">
+     <div id="comment-2542">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2542">09.01.2013 в 12:50</a></div>
+
+      <p>Дело в том что выставление флагов DMA_ISR_HTIF3 и DMA_ISR_TCIF3 и есть прерывания для ДМА, а то что вы их не обрабатываете а проверяете ядром — ваша проблема<br>
+похоже вы плохо понимаете что сами написали…<br>
+вот я смотрю на ваш код:</p>
+<p>while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3));      //ждем освобождение первой части буфера<br>
+    DMA1-&gt;IFCR |= DMA_ISR_HTIF3;              //сбросить флаг<br>
+    //заполнить освободившуюся часть буфера<br>
+    res = f_read ( &amp;file, &amp;DAC_Buff[0], SIZE_DAC_BUFF/2, &amp;cnt );<br>
+    if(res) {res = WP_ERROR_READ_FILE; break;}//ошибка при чтении!!!<br>
+    if(cntISR &amp; DMA_ISR_TCIF3));      //ждем освобождение второй части буфера<br>
+    DMA1-&gt;IFCR |= DMA_ISR_TCIF3;              //сбросить флаг<br>
+    //заполнить освободившуюся часть буфера<br>
+    res = f_read ( &amp;file, &amp;DAC_Buff[SIZE_DAC_BUFF/2], SIZE_DAC_BUFF/2, &amp;cnt );<br>
+    if(res) {res = WP_ERROR_READ_FILE; break;}//ошибка при чтении!!!<br>
+    if(cnt&lt;SIZE_DAC_BUFF/2) break;            //файл закончился</p>
+<p>и сдесь написано: проверяйтесь флаги DMA_ISR_HTIF3 и DMA_ISR_TCIF3 и если они выставлены делайте там что написано. И вот модуль ДМА идет копировать ячейки буфера которых у него 64 к примеру. Вот он скопировал 31 ячейку и копирует 32 и такой опа у меня половина готова, надо выставить DMA_ISR_HTIF3, ядро при очередной проверке — оп а DMA_ISR_HTIF3 выставлено — делаю код как в условии и обнуляю DMA_ISR_HTIF3. Затем модуль ДМА копирует 33 ячейку и такой — о, а у меня половина сделана — надо выставить DMA_ISR_HTIF3 — и вот этого как раз недолжно быть уже, как раз это и вызывает помехи.</p>
+<p>И кстати важно отключать проверку по половине обмена прежде чем обнулять флаг DMA_ISR_HTIF3 т.к. модуль ДМА работает независимо от ядра и пока ядро пыжытся обрабатывая одну половину, дма копирует и копирует.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2542#respond" onclick="return addComment.moveForm(&quot;comment-2542&quot;, &quot;2542&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2544">
+     <div id="comment-2544">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2544">09.01.2013 в 13:00</a></div>
+
+      <p>Спасибо, буду переваривать.<br>
+Похоже есть пробел в знаниях</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2544#respond" onclick="return addComment.moveForm(&quot;comment-2544&quot;, &quot;2544&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2543">
+     <div id="comment-2543">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2543">09.01.2013 в 12:56</a></div>
+
+      <p>у вас канал дма как раз и используеться при обращении к памяти</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2543#respond" onclick="return addComment.moveForm(&quot;comment-2543&quot;, &quot;2543&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="li-comment-2546">
+     <div id="comment-2546">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2546">09.01.2013 в 14:53</a></div>
+
+      <p>вам заместо этого стека надо вставить такой код</p>
+<p>if (n == 0)<br>
+{<br>
+  while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)); //ждем освобождение первой части буфера<br>
+  {<br>
+     //заполняем первую половину<br>
+     n = 1;<br>
+  }<br>
+}<br>
+while(!(DMA1-&gt;ISR &amp; DMA_ISR_TCIF3)); //ждем освобождение второй части буфера<br>
+{<br>
+   // заполняем вторую половину<br>
+   n = 0;<br>
+   DMA1-&gt;IFCR |= DMA_IFCR_CGIF3; // сбросить все прерывания канала 3<br>
+}<br>
+//—————————————————-</p>
+<p>а еще лучше сделать прерывания как я показал выше и заместо вставок «// ваш код» поставить заполнение первой и второй половины буфера соответственно</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2546#respond" onclick="return addComment.moveForm(&quot;comment-2546&quot;, &quot;2546&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2547">
+     <div id="comment-2547">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2547">09.01.2013 в 15:14</a></div>
+
+      <p>еще раз проссматрел ваш код и понял что написал не то.<br>
+у вас код пытается 32 раза перезаписать первую половину<br>
+заместо этого стека можно попробовать:</p>
+<p>while(!(DMA1-&gt;ISR &amp; DMA_ISR_HTIF3)); //ждем освобождение первой части буфера<br>
+ DMA1-&gt;IFCR |= DMA_ISR_HTIF3; //сбросить флаг<br>
+ //заполнить освободившуюся часть буфера<br>
+ res = f_read ( &amp;file, &amp;DAC_Buff[0], SIZE_DAC_BUFF/2, &amp;cnt );<br>
+ if(res) {res = WP_ERROR_READ_FILE; break;}//ошибка при чтении!!!<br>
+while(!(DMA1-&gt;ISR &amp; DMA_ISR_TCIF3)); //ждем освобождение второй части буфера<br>
+ DMA1-&gt;IFCR |= DMA_ISR_TCIF3; //сбросить флаг<br>
+DMA1-&gt;IFCR |= DMA_ISR_HTIF3; //сбросить флаг<br>
+ //заполнить освободившуюся часть буфера<br>
+ res = f_read ( &amp;file, &amp;DAC_Buff[SIZE_DAC_BUFF/2], SIZE_DAC_BUFF/2, &amp;cnt );<br>
+ if(res) {res = WP_ERROR_READ_FILE; break;}//ошибка при чтении!!!<br>
+ if(cnt&lt;SIZE_DAC_BUFF/2) break; //файл закончился</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2547#respond" onclick="return addComment.moveForm(&quot;comment-2547&quot;, &quot;2547&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2548">
+     <div id="comment-2548">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2548">09.01.2013 в 17:14</a></div>
+
+      <p>Что-то у меня с соображением не то сегодня.<br>
+Почему Вы пишете, что пытается <strong>32</strong> раза перезаписать?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2548#respond" onclick="return addComment.moveForm(&quot;comment-2548&quot;, &quot;2548&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2554">
+     <div id="comment-2554">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2554">09.01.2013 в 19:30</a></div>
+
+      <p>я конечно извиняюсь за эту кучу, но тут какой то глюк, я вставляю один текст а он отправляет другой … причем я проверяю что отправляю и все норм, нажимаю отправить и в посте уже другой текст … мистика, может есть аська или почта ?</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2554#respond" onclick="return addComment.moveForm(&quot;comment-2554&quot;, &quot;2554&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2559">
+     <div id="comment-2559">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2559">09.01.2013 в 20:59</a></div>
+
+      <p>Можно на форуме <a href="http://mycontroller.ru/old_site/forum/viewtopic.php@f=6&amp;t=18" rel="nofollow">http://mycontroller.ru/forum/viewtopic.php?f=6&amp;t=18</a></p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2559#respond" onclick="return addComment.moveForm(&quot;comment-2559&quot;, &quot;2559&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-2573">
+     <div id="comment-2573">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn"><a href="http://mycontroller.ru/qwe.ru/default.htm" rel="external nofollow" class="url">Anatol80</a>:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2573">17.01.2013 в 11:04</a></div>
+
+      <p>Ваша помеха, возможно оттого, что Вы для для 16-битовых данных (а эти данные — со знаком) не вызываете функцию wp_convert_data (она у Вас есть).<br>
+Кстати, там в этой функции перевода в беззнаковое число,<br>
+в двух местах вкралась небольшая ошибочка:<br>
+data = data + 0x7fff; // а надо + 0×8000</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2573#respond" onclick="return addComment.moveForm(&quot;comment-2573&quot;, &quot;2573&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2580">
+     <div id="comment-2580">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2580">20.01.2013 в 16:03</a></div>
+
+      <p>Нужно 0х8000, но думаю это не критично</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2580#respond" onclick="return addComment.moveForm(&quot;comment-2580&quot;, &quot;2580&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+   <li class="comment odd alt thread-even depth-1" id="li-comment-2593">
+     <div id="comment-2593">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">Vlad Kerensky:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2593">21.01.2013 в 04:33</a></div>
+
+      <p>это не обьясняет помеху при 8 битах, а я так понимаю что они связаны.</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2593#respond" onclick="return addComment.moveForm(&quot;comment-2593&quot;, &quot;2593&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+<ul class="children">
+   <li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-2594">
+     <div id="comment-2594">
+<div class="art-Post">
+         <div class="art-Post-tl"></div>
+         <div class="art-Post-tr"></div>
+         <div class="art-Post-bl"></div>
+         <div class="art-Post-br"></div>
+         <div class="art-Post-tc"></div>
+         <div class="art-Post-bc"></div>
+         <div class="art-Post-cl"></div>
+         <div class="art-Post-cr"></div>
+         <div class="art-Post-cc"></div>
+         <div class="art-Post-body">
+     <div class="art-Post-inner art-article">
+     
+<div class="art-PostContent">
+     
+      <div class="comment-author vcard">
+                  <cite class="fn">kontroller:</cite>
+      </div>
+      
+      <div class="comment-meta commentmetadata"><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#comment-2594">21.01.2013 в 05:50</a></div>
+
+      <p>Конечно</p>
+
+      <div class="reply">
+         <a class="comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/@replytocom=2594#respond" onclick="return addComment.moveForm(&quot;comment-2594&quot;, &quot;2594&quot;, &quot;respond&quot;, &quot;3477&quot;)">Ответить</a>      </div>
+
+      </div>
+      <div class="cleared"></div>
+      
+
+      </div>
+      
+      		<div class="cleared"></div>
+          </div>
+      </div>
+      
+     </div>
+</li>
+</ul>
+</li>
+  </ul>
+
+
+ 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/old_site/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="3477" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+	<script type="text/javascript">
+	<!--
+	refJS = escape( document[ 'referrer' ] );
+	document.write("<input type='hidden' name='refJS' value='"+refJS+"'>");
+	// -->
+	</script><input type="hidden" name="refJS" value="http%3A//mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm">
+	<p style="font-size:9px;clear:both;">Spam Protection by <a href="http://mycontroller.ru/www.polepositionmarketing.com/library/wp-spamfree/default.htm" title="WP-SpamFree WordPress Anti-Spam Plugin">WP-SpamFree</a></p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/default.htm" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bootloader/default.htm" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/default.htm" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usart/default.htm" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dma/default.htm" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/bkp-registryi/default.htm" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/rtc/default.htm" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/timer/default.htm" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/spi/default.htm" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/adc/default.htm" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/dac/default.htm" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/old_site/category/mikrokontrolleryi-stm32/usb/default.htm" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/default.htm" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/termodatchik-ds18b20/default.htm" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/enkoder/default.htm" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/default.htm" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/old_site/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/default.htm" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/default.htm" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/chasyi-na-stm32f100rb/default.htm" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/umnyiy-dom/default.htm" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/waveplayer/default.htm" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+	<li class="cat-item cat-item-32"><a href="http://mycontroller.ru/old_site/category/bez-rubriki/sintezator-eliza/default.htm" title="Просмотреть все записи в рубрике «Синтезатор &quot;Элиза&quot;»">Синтезатор "Элиза"</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/default.htm" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/old_site/category/poleznyiy-soft/stm32-generator-koda/default.htm" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/old_site/stm32-interfeys-i2c-opisanie/default.htm" title="STM32 Интерфейс I2C. Описание">STM32 Интерфейс I2C. Описание</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm" title="STM32 Синтезатор речи “Элиза”. Продолжение">STM32 Синтезатор речи “Элиза”. Продолжение</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo/default.htm" title="STM32 Синтезатор речи “Элиза”">STM32 Синтезатор речи “Элиза”</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-novaya-versiya/default.htm" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/old_site/stm32-generator-koda-konstruktor-komponentov/default.htm" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<acript type="text/javascript" src="../../pagead2.googlesyndication.com/pagead/show_ads.js">
+</acript></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="linkcat-2" class="widget widget_links"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Ссылки</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+
+	<ul class="xoxo blogroll">
+<li><a href="http://mycontroller.ru/old_site/forum">Форум сайта</a></li>
+
+	</ul>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+
+
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#">Contact Us</a> | <a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#">Terms of Use</a> | <a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#">Trademarks</a> | <a href="http://mycontroller.ru/old_site/stm32-sintezator-rechi-ldquo-eliza-rdquo-prodolzhenie/default.htm#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+
+</div>
+
+<!-- 25 запросов. 0,329 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 Синтезатор речи “Элиза”. Продолжение_files/shCore.js.Без названия"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

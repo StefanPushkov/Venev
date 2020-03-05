@@ -1,0 +1,510 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0081)http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU" class="chrome  win"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>STM32 TIMER general-purpose. Перевод документации. Часть 2</title>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/script.js"></script>
+<link rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/style.css" type="text/css" media="screen">
+<!--[if IE 6]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" href="http://mycontroller.ru/wp-content/themes/MyController/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+<link rel="alternate" type="application/rss+xml" title="RSS-лента My Controller" href="http://mycontroller.ru/feed/">
+<link rel="alternate" type="application/atom+xml" title="Atom-лента My Controller" href="http://mycontroller.ru/feed/atom/"> 
+<link rel="pingback" href="http://mycontroller.ru/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="My Controller » Лента комментариев к «STM32 TIMER general-purpose. Перевод документации. Часть 2»" href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/feed/">
+<link rel="stylesheet" id="msw_wpfm_scan-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/wordpress-file-monitor.php" type="text/css" media="all">
+<link rel="stylesheet" id="bwp-syntax-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/bwp-syntax.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-downloadmanager-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/download-css.css" type="text/css" media="all">
+<link rel="stylesheet" id="wp-pagenavi-css" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/pagenavi-css.css" type="text/css" media="all">
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/bwp-syntax.js"></script>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/external-tracking.min.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://mycontroller.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://mycontroller.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32 TIMER general-purpose. Перевод документации. Часть 1" href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/">
+<link rel="next" title="STM32 TIMER general-purpose Описание базового молуля" href="http://mycontroller.ru/stm32-timer-general-purpose-opisanie-bazovogo-molulya/">
+<meta name="generator" content="WordPress 3.3.1">
+<link rel="canonical" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/STM32 TIMER general-purpose. Перевод документации. Часть 2.htm">
+<link rel="shortlink" href="http://mycontroller.ru/?p=2285">
+
+<link rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/wp-syntax.css" type="text/css" media="screen">
+<!-- wpSpoiler Code -->
+        <script type="text/javascript">
+            function wpSpoilerToggle(spoiler, link, showtext, hidetext) {
+                if (spoiler.style.display != 'none') {
+                    spoiler.style.display = 'none';
+                    link.innerHTML = showtext;
+                    link.className = 'spoiler_link_show';
+                } else {
+                    spoiler.style.display = 'block';
+                    link.innerHTML = hidetext;
+                    link.className = 'spoiler_link_hide';
+                }
+            }
+          </script>
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/shCore.css">
+	<link type="text/css" rel="stylesheet" href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/shThemeDefault.css">
+<!-- Google Analytics Tracking by Google Analyticator 6.0.2: http://ronaldheft.com/code/analyticator/ -->
+<script type="text/javascript">window.google_analytics_uacct = "UA-29082067-1";</script>
+<script type="text/javascript">
+	var analyticsFileTypes = [''];
+	var analyticsEventTracking = 'enabled';
+</script>
+<script type="text/javascript">
+	var _gaq = _gaq || [];
+	_gaq.push(['_setAccount', 'UA-29082067-1']);
+	_gaq.push(['_trackPageview']);
+
+	(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ga);
+	})();
+</script><script type="text/javascript" async="" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/ga.js"></script>
+</head>
+<body>
+<div id="art-page-background-simple-gradient">
+</div>
+<div id="art-main">
+<div class="art-Sheet">
+    <div class="art-Sheet-tl"></div>
+    <div class="art-Sheet-tr"></div>
+    <div class="art-Sheet-bl"></div>
+    <div class="art-Sheet-br"></div>
+    <div class="art-Sheet-tc"></div>
+    <div class="art-Sheet-bc"></div>
+    <div class="art-Sheet-cl"></div>
+    <div class="art-Sheet-cr"></div>
+    <div class="art-Sheet-cc"></div>
+    <div class="art-Sheet-body">
+<div class="art-Header">
+    <div class="art-Header-png"></div>
+    <div class="art-Header-jpeg"></div>
+<div class="art-Logo">
+    <h1 id="name-text" class="art-Logo-name">
+        <a href="http://mycontroller.ru/">My Controller</a></h1>
+    <div id="slogan-text" class="art-Logo-text">
+        Изучаем микроконтроллеры STM32</div>
+</div>
+
+</div>
+<div class="art-nav">
+	<div class="l"></div>
+	<div class="r"></div>
+	<ul class="art-menu">
+		<li><a href="http://mycontroller.ru/"><span class="l"></span><span class="r"></span><span class="t">Home</span></a></li><li><span class="art-menu-separator"></span></li><li class="page_item page-item-10"><a href="http://mycontroller.ru/o-sayte/"><span class="l"></span><span class="r"></span><span class="t">О сайте</span></a></li><li><span class="art-menu-separator"></span></li>
+<li class="page_item page-item-186"><a href="http://mycontroller.ru/programmyi/"><span class="l"></span><span class="r"></span><span class="t">СОФТ</span></a></li>
+	</ul>
+</div>
+<div class="art-contentLayout">
+<div class="art-content">
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div class="navigation">
+	<div class="alignleft">« <a href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-1/" rel="prev">STM32 TIMER general-purpose. Перевод документации. Часть 1</a></div>
+	<div class="alignright"><a href="http://mycontroller.ru/stm32-timer-general-purpose-opisanie-bazovogo-molulya/" rel="next">STM32 TIMER general-purpose Описание базового молуля</a> »</div>
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+<h2 class="art-PostHeader">
+<a href="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/STM32 TIMER general-purpose. Перевод документации. Часть 2.htm" rel="bookmark" title="Постоянная ссылка на STM32 TIMER general-purpose. Перевод документации. Часть 2">
+STM32 TIMER general-purpose. Перевод документации. Часть 2</a>
+</h2>
+<div class="art-PostContent">
+
+          <p><strong>14.3.3</strong> <strong>Выбор тактирования</strong></p>
+<p>Таймер может тактироваться от следующих источников:</p>
+<p><span id="more-2285"></span></p>
+<ul>
+<li>Внутреннее тактирование (CK_INT);</li>
+<li>Внешнее тактирование режим 1: вывод контроллера TIx;</li>
+<li>Внешнее тактирование режим 2: внешний вход триггера (ETR);</li>
+<li>Внутренний вход триггера (ITRx): один таймер используется в качестве предделителя другого таймера, например, можно использовать таймер 1 как предделитель таймера 2.</li>
+</ul>
+<p><strong>Внутренний источник тактирования</strong></p>
+<p>Если отключен режим ведомого таймера (SMS=000 ), разряды CEN, DIR регистра TIMx_CR1 и разряд UG регистра TIMx_EGR являются управляющими разрядами и изменяются только программно (за исключением UG, который очищается автоматически). Как только разряд CEN будет установлен в единицу, предделитель начинает тактироваться внутренним источником сигнала CK_INT.</p>
+<p>Внутреннее тактирование, деление частоты на 1</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image98.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border-width: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/image_thumb98.png" alt="image" width="570" height="192" border="0"></a></p>
+<p><strong>Внешнее тактирование режим 1</strong></p>
+<p>Этот режим используется, если разряды SMS регистра TIMx_SMCR равны 111. При этом счетчик будет считать по переднему или заднему фронту импульса на выбранном входе.</p>
+<p align="center"><a href="http://mycontroller.ru/wp-content/uploads/image99.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border-width: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/image_thumb99.png" alt="image" width="575" height="250" border="0"></a></p>
+<p>Например, чтобы настроить счет импульсов по нарастающему фронту сигнала на входе TI2, необходимо:</p>
+<ol>
+<li>Сконфигурировать канал 2 на ввод для входа TI2 записью разрядов CC2S=01 регистра TIMx_CCMR1 <em>(т.е. обеспечить прохождение сигнала со входа контроллера на вход </em><em>TI</em><em>2 выбранного таймера </em>)</li>
+<li>Настроить входной фильтр записью разрядов IC2F[3:0] регистра TIMx_CCMR1 (если фильтр не используется, записать в эти разряды 0000)</li>
+<li>Выбрать полярность фронта сигнала разрядами СС2P регистра TIMx_CCER</li>
+<li>Сконфигурировать таймер в режим внешнего тактирования №1 записью разрядов SMS=111</li>
+<li>Выбрать вывод TI2 источником входного сигнала записью 110 в разряды TS регистра TIMx_SMCR</li>
+<li>Разрешить счет записью 1 в разряд CEN</li>
+</ol>
+<p>Когда приходит фронт импульса на вход TI2, счетчик считает один импульс и устанавливается флаг TIF.</p>
+<p><strong>Внешнее тактирование режим 2</strong></p>
+<p>Выбор этого режима осуществляется записью 1 в разряд ECE в регистр TIMx_SMCR.</p>
+<p>Счетчик считает по каждому фронту или спаду сигнала на входе ETR.</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image100.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border-width: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/image_thumb100.png" alt="image" width="628" height="251" border="0"></a></p>
+<p>Например, для конфигурирования подсчета каждого второго импульса на входе ETR необходимо выполнить следующие действия:</p>
+<p>1. В этом примере отключим фильтр записью 0000 в разряды ETF[3:0] регистра TIMx_SMCR</p>
+<p>2. Настроить предделитель записью 01 в разряды ETPS регистра TIMx_SMCR для деления частоты входного сигнала на 2</p>
+<p>3. Выбрать активным фронт <em>(а можно спад)</em> сигнала на входе ETR, записав 0 в разряд ETP регистра TIMx_SMCR</p>
+<p>4. Включить режим внешнего тактирования №2, записью 1 в разряд ECE регистра TIMx_SMCR</p>
+<p>5. Разрешить счет записью 1 в разряд CEN</p>
+<p>Задержка между активным фронтом сигнала ETR и фактическим тактированием возникает из-за схемы синхронизации сигнала ETRP</p>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image101.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border-width: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/image_thumb101.png" alt="image" width="627" height="228" border="0"></a></p>
+<p><strong>14.3.5 Режим захвата входного сигнала</strong></p>
+<p>В режиме захвата входного сигнала регистр захвата/сравнения используется для защелкивания значения счетного регистра после обнаружения соответствующего сигнала ICx. Когда происходит захват, соответствующий флаг CCxIF регистра TIMx_SR устанавливается, и происходит прерывание и запрос DMA, если они включены.&nbsp; Если захват происходит, когда флаг CCxIF уже установлен, тогда устанавливается флаг CCxОF (<em>переполнение регистра захвата</em>). Разряд CCxIF может сброшен программно записью в него “0”, или чтением&nbsp; данных, сохраненных в регистре TIMx_CCRx. Разряд CCxОF сбрасывается программно, записью “0”.</p>
+<p>Следующий пример показывает, как захватить значение счетного регистра в TIMx_CCR1, когда формируется фронт сигнала на входе TI1. Для этого нужно выполнить следующие действия:</p>
+<ul>
+<li><span style="color: #000000;">выбрать активный вход:</span> регистр TIMx_CCR1 должен быть связан со входом TI1, для чего нужно записать 01 в разряды CC1S регистра TIMx_CCMR1. Как только разряды CC1S становятся отличными от 00, канал настраивается в режим ввода&nbsp; и регистр TIMx_CCR1 становится доступным только для чтения.</li>
+<li>Запрограммировать длительность действия входного фильтра.&nbsp; <em>Допустим, что входной сигнал не является стабильным в течении 5 импульсов частоты тактирования счетчика. Нужно задать время действия фильтра дольше этих 5 тактов. Можно задать значение фильтра таким, чтобы переход на входе TI1 детектировался лишь в том случае, если было последовательно обнаружено 8 выборок с новым значением. В таком случае нужно записать 0011 в разряды IC1F регистра TIMx_CCMR1;</em></li>
+<li>задать перепад сигнала на входе TI1, который будет активным,&nbsp; записью 0 в разряд CC1P регистра TIMx_CCER(в данном случае фронт сигнала);</li>
+<li>запрограммировать входной делитель. В нашем примере зададим коэффициент деления равным 1 записью “00” в разряды IC1PS регистра TIMx_CCMR1;</li>
+<li>включить захват данных счетчика в регистр захвата установкой разряда CC1E регистра TIMx_CCER;</li>
+<li>если необходимо, включаем запрос прерывания установкой разряда CC1IE регистра TIMx_DIER и/или запрос DMA&nbsp; установкой разряда CC1DE регистра TIMx_DIER;</li>
+</ul>
+<p><span style="color: #0a1c1f;">Когда происходит захват входных данных:</span></p>
+<ul>
+<li>в регистр TIMx_CCR1 записывается значение счетного регистра;</li>
+<li>устанавливается флаг прерывания CC1IF, если было два захвата данных и не был сброшен флаг CC1IF – устанавливается флаг CC1OF;</li>
+<li>если установлен разряд CC1IE, будет сгенерирован запрос на прерывание;</li>
+<li>если установлен разряд CC1DE, будет сгенерирован запрос DMA.</li>
+</ul>
+<p><span style="color: #0a1c1f;"><em>Чтобы обрабатывать переполнение регистра захвата, рекомендуется прежде читать данные регистра захвата, а потом флаг переполнения. Это позволяет избежать пропуск переполнения, который мог бы произойти, если прочитать сразу данные а потом флаг.</em></span></p>
+<p><em><span style="color: #0a1c1f;">Заметим. Запрос прерывания и/или запрос DMA по захвату входного сигнала можно генерировать программно установкой разряда CCxG регистра TIMx_EGR.</span></em></p>
+<p><strong>14.3.6 Режим ввода ШИМ-сигнала</strong></p>
+<p>Этот режим – частный случай режима захвата входных данных. Процедура та же, за исключением:</p>
+<ul>
+<li><span style="color: #000000;">два ICx сигнала отображаются на том же самом входе TIx;</span></li>
+<li><span style="color: #000000;">эти два ICx сигнала имеют уровень активного сигнала противоположной полярности;</span></li>
+<li><span style="color: #000000;">один из двух сигналов TIxFP выбран запускающим и ведомый контроллер настроен в режим сброса.</span></li>
+</ul>
+<p><span style="text-decoration: underline;">Пример использования</span>. Можно измерять период (в регистре TIMx_CCR1) и длительность (регистре TIMx_CCR2) импульса ШИМ-сигнала, используя следующую последовательность действий (в зависимости от частоты CK_INT и значения предделителя):</p>
+<ul>
+<li><span style="color: #000000;">выбрать активный вход для TIMx_CCR1: записать “01” в разряды CC1S регистра TIMx_CCMR1 (выбор TI1);</span></li>
+<li><span style="color: #000000;">выбрать активный перепад сигнала для TI1FP1: записать 0 в разряд CC1P (активный фронт сигнала);</span></li>
+<li><span style="color: #000000;">выбрать активный вход для TIMx_CCR2: записать “10” в разряды CC2S регистра TIMx_CCMR1 (выбор TI1);</span></li>
+<li><span style="color: #000000;">выбрать активный перепад сигнала для TI1FP2: записать 1 в разряд CC2P (активный спад сигнала);</span></li>
+<li><span style="color: #000000;">выбрать источник запуска: записать 101 в разряды TS регистра TIMx_SMCR(выбран TI1FP1);</span></li>
+<li><span style="color: #000000;">сконфигурировать режим ведомого контроллера в режим сброса;</span></li>
+<li><span style="color: #000000;">включить захват записью “1” в разряды CC1E и CC2E регистра TIMx_CCER. </span></li>
+</ul>
+<p><a href="http://mycontroller.ru/wp-content/uploads/image102.png"><img style="background-image: none; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; margin-right: auto; padding-top: 0px; border: 0px;" title="image" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/image_thumb102.png" alt="image" width="627" height="310" border="0"></a></p>
+                  
+</div>
+<div class="cleared"></div>
+<div class="art-PostFooterIcons art-metadata-icons">
+Рубрика: <a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»" rel="category tag">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+</div>
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+<!-- You can start editing here. -->
+
+
+			<!-- If comments are open, but there are no comments. -->
+
+	 
+
+<div class="art-Post">
+    <div class="art-Post-tl"></div>
+    <div class="art-Post-tr"></div>
+    <div class="art-Post-bl"></div>
+    <div class="art-Post-br"></div>
+    <div class="art-Post-tc"></div>
+    <div class="art-Post-bc"></div>
+    <div class="art-Post-cl"></div>
+    <div class="art-Post-cr"></div>
+    <div class="art-Post-cc"></div>
+    <div class="art-Post-body">
+<div class="art-Post-inner art-article">
+
+<div class="art-PostContent">
+
+<div id="respond">
+  
+  <h3>Оставить комментарий</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/#respond" style="display:none;">Нажмите, чтобы отменить ответ.</a></small>
+</div>
+
+
+<form action="http://mycontroller.ru/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input type="text" name="author" id="author" value="" size="22" tabindex="1">
+<label for="author"><small>Имя </small></label></p>
+
+<p><input type="text" name="email" id="email" value="" size="22" tabindex="2">
+<label for="email"><small>E-mail (не публикуется) </small></label></p>
+
+<p><input type="text" name="url" id="url" value="" size="22" tabindex="3">
+<label for="url"><small>Web-сайт</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> Вы можете использовать эту разметку: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code lang=&quot;&quot;&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang=&quot;&quot; extra=&quot;&quot;&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p>
+	<span class="art-button-wrapper">
+		<span class="l"> </span>
+		<span class="r"> </span>
+		<input class="art-button" type="submit" name="submit" tabindex="5" value="Отправить">
+	</span>
+<input type="hidden" name="comment_post_ID" value="2285" id="comment_post_ID">
+<input type="hidden" name="comment_parent" id="comment_parent" value="0">
+</p>
+
+</form>
+
+</div>
+
+</div>
+<div class="cleared"></div>
+
+
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+
+
+</div>
+<div class="art-sidebar1">      
+<div id="mycategoryorder-2" class="widget widget_mycategoryorder"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Рубрики</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+			<li class="cat-item cat-item-3"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/" title="Просмотреть все записи в рубрике «МИКРОКОНТРОЛЛЕРЫ STM32»">МИКРОКОНТРОЛЛЕРЫ STM32</a>
+<ul class="children">
+	<li class="cat-item cat-item-7"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bootloader/" title="Просмотреть все записи в рубрике «Bootloader»">Bootloader</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/portyi-vvoda-vyivoda/" title="Просмотреть все записи в рубрике «GPIO»">GPIO</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usart/" title="Просмотреть все записи в рубрике «USART»">USART</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dma/" title="Просмотреть все записи в рубрике «DMA»">DMA</a>
+</li>
+	<li class="cat-item cat-item-15"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/bkp-registryi/" title="Просмотреть все записи в рубрике «BKP»">BKP</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/rtc/" title="Просмотреть все записи в рубрике «RTC»">RTC</a>
+</li>
+	<li class="cat-item cat-item-16"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/timer/" title="Просмотреть все записи в рубрике «TIMER»">TIMER</a>
+</li>
+	<li class="cat-item cat-item-21"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/spi/" title="Просмотреть все записи в рубрике «SPI»">SPI</a>
+</li>
+	<li class="cat-item cat-item-24"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/adc/" title="Просмотреть все записи в рубрике «ADC»">ADC</a>
+</li>
+	<li class="cat-item cat-item-25"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/dac/" title="Просмотреть все записи в рубрике «DAC»">DAC</a>
+</li>
+	<li class="cat-item cat-item-26"><a href="http://mycontroller.ru/category/mikrokontrolleryi-stm32/usb/" title="Просмотреть все записи в рубрике «USB»">USB</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-19"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/" title="Просмотреть все записи в рубрике «ВНЕШНИЕ УСТРОЙСТВА»">ВНЕШНИЕ УСТРОЙСТВА</a>
+<ul class="children">
+	<li class="cat-item cat-item-23"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/termodatchik-ds18b20/" title="Просмотреть все записи в рубрике «Термодатчик ds18b20»">Термодатчик ds18b20</a>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/enkoder/" title="Просмотреть все записи в рубрике «Энкодер»">Энкодер</a>
+</li>
+	<li class="cat-item cat-item-20"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/" title="Просмотреть все записи в рубрике «Карта памяти SD»">Карта памяти SD</a>
+	<ul class="children">
+	<li class="cat-item cat-item-31"><a href="http://mycontroller.ru/category/vneshnie-ustroystva/karta-pamyati-sd/rabota-s-ffatfs/" title="Просмотреть все записи в рубрике «Работа с FatFs»">Работа с FatFs</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://mycontroller.ru/category/bez-rubriki/" title="Просмотреть все записи в рубрике «МОИ ПРОЕКТЫ»">МОИ ПРОЕКТЫ</a>
+<ul class="children">
+	<li class="cat-item cat-item-6"><a href="http://mycontroller.ru/category/bez-rubriki/chasyi-na-stm32f100rb/" title="Просмотреть все записи в рубрике «Часы на STM32F100RB»">Часы на STM32F100RB</a>
+</li>
+	<li class="cat-item cat-item-28"><a href="http://mycontroller.ru/category/bez-rubriki/umnyiy-dom/" title="Просмотреть все записи в рубрике «Умный Дом»">Умный Дом</a>
+</li>
+	<li class="cat-item cat-item-30"><a href="http://mycontroller.ru/category/bez-rubriki/waveplayer/" title="Просмотреть все записи в рубрике «WavePlayer»">WavePlayer</a>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://mycontroller.ru/category/poleznyiy-soft/" title="Просмотреть все записи в рубрике «ПОЛЕЗНЫЙ СОФТ»">ПОЛЕЗНЫЙ СОФТ</a>
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://mycontroller.ru/category/poleznyiy-soft/stm32-generator-koda/" title="Просмотреть все записи в рубрике «STM32 генератор»">STM32 генератор</a>
+</li>
+</ul>
+</li>
+		</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>		<div id="recent-posts-2" class="widget widget_recent_entries"><div class="art-Block">
+    <div class="art-Block-body">
+		<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Свежие записи</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+		<ul>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-novaya-versiya/" title="STM32 Генератор кода. Новая версия">STM32 Генератор кода. Новая версия</a></li>
+				<li><a href="http://mycontroller.ru/stm32-generator-koda-konstruktor-komponentov/" title="STM32 “Конструктор компонентов” для “Генератора кода”">STM32 “Конструктор компонентов” для “Генератора кода”</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-rasshirenie-vozmozhnostey-programmyi/" title="STM32 Воспроизведение звука. Расширение возможностей программы">STM32 Воспроизведение звука. Расширение возможностей программы</a></li>
+				<li><a href="http://mycontroller.ru/stm32-vosproizvedenie-zvuka-nastroyka-dac/" title="STM32 Воспроизведение звука. Настройка периферии + первый звук">STM32 Воспроизведение звука. Настройка периферии + первый звук</a></li>
+				<li><a href="http://mycontroller.ru/stm32-dac-primeryi-ispolzovaniya/" title="STM32 DAC Примеры использования">STM32 DAC Примеры использования</a></li>
+				</ul>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div><div id="text-5" class="widget widget_text"><div class="art-Block">
+    <div class="art-Block-body">
+<div class="art-BlockHeader">
+    <div class="l"></div>
+    <div class="r"></div>
+    <div class="art-header-tag-icon">
+        <div class="t">Немного рекламы</div>
+    </div>
+</div><div class="art-BlockContent">
+    <div class="art-BlockContent-tl"></div>
+    <div class="art-BlockContent-tr"></div>
+    <div class="art-BlockContent-bl"></div>
+    <div class="art-BlockContent-br"></div>
+    <div class="art-BlockContent-tc"></div>
+    <div class="art-BlockContent-bc"></div>
+    <div class="art-BlockContent-cl"></div>
+    <div class="art-BlockContent-cr"></div>
+    <div class="art-BlockContent-cc"></div>
+    <div class="art-BlockContent-body">
+			<div class="textwidget"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-6213925206017237";
+/* second */
+google_ad_slot = "7273021636";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/show_ads.js">
+</script><ins style="display:inline-table;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><ins id="aswift_0_anchor" style="display:block;border:none;height:200px;margin:0;padding:0;position:relative;visibility:visible;width:200px"><iframe allowtransparency="true" frameborder="0" height="200" hspace="0" marginwidth="0" marginheight="0" onload="var i=this.id,s=window.google_iframe_oncopy,H=s&amp;&amp;s.handlers,h=H&amp;&amp;H[i],w=this.contentWindow,d;try{d=w.document}catch(e){}if(h&amp;&amp;d&amp;&amp;(!d.body||!d.body.firstChild)){if(h.call){setTimeout(h,0)}else if(h.match){w.location.replace(h)}}" scrolling="no" vspace="0" width="200" id="aswift_0" name="aswift_0" style="left:0;position:absolute;top:0;"></iframe></ins></ins></div>
+		
+		<div class="cleared"></div>
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+</div>
+
+<p align="center">
+
+</p>
+
+</div>
+</div>
+<div class="cleared"></div>
+
+<div class="art-Footer">
+    <div class="art-Footer-inner">
+                <div class="art-Footer-text">
+<p>
+<a href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/#">Contact Us</a> | <a href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/#">Terms of Use</a> | <a href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/#">Trademarks</a> | <a href="http://mycontroller.ru/stm32-timer-general-purpose-perevod-dokumentatsii-chast-2/#">Privacy Statement</a><br>Copyright © 2009 My Controller. All Rights Reserved.</p>
+</div>
+    </div>
+    <div class="art-Footer-background">
+    </div>
+</div>
+
+		<div class="cleared"></div>
+    </div>
+</div>
+<div class="cleared"></div>
+<p class="art-page-footer">Powered by <a href="http://wordpress.org/">WordPress</a> and <a href="http://www.artisteer.com/?p=wordpress_themes">WordPress Theme</a> created with Artisteer.</p>
+</div>
+
+<!-- 23 запросов. 0,283 секунд. -->
+<div>
+<!-- SyntaxHighlighter Stuff -->
+<script type="text/javascript" src="./STM32 TIMER general-purpose. Перевод документации. Часть 2_files/shCore.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+
+</div>
+
+
+</body></html>

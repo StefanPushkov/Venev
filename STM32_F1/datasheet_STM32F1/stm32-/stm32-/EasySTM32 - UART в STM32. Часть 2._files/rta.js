@@ -1,0 +1,1 @@
+crtg_content = ''; (function(){document.cookie = 'usertag=' + escape(crtg_content) + '; path=/; expires=Wed, 01 Jul 2015 09:29:30 GMT; domain=begun.ru';})();

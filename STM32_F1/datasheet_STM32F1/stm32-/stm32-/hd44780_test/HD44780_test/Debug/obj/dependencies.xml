@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dependencies>
+   <includePath signature="/I. /Istm_lib /Istm_lib\inc /Icmsis_boot /Icmsis">
+      <source file="..\..\cmsis_boot\system_stm32f10x.h" lastModified="137c2288e8a">
+      </source>
+      <source file="..\..\stm_lib\inc\stm32f10x_rcc.h" lastModified="137c2289512">
+         <include file="..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\cmsis_boot\stm32f10x.h" lastModified="137c2289178">
+         <include file="..\..\cmsis\core_cm3.h"/>
+         <include file="..\..\cmsis_boot\system_stm32f10x.h"/>
+         <include file="..\..\cmsis_boot\stm32f10x_conf.h"/>
+      </source>
+      <source file="..\..\stm_lib\src\stm32f10x_gpio.c" lastModified="137c2288cd5">
+         <include file="..\..\stm_lib\inc\stm32f10x_gpio.h"/>
+         <include file="..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\stm_lib\src\stm32f10x_rcc.c" lastModified="137c2289541">
+         <include file="..\..\stm_lib\inc\stm32f10x_rcc.h"/>
+      </source>
+      <source file="..\..\cmsis_boot\system_stm32f10x.c" lastModified="137c2288e7b">
+         <include file="..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\cmsis_boot\startup\startup_stm32f10x_md_vl.c" lastModified="137c2288d71">
+      </source>
+      <source file="..\..\cmsis\core_cm3.h" lastModified="137c2289754">
+      </source>
+      <source file="..\..\cmsis_boot\stm32f10x_conf.h" lastModified="137c2288e4c">
+      </source>
+      <source file="..\..\hd44780_driver\hd44780_driver.h" lastModified="137e736bbe8">
+         <include file="..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+      <source file="..\..\cmsis\core_cm3.c" lastModified="137c22892e0">
+      </source>
+      <source file="..\..\hd44780_driver\hd44780_driver.c" lastModified="137ec2cc30a">
+         <include file="..\..\hd44780_driver\hd44780_driver.h"/>
+      </source>
+      <source file="..\..\stm_lib\inc\stm32f10x_gpio.h" lastModified="137c2288cd5">
+         <include file="..\..\cmsis_boot\stm32f10x.h"/>
+      </source>
+   </includePath>
+</dependencies>

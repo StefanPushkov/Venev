@@ -1,0 +1,9 @@
+system_stm32f4xx.o: ..\CMSIS\CMSIS\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c
+system_stm32f4xx.o: ..\Patch\stm32f4xx.h
+system_stm32f4xx.o: ..\Patch\core_cm4.h
+system_stm32f4xx.o: C:\Keil\ARM\RV31\Inc\stdint.h
+system_stm32f4xx.o: ..\Patch\core_cmInstr.h
+system_stm32f4xx.o: ..\Patch\core_cmFunc.h
+system_stm32f4xx.o: ..\Patch\core_cm4_simd.h
+system_stm32f4xx.o: ..\Patch\system_stm32f4xx.h
+system_stm32f4xx.o: ..\Patch\stm32f4xx_conf.h

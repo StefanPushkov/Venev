@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0038)http://chipspace.ru/stm32l-max-sysclk/ -->
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="ru-RU"><head profile="http://gmpg.org/xfn/11"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<link rel="pingback" href="http://chipspace.ru/xmlrpc.php">
+
+	<title>  STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace</title>
+	<meta name="description" content="В статье описано как сформировать максимальную системную тактовую частоту с помощью конфигурации PLL.">
+	<meta name="keywords" content="stm32,pll stm32">
+<link rel="shortcut icon" href="http://chipspace.ru/wp-content/uploads/2013/06/Favicon_32.jpg">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента" href="http://chipspace.ru/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев" href="http://chipspace.ru/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="ChipSpace » Лента комментариев к «STM32L. Максимальная тактовая частота от источника PLL.»" href="http://chipspace.ru/stm32l-max-sysclk/feed/">
+<link rel="stylesheet" id="wp_sidebarlogin_css_styles-css" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/style.css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-css" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/style(1).css" type="text/css" media="all">
+<link rel="stylesheet" id="suffusion-theme-skin-1-css" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/skin.css" type="text/css" media="all">
+<!--[if !IE]>--><link rel="stylesheet" id="suffusion-rounded-css" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/rounded-corners.css" type="text/css" media="all">
+<!--<![endif]-->
+<!--[if gt IE 8]><link rel='stylesheet' id='suffusion-rounded-css'  href='http://chipspace.ru/wp-content/themes/suffusion/rounded-corners.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<!--[if lt IE 8]><link rel='stylesheet' id='suffusion-ie-css'  href='http://chipspace.ru/wp-content/themes/suffusion/ie-fix.css?ver=3.9.4' type='text/css' media='all' />
+<![endif]-->
+<link rel="stylesheet" id="suffusion-generated-css" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/saved_resource" type="text/css" media="all">
+<script type="text/javascript" async="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/watch.js"></script><script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/jquery.js"></script>
+<script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blockui.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var sidebar_login_params = {"ajax_url":"http:\/\/chipspace.ru\/wp-admin\/admin-ajax.php","login_nonce":"51fbee32d8"};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/sidebar-login.js"></script>
+<script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/prettify_mod.js"></script>
+<script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/comment-reply.js"></script>
+<script type="text/javascript">
+/* <![CDATA[ */
+var Suffusion_JS = {"wrapper_width_type_page_template_1l_sidebar_php":"fixed","wrapper_max_width_page_template_1l_sidebar_php":"1200","wrapper_min_width_page_template_1l_sidebar_php":"600","wrapper_orig_width_page_template_1l_sidebar_php":"75","wrapper_width_type_page_template_1r_sidebar_php":"fixed","wrapper_max_width_page_template_1r_sidebar_php":"1200","wrapper_min_width_page_template_1r_sidebar_php":"600","wrapper_orig_width_page_template_1r_sidebar_php":"75","wrapper_width_type_page_template_1l1r_sidebar_php":"fixed","wrapper_max_width_page_template_1l1r_sidebar_php":"","wrapper_min_width_page_template_1l1r_sidebar_php":"600","wrapper_orig_width_page_template_1l1r_sidebar_php":"75","wrapper_width_type_page_template_2l_sidebars_php":"fixed","wrapper_max_width_page_template_2l_sidebars_php":"1200","wrapper_min_width_page_template_2l_sidebars_php":"600","wrapper_orig_width_page_template_2l_sidebars_php":"75","wrapper_width_type_page_template_2r_sidebars_php":"fixed","wrapper_max_width_page_template_2r_sidebars_php":"1200","wrapper_min_width_page_template_2r_sidebars_php":"600","wrapper_orig_width_page_template_2r_sidebars_php":"75","wrapper_width_type":"fluid","wrapper_max_width":"1200","wrapper_min_width":"600","wrapper_orig_width":"98","wrapper_width_type_page_template_no_sidebars_php":"fluid","wrapper_max_width_page_template_no_sidebars_php":"1200","wrapper_min_width_page_template_no_sidebars_php":"600","wrapper_orig_width_page_template_no_sidebars_php":"98","suf_nav_delay":"500","suf_nav_effect":"none","suf_navt_delay":"500","suf_navt_effect":"fade","suf_jq_masonry_enabled":"disabled","suf_fix_aspect_ratio":"preserve","suf_show_drop_caps":""};
+/* ]]> */
+</script>
+<script type="text/javascript" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/suffusion.js"></script>
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://chipspace.ru/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://chipspace.ru/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="STM32L-DYSCOVERY. АЦ-преобразование и вывод на дисплей." href="http://chipspace.ru/stm32l-discovery-adc-lcd/">
+<link rel="next" title="STM32L. Библиотеки от STMicroelectronics" href="http://chipspace.ru/stm32l-stdperiph-lib/">
+<link rel="canonical" href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace.htm">
+<link rel="shortlink" href="http://chipspace.ru/?p=844">
+<!-- Start Additional Feeds -->
+<!-- End Additional Feeds -->
+<!-- location header -->
+<!-- Include AudioPlayer via Suffusion -->
+<script type="text/javascript">
+/* <![CDATA[ */
+	if (typeof AudioPlayer != 'undefined') {
+		AudioPlayer.setup("http://chipspace.ru/wp-content/themes/suffusion/scripts/player.swf", {
+			width: 500,
+			initialvolume: 100,
+			transparentpagebg: "yes",
+			left: "000000",
+			lefticon: "FFFFFF"
+		});
+	}
+/* ]]> */
+</script>
+<!-- /AudioPlayer -->
+<!-- THEMEKITFORWP STYLE OPTIONS prettify-wordpress-->
+			<style>.str{ color: #800; }
+			.kwd{ color: #008; }
+			.com{ color: #0f800f; }
+			.typ{ color: #606; }
+			.lit{ color: #066; }
+			.pun{ color: #660; }
+			.pln{ color: #0e0e11; }
+			.tag{ color: #008; }
+			.atn{ color: #606; }
+			.atv{ color: #088108; }
+			.dec{ color: #606; }
+			.prettyprint, .prettyprint code{ background-color: #fdfcfc;}
+			.prettyprint{border: #5c71b7 solid 1px;padding: 10px; margin: 0 0 20px 0; overflow: auto; position: relative;}
+			.prettyprint{-moz-border-radius: 0px;border-radius: 0px;}
+			.prettyprint, .prettyprint code{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #333333;  font-family: Courier New, Courier New, monospace; }
+			.prettyprint:after{ font-weight: normal;  font-style: normal;  font-size: 13px;  color: #999999;  font-family: Courier, MonoSpace; }
+			.prettyprint:after{ content: attr(rel); position: absolute; top: 15px; line-height: 0; right: 12px; }
+			</style><!-- END THEMEKITFORWP STYLE OPTIONS --></head>
+<body class="single single-post postid-844 single-format-standard light-theme-gray-1">
+    			<div id="nav-top" class="tab fix">
+		<div class="col-control right">
+		</div><!-- /.col-control -->
+	</div><!-- /#nav-top -->
+		<div id="wrapper" class="fix">
+					<div id="header-container" class="fix">
+					<div id="header" class="fix">
+			<h2 class="blogtitle"><a href="http://chipspace.ru/">ChipSpace</a></h2>
+		<div class="description"></div>
+    </div><!-- /header -->
+ 	<div id="nav" class="tab fix">
+		<div class="col-control left">
+	<!-- right-header-widgets -->
+	<div id="right-header-widgets" class="warea">
+	
+<form method="get" class="searchform " action="http://chipspace.ru/">
+	<input type="text" name="s" class="searchfield" value="Поиск" onfocus="if (this.value == &#39;Поиск&#39;) {this.value = &#39;&#39;;}" onblur="if (this.value == &#39;&#39;) {this.value = &#39;Поиск&#39;;}">
+	<input type="submit" class="searchsubmit" value="" name="searchsubmit">
+</form>
+	</div>
+	<!-- /right-header-widgets -->
+<ul class="sf-menu">
+
+					<li><a href="http://chipspace.ru/">Главная</a></li><li class="page_item page-item-762"><a href="http://chipspace.ru/contact/">Контакты</a></li>
+<li class="page_item page-item-2800"><a href="http://chipspace.ru/%d1%80%d0%b0%d0%b7%d1%80%d0%b0%d0%b1%d0%be%d1%82%d0%ba%d0%b0-%d1%8d%d0%bb%d0%b5%d0%ba%d1%82%d1%80%d0%be%d0%bd%d0%b8%d0%ba%d0%b8/">Разработка электроники</a></li>
+<li class="page_item page-item-1125"><a href="http://chipspace.ru/links/">Ссылки</a></li>
+<li><a href="http://feeds.feedburner.com/chipspace" title="Подписка на RSS-ленту новостей дает возможность узнавать об обновлениях на сайте" target="_blank">RSS</a></li>
+<li><a href="http://chipspace.ru/karta-sajta/" title="Полный список статей" target="_blank">Содержание</a></li>
+
+</ul>
+		</div><!-- /col-control -->
+	</div><!-- /nav -->
+			</div><!-- //#header-container -->
+			<div id="container" class="fix">
+				    <div id="main-col">
+		  	<div id="content">
+	<div class="post-844 post type-post status-publish format-standard hentry category-microcontrollers-stm32 tag-pll tag-stm32 tag-stm32l-discovery category-9-id full-content" id="post-844">
+<div class="title-container fix">
+	<div class="title">
+		<h1 class="posttitle"><a href="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace.htm" class="entry-title" rel="bookmark" title="STM32L. Максимальная тактовая частота от источника PLL.">STM32L. Максимальная тактовая частота от источника PLL.</a></h1>
+		<div class="postdata fix">
+					<span class="category"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»" rel="category tag">STM32</a></span>
+							<span class="comments"><span class="icon">&nbsp;</span><a href="http://chipspace.ru/stm32l-max-sysclk/#respond">Добавить комментарий</a></span>
+					</div><!-- /.postdata -->
+		</div><!-- /.title -->
+		<div class="date"><span class="month">Май</span> <span class="day">29</span><span class="year">2012</span></div>
+	</div><!-- /.title-container -->
+	<span class="post-format-icon">&nbsp;</span>		<div class="entry-container fix">
+			<div class="entry fix">
+<p class="first-para">Для данной серии максимально возможная системная тактовая частота SYSCLK равна 32 МГц. Достичь такого значения можно только при выборе PLL источником тактирования. Далее будет описан порядок конфигурации PLL для работы микроконтроллера “на пределе”.&nbsp; А заодно задействуем внешний вывод на отладочной плате STM32L-DISCOVERY для наблюдения за результатом.</p>
+<p><span id="more-844"></span>Системную тактовую частоту и сигналы генераторов можно увидеть на выводе MCO, для микроконтроллера платы STM32L-DISCOVERY это вывод PA8. На него можно вывести следующие сигналы:
+</p><ul>
+<li>SYSCLK – системная тактовая частота </li>
+<li>HSI – внутренний генератор на 16 МГц </li>
+<li>MSI – внутренний генератор на 2.097 МГц (это значение по умолчанию, вообще этот генератор можно настроить на несколько фиксированных частот) </li>
+<li>HSE – внешний генератор (кварц) </li>
+<li>PLL – внутренний генератор (можно настраивать в широком диапазоне значений, имеет собственные делитель и умножитель частоты, в качестве источника входного сигнала у него могут быть HSI или HSE) </li>
+<li>LSI – внутренний генератор на 37 кГц (приблизительная величина) </li>
+<li>LSE – внешний генератор на 32.768 кГц (кварц) </li>
+</ul>
+<p>Сигналы всех этих генераторов, а также системную частоту SYSCLK, для контроля поочередно подключим на вывод MCO. За исключением генератора HSE, поскольку этот внешний кварцевый резонатор на STM32L-DISCOVERY не установлен.</p>
+<p>Проект создан в IAR EWARM версии 6.30. Порядок создания проекта я описывал ранее, поэтому сразу перейдем к рассмотрению кода программы, а в конце статьи будет ссылка для загрузки готового проекта.</p>
+<p>Вначале подключаем внешний файл stm32l1xx.h, в нем заданы готовые битовые маски для модификации регистров микроконтроллера.</p>
+<pre class="prettyprint"><code><span class="com">#include</span><span class="pln"> </span><span class="str">"stm32l1xx.h"</span></code></pre>
+<p>
+  <br>Далее сразу переходим в основную функцию main(), все настройки будут в ее теле, отдельных функций я не создавал. Сразу же включим все возможные генераторы – источники тактирования. Тут рассмотрим процедуру включения каждого из генераторов по отдельности, поскольку не каждый из них можно включить одной командой. В первую очередь включаем внутренний генератор на 16 МГц – HSI. Далее ждем установки бита HSIRDY, что говорит о стабилизации генератора и готовности к использованию. </p>
+<p></p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CR </span><span class="pun">|=</span><span class="pln"> RCC_CR_HSION</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CR</span><span class="pun">&amp;</span><span class="pln">RCC_CR_HSIRDY</span><span class="pun">));</span></code></pre>
+<p>Теперь включим генераторы LSI (37 кГц – внутренний) и LSE (внешний, с кварцем на 32.768 кГц). А вот тут уже не все так просто. Внутренний LSI включается также одной командой, а вот для запуска внешнего LSE надо выполнить еще кое-какие действия. Вот что написано в документации:</p>
+<p><em>The LSEON, LSEBYP, RTCSEL and RTCEN bits in the RCC control and status register</em> </p>
+<p>(RCC_CSR) are in the RTC domain. As these bits are write protected after reset, the DBP </p>
+<p>bit in the Power control register (PWR_CR) has to be set to be able to modify them.</p>
+<p>Это значит, что для установки бита LSEON (включение генератора LSE) в регистре RCC_CR нужно разрешить доступ к домену RTC (real time clock – часы реального времени). Делается это установкой разрешающего бита DBP&nbsp; регистра PWR_CR. А это уже в секции, отвечающей за режимы энергопотребления. А еще вначале нужно тактировать этот модуль (POWER). Выполним эти действия, затем включим генераторы (биты LSEON, LSION регистра RCC_CR)&nbsp; и дождемся их работоспособности, проверяя установку бит готовности LSERDY и LSIRDY.</p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">APB1ENR </span><span class="pun">|=</span><span class="pln"> RCC_APB1ENR_PWREN</span><span class="pun">;</span><span class="pln"><br>PWR</span><span class="pun">-&gt;</span><span class="pln">CR </span><span class="pun">|=</span><span class="pln"> PWR_CR_DBP</span><span class="pun">;</span><span class="pln"><br>RCC</span><span class="pun">-&gt;</span><span class="pln">CSR </span><span class="pun">|=</span><span class="pln"> RCC_CSR_LSEON</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CSR </span><span class="pun">&amp;</span><span class="pln"> RCC_CSR_LSERDY</span><span class="pun">));</span><span class="pln"><br>RCC</span><span class="pun">-&gt;</span><span class="pln">CSR </span><span class="pun">|=</span><span class="pln"> RCC_CSR_LSION</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CSR </span><span class="pun">&amp;</span><span class="pln"> RCC_CSR_LSIRDY</span><span class="pun">));</span></code></pre>
+<p>Теперь займемся настройкой PLL.</p>
+<p>Вначале выберем для PLL источник входного сигнала – это будет HSI (16 МГц).</p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">|=</span><span class="pln"> RCC_CFGR_PLLSRC_HSI</span><span class="pun">;</span></code></pre>
+<p>
+  <br>Далее настроим делитель и множитель PLL. Делить входную частоту будем на 2, а умножать на 4. В итоге должно получиться 32 МГц на выходе PLL. </p>
+<p></p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">|=</span><span class="pln"> RCC_CFGR_PLLMUL4</span><span class="pun">;</span><span class="pln"><br>RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">|=</span><span class="pln"> RCC_CFGR_PLLDIV2</span><span class="pun">;</span></code></pre>
+<p>
+  <br>Запускаем источник PLL и, как положено ждем его стабилизации. </p>
+<p></p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CR </span><span class="pun">|=</span><span class="pln"> RCC_CR_PLLON</span><span class="pun">;</span><span class="pln"><br></span><span class="kwd">while</span><span class="pun">(!(</span><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CR</span><span class="pun">&amp;</span><span class="pln">RCC_CR_PLLRDY</span><span class="pun">));</span></code></pre>
+<p>Теперь все возможные источники (кроме HSE, по причине отсутствия кварца) запущены. Пока еще системная тактовая частота SYSCLK формируется от внутреннего источника MSI = 2.097 МГц, как задано по умолчанию. Нам же нужно перейти на PLL. Выбор источника производится в регистре RCC_CFGR. Все тут довольно просто, до некоторого предела. Пока значение частоты не превысило 16 МГц. А если это произошло, то будете наблюдать “зависший” МК <em>(а “зависнет” он в прямом смысле – чтение флэш-памяти, а соответственно и выполнение кода программы станет невозможным!!!).</em> Но заявлено ведь, что максимальная тактовая частота может быть равна 32 МГц?! Тут снова придется перелопатить документацию (<em>иногда восхищаешься тем,</em> <em>как понятно и кратко в ней все расписано, но иногда пара нужных строк находится в совсем другом разделе!)</em>, чтобы наткнуться на решение проблемы в теме, описывающей работу с модулем флэш-памяти. Вот как там изложена процедура перехода на более высокую рабочую частоту (настройка производится через регистр FLASH_ACR):</p>
+<ul>
+<li>Включить режим чтения 64-битных слов – бит ACC64. </li>
+<li>Задать время ожидания доступа к флэш-памяти равное одному периоду тактовой частоты – бит LATENCY </li>
+<li>Если необходимо, настроить выборку с упреждением – бит PRFTEN (<em>я не использовал)</em> </li>
+</ul>
+<pre class="prettyprint"><code><span class="pln">FLASH</span><span class="pun">-&gt;</span><span class="pln">ACR </span><span class="pun">|=</span><span class="pln"> FLASH_ACR_ACC64</span><span class="pun">;</span><span class="pln"><br>FLASH</span><span class="pun">-&gt;</span><span class="pln">ACR </span><span class="pun">|=</span><span class="pln"> FLASH_ACR_LATENCY</span><span class="pun">;</span></code></pre>
+<p>
+  <br>Далее выбираем PLL в качестве источника системной тактовой частоты: </p>
+<p></p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">|=</span><span class="pln"> RCC_CFGR_SW_PLL</span><span class="pun">;</span></code></pre>
+<p>
+  <br>Для проверки выведем сигнал на внешний выход MCO. Для этого надо настроить вывод порта PA8. В следующих строках выполняются процедуры настройки нужного вывода: </p>
+<p></p>
+<pre class="prettyprint"><code><span class="pln">RCC</span><span class="pun">-&gt;</span><span class="pln">AHBENR </span><span class="pun">|=</span><span class="pln"> RCC_AHBENR_GPIOAEN</span><span class="pun">;</span><span class="pln"><br>GPIOA</span><span class="pun">-&gt;</span><span class="pln">MODER </span><span class="pun">|=</span><span class="pln"> GPIO_MODER_MODER8_1</span><span class="pun">;</span><span class="pln"><br>GPIOA</span><span class="pun">-&gt;</span><span class="pln">OTYPER </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">GPIO_OTYPER_OT_8</span><span class="pun">;</span><span class="pln"><br>GPIOA</span><span class="pun">-&gt;</span><span class="pln">PUPDR </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">GPIO_PUPDR_PUPDR8</span><span class="pun">;</span><span class="pln"><br>GPIOA</span><span class="pun">-&gt;</span><span class="pln">OSPEEDR </span><span class="pun">|=</span><span class="pln"> GPIO_OSPEEDER_OSPEEDR8</span><span class="pun">;</span><span class="pln"><br>GPIOA</span><span class="pun">-&gt;</span><span class="pln">AFR</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]</span><span class="pln"> </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">GPIO_AFRH_AFRH8</span><span class="pun">;</span><span class="pln"><br>RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">&amp;=</span><span class="pln"> </span><span class="pun">~</span><span class="pln">RCC_CFGR_MCOPRE</span><span class="pun">;</span></code></pre>
+<p>Опишу по их по порядку следования:</p>
+<ul>
+<li>Разрешаем тактирование порта А </li>
+<li>Вывод 8 этого порта настраиваем в режим работы с альтернативной функцией </li>
+<li>Режим Push-Pull </li>
+<li>Подтягивающие резисторы отключены </li>
+<li>Скорость вывода в порт максимальная – 40 МГц </li>
+<li>Для данного вывода выбрана альтернативная функция AF0 – выход MCO </li>
+<li>На выходе MCO возможно использование предварительного делителя. Оставляем выходную частоту без изменений — <em>MCO is divided by 1</em> </li>
+</ul>
+<p>Некоторые из этих значений можно и не менять, по умолчанию они и так нулевые, но решил описать процедуру настройки порта полностью. И, наконец, можно уже задать тактовый сигнал, который мы хотим посмотреть на внешнем выводе:</p>
+<pre class="prettyprint"><code><span class="com">//RCC-&gt;CFGR |= RCC_CFGR_MCO_MSI;</span><span class="pln"><br></span><span class="com">//RCC-&gt;CFGR |= RCC_CFGR_MCO_HSI;</span><span class="pln"><br></span><span class="com">//RCC-&gt;CFGR |= RCC_CFGR_MCO_LSI;</span><span class="pln"><br></span><span class="com">//RCC-&gt;CFGR |= RCC_CFGR_MCO_LSE;</span><span class="pln"><br></span><span class="com">//RCC-&gt;CFGR |= RCC_CFGR_MCO_PLL;</span><span class="pln"><br>RCC</span><span class="pun">-&gt;</span><span class="pln">CFGR </span><span class="pun">|=</span><span class="pln"> RCC_CFGR_MCO_SYSCLK</span><span class="pun">;</span></code></pre>
+<p>Естественно, это может быть только один из сигналов, поэтому закомментированы все строки, кроме одной. В данный момент на выводе MCO (PA8) можно наблюдать системную тактовую частоту SYSCLK, которая имеет максимально возможное значение – 32 МГц. Чтобы понаблюдать другие сигналы, надо убрать символы комментария у нужной строки. Далее приведены осциллограммы сигналов, снятые на этом выводе.</p>
+<p align="center"><strong>MSI</strong></p>
+<p><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_msi.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_msi" border="0" alt="mco_msi" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_msi_thumb.jpg" width="444"></a></p>
+<p align="center"><strong>LSI</strong></p>
+<p align="center"><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_lsi.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_lsi" border="0" alt="mco_lsi" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_lsi_thumb.jpg" width="440"></a></p>
+<p align="center"><strong>LSE</strong></p>
+<p align="center"><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_lse.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_lse" border="0" alt="mco_lse" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_lse_thumb.jpg" width="435"></a></p>
+<p align="center"><strong>HSI</strong></p>
+<p align="center"><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_hsi.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_hsi" border="0" alt="mco_hsi" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_hsi_thumb.jpg" width="433"></a></p>
+<p align="center"><strong>PLL</strong></p>
+<p align="center"><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_pll.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_pll" border="0" alt="mco_pll" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_pll_thumb.jpg" width="429"></a></p>
+<p align="left">Ну и, наконец, максимально возможная системная тактовая частота SYSCLK при работе от источника PLL</p>
+<p align="center"><strong>SYSCLK</strong></p>
+<p align="center"><a href="http://chipspace.ru/wp-content/uploads/2013/11/mco_sysclk_pll_source.jpg"><img style="background-image: none; border-bottom: 0px; border-left: 0px; padding-left: 0px; padding-right: 0px; display: block; float: none; margin-left: auto; border-top: 0px; margin-right: auto; border-right: 0px; padding-top: 0px" title="mco_sysclk_pll_source" border="0" alt="mco_sysclk_pll_source" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/mco_sysclk_pll_source_thumb.jpg" width="420"></a></p>
+<p align="left">По ссылке можно загрузить архив с проектом:</p>
+<p align="left"><a href="http://chipspace.ru/archives/Project_mco_output.rar" target="_blank">Maximum SYSCLK and MCO output</a></p>
+<p>Другие статьи:</p>
+<ul>
+<li><a title="STM32. Системный таймер SysTick." href="http://chipspace.ru/stm32-systick/" target="_blank">STM32. Системный таймер SysTick.</a> </li>
+<li><a title="STM32. Встроенный bootloader. Прошивка через Flash Loader Demonstrator." href="http://chipspace.ru/stm32-bootloader-flash-loader-demonstrator/" target="_blank">STM32. Встроенный bootloader. Прошивка через Flash Loader Demonstrator.</a> </li>
+<li><a title="STM32. Проект управления портами ввода-вывода от Metcenger" href="http://chipspace.ru/stm32-gpio-metcenger/" target="_blank">STM32. Проект управления портами ввода-вывода от Metcenger</a> </li>
+</ul>
+			</div><!--/entry -->
+		</div><!-- .entry-container -->
+<div class="post-footer postdata fix">
+<span class="author"><span class="icon">&nbsp;</span>Опубликовано <a href="http://chipspace.ru/author/mrz/">ChipSpace</a> в 00:28</span>		<span class="tags"><span class="icon">&nbsp;</span>С меткой:<a href="http://chipspace.ru/tag/pll/" rel="tag">pll</a>, <a href="http://chipspace.ru/tag/stm32/" rel="tag">stm32</a>, <a href="http://chipspace.ru/tag/stm32l-discovery/" rel="tag">stm32l-discovery</a><br></span>
+	</div><!-- .post-footer -->
+<div id="comments">
+<h3 class="comments"><span class="icon">&nbsp;</span>
+	20 Ответов в “STM32L. Максимальная тактовая частота от источника PLL.”</h3>
+<ol class="commentlist">
+	<li id="comment-61" class="comment byuser comment-author-dj even thread-even depth-1">
+				<div id="div-comment-61" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/c781e10eacb4bc37cf25e450b7e1f3ed" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Dj</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-61">
+				26.07.2012 в 16:33</a>				</div>
+
+			</div>
+	
+			<p>Я тоже получил на выходе 32 МГц! Дал жару своему осилографу…<br>
+А вот если у меня камень на 150МГц заработает (ну, например, STM32F407), то там тоже можно будет наблюдать?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-62" class="comment odd alt depth-2">
+				<div id="div-comment-62" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-62">
+				03.08.2012 в 09:48</a>				</div>
+
+			</div>
+	
+			<p>Не могу точно сказать возможно ли на выходе получить 150 МГц для данного чипа, поскольку сам этого не пробовал делать. Способны ли GPIO работать на такой частоте, от какой матрицы шин они тактируются, все это надо читать в мануалах на данное семейство и пробовать экспериментально.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-145" class="comment byuser comment-author-metcenger even thread-odd thread-alt depth-1">
+				<div id="div-comment-145" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/a39c9589f3f05e4fdda96993beea2d9d" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">metcenger</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-145">
+				08.01.2013 в 01:33</a>				</div>
+
+			</div>
+	
+			<p>Великолепная статья. Наглядно показывает принципы формирования источников синхронизации. Также видно, что на вывод MCO выводится сигнал вне зависимости от того, чем тактируется внутреннее ядро.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-223" class="comment byuser comment-author-vladik odd alt thread-even depth-1">
+				<div id="div-comment-223" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/1371c148148885eff26a10721bb1e84f" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">vladik</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-223">
+				19.02.2013 в 05:57</a>				</div>
+
+			</div>
+	
+			<p>Запускаю пример. На выводе PA8 32МГц.<br>
+Комментирую строчку «Далее выбираем PLL в качестве источника системной тактовой частоты:<br>
+ RCC-&gt;CFGR |= RCC_CFGR_SW_PLL;» .Также 32МГц.<br>
+Меняю коэфициенты PLL : RCC-&gt;CFGR |= RCC_CFGR_PLLMUL3;<br>
+                                         RCC-&gt;CFGR |= RCC_CFGR_PLLDIV2;<br>
+Ни один ни другой сигнал не меняется:<br>
+RCC-&gt;CFGR |= RCC_CFGR_MCO_PLL;<br>
+RCC-&gt;CFGR |= RCC_CFGR_MCO_SYSCLK;  Все те же 32МГц.<br>
+Выбрал источником HSE 8МГц — ничего.<br>
+В чем причина?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-224" class="comment even depth-2">
+				<div id="div-comment-224" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-224">
+				19.02.2013 в 15:22</a>				</div>
+
+			</div>
+	
+			<p>Завтра гляну осциллографом, отвечу.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-225" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-225" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-225">
+				20.02.2013 в 10:29</a>				</div>
+
+			</div>
+	
+			<p>Проверил, все работает.<br>
+Похоже, что у тебя прошивка не обновляется в чипе. Чем прошиваешь после изменений в программе? Не st-link utility случайно?<br>
+И источник HSE 8 MHz на этой плате будет работать, только если установить внешний кварц, на плате его нет.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-226" class="comment byuser comment-author-vladik even thread-even depth-1">
+				<div id="div-comment-226" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/1371c148148885eff26a10721bb1e84f" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">vladik</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-226">
+				21.02.2013 в 01:16</a>				</div>
+
+			</div>
+	
+			<p>MSI,HSI,LSI,LSE прошивается и меняется. на плате есть внешний кварц. две нижние строчки PLL, SYSCLK все время 32МГц и не меняются при изменении коэффициента PLL.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-227" class="comment odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-227" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-227">
+				21.02.2013 в 01:34</a>				</div>
+
+			</div>
+	
+			<p>Странно. Я сегодня пробовал, все меняется. Пробовал изменять коэффициенты PLL на такие:<br>
+RCC-&gt;CFGR |= RCC_CFGR_PLLMUL3;<br>
+RCC-&gt;CFGR |= RCC_CFGR_PLLDIV2;<br>
+и тоже вижу изменения частоты осциллографом.<br>
+Можешь скинуть мне проект с изменениями на почту?<br>
+Ящик <a href="mailto:mailbox@chipspace.ru">mailbox@chipspace.ru</a></p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-228" class="comment even depth-2">
+				<div id="div-comment-228" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-228">
+				21.02.2013 в 01:36</a>				</div>
+
+			</div>
+	
+			<p>Только целиком проект со всеми файлами.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-229" class="comment byuser comment-author-vladik odd alt thread-even depth-1">
+				<div id="div-comment-229" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/1371c148148885eff26a10721bb1e84f" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">vladik</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-229">
+				21.02.2013 в 01:54</a>				</div>
+
+			</div>
+	
+			<p>проект ваш целиком без добавок. скину. IAR 6.50.2. еще вопрос: мой проект с лцд +  вход i2c датчика с моим  кодом  при изменении частоты тактирования от  разных источников, частота i2c не меняется. В коде есть функция задержки с пустыми операциями и все.<br>
+Вывод PA8 подключен для наблюдения частоты осциллографом. меняется  все кроме коэффициента PLL, а скорость программы не меняется.Что за чертовщина?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-230" class="comment even depth-2">
+				<div id="div-comment-230" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-230">
+				21.02.2013 в 02:24</a>				</div>
+
+			</div>
+	
+			<p>Получил архив, завтра погляжу осциллографом выход, отвечу вечером. Сразу глянул файл main.c, а почему внешний источник HSE выбирается для PLL<br>
+  RCC-&gt;CFGR |= RCC_CFGR_PLLSRC_HSE;<br>
+но при этом источник HSE заранее не включен? Вот так<br>
+  RCC-&gt;CR |= RCC_CR_HSEON;<br>
+  while(!(RCC-&gt;CR&amp;RCC_CR_HSERDY));</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-231" class="comment byuser comment-author-vladik odd alt thread-odd thread-alt depth-1">
+				<div id="div-comment-231" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/1371c148148885eff26a10721bb1e84f" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">vladik</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-231">
+				21.02.2013 в 03:08</a>				</div>
+
+			</div>
+	
+			<p>загрузил в iar Ваш проект без вмешательства. PLL не меняется…</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-232" class="comment even depth-2">
+				<div id="div-comment-232" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-232">
+				21.02.2013 в 15:37</a>				</div>
+
+			</div>
+	
+			<p>Вчера программу проверял в Keil, проблем не выявил.<br>
+Скачал последнюю версию IAR 6.50.2. На работе активировать лицензию не удалось, не работал интернет.<br>
+Нашел и установил «крякнутую» версию 6.30.</p>
+<p>Загружаю свой проект с сайта, запускаю в IAR 6.30 — все работает.<br>
+Теперь запускаю проект, который был прислан по почте. При запуске появляются такие сообщения:<br>
+«Broken options were detected in the project file. A backup copy will be made»<br>
+«The project ‘mco_output’ contains the unknown tool ‘IJET_ID’<br>
+Также в проекте «потерялись» пути к библиотечным файлам в настройках компилятора. Добавил.</p>
+<p>Затем при компиляции вываливает кучу сообщений, наподобие такого:<br>
+«Diagnostics: ‘Settings ST-LINK’: unsupported version…»<br>
+LOAD: Configuretion ‘Debug’ in the project ‘mco_output’ contains broken options for tool ‘C-SPY’:<br>
+The format of this file is not supported by this version of the workbench. It appears to have been written by a newer version of the workbench.</p>
+<p>Запускаю проект, на выходе вижу 32 МГц. Источником для PLL выбрал HSI, поскольку на моей плате нет внешнего кварца.<br>
+Пробую менять настройки, на выходе все равно 32 МГц, без изменений. Получается, что проект нормально не компилируется. Тот .hex файл, который был в проекте изначально, прошивается в контроллер и остается неизменным. Хотя визуально в программе этого не видно, вроде как бы все работает без ошибок. При этом проект, загруженный с сайта работает нормально.</p>
+<p>Наладили интернет. Сношу IAR 6.30, устанавливаю последнюю версию IAR 6.50.2, регистрирую лицензию Kickstart Edition.<br>
+Снова поочередно проверяю оба проекта, оба работают. В настройках компилятора пути к файлам присутствуют сразу, никуда не теряются.<br>
+В общем, я бы посоветовал переустановить IAR для начала. Надеюсь стояла версия Kickstart edition, а не «крякнутая»? Перед этим удалить все папки от предыдущей установки в Program Files, Common Files. Получить лицензию на эту версию, зарегистрировать ее.<br>
+Почему в итоге так «испортился» проект, точно сказать не могу.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+	<li id="comment-233" class="comment byuser comment-author-vladik odd alt thread-even depth-1">
+				<div id="div-comment-233" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/1371c148148885eff26a10721bb1e84f" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">vladik</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-233">
+				26.02.2013 в 05:38</a>				</div>
+
+			</div>
+	
+			<p>Поставил на вин7 IAR 6.50.2 с лицензией 30 дней. Ваш проект и PLL не меняется. Вынул кварц из панели и чудо свершилось —  при изменениии коэфициентов PLL частота меняется. Так а в чем дело то — внешний кварц ведь не включен?</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-234" class="comment even thread-odd thread-alt depth-1">
+				<div id="div-comment-234" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/blank.gif" class="avatar avatar-48 photo avatar-default" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn"><a href="http://www.chipspace.ru/" rel="external nofollow" class="url">ChipSpace</a></cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-234">
+				26.02.2013 в 05:56</a>				</div>
+
+			</div>
+	
+			<p>Сложно сказать. На моей плате проект работает без внешнего кварца.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+	<li id="comment-466" class="comment byuser comment-author-vieryn odd alt thread-even depth-1">
+				<div id="div-comment-466" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/ee858a555e3b318a1afc2d6967a28954" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Vieryn</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-466">
+				16.12.2013 в 03:32</a>				</div>
+
+			</div>
+	
+			<p>Открываем reference manual и находим раздел 4.1.5 Dynamic voltage scaling management. В нём есть таблица и график, исходя из которых для стабильной работы на частоте свыше 16МГц необходимо выбрать voltage range 1 (Vcore = 1.8V). Также, можно открыть system_stm32l1xx.c и найти функцию SetSysClock. Эта функция пытается настроить SYSCLK на HSE (по-умолчанию 8МГц) через PLL (*4) на нашу искомую 32МГц. В случае с STM32L-Discovery настройка не происходит, так как кварц отсутствует, но код настройки мы там посмотреть можем. В этом коде присутствует настройка flash аналогично той, что в статье, запуск HSE, настройки PLL, но также там есть следующие строки:</p>
+<p>/* Power enable */<br>
+RCC-&gt;APB1ENR |= RCC_APB1ENR_PWREN;</p>
+<p>/* Select the Voltage Range 1 (1.8 V) */<br>
+PWR-&gt;CR = PWR_CR_VOS_0;</p>
+<p>/* Wait Until the Voltage Regulator is ready */<br>
+while((PWR-&gt;CSR &amp; PWR_CSR_VOSF) != RESET)<br>
+{<br>
+}</p>
+<p>Собственно, желательно добавить эту настройку в статью. Не зря производитель рекомендации даёт. Чип и на voltage range 2 работает на цастоте 32МГц, но в каких-то условиях можно схлопотать неуловимые глюки, с которыми можно долго воевать не понимая, откуда ноги растут.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-470" class="comment byuser comment-author-mrz bypostauthor even depth-2">
+				<div id="div-comment-470" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-470">
+				16.12.2013 в 22:16</a>				</div>
+
+			</div>
+	
+			<p>Честно сказать, я вроде на этом момент совсем и не обратил внимания. Сейчас заглянул в документацию, вроде бы типовое значение напряжения Vcore как раз и находится в range 1 и равно 1,8V, так? Но на всякий случай это надо учитывать, так что спасибо за уточнение!</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-471" class="comment byuser comment-author-vieryn odd alt depth-3">
+				<div id="div-comment-471" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/ee858a555e3b318a1afc2d6967a28954" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Vieryn</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-471">
+				16.12.2013 в 23:38</a>				</div>
+
+			</div>
+	
+			<p>По-умолчанию выставляется range 2. Можно удостовериться в reference manual в разделе 4.4.1 PWR power control register (PWR_CR), значение после ресета 0×00001000, значение битов VOS[12:11] — 10: 1.5 V (range 2). Приходится ручками менять на range 1 (VOS 01).</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-472" class="comment byuser comment-author-mrz bypostauthor even depth-4">
+				<div id="div-comment-472" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/f4ebcd809552a0801fbd2dca19fccd71" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">ChipSpace</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-472">
+				17.12.2013 в 19:09</a>				</div>
+
+			</div>
+	
+			<p>Еще раз спасибо. Даже не думал, что оно так по умолчанию.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	<ul class="children">
+	<li id="comment-473" class="comment byuser comment-author-vieryn odd alt depth-5">
+				<div id="div-comment-473" class="comment-body">
+			<div class="comment-author fix vcard">
+			<img alt="" src="./STM32L. Максимальная тактовая частота от источника PLL. » ChipSpace_files/ee858a555e3b318a1afc2d6967a28954" class="avatar avatar-48 photo" height="48" width="48">				<div class="comment-author-link">
+					<cite class="fn">Vieryn</cite> <span class="says">:</span>				</div>
+				<div class="comment-meta commentmetadata"><a href="http://chipspace.ru/stm32l-max-sysclk/#comment-473">
+				17.12.2013 в 23:54</a>				</div>
+
+			</div>
+	
+			<p>Я тоже не думал, пока в мануале на табличку не наткнулся. Посмотрел на своей платке — действительно во втором режиме после старта. У меня, как и у большинства, и во втором работает, но фиг его знает где и как оно может взбрыкнуть, так что теперь выставляю первый, на всякий пожарный.</p>
+<p>Удач.</p>
+
+			</div>
+
+			<div class="reply">
+			<a rel="nofollow" class="comment-reply-login" href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Войдите, чтобы ответить</a>			</div>
+
+
+
+		
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<div class="navigation fix">
+	<div class="alignleft"></div>
+	<div class="alignright"></div>
+</div>
+								<div id="respond">
+				<h3 id="reply-title"><span class="icon">&nbsp;</span>Оставить комментарий <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://chipspace.ru/stm32l-max-sysclk/#respond" style="display:none;">Отменить ответ</a></small></h3>
+									<p class="must-log-in"><a href="http://chipspace.ru/wp-login.php?redirect_to=http%3A%2F%2Fchipspace.ru%2Fstm32l-max-sysclk%2F">Вы должны авторизироваться для добавления комментария</a></p>												</div><!-- #respond -->
+						</div>	</div><!--/post -->
+<div class="post-nav">
+<table>
+<tbody><tr>
+	<td class="previous"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32l-discovery-adc-lcd/" rel="prev">STM32L-DYSCOVERY. АЦ-преобразование и вывод на дисплей.</a></td>
+	<td class="next"><span class="icon">&nbsp;</span> <a href="http://chipspace.ru/stm32l-stdperiph-lib/" rel="next">STM32L. Библиотеки от STMicroelectronics</a></td>
+</tr>
+</tbody></table>
+</div>
+      </div><!-- content -->
+    </div><!-- main col -->
+<div id="sidebar-shell-1" class="sidebar-shell sidebar-shell-right">
+<div class="dbx-group right boxed warea" id="sidebar">
+<!--widget start --><div id="categories-3" class="dbx-box suf-widget widget_categories"><h3 class="dbx-handle plain">Рубрики</h3><div class="dbx-content">		<ul>
+	<li class="cat-item cat-item-102"><a href="http://chipspace.ru/category/gps/" title="Просмотреть все записи в рубрике «GPS»">GPS</a> (4)
+</li>
+	<li class="cat-item cat-item-90"><a href="http://chipspace.ru/category/analog-digital-devices/" title="Просмотреть все записи в рубрике «Аналого-цифровые устройства»">Аналого-цифровые устройства</a> (2)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://chipspace.ru/category/analog/" title="Просмотреть все записи в рубрике «Аналоговая электроника»">Аналоговая электроника</a> (1)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://chipspace.ru/category/indicators/" title="Просмотреть все записи в рубрике «Индикаторы»">Индикаторы</a> (1)
+</li>
+	<li class="cat-item cat-item-86"><a href="http://chipspace.ru/category/interface/" title="Просмотреть все записи в рубрике «Интерфейсы»">Интерфейсы</a> (1)
+</li>
+	<li class="cat-item cat-item-68"><a href="http://chipspace.ru/category/microcontrollers/" title="Просмотреть все записи в рубрике «Микроконтроллеры»">Микроконтроллеры</a> (44)
+<ul class="children">
+	<li class="cat-item cat-item-65"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-atmel/" title="Просмотреть все записи в рубрике «Atmel»">Atmel</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://chipspace.ru/category/microcontrollers/microcontrollers-stm32/" title="Просмотреть все записи в рубрике «STM32»">STM32</a> (43)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-111"><a href="http://chipspace.ru/category/cpld-fpga/" title="Просмотреть все записи в рубрике «ПЛИС»">ПЛИС</a> (1)
+</li>
+	<li class="cat-item cat-item-114"><a href="http://chipspace.ru/category/site/" title="Просмотреть все записи в рубрике «Сайт»">Сайт</a> (1)
+</li>
+		</ul>
+</div></div><!--widget end --><!--widget start --><div id="wp_sidebarlogin-2" class="dbx-box suf-widget widget_wp_sidebarlogin"><h3 class="dbx-handle plain"><span>Войти</span></h3><div class="dbx-content">		<form method="post" action="http://chipspace.ru/stm32l-max-sysclk/?_login=9210335b43">
+		
+			<p><label for="user_login">Имя пользователя:</label> <input name="log" value="" class="text" id="user_login" type="text"></p>
+			<p><label for="user_pass">Пароль:</label> <input name="pwd" class="text" id="user_pass" type="password"></p>			
+	
+						
+			<p class="rememberme"><input name="rememberme" class="checkbox" id="rememberme" value="forever" type="checkbox"> <label for="rememberme">Запомнить меня</label></p>
+			
+			<p class="submit">
+				<input type="submit" name="wp-submit" id="wp-submit" value="Войти »">
+				<input type="hidden" name="redirect_to" class="redirect_to" value="http://chipspace.ru/stm32l-max-sysclk/">
+				<input type="hidden" name="sidebarlogin_posted" value="1">
+				<input type="hidden" name="testcookie" value="1">
+			</p>
+			
+					
+		</form>
+		<ul class="sidebarlogin_otherlinks"><li><a href="http://chipspace.ru/wp-login.php?action=register" rel="nofollow">Регистрация</a></li><li><a href="http://chipspace.ru/wp-login.php?action=lostpassword" rel="nofollow">Забыли пароль?</a></li></ul></div></div><!--widget end --></div><!--/sidebar -->
+</div>
+	</div><!-- /container -->
+
+	<div id="cred">
+		<table>
+			<tbody><tr>
+				<td class="cred-left">© 2011. Екатеринбург. 
+</td>
+				<td class="cred-center">			</td></tr>
+		</tbody></table>
+	</div>
+<!-- 51 queries, 32MB in 0,650 seconds. -->
+</div><!--/wrapper -->
+<!-- location footer -->
+
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter11339371 = new Ya.Metrika({id:11339371,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript>&lt;div&gt;&lt;img src="//mc.yandex.ru/watch/11339371" style="position:absolute; left:-9999px;" alt="" /&gt;&lt;/div&gt;</noscript>
+<!-- /Yandex.Metrika counter -->
+</body></html>

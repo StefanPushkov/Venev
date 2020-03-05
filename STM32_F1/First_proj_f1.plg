@@ -1,0 +1,717 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Storage\Tula\STM32_F1\First_proj_f1.uvproj
+Project File Date:  07/06/2019
+
+<h2>Output:</h2>
+Build target 'Target 1'
+assembling startup_stm32f10x_md_vl.s...
+compiling misc.c...
+C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h(80): error:  #35: #error directive: "Please select first the target STM32F10x device used in your application (in stm32f10x.h file)"
+compiling stm32f10x_exti.c...
+C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h(80): error:  #35: #error directive: "Please select first the target STM32F10x device used in your application (in stm32f10x.h file)"
+compiling stm32f10x_gpio.c...
+C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h(80): error:  #35: #error directive: "Please select first the target STM32F10x device used in your application (in stm32f10x.h file)"
+compiling stm32f10x_rcc.c...
+C:\Keil\ARM\Inc\ST\STM32F10x\stm32f10x.h(80): error:  #35: #error directive: "Please select first the target STM32F10x device used in your application (in stm32f10x.h file)"
+compiling core_cm3.c...
+core_cm3.c: Error:  #5: cannot open source input file "stm32_f1_libs\core_cm3.c": No such file or directory
+Target not created
+Build target 'Target 1'
+compiling misc.c...
+STM32_SPL\src\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+STM32_SPL\src\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+compiling stm32f10x_gpio.c...
+STM32_SPL\src\stm32f10x_gpio.c(175): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(176): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(189): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(193): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(198): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(205): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(212): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(219): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(233): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(240): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(247): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(252): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(283): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(297): warning:  #1166-D: returning pointer to local variable
+STM32_SPL\src\stm32f10x_gpio.c(305): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(320): error:  #20: identifier "uint8_t" is undefined
+compiling stm32f10x_rcc.c...
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(224): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(230): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(233): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(236): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(270): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(278): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(284): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(314): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "HSE_STARTUP_TIMEOUT" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(334): error:  #757: variable "uint8_t" is not a type name
+STM32_SPL\src\stm32f10x_rcc.c(336): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(343): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "uint32_t" is undefined
+compiling core_cm3.c...
+core_cm3.c: Error:  #5: cannot open source input file "stm32_f1_libs\core_cm3.c": No such file or directory
+Target not created
+Build target 'Target 1'
+compiling misc.c...
+STM32_SPL\src\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+STM32_SPL\src\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+compiling stm32f10x_gpio.c...
+STM32_SPL\src\stm32f10x_gpio.c(175): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(176): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(189): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(193): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(198): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(205): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(212): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(219): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(233): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(240): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(247): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(252): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(283): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(297): warning:  #1166-D: returning pointer to local variable
+STM32_SPL\src\stm32f10x_gpio.c(305): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(320): error:  #20: identifier "uint8_t" is undefined
+compiling stm32f10x_rcc.c...
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(224): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(230): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(233): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(236): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(270): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(278): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(284): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(314): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "HSE_STARTUP_TIMEOUT" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(334): error:  #757: variable "uint8_t" is not a type name
+STM32_SPL\src\stm32f10x_rcc.c(336): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(343): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "uint32_t" is undefined
+compiling core_cm3.c...
+core_cm3.c: Error:  #5: cannot open source input file "stm32_f1_libs\core_cm3.c": No such file or directory
+Target not created
+Build target 'Target 1'
+compiling misc.c...
+STM32_SPL\src\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+STM32_SPL\src\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+compiling stm32f10x_gpio.c...
+STM32_SPL\src\stm32f10x_gpio.c(175): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(176): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(189): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(193): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(198): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(205): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(212): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(219): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(233): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(240): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(247): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(252): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(283): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(297): warning:  #1166-D: returning pointer to local variable
+STM32_SPL\src\stm32f10x_gpio.c(305): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(320): error:  #20: identifier "uint8_t" is undefined
+compiling stm32f10x_rcc.c...
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(224): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(230): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(233): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(236): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(270): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(278): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(284): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(314): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "HSE_STARTUP_TIMEOUT" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(334): error:  #757: variable "uint8_t" is not a type name
+STM32_SPL\src\stm32f10x_rcc.c(336): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(343): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "uint32_t" is undefined
+compiling core_cm3.c...
+core_cm3.c: Error:  #5: cannot open source input file "stm32_f1_libs\core_cm3.c": No such file or directory
+Target not created
+Build target 'Target 1'
+compiling misc.c...
+STM32_SPL\src\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+STM32_SPL\src\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(121): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(139): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(147): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(159): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(192): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(232): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+compiling stm32f10x_gpio.c...
+STM32_SPL\src\stm32f10x_gpio.c(175): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(176): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(189): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(193): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(198): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(205): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(212): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(219): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(233): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(240): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(247): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(252): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(281): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(283): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(291): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #20: identifier "uint8_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(295): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_gpio.c(297): warning:  #1166-D: returning pointer to local variable
+STM32_SPL\src\stm32f10x_gpio.c(305): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #20: identifier "uint16_t" is undefined
+STM32_SPL\src\stm32f10x_gpio.c(310): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_gpio.c(320): error:  #20: identifier "uint8_t" is undefined
+compiling stm32f10x_rcc.c...
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(193): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #20: identifier "__I" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(194): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(220): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(224): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(230): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(233): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(236): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(270): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(276): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(278): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(284): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(306): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(314): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "StartUpCounter" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(315): error:  #20: identifier "HSE_STARTUP_TIMEOUT" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(334): error:  #757: variable "uint8_t" is not a type name
+STM32_SPL\src\stm32f10x_rcc.c(336): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #20: identifier "uint32_t" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(341): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(343): error:  #65: expected a ";"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "__IO" is undefined
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #18: expected a ")"
+STM32_SPL\src\stm32f10x_rcc.c(358): error:  #20: identifier "uint32_t" is undefined
+compiling core_cm3.c...
+core_cm3.c: Error:  #5: cannot open source input file "stm32_f1_libs\core_cm3.c": No such file or directory
+Target not created
+Build target 'Target 1'
+compiling core_cm3.c...
+compiling misc.c...
+F1_main_libs\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+F1_main_libs\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_exti.c(121): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(121): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(139): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(139): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_exti.c(147): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(147): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(159): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(192): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(232): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(232): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+compiling stm32f10x_gpio.c...
+F1_main_libs\stm32f10x_gpio.c(175): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(176): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(183): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(183): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(184): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(189): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_gpio.c(193): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(198): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(205): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(212): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(219): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(233): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(240): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(247): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(252): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(281): error:  #20: identifier "uint8_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(281): error:  #20: identifier "uint16_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(283): error:  #20: identifier "uint8_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(289): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(289): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(291): error:  #20: identifier "uint8_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(291): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_gpio.c(295): error:  #20: identifier "uint8_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(295): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_gpio.c(297): warning:  #1166-D: returning pointer to local variable
+F1_main_libs\stm32f10x_gpio.c(305): error:  #20: identifier "uint16_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(310): error:  #20: identifier "uint16_t" is undefined
+F1_main_libs\stm32f10x_gpio.c(310): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_gpio.c(320): error:  #20: identifier "uint8_t" is undefined
+compiling stm32f10x_rcc.c...
+F1_main_libs\stm32f10x_rcc.c(193): error:  #20: identifier "__I" is undefined
+F1_main_libs\stm32f10x_rcc.c(193): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(194): error:  #20: identifier "__I" is undefined
+F1_main_libs\stm32f10x_rcc.c(194): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(220): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_rcc.c(220): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(224): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(230): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(233): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(236): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(270): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_rcc.c(276): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_rcc.c(276): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(278): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(284): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(289): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(306): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_rcc.c(306): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(314): error:  #20: identifier "StartUpCounter" is undefined
+F1_main_libs\stm32f10x_rcc.c(315): error:  #20: identifier "StartUpCounter" is undefined
+F1_main_libs\stm32f10x_rcc.c(315): error:  #20: identifier "HSE_STARTUP_TIMEOUT" is undefined
+F1_main_libs\stm32f10x_rcc.c(334): error:  #757: variable "uint8_t" is not a type name
+F1_main_libs\stm32f10x_rcc.c(336): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_rcc.c(341): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_rcc.c(341): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(343): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_rcc.c(358): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_rcc.c(358): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_rcc.c(358): error:  #20: identifier "uint32_t" is undefined
+compiling system_stm32f10x.c...
+compiling title.c...
+Target not created
+Build target 'Target 1'
+compiling misc.c...
+F1_main_libs\misc.c(24): error:  #5: cannot open source input file "misc.h": No such file or directory
+compiling stm32f10x_exti.c...
+F1_main_libs\stm32f10x_exti.c(103): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(111): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(121): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_exti.c(121): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(121): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(139): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(139): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(147): error:  #20: identifier "__IO" is undefined
+F1_main_libs\stm32f10x_exti.c(147): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(147): error:  #65: expected a ";"
+F1_main_libs\stm32f10x_exti.c(159): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(159): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(171): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(186): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(192): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(192): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(209): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(224): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(227): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(232): error:  #20: identifier "uint32_t" is undefined
+F1_main_libs\stm32f10x_exti.c(232): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(232): error:  #18: expected a ")"
+F1_main_libs\stm32f10x_exti.c(249): error:  #20: identifier "uint32_t" is undefined
+Target not created
+Build target 'Target 1'
+linking...
+Program Size: Code=768 RO-data=320 RW-data=20 ZI-data=1636  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+title.c(5): error:  #20: identifier "GPIO_InitTypeDef" is undefined
+title.c(7): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+title.c(7): error:  #20: identifier "RCC_APB2Periph_GPIOC" is undefined
+title.c(9): error:  #20: identifier "GPIO_InitStructure" is undefined
+title.c(9): error:  #20: identifier "GPIO_Pin_8" is undefined
+title.c(9): error:  #20: identifier "GPIO_Pin_9" is undefined
+title.c(10): error:  #20: identifier "GPIO_Mode_Out_PP" is undefined
+title.c(11): error:  #20: identifier "GPIO_Speed_2MHz" is undefined
+title.c(12): warning:  #223-D: function "GPIO_Init" declared implicitly
+Target not created
+Build target 'Target 1'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+STM32_SPL\src\stm32f10x_gpio.c(111): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(178): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(286): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(308): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(324): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(346): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(361): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(377): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(397): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(420): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(437): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(466): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(486): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(554): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(613): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_gpio.c(632): warning:  #223-D: function "assert_param" declared implicitly
+compiling stm32f10x_rcc.c...
+STM32_SPL\src\stm32f10x_rcc.c(273): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(338): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(357): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(383): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(404): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(431): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(568): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(612): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(638): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(664): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(703): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(731): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(770): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(832): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(865): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(882): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(896): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1067): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1098): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1129): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1188): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1219): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1240): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1253): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1285): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1332): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1406): warning:  #223-D: function "assert_param" declared implicitly
+STM32_SPL\src\stm32f10x_rcc.c(1451): warning:  #223-D: function "assert_param" declared implicitly
+compiling title.c...
+title.c(9): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+title.c(11): error:  #20: identifier "GPIO_InitStructure" is undefined
+title.c(7): warning:  #177-D: variable "GPIO_structure" was declared but never referenced
+Target not created
+Build target 'Target 1'
+compiling title.c...
+title.c(9): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+title.c(9): error:  #20: identifier "RCC_AHB1Periph_GPIOC" is undefined
+title.c(11): error:  #20: identifier "GPIO_InitStructure" is undefined
+title.c(7): warning:  #177-D: variable "GPIO_structure" was declared but never referenced
+Target not created
+Build target 'Target 1'
+compiling title.c...
+title.c(11): error:  #20: identifier "GPIO_InitStructure" is undefined
+title.c(7): warning:  #177-D: variable "GPIO_structure" was declared but never referenced
+Target not created
+Build target 'Target 1'
+compiling title.c...
+title.c(14): error:  #20: identifier "GPIO_InitStructure" is undefined
+title.c(7): warning:  #550-D: variable "GPIO_Structure" was set but never used
+Target not created
+Build target 'Target 1'
+compiling title.c...
+linking...
+First_proj_f1.axf: Error: L6218E: Undefined symbol assert_param (referred from stm32f10x_gpio.o).
+Target not created
+Build target 'Target 1'
+compiling core_cm3.c...
+compiling system_stm32f10x.c...
+compiling stm32f10x_gpio.c...
+compiling stm32f10x_rcc.c...
+compiling title.c...
+linking...
+Program Size: Code=2628 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2644 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+title.c(9): warning:  #223-D: function "RCC_AHB1PeriphClockCmd" declared implicitly
+title.c(9): error:  #20: identifier "RCC_AHB1Periph_GPIOC" is undefined
+Target not created
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2644 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling title.c...
+title.c(18): error:  #65: expected a ";"
+title.c(22): warning:  #12-D: parsing restarts here after previous syntax error
+Target not created
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2636 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+linking...
+Program Size: Code=2636 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+title.c(16): error:  #20: identifier "GPIOC_ODR" is undefined
+Target not created
+Build target 'Target 1'
+compiling title.c...
+title.c(16): error:  #20: identifier "GPIO_BSRR_BSS" is undefined
+Target not created
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+compiling title.c...
+title.c(16): warning:  #223-D: function "GPIO_SetBit" declared implicitly
+linking...
+First_proj_f1.axf: Error: L6218E: Undefined symbol GPIO_SetBit (referred from title.o).
+Target not created
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 
+Build target 'Target 1'
+linking...
+Program Size: Code=2640 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+compiling title.c...
+linking...
+Program Size: Code=2636 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Build target 'Target 1'
+linking...
+Program Size: Code=2636 RO-data=320 RW-data=40 ZI-data=1632  
+"First_proj_f1.axf" - 0 Error(s), 0 Warning(s).
+Load "C:\\Storage\\Tula\\STM32_F1\\First_proj_f1.AXF" 

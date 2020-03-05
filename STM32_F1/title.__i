@@ -1,0 +1,1 @@
+-c --cpu Cortex-M3 -g -O0 --apcs=interwork -I.\main -I.\F1_main_libs -I.\STM32_SPL\inc -I.\STM32_SPL\src -I C:\Keil\ARM\RV31\Inc -I C:\Keil\ARM\CMSIS\Include -I C:\Keil\ARM\Inc\ST\STM32F10x -DUSE_STDPERIPH_DRIVER -o "title.o" --omf_browse "title.crf" --depend "title.d" "title.c"
